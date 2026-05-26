@@ -1,0 +1,7 @@
+# Exclude raw image assets and scripts
+original_photos/
+tools/
+
+# OS files
+.DS_Store
+Thumbs.db

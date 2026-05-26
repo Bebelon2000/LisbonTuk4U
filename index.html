@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LisbonTuk4U - Passeios de Tuk-Tuk em Lisboa com a Guia Susane</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Explore Lisboa com a guia certificada Susane num icónico tuk-tuk azul decorado com flores. Ponto de encontro no Hard Rock Café ou recolha direta no seu hotel. Reserve já!">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Hreflang Tags (Multilingual SEO) -->
+    <link rel="alternate" hreflang="x-default" href="https://lisbontuk4u.com/">
+    <link rel="alternate" hreflang="pt" href="https://lisbontuk4u.com/pt/">
+    <link rel="alternate" hreflang="en" href="https://lisbontuk4u.com/en/">
+    <link rel="alternate" hreflang="es" href="https://lisbontuk4u.com/es/">
+    <link rel="alternate" hreflang="it" href="https://lisbontuk4u.com/it/">
+    <link rel="alternate" hreflang="fr" href="https://lisbontuk4u.com/fr/">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="index.css">
+
+    <!-- Schema.org JSON-LD (LocalBusiness & TouristAttraction) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "TravelAgency",
+          "@id": "https://lisbontuk4u.com/#agency",
+          "name": "LisbonTuk4U",
+          "description": "Passeios turísticos de tuk-tuk em Lisboa guiados pela experiente guia Susane. Descubra os segredos da cidade a bordo de um charmoso tuk-tuk azul florido.",
+          "url": "https://lisbontuk4u.com",
+          "telephone": "+351912345678",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Lisboa",
+            "addressCountry": "PT"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "38.71667",
+            "longitude": "-9.13333"
+          },
+          "image": "https://lisbontuk4u.com/assets/img/hero-tuk-tuk.webp",
+          "priceRange": "$$"
+        },
+        {
+          "@type": "TouristAttraction",
+          "@id": "https://lisbontuk4u.com/#attraction",
+          "name": "LisbonTuk4U Tours",
+          "description": "Visitas guiadas de tuk-tuk por Alfama, Belém, Chiado e miradouros de Lisboa. Ponto de encontro no Hard Rock Café de Lisboa ou recolha personalizada no hotel.",
+          "touristType": "Sightseeing",
+          "provider": {
+            "@id": "https://lisbontuk4u.com/#agency"
+          }
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+
+    <!-- Header / Navigation (3-Tier Structure) -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="/" class="logo" id="header-logo-link">
+                <span class="logo-accent">Lisbon</span>Tuk4U
+            </a>
+            
+            <!-- Desktop Nav (Tier 1) -->
+            <nav class="desktop-nav" aria-label="Navegação Principal">
+                <ul class="nav-links">
+                    <li><a href="#inicio" class="nav-link-item">Início</a></li>
+                    <li><a href="#passeios" class="nav-link-item">Passeios</a></li>
+                    <li><a href="#sobre" class="nav-link-item">Sobre a Susane</a></li>
+                    <li><a href="#galeria" class="nav-link-item">Galeria</a></li>
+                    <li><a href="#contacto" class="nav-link-item">Contactos</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Language Selector (Tier 2) -->
+            <div class="lang-selector-desktop">
+                <button class="lang-btn-active" id="lang-btn-pt">PT</button>
+                <a href="/en/" class="lang-btn-link" id="lang-link-en">EN</a>
+                <a href="/es/" class="lang-btn-link" id="lang-link-es">ES</a>
+                <a href="/it/" class="lang-btn-link" id="lang-link-it">IT</a>
+                <a href="/fr/" class="lang-btn-link" id="lang-link-fr">FR</a>
+            </div>
+
+            <!-- Hamburger Button (Mobile Thumb Friendly - Tier 3) -->
+            <button class="hamburger-menu" id="menu-toggle-btn" aria-label="Abrir Menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect y="4" width="24" height="2.5" rx="1.25" fill="currentColor"/>
+                    <rect y="11" width="24" height="2.5" rx="1.25" fill="currentColor"/>
+                    <rect y="18" width="24" height="2.5" rx="1.25" fill="currentColor"/>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Nav Drawer Overlay (Thumb Friendly) -->
+    <div class="mobile-nav-drawer" id="mobile-nav-drawer" aria-hidden="true">
+        <div class="drawer-header">
+            <a href="/" class="logo-drawer" id="drawer-logo-link"><span class="logo-accent">Lisbon</span>Tuk4U</a>
+            <button class="drawer-close" id="menu-close-btn" aria-label="Fechar Menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </div>
+        <nav class="drawer-nav" aria-label="Navegação Móvel">
+            <ul class="drawer-links">
+                <li><a href="#inicio" class="drawer-link-item">Início</a></li>
+                <li><a href="#passeios" class="drawer-link-item">Passeios</a></li>
+                <li><a href="#sobre" class="drawer-link-item">Sobre a Susane</a></li>
+                <li><a href="#galeria" class="drawer-link-item">Galeria</a></li>
+                <li><a href="#contacto" class="drawer-link-item">Contactos</a></li>
+            </ul>
+        </nav>
+        <div class="drawer-languages">
+            <span class="lang-title">Idioma / Language</span>
+            <div class="lang-grid">
+                <a href="/" class="lang-grid-item active" id="mobile-lang-pt">Português</a>
+                <a href="/en/" class="lang-grid-item" id="mobile-lang-en">English</a>
+                <a href="/es/" class="lang-grid-item" id="mobile-lang-es">Español</a>
+                <a href="/it/" class="lang-grid-item" id="mobile-lang-it">Italiano</a>
+                <a href="/fr/" class="lang-grid-item" id="mobile-lang-fr">Français</a>
+            </div>
+        </div>
+    </div>
+    <div class="drawer-overlay" id="drawer-overlay"></div>
+
+    <!-- Main Content Area -->
+    <main id="inicio">
+        
+        <!-- Hero Section (First Contentful Paint) -->
+        <section class="hero-section">
+            <div class="hero-bg-overlay"></div>
+            <div class="hero-container">
+                <div class="hero-content">
+                    <span class="hero-badge">Lisboa Autêntica</span>
+                    <h1 class="hero-title">Descubra Lisboa com a Guia Susane</h1>
+                    <p class="hero-lead">
+                        Viva uma experiência inesquecível a bordo do nosso <strong>icónico tuk-tuk azul decorado com flores</strong>. 
+                        Sinta a brisa da cidade enquanto subimos as colinas históricas.
+                    </p>
+                    
+                    <!-- Key Features Info Cards -->
+                    <div class="hero-features">
+                        <div class="feature-card">
+                            <div class="feature-icon" aria-hidden="true">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </div>
+                            <div class="feature-text">
+                                <h3>Ponto de Encontro</h3>
+                                <p>Hard Rock Café de Lisboa</p>
+                            </div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon" aria-hidden="true">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                            </div>
+                            <div class="feature-text">
+                                <h3>Recolha Flexível</h3>
+                                <p>Pick-up gratuito no seu hotel</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hero-actions">
+                        <a href="#contacto" class="btn btn-primary" id="hero-cta-btn">Reservar Passeio</a>
+                        <a href="#passeios" class="btn btn-secondary" id="hero-secondary-btn">Ver Passeios</a>
+                    </div>
+                </div>
+                
+                <!-- Hero Image Showcase -->
+                <div class="hero-image-showcase">
+                    <div class="tuk-badge-floating">Tuk-Tuk 100% Elétrico</div>
+                    <img src="assets/img/hero-tuk-tuk.webp" alt="Tuk-tuk azul e branco decorado com flores e a guia Susane sorridente com a deslumbrante paisagem de Lisboa ao fundo" class="hero-img" loading="eager">
+                </div>
+            </div>
+        </section>
+
+        <!-- Dummy Sections for Layout Structure -->
+        <section id="passeios" class="section-container">
+            <h2 class="section-title">Nossos Passeios Populares</h2>
+            <p class="section-subtitle">Circuitos desenhados para que sinta o coração da capital portuguesa.</p>
+            <div class="tours-grid">
+                <div class="tour-card">
+                    <h3>Lisboa Histórica (Alfama & Castelo)</h3>
+                    <p>Suba as colinas mais antigas e descubra os miradouros mais espetaculares de Lisboa.</p>
+                </div>
+                <div class="tour-card">
+                    <h3>Rota dos Descobrimentos (Belém)</h3>
+                    <p>Viaje pelas margens do Tejo até à Torre de Belém e prove os famosos pastéis.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre" class="section-container bg-light">
+            <h2 class="section-title">Sobre a Guia Susane</h2>
+            <p class="section-subtitle">A sua anfitriã certificada em Lisboa.</p>
+            <div class="about-grid">
+                <div class="about-image-wrapper">
+                    <img src="assets/img/guia-susane.webp" alt="Guia certificada Susane sorrindo a bordo do tuk-tuk azul florido" class="about-img" loading="lazy">
+                </div>
+                <div class="about-text">
+                    <p>Olá! Sou a Susane, a vossa guia local. Apaixonada pela história e encantos de Lisboa, terei todo o prazer em mostrar-vos os recantos secretos da cidade a bordo do nosso tuk-tuk azul florido.</p>
+                    <p>Falo fluentemente <strong>Português, Inglês, Espanhol, Italiano e Francês</strong> para garantir que se sente perfeitamente em casa durante toda a viagem.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="galeria" class="section-container">
+            <h2 class="section-title">Galeria de Memórias</h2>
+            <p class="section-subtitle">Momentos capturados durante as nossas fantásticas viagens por Lisboa.</p>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="assets/img/torre-belem.webp" alt="Torre de Belém iluminada pelo sol ao fim do dia, refletida perfeitamente na água" class="gallery-thumb" loading="lazy">
+                    <div class="gallery-caption">Torre de Belém</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/img/se-lisboa.webp" alt="O icónico elétrico amarelo 28 de Lisboa passando em frente à histórica Sé de Lisboa" class="gallery-thumb" loading="lazy">
+                    <div class="gallery-caption">Sé de Lisboa & Elétrico 28</div>
+                </div>
+            </div>
+        </section>
+        <!-- Secção de Checkout e Reservas Dinâmicas (Bókun) -->
+        <section id="reserva" class="section-container">
+            <h2 class="section-title">Reserve a sua Aventura Online</h2>
+            <p class="section-subtitle">Personalize a duração do seu tour e garanta já o seu lugar com a Susane.</p>
+            
+            <div class="booking-widget-container">
+                <!-- Passo 1: Duração -->
+                <div class="booking-step">
+                    <span class="step-num">1</span>
+                    <h3>Escolha a Duração do Passeio</h3>
+                    <div class="slider-wrapper">
+                        <input type="range" id="duration-slider" min="1" max="5" value="2" step="1" aria-valuemin="1" aria-valuemax="5" aria-valuenow="2" aria-label="Duração do passeio de tuk-tuk">
+                        <div class="slider-ticks">
+                            <span>1h</span>
+                            <span>2h</span>
+                            <span>3h</span>
+                            <span>4h</span>
+                            <span>6h</span>
+                        </div>
+                    </div>
+                    
+                    <div class="tour-details-card" id="tour-details-card">
+                        <h4 id="tour-name">Big Tour</h4>
+                        <p class="tour-route" id="tour-route">Duração: 2h — Alfama + Chiado + Bairro Alto</p>
+                        <div class="tour-price-box">
+                            <span class="price-label">Preço Total:</span>
+                            <span class="price-value" id="tour-price">200 €</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Passo 2: Calendário e Disponibilidade -->
+                <div class="booking-step">
+                    <span class="step-num">2</span>
+                    <h3>Selecione a Data e Hora</h3>
+                    <div class="date-time-grid">
+                        <div class="form-group">
+                            <label for="booking-date">Data Pretendida</label>
+                            <input type="date" id="booking-date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="booking-time">Horários Disponíveis (Sincronizado Bókun)</label>
+                            <select id="booking-time" required disabled>
+                                <option value="">Escolha uma data primeiro...</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="availability-status" class="availability-status"></div>
+                </div>
+
+                <!-- Passo 3: Dados de Checkout -->
+                <div class="booking-step">
+                    <span class="step-num">3</span>
+                    <h3>Finalizar Reserva</h3>
+                    <div class="booking-form-row">
+                        <div class="form-group">
+                            <label for="booking-name">Nome Completo</label>
+                            <input type="text" id="booking-name" required placeholder="Ex: Maria Silva">
+                        </div>
+                        <div class="form-group">
+                            <label for="booking-email">E-mail para Confirmação</label>
+                            <input type="email" id="booking-email" required placeholder="Ex: maria@email.com">
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-block btn-large" id="confirm-booking-btn">Proceder para o Pagamento Seguro</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="section-container bg-light">
+            <h2 class="section-title">Reserve a sua Aventura</h2>
+            <p class="section-subtitle">Envie uma mensagem direta à Susane e marque a sua data preferida.</p>
+            <div class="booking-form-wrapper">
+                <form class="booking-form" id="booking-form" onsubmit="event.preventDefault(); alert('Reserva enviada!');">
+                    <div class="form-group">
+                        <label for="form-name">Nome Completo</label>
+                        <input type="text" id="form-name" required placeholder="Ex: Maria Silva">
+                    </div>
+                    <div class="form-group">
+                        <label for="form-email">E-mail</label>
+                        <input type="email" id="form-email" required placeholder="Ex: maria@email.com">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block" id="form-submit-btn">Enviar Pedido</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+        <p>&copy; 2026 LisbonTuk4U. Todos os direitos reservados. Guia Susane - Tuk-Tuk Azul Florido.</p>
+    </footer>
+
+    <!-- Sticky Mobile CTA Button (Conversion Optimizer - Visible only on mobile viewport) -->
+    <div class="sticky-cta-mobile" id="sticky-cta-mobile">
+        <a href="#contacto" class="btn btn-primary btn-block btn-large" id="mobile-sticky-cta-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" style="margin-right: 8px; vertical-align: middle;">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+            Reservar Passeio Já
+        </a>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>
