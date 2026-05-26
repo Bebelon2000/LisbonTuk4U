@@ -148,188 +148,91 @@
     <div class="drawer-overlay" id="drawer-overlay"></div>
 
     <!-- Main Content Area -->
-    <main id="inicio">
-        
-        <!-- Hero Section (First Contentful Paint) -->
-        <section class="hero-section">
-            <div class="hero-bg-overlay"></div>
-            <div class="hero-container">
-                <div class="hero-content">
-                    <span class="hero-badge">Lisboa Autêntica</span>
-                    <h1 class="hero-title">Descubra Lisboa com a Guia Susane</h1>
-                    <p class="hero-lead">
-                        Viva uma experiência inesquecível a bordo do nosso <strong>icónico tuk-tuk azul decorado com flores</strong>. 
-                        Sinta a brisa da cidade enquanto subimos as colinas históricas.
-                    </p>
-                    
-                    <!-- Key Features Info Cards -->
-                    <div class="hero-features">
-                        <div class="feature-card">
-                            <div class="feature-icon" aria-hidden="true">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/><circle cx="12" cy="10" r="3"/></svg>
-                            </div>
-                            <div class="feature-text">
-                                <h3>Ponto de Encontro</h3>
-                                <p>Hard Rock Café de Lisboa</p>
-                            </div>
-                        </div>
-                        <div class="feature-card">
-                            <div class="feature-icon" aria-hidden="true">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-                            </div>
-                            <div class="feature-text">
-                                <h3>Recolha Flexível</h3>
-                                <p>Pick-up gratuito no seu hotel</p>
-                            </div>
-                        </div>
-                    </div>
+    <main id="tours-page">
+    <section class="section-container">
+        <h1 class="section-title">Nossos Passeios Populares</h1>
+        <p class="section-subtitle">Circuitos desenhados para que sinta o coração da capital portuguesa.</p>
+        <div class="tours-grid" style="margin-bottom: 4rem;">
+            <div class="tour-card">
+                <h3>Lisboa Histórica (Alfama & Castelo)</h3>
+                <p>Suba as colinas mais antigas e descubra os miradouros mais espetaculares de Lisboa, como o Miradouro da Senhora do Monte e as Portas do Sol.</p>
+            </div>
+            <div class="tour-card">
+                <h3>Rota dos Descobrimentos (Belém)</h3>
+                <p>Viaje pelas margens do Tejo até à Torre de Belém, ao Padrão dos Descobrimentos e ao Mosteiro dos Jerónimos, provando os famosos pastéis.</p>
+            </div>
+        </div>
+    </section>
 
-                    <div class="hero-actions">
-                        <a href="#reserva" class="btn btn-primary" id="hero-cta-btn">Reservar Passeio</a>
-                        <a href="#passeios" class="btn btn-secondary" id="hero-secondary-btn">Ver Passeios</a>
+    <!-- Secção de Checkout e Reservas Dinâmicas (Bókun) -->
+    <section id="reserva" class="section-container" style="border-top: 1px solid rgba(11, 92, 158, 0.1); padding-top: 4.5rem;">
+        <h2 class="section-title">Reserve a sua Aventura Online</h2>
+        <p class="section-subtitle">Personalize a duração do seu tour e garanta já o seu lugar com a Susane.</p>
+        
+        <div class="booking-widget-container">
+            <!-- Passo 1: Duração -->
+            <div class="booking-step">
+                <span class="step-num">1</span>
+                <h3>Escolha a Duração do Passeio</h3>
+                <div class="slider-wrapper">
+                    <input type="range" id="duration-slider" min="1" max="5" value="2" step="1" aria-valuemin="1" aria-valuemax="5" aria-valuenow="2" aria-label="Duração do passeio de tuk-tuk">
+                    <div class="slider-ticks">
+                        <span>1h</span>
+                        <span>2h</span>
+                        <span>3h</span>
+                        <span>4h</span>
+                        <span>6h</span>
                     </div>
                 </div>
                 
-                <!-- Hero Image Showcase -->
-                <div class="hero-image-showcase">
-                    <div class="tuk-badge-floating">Tuk-Tuk 100% Elétrico</div>
-                    <img src="assets/img/hero-tuk-tuk.webp" alt="Tuk-tuk azul e branco decorado com flores e a guia Susane sorridente com a deslumbrante paisagem de Lisboa ao fundo" class="hero-img" loading="eager">
-                </div>
-            </div>
-        </section>
-
-        <!-- Dummy Sections for Layout Structure -->
-        <section id="passeios" class="section-container">
-            <h2 class="section-title">Nossos Passeios Populares</h2>
-            <p class="section-subtitle">Circuitos desenhados para que sinta o coração da capital portuguesa.</p>
-            <div class="tours-grid">
-                <div class="tour-card">
-                    <h3>Lisboa Histórica (Alfama & Castelo)</h3>
-                    <p>Suba as colinas mais antigas e descubra os miradouros mais espetaculares de Lisboa.</p>
-                </div>
-                <div class="tour-card">
-                    <h3>Rota dos Descobrimentos (Belém)</h3>
-                    <p>Viaje pelas margens do Tejo até à Torre de Belém e prove os famosos pastéis.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="sobre" class="section-container bg-light">
-            <h2 class="section-title">Sobre a Guia Susane</h2>
-            <p class="section-subtitle">A sua anfitriã certificada em Lisboa.</p>
-            <div class="about-grid">
-                <div class="about-image-wrapper">
-                    <img src="assets/img/guia-susane.webp" alt="Guia certificada Susane sorrindo a bordo do tuk-tuk azul florido" class="about-img" loading="lazy">
-                </div>
-                <div class="about-text">
-                    <p>Olá! Sou a Susane, a vossa guia local. Apaixonada pela história e encantos de Lisboa, terei todo o prazer em mostrar-vos os recantos secretos da cidade a bordo do nosso tuk-tuk azul florido.</p>
-                    <p>Falo fluentemente <strong>Português, Inglês, Espanhol, Italiano e Francês</strong> para garantir que se sente perfeitamente em casa durante toda a viagem.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="galeria" class="section-container">
-            <h2 class="section-title">Galeria de Memórias</h2>
-            <p class="section-subtitle">Momentos capturados durante as nossas fantásticas viagens por Lisboa.</p>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="assets/img/torre-belem.webp" alt="Torre de Belém iluminada pelo sol ao fim do dia, refletida perfeitamente na água" class="gallery-thumb" loading="lazy">
-                    <div class="gallery-caption">Torre de Belém</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/img/se-lisboa.webp" alt="O icónico elétrico amarelo 28 de Lisboa passando em frente à histórica Sé de Lisboa" class="gallery-thumb" loading="lazy">
-                    <div class="gallery-caption">Sé de Lisboa & Elétrico 28</div>
-                </div>
-            </div>
-        </section>
-        <!-- Secção de Checkout e Reservas Dinâmicas (Bókun) -->
-        <section id="reserva" class="section-container">
-            <h2 class="section-title">Reserve a sua Aventura Online</h2>
-            <p class="section-subtitle">Personalize a duração do seu tour e garanta já o seu lugar com a Susane.</p>
-            
-            <div class="booking-widget-container">
-                <!-- Passo 1: Duração -->
-                <div class="booking-step">
-                    <span class="step-num">1</span>
-                    <h3>Escolha a Duração do Passeio</h3>
-                    <div class="slider-wrapper">
-                        <input type="range" id="duration-slider" min="1" max="5" value="2" step="1" aria-valuemin="1" aria-valuemax="5" aria-valuenow="2" aria-label="Duração do passeio de tuk-tuk">
-                        <div class="slider-ticks">
-                            <span>1h</span>
-                            <span>2h</span>
-                            <span>3h</span>
-                            <span>4h</span>
-                            <span>6h</span>
-                        </div>
-                    </div>
-                    
-                    <div class="tour-details-card" id="tour-details-card">
-                        <h4 id="tour-name">Big Tour</h4>
-                        <p class="tour-route" id="tour-route">Duração: 2h — Alfama + Chiado + Bairro Alto</p>
-                        <div class="tour-price-box">
-                            <span class="price-label">Preço Total:</span>
-                            <span class="price-value" id="tour-price">200 €</span>
-                        </div>
+                <div class="tour-details-card" id="tour-details-card">
+                    <h4 id="tour-name">Big Tour</h4>
+                    <p class="tour-route" id="tour-route">Duração: 2h — Alfama + Chiado + Bairro Alto</p>
+                    <div class="tour-price-box">
+                        <span class="price-label">Preço Total:</span>
+                        <span class="price-value" id="tour-price">200 €</span>
                     </div>
                 </div>
-
-                <!-- Passo 2: Calendário e Disponibilidade -->
-                <div class="booking-step">
-                    <span class="step-num">2</span>
-                    <h3>Selecione a Data e Hora</h3>
-                    <div class="date-time-grid">
-                        <div class="form-group">
-                            <label for="booking-date">Data Pretendida</label>
-                            <input type="date" id="booking-date" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="booking-time">Horários Disponíveis (Sincronizado Bókun)</label>
-                            <select id="booking-time" required disabled>
-                                <option value="">Escolha uma data primeiro...</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div id="availability-status" class="availability-status"></div>
-                </div>
-
-                <!-- Passo 3: Dados de Checkout -->
-                <div class="booking-step">
-                    <span class="step-num">3</span>
-                    <h3>Finalizar Reserva</h3>
-                    <div class="booking-form-row">
-                        <div class="form-group">
-                            <label for="booking-name">Nome Completo</label>
-                            <input type="text" id="booking-name" required placeholder="Ex: Maria Silva">
-                        </div>
-                        <div class="form-group">
-                            <label for="booking-email">E-mail para Confirmação</label>
-                            <input type="email" id="booking-email" required placeholder="Ex: maria@email.com">
-                        </div>
-                    </div>
-                    <button class="btn btn-primary btn-block btn-large track-booking-confirm" id="confirm-booking-btn">Proceder para o Pagamento Seguro</button>
-                </div>
             </div>
-        </section>
 
-        <section id="contacto" class="section-container bg-light">
-            <h2 class="section-title">Reserve a sua Aventura</h2>
-            <p class="section-subtitle">Envie uma mensagem direta à Susane e marque a sua data preferida.</p>
-            <div class="booking-form-wrapper">
-                <form class="booking-form" id="booking-form" onsubmit="event.preventDefault(); alert('Reserva enviada!');">
+            <!-- Passo 2: Calendário e Disponibilidade -->
+            <div class="booking-step">
+                <span class="step-num">2</span>
+                <h3>Selecione a Data e Hora</h3>
+                <div class="date-time-grid">
                     <div class="form-group">
-                        <label for="form-name">Nome Completo</label>
-                        <input type="text" id="form-name" required placeholder="Ex: Maria Silva">
+                        <label for="booking-date">Data Pretendida</label>
+                        <input type="date" id="booking-date" required>
                     </div>
                     <div class="form-group">
-                        <label for="form-email">E-mail</label>
-                        <input type="email" id="form-email" required placeholder="Ex: maria@email.com">
+                        <label for="booking-time">Horários Disponíveis (Sincronizado Bókun)</label>
+                        <select id="booking-time" required disabled>
+                            <option value="">Escolha uma data primeiro...</option>
+                        </select>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block" id="form-submit-btn">Enviar Pedido</button>
-                </form>
+                </div>
+                <div id="availability-status" class="availability-status"></div>
             </div>
-        </section>
 
-    </main>
+            <!-- Passo 3: Dados de Checkout -->
+            <div class="booking-step">
+                <span class="step-num">3</span>
+                <h3>Finalizar Reserva</h3>
+                <div class="booking-form-row">
+                    <div class="form-group">
+                        <label for="booking-name">Nome Completo</label>
+                        <input type="text" id="booking-name" required placeholder="Ex: Maria Silva">
+                    </div>
+                    <div class="form-group">
+                        <label for="booking-email">E-mail para Confirmação</label>
+                        <input type="email" id="booking-email" required placeholder="Ex: maria@email.com">
+                    </div>
+                </div>
+                <button class="btn btn-primary btn-block btn-large track-booking-confirm" id="confirm-booking-btn">Proceder para o Pagamento Seguro</button>
+            </div>
+        </div>
+    </section>
+</main>
 
     <!-- Site Footer -->
     <footer class="site-footer">
