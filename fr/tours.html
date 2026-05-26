@@ -198,9 +198,79 @@
             <!-- Mensagem de feedback de disponibilidade -->
             <div id="availability-status" class="availability-status"></div>
 
-            <!-- Grelha de Opções (Tours Cards) -->
+            <!-- Grelha de Opções (Tours Cards Estáticos) -->
             <div class="tours-ota-grid" id="tours-ota-grid">
-                <!-- Gerado dinamicamente via JS -->
+                <!-- Card 1: Little Tour -->
+                <div class="ota-tour-card" data-tour-name="Little Tour" data-tour-duration="1h" data-price-per-pax="60.00" data-experience-id="tour-1h">
+                    <div>
+                        <div class="ota-tour-header">
+                            <h3 class="ota-tour-title">Little Tour</h3>
+                            <span class="ota-duration-badge">1h Duração</span>
+                        </div>
+                        <p class="ota-tour-route">Alfama ou Chiado / Bairro Alto</p>
+                    </div>
+                    <div>
+                        <div class="ota-price-info">
+                            Preço por pessoa: <span class="ota-price-value">60.00 €</span>
+                        </div>
+                        <div class="time-slots-container">
+                            <span class="time-slots-title">Horários Disponíveis:</span>
+                            <div class="time-slots-grid">
+                                <button type="button" class="time-pill" data-time="10:00" aria-label="Reservar Little Tour às 10:00">10:00</button>
+                                <button type="button" class="time-pill" data-time="11:30" aria-label="Reservar Little Tour às 11:30">11:30</button>
+                                <button type="button" class="time-pill" data-time="14:00" aria-label="Reservar Little Tour às 14:00">14:00</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Big Tour -->
+                <div class="ota-tour-card" data-tour-name="Big Tour" data-tour-duration="2h" data-price-per-pax="100.00" data-experience-id="tour-2h">
+                    <div>
+                        <div class="ota-tour-header">
+                            <h3 class="ota-tour-title">Big Tour</h3>
+                            <span class="ota-duration-badge">2h Duração</span>
+                        </div>
+                        <p class="ota-tour-route">Alfama + Chiado + Bairro Alto</p>
+                    </div>
+                    <div>
+                        <div class="ota-price-info">
+                            Preço por pessoa: <span class="ota-price-value">100.00 €</span>
+                        </div>
+                        <div class="time-slots-container">
+                            <span class="time-slots-title">Horários Disponíveis:</span>
+                            <div class="time-slots-grid">
+                                <button type="button" class="time-pill" data-time="10:00" aria-label="Reservar Big Tour às 10:00">10:00</button>
+                                <button type="button" class="time-pill" data-time="11:30" aria-label="Reservar Big Tour às 11:30">11:30</button>
+                                <button type="button" class="time-pill" data-time="14:00" aria-label="Reservar Big Tour às 14:00">14:00</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Macro Tour -->
+                <div class="ota-tour-card" data-tour-name="Macro Tour" data-tour-duration="3h" data-price-per-pax="140.00" data-experience-id="tour-3h">
+                    <div>
+                        <div class="ota-tour-header">
+                            <h3 class="ota-tour-title">Macro Tour</h3>
+                            <span class="ota-duration-badge">3h Duração</span>
+                        </div>
+                        <p class="ota-tour-route">Alfama + Chiado + Bairro Alto + Belém</p>
+                    </div>
+                    <div>
+                        <div class="ota-price-info">
+                            Preço por pessoa: <span class="ota-price-value">140.00 €</span>
+                        </div>
+                        <div class="time-slots-container">
+                            <span class="time-slots-title">Horários Disponíveis:</span>
+                            <div class="time-slots-grid">
+                                <button type="button" class="time-pill" data-time="10:00" aria-label="Reservar Macro Tour às 10:00">10:00</button>
+                                <button type="button" class="time-pill" data-time="11:30" aria-label="Reservar Macro Tour às 11:30">11:30</button>
+                                <button type="button" class="time-pill" data-time="14:00" aria-label="Reservar Macro Tour às 14:00">14:00</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Form de Checkout (Revelado após escolher horário) -->
