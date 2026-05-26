@@ -436,6 +436,51 @@ img {
     gap: 1rem;
 }
 
+.hero-google-rating {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+}
+
+.rating-stars {
+    display: flex;
+    gap: 2px;
+}
+
+.star-icon {
+    width: 18px;
+    height: 18px;
+    fill: #FBBF24; /* Warm Gold */
+}
+
+.rating-value {
+    color: var(--color-text-dark);
+}
+
+.rating-text {
+    font-weight: 500;
+}
+
+.rating-link {
+    color: var(--color-primary);
+    text-decoration: underline;
+    font-weight: 600;
+    transition: var(--transition-fast);
+    padding: 0.25rem 0.5rem;
+    margin-left: 0.25rem;
+    border-radius: 4px;
+}
+
+.rating-link:hover, .rating-link:focus {
+    color: var(--color-primary-light);
+    background-color: var(--color-bg-overlay);
+    text-decoration: none;
+}
+
 .hero-image-showcase {
     position: relative;
     display: flex;
@@ -1096,6 +1141,12 @@ select:disabled {
     transition: var(--transition-fast);
     background-color: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.google-btn:hover {
+    background-color: #4285F4; /* Google Blue */
+    border-color: #4285F4;
+    transform: translateY(-2px);
 }
 
 .gyg-btn:hover {
