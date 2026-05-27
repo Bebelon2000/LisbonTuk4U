@@ -1461,3 +1461,22 @@ select:disabled {
     margin-top: 1rem;
 }
 
+/* Reviews Widget Wrapper */
+.reviews-widget-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 3rem auto;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.reviews-widget-wrapper .review-widget_net {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto;
+}
+
