@@ -1,0 +1,48 @@
+# LisbonTuk4U - Production .htaccess configuration for Hostinger (LiteSpeed)
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Redirect trailing slashes for subfolders if needed
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^(.*[^/])$ /$1/ [R=301,L]
+</IfModule>
+
+# 1. Prevent LiteSpeed Caching (LSCache) for dynamic endpoints
+# Essential to prevent payment session sharing and cached slots mismatch
+<IfModule LiteSpeed>
+    # Disable cache for checkouts, pricing, and availability queries
+    RewriteCond %{REQUEST_URI} ^/api/.*$ [OR]
+    RewriteCond %{REQUEST_URI} ^/checkout/.*$ [OR]
+    RewriteCond %{REQUEST_URI} (availability|pricing|checkout)\.php$
+    RewriteRule .* - [E=Cache-Control:no-cache]
+</IfModule>
+
+# 2. Browser Caching for static assets (Leverage Browser Caching)
+# Optimizes site speed for mobile traffic (First Contentful Paint)
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 1 month"
+
+    # Images (WebP, PNG, JPG, ICO)
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+
+    # CSS & JavaScript
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+
+    # Fonts
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/ttf "access plus 1 year"
+</IfModule>
+
+# 3. Gzip Compression for text-based assets
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>

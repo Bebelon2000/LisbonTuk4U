@@ -80,6 +80,59 @@ document.addEventListener('DOMContentLoaded', () => {
     let selectedTour = null;
     let selectedTimeSlot = null;
 
+    // Detect page language from <html> tag (default to 'pt')
+    const lang = document.documentElement.lang || 'pt';
+    
+    const i18n = {
+        pt: {
+            date: "Data",
+            at: "às",
+            passenger: "Passageiro",
+            passengers: "Passageiros",
+            success: "Data selecionada com sucesso. Escolha um horário abaixo nos cartões.",
+            confirm_alert: "Reserva Efetuada com Sucesso!",
+            contact_alert: "Reserva enviada! A guia Susane entrará em contacto em breve."
+        },
+        en: {
+            date: "Date",
+            at: "at",
+            passenger: "Passenger",
+            passengers: "Passengers",
+            success: "Date successfully selected. Choose a time slot below in the cards.",
+            confirm_alert: "Booking Successful!",
+            contact_alert: "Request sent! Guide Susane will contact you shortly."
+        },
+        es: {
+            date: "Fecha",
+            at: "a las",
+            passenger: "Pasajero",
+            passengers: "Pasajeros",
+            success: "Fecha seleccionada con éxito. Elija un horario a continuación en las tarjetas.",
+            confirm_alert: "¡Reserva realizada con éxito!",
+            contact_alert: "¡Solicitud enviada! La guía Susane se pondrá en contacto pronto."
+        },
+        it: {
+            date: "Data",
+            at: "alle",
+            passenger: "Passeggero",
+            passengers: "Passeggeri",
+            success: "Data selezionata con successo. Scegli un orario qui sotto nelle schede.",
+            confirm_alert: "Prenotazione Effettuata con Successo!",
+            contact_alert: "Richiesta inviata! La guida Susane ti contatterà presto."
+        },
+        fr: {
+            date: "Date",
+            at: "à",
+            passenger: "Passager",
+            passengers: "Passagers",
+            success: "Date sélectionnée avec succès. Choisissez un créneau horaire ci-dessous dans les fiches.",
+            confirm_alert: "Réservation réussie !",
+            contact_alert: "Demande envoyée ! La guide Susane vous contactera sous peu."
+        }
+    };
+
+    const labels = i18n[lang] || i18n['pt'];
+
     // Configurar limites de data (mínimo é hoje)
     if (bookingDate) {
         const today = new Date().toISOString().split('T')[0];
@@ -107,11 +160,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     formattedDate = dateValue;
                 }
             }
-            checkoutDatetimeDetails.textContent = `Data: ${formattedDate} às ${selectedTimeSlot}`;
+            checkoutDatetimeDetails.textContent = `${labels.date}: ${formattedDate} ${labels.at} ${selectedTimeSlot}`;
         }
         
         if (checkoutPriceBreakdown) {
-            checkoutPriceBreakdown.innerHTML = `<strong>${totalPrice.toFixed(2)} €</strong> <span style="font-size: 0.95rem; font-weight: normal; color: var(--color-text-light);">| ${passengers} ${passengers === 1 ? 'Passageiro' : 'Passageiros'} x ${selectedTour.pricePerPax.toFixed(2)} €</span>`;
+            const paxLabel = passengers === 1 ? labels.passenger : labels.passengers;
+            checkoutPriceBreakdown.innerHTML = `<strong>${totalPrice.toFixed(2)} €</strong> <span style="font-size: 0.95rem; font-weight: normal; color: var(--color-text-light);">| ${passengers} ${paxLabel} x ${selectedTour.pricePerPax.toFixed(2)} €</span>`;
         }
         
         if (checkoutFormContainer) {
@@ -166,7 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
         bookingDate.addEventListener('change', (e) => {
             const date = e.target.value;
             if (date && availabilityStatus) {
-                availabilityStatus.textContent = "Data selecionada com sucesso. Escolha um horário abaixo nos cartões.";
+                availabilityStatus.textContent = labels.success;
                 availabilityStatus.className = "availability-status success";
                 
                 // Atualizar o checkout se um horário já estiver selecionado
@@ -183,6 +237,23 @@ document.addEventListener('DOMContentLoaded', () => {
             if (selectedTour && selectedTimeSlot) {
                 updateCheckoutSummary();
             }
+        });
+    }
+
+    // 4. Lidar com formulários de contacto e reservas (Prevenir redirecionamento e dar feedback em alert localizado)
+    const otaForm = document.getElementById('ota-checkout-form');
+    if (otaForm) {
+        otaForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert(labels.confirm_alert);
+        });
+    }
+
+    const contactForm = document.getElementById('booking-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert(labels.contact_alert);
         });
     }
 });
