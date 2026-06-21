@@ -3,50 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LisbonTuk4U - Galería de Recuerdos</title>
-    
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Explore las fotos de nuestros paseos en tuk-tuk por Lisboa. Vea los paisajes y los recuerdos de nuestros fantásticos viajes.">
+    <title>Galería de Fotos | LisbonTuk4U - Tours en tuk-tuk por Lisboa</title>
+
+    <meta name="description" content="Fotos reales de nuestros tours privados en tuk-tuk eléctrico por Lisboa: Alfama, miradores, Belém y clientes felices con la guía Susane.">
     <meta name="robots" content="index, follow">
-    
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K877GXK16K"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
-      /* SUBSTITUA O ID ABAIXO (G-XXXXXXXXXX) PELO SEU ID DE MEDIÇÃO GA4 DA HOSTINGER */
-      gtag('config', 'G-XXXXXXXXXX');
+      gtag('config', 'G-K877GXK16K');
     </script>
-    
-    <!-- Hreflang Tags (Multilingual SEO) -->
-    <link rel="alternate" hreflang="x-default" href="https://lisbontuk4u.com/gallery.html">
-    <link rel="alternate" hreflang="pt" href="https://lisbontuk4u.com/gallery.html">
-    <link rel="alternate" hreflang="en" href="https://lisbontuk4u.com/en/gallery.html">
-    <link rel="alternate" hreflang="es" href="https://lisbontuk4u.com/es/gallery.html">
-    <link rel="alternate" hreflang="it" href="https://lisbontuk4u.com/it/gallery.html">
-    <link rel="alternate" hreflang="fr" href="https://lisbontuk4u.com/fr/gallery.html">
+
+    <!-- Hreflang Tags -->
+    <link rel="alternate" hreflang="x-default" href="https://tours.lisbontuk4u.com/gallery.html">
+    <link rel="alternate" hreflang="pt" href="https://tours.lisbontuk4u.com/gallery.html">
+    <link rel="alternate" hreflang="en" href="https://tours.lisbontuk4u.com/en/gallery.html">
+    <link rel="alternate" hreflang="es" href="https://tours.lisbontuk4u.com/es/gallery.html">
+    <link rel="alternate" hreflang="it" href="https://tours.lisbontuk4u.com/it/gallery.html">
+    <link rel="alternate" hreflang="fr" href="https://tours.lisbontuk4u.com/fr/gallery.html">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="../index.css?v=1.0.2">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
 
-    <!-- Schema.org JSON-LD (LocalBusiness & TouristAttraction) -->
+    <link rel="stylesheet" href="../index.css?v=3.4.0">
+
+    <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@graph": [
         {
           "@type": "TravelAgency",
-          "@id": "https://lisbontuk4u.com/#agency",
+          "@id": "https://tours.lisbontuk4u.com/#agency",
           "name": "LisbonTuk4U",
-          "description": "Passeios turísticos de tuk-tuk em Lisboa guiados pela experiente guia Susane. Descubra os segredos da cidade a bordo de um charmoso tuk-tuk azul florido.",
-          "url": "https://lisbontuk4u.com",
+          "description": "Tours turísticos privados en tuk-tuk eléctrico por Lisboa guiados por la guía local Susane.",
+          "url": "https://tours.lisbontuk4u.com",
           "telephone": "+351966697738",
           "address": {
             "@type": "PostalAddress",
@@ -58,62 +58,56 @@
             "latitude": "38.71667",
             "longitude": "-9.13333"
           },
-          "image": "https://lisbontuk4u.com/assets/img/hero-tuk-tuk.webp",
-          "priceRange": "$$",
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "5.0",
-            "bestRating": "5",
-            "worstRating": "1",
-            "reviewCount": "48"
-          }
+          "image": "https://tours.lisbontuk4u.com/assets/img/hero-tuk-tuk.webp",
+          "priceRange": "$$"
         },
         {
-          "@type": "TouristAttraction",
-          "@id": "https://lisbontuk4u.com/#attraction",
-          "name": "LisbonTuk4U Tours",
-          "description": "Visitas guiadas de tuk-tuk por Alfama, Belém, Chiado e miradouros de Lisboa. Ponto de encontro no Hard Rock Café de Lisboa ou recolha personalizada no hotel.",
-          "touristType": "Sightseeing",
-          "provider": {
-            "@id": "https://lisbontuk4u.com/#agency"
-          }
+          "@type": "ImageGallery",
+          "@id": "https://tours.lisbontuk4u.com/gallery.html#gallery",
+          "name": "Galería LisbonTuk4U",
+          "description": "Fotos reales de los tours privados en tuk-tuk eléctrico por Lisboa.",
+          "publisher": { "@id": "https://tours.lisbontuk4u.com/#agency" }
         }
       ]
     }
     </script>
 </head>
-<body>
+<body class="landing-page">
 
-    <!-- Header / Navigation (3-Tier Structure) -->
-    <header class="site-header">
+    <!-- ═══════════════════════════════════════════════════════
+         HEADER / NAVIGATION
+    ═══════════════════════════════════════════════════════ -->
+    <header class="site-header" id="site-header">
         <div class="header-container">
-            <a href="../index.html" class="logo" id="header-logo-link">
-                <span class="logo-accent">Lisbon</span>Tuk4U
+            <a href="index.html" class="logo" id="header-logo-link" aria-label="LisbonTuk4U — Inicio">
+                <img src="../assets/img/logo-lisbontuk4u.webp" alt="LisbonTuk4U — Discovering Lisbon's History" class="logo-img" width="436" height="281">
             </a>
-            
-            <!-- Desktop Nav (Tier 1) -->
-            <nav class="desktop-nav" aria-label="Navegação Principal">
+
+            <nav class="desktop-nav" aria-label="Navegación principal">
                 <ul class="nav-links">
-                    <li><a href="../index.html" class="nav-link-item ">Inicio</a></li>
-                    <li><a href="../tours.html" class="nav-link-item ">Paseos</a></li>
-                    <li><a href="../about.html" class="nav-link-item ">Sobre Susane</a></li>
-                    <li><a href="../gallery.html" class="nav-link-item active">Galería</a></li>
-                    <li><a href="../contact.html" class="nav-link-item ">Contactos</a></li>
+                    <li><a href="index.html#passeios" class="nav-link-item">Tours</a></li>
+                    <li><a href="index.html#reviews" class="nav-link-item">Reseñas</a></li>
+                    <li><a href="index.html#sobre" class="nav-link-item">Susane</a></li>
+                    <li><a href="gallery.html" class="nav-link-item active">Galería</a></li>
+                    <li><a href="contact.html" class="nav-link-item">Contacto</a></li>
                 </ul>
             </nav>
-            
-            <!-- Language Selector (Tier 2) -->
-            <div class="lang-selector-desktop">
-                <a href="../gallery.html" class="lang-btn-link" id="lang-btn-pt">PT</a>
-                <a href="../en/gallery.html" class="lang-btn-link" id="lang-link-en">EN</a>
-                <button class="lang-btn-active" id="lang-link-es">ES</button>
-                <a href="../it/gallery.html" class="lang-btn-link" id="lang-link-it">IT</a>
-                <a href="../fr/gallery.html" class="lang-btn-link" id="lang-link-fr">FR</a>
+
+            <div class="lang-dropdown" id="lang-dropdown">
+                <button class="lang-dropdown-trigger" id="lang-dropdown-trigger" aria-expanded="false" aria-haspopup="true">
+                    ES
+                    <svg class="chevron-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="lang-dropdown-menu" id="lang-dropdown-menu">
+                    <a href="../gallery.html" class="lang-dropdown-item">PT</a>
+                    <a href="../en/gallery.html" class="lang-dropdown-item">EN</a>
+                    <a href="../fr/gallery.html" class="lang-dropdown-item">FR</a>
+                    <a href="../it/gallery.html" class="lang-dropdown-item">IT</a>
+                </div>
             </div>
 
-            <!-- Hamburger Button (Mobile Thumb Friendly - Tier 3) -->
-            <button class="hamburger-menu" id="menu-toggle-btn" aria-label="Abrir Menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <button class="hamburger-menu" id="menu-toggle-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav-drawer">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <rect y="4" width="24" height="2.5" rx="1.25" fill="currentColor"/>
                     <rect y="11" width="24" height="2.5" rx="1.25" fill="currentColor"/>
                     <rect y="18" width="24" height="2.5" rx="1.25" fill="currentColor"/>
@@ -122,142 +116,305 @@
         </div>
     </header>
 
-    <!-- Mobile Nav Drawer Overlay (Thumb Friendly) -->
+    <!-- Mobile Nav Drawer -->
     <div class="mobile-nav-drawer" id="mobile-nav-drawer" aria-hidden="true">
         <div class="drawer-header">
-            <a href="../index.html" class="logo-drawer" id="drawer-logo-link"><span class="logo-accent">Lisbon</span>Tuk4U</a>
-            <button class="drawer-close" id="menu-close-btn" aria-label="Fechar Menu">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+            <a href="index.html" class="logo-drawer" id="drawer-logo-link" aria-label="LisbonTuk4U — Inicio">
+                <img src="../assets/img/logo-lisbontuk4u.webp" alt="LisbonTuk4U" class="logo-img" width="436" height="281">
+            </a>
+            <button class="drawer-close" id="menu-close-btn" aria-label="Cerrar menú">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
         </div>
-        <nav class="drawer-nav" aria-label="Navegação Móvel">
+        <nav class="drawer-nav" aria-label="Navegación móvil">
             <ul class="drawer-links">
-                <li><a href="../index.html" class="drawer-link-item ">Inicio</a></li>
-                <li><a href="../tours.html" class="drawer-link-item ">Paseos</a></li>
-                <li><a href="../about.html" class="drawer-link-item ">Sobre Susane</a></li>
-                <li><a href="../gallery.html" class="drawer-link-item active">Galería</a></li>
-                <li><a href="../contact.html" class="drawer-link-item ">Contactos</a></li>
+                <li><a href="index.html#passeios" class="drawer-link-item">Tours</a></li>
+                <li><a href="index.html#reviews" class="drawer-link-item">Reseñas</a></li>
+                <li><a href="index.html#sobre" class="drawer-link-item">Sobre Susane</a></li>
+                <li><a href="gallery.html" class="drawer-link-item active">Galería</a></li>
+                <li><a href="contact.html" class="drawer-link-item">Contacto</a></li>
             </ul>
         </nav>
         <div class="drawer-languages">
             <span class="lang-title">Idioma / Language</span>
             <div class="lang-grid">
-                <a href="../gallery.html" class="lang-grid-item " id="mobile-lang-pt">Português</a>
-                <a href="../en/gallery.html" class="lang-grid-item " id="mobile-lang-en">English</a>
-                <a href="../es/gallery.html" class="lang-grid-item active" id="mobile-lang-es">Español</a>
-                <a href="../it/gallery.html" class="lang-grid-item " id="mobile-lang-it">Italiano</a>
-                <a href="../fr/gallery.html" class="lang-grid-item " id="mobile-lang-fr">Français</a>
+                <a href="../gallery.html" class="lang-grid-item" id="mobile-lang-pt">Português</a>
+                <a href="../en/gallery.html" class="lang-grid-item" id="mobile-lang-en">English</a>
+                <a href="gallery.html" class="lang-grid-item active" id="mobile-lang-es">Español</a>
+                <a href="../it/gallery.html" class="lang-grid-item" id="mobile-lang-it">Italiano</a>
+                <a href="../fr/gallery.html" class="lang-grid-item" id="mobile-lang-fr">Français</a>
             </div>
         </div>
     </div>
     <div class="drawer-overlay" id="drawer-overlay"></div>
+
     <main id="gallery-page">
-        <section class="section-container">
-            <h1 class="section-title">Galería de Recuerdos</h1>
-            <p class="section-subtitle">Momentos capturados durante nuestros fantásticos viajes por Lisboa.</p>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="../assets/img/hero-tuk-tuk.webp" alt="Tuk-Tuk Florido en el Mirador" class="gallery-thumb" loading="lazy">
-                    <div class="gallery-caption">Tuk-Tuk Florido en el Mirador</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="../assets/img/guia-susane.webp" alt="Guía Susane" class="gallery-thumb" loading="lazy">
-                    <div class="gallery-caption">Guía Susane</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="../assets/img/torre-belem.webp" alt="Torre de Belém" class="gallery-thumb" loading="lazy">
-                    <div class="gallery-caption">Torre de Belém</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="../assets/img/se-lisboa.webp" alt="Sé de Lisboa y Tranvía 28" class="gallery-thumb" loading="lazy">
-                    <div class="gallery-caption">Sé de Lisboa y Tranvía 28</div>
-                </div>
+
+        <!-- ═══════════════════════════════════════════════════════
+             PAGE HERO
+        ═══════════════════════════════════════════════════════ -->
+        <section class="page-hero">
+            <span class="section-eyebrow">Galería</span>
+            <h1 class="section-title">Momentos reales de nuestros tours</h1>
+            <p class="section-subtitle">Fotos tomadas durante los tours privados en tuk-tuk por Lisboa — toca una foto para ampliarla.</p>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════
+             GALERIA (masonry + lightbox)
+        ═══════════════════════════════════════════════════════ -->
+        <section class="section-container" style="padding-top: 2rem;">
+            <div class="gallery-masonry" id="gallery-masonry">
+
+                <button class="gallery-card" data-full="../assets/img/gallery/susane-rossio.webp">
+                    <img src="../assets/img/gallery/susane-rossio-thumb.webp" alt="La guía Susane sonriendo mientras conduce el tuk-tuk con clientes en la Plaza del Rossio" loading="lazy" width="640" height="480">
+                    <span class="gallery-card-caption">Susane y su sonrisa de siempre</span>
+                </button>
+
+                <button class="gallery-card" data-full="../assets/img/gallery/tuk-tuk-azulejo-flores.webp">
+                    <img src="../assets/img/gallery/tuk-tuk-azulejo-flores-thumb.webp" alt="El tuk-tuk decorado con azulejos azules y flores en una calle de Lisboa" loading="lazy" width="480" height="640">
+                    <span class="gallery-card-caption">Nuestro tuk-tuk azul florido</span>
+                </button>
+
+                <button class="gallery-card" data-full="../assets/img/gallery/grupo-vista-castelo.webp">
+                    <img src="../assets/img/gallery/grupo-vista-castelo-thumb.webp" alt="Grupo de clientes con vistas al Castillo de San Jorge y al Puente 25 de Abril" loading="lazy" width="640" height="480">
+                    <span class="gallery-card-caption">Vistas al Castillo y al Tajo</span>
+                </button>
+
+                <button class="gallery-card" data-full="../assets/img/gallery/selfie-risos-tuk-tuk.webp">
+                    <img src="../assets/img/gallery/selfie-risos-tuk-tuk-thumb.webp" alt="Tres amigas riendo dentro del tuk-tuk durante el tour" loading="lazy" width="640" height="480">
+                    <span class="gallery-card-caption">Risas a bordo</span>
+                </button>
+
+                <button class="gallery-card" data-full="../assets/img/gallery/susane-a-explicar-lisboa.webp">
+                    <img src="../assets/img/gallery/susane-a-explicar-lisboa-thumb.webp" alt="La guía Susane señalando y explicando la vista panorámica de Lisboa" loading="lazy" width="640" height="480">
+                    <span class="gallery-card-caption">Historias de Lisboa con Susane</span>
+                </button>
+
+                <button class="gallery-card" data-full="../assets/img/gallery/tuk-tuk-sao-vicente.webp">
+                    <img src="../assets/img/gallery/tuk-tuk-sao-vicente-thumb.webp" alt="El tuk-tuk con clientes frente al Monasterio de San Vicente de Fora" loading="lazy" width="640" height="480">
+                    <span class="gallery-card-caption">Frente a San Vicente de Fora</span>
+                </button>
+
+                <button class="gallery-card" data-full="../assets/img/gallery/grupo-mural-pessoa.webp">
+                    <img src="../assets/img/gallery/grupo-mural-pessoa-thumb.webp" alt="Grupo de clientes haciéndose un selfie junto al mural de azulejos de Fernando Pessoa" loading="lazy" width="640" height="480">
+                    <span class="gallery-card-caption">Selfie en el mural de Fernando Pessoa</span>
+                </button>
+
+                <button class="gallery-card" data-full="../assets/img/gallery/grupo-padrao-descobrimentos.webp">
+                    <img src="../assets/img/gallery/grupo-padrao-descobrimentos-thumb.webp" alt="Clientes posando de forma divertida en el Monumento a los Descubrimientos, en Belém" loading="lazy" width="480" height="640">
+                    <span class="gallery-card-caption">Diversión en el Monumento a los Descubrimientos</span>
+                </button>
+
+                <button class="gallery-card" data-full="../assets/img/gallery/alfama-portas-do-sol.webp">
+                    <img src="../assets/img/gallery/alfama-portas-do-sol-thumb.webp" alt="Tejados de Alfama y el río Tajo vistos desde el Mirador de Portas do Sol" loading="lazy" width="640" height="480">
+                    <span class="gallery-card-caption">Alfama y el Tajo desde Portas do Sol</span>
+                </button>
+
+                <button class="gallery-card" data-full="../assets/img/gallery/grupo-senhora-do-monte.webp">
+                    <img src="../assets/img/gallery/grupo-senhora-do-monte-thumb.webp" alt="Grupo de visitantes sonrientes en el Mirador de Senhora do Monte" loading="lazy" width="480" height="640">
+                    <span class="gallery-card-caption">Sonrisas en Senhora do Monte</span>
+                </button>
+
+                <button class="gallery-card" data-full="../assets/img/gallery/susane-ao-volante.webp">
+                    <img src="../assets/img/gallery/susane-ao-volante-thumb.webp" alt="La guía Susane al volante del tuk-tuk decorado con flores en un mirador" loading="lazy" width="640" height="480">
+                    <span class="gallery-card-caption">Susane al volante</span>
+                </button>
+
+                <button class="gallery-card" data-full="../assets/img/gallery/panteao-nacional.webp">
+                    <img src="../assets/img/gallery/panteao-nacional-thumb.webp" alt="Grupo divertido junto al tuk-tuk frente al Panteón Nacional" loading="lazy" width="640" height="480">
+                    <span class="gallery-card-caption">Buen ambiente en el Panteón Nacional</span>
+                </button>
+
+                <button class="gallery-card" data-full="../assets/img/gallery/casamento-a-bordo.webp">
+                    <img src="../assets/img/gallery/casamento-a-bordo-thumb.webp" alt="Pareja de recién casados a bordo del tuk-tuk con la guía Susane" loading="lazy" width="640" height="480">
+                    <span class="gallery-card-caption">Día de boda a bordo</span>
+                </button>
+
+                <button class="gallery-card" data-full="../assets/img/gallery/chiado-praca-camoes.webp">
+                    <img src="../assets/img/gallery/chiado-praca-camoes-thumb.webp" alt="El tuk-tuk azul florido aparcado en la Plaza Luís de Camões, Chiado" loading="lazy" width="640" height="480">
+                    <span class="gallery-card-caption">Plaza Luís de Camões, Chiado</span>
+                </button>
+
+                <button class="gallery-card" data-full="../assets/img/gallery/miradouro-da-graca.webp">
+                    <img src="../assets/img/gallery/miradouro-da-graca-thumb.webp" alt="Visitantes disfrutando de la vista sobre Lisboa y el Tajo en un mirador" loading="lazy" width="480" height="640">
+                    <span class="gallery-card-caption">Vistas para recordar</span>
+                </button>
+
+                <button class="gallery-card" data-full="../assets/img/gallery/por-do-sol-tejo.webp">
+                    <img src="../assets/img/gallery/por-do-sol-tejo-thumb.webp" alt="Atardecer dorado junto al Tajo con el Puente 25 de Abril al fondo" loading="lazy" width="640" height="480">
+                    <span class="gallery-card-caption">Atardecer junto al Tajo</span>
+                </button>
+
+                <button class="gallery-card" data-full="../assets/img/gallery/selfie-parque-eduardo-vii.webp">
+                    <img src="../assets/img/gallery/selfie-parque-eduardo-vii-thumb.webp" alt="Selfie de grupo con Susane en el Parque Eduardo VII" loading="lazy" width="640" height="480">
+                    <span class="gallery-card-caption">Selfie en el Parque Eduardo VII</span>
+                </button>
+
+                <button class="gallery-card" data-full="../assets/img/gallery/castelo-sao-jorge.webp">
+                    <img src="../assets/img/gallery/castelo-sao-jorge-thumb.webp" alt="Castillo de San Jorge sobre la colina, visto desde un mirador" loading="lazy" width="640" height="480">
+                    <span class="gallery-card-caption">Castillo de San Jorge al atardecer</span>
+                </button>
+
+                <button class="gallery-card" data-full="../assets/img/gallery/terminal-cruzeiros.webp">
+                    <img src="../assets/img/gallery/terminal-cruzeiros-thumb.webp" alt="Grupo junto al tuk-tuk en la terminal de cruceros de Lisboa" loading="lazy" width="640" height="480">
+                    <span class="gallery-card-caption">Recogida en la terminal de cruceros</span>
+                </button>
+
+                <button class="gallery-card" data-full="../assets/img/gallery/familia-tour-monumentos.webp">
+                    <img src="../assets/img/gallery/familia-tour-monumentos-thumb.webp" alt="Familia en visita guiada con Susane junto a un monumento de Lisboa" loading="lazy" width="640" height="480">
+                    <span class="gallery-card-caption">Familia de tour con Susane</span>
+                </button>
+
+                <button class="gallery-card" data-full="../assets/img/gallery/mosteiro-sao-vicente.webp">
+                    <img src="../assets/img/gallery/mosteiro-sao-vicente-thumb.webp" alt="Visitantes en los claustros del Monasterio de San Vicente de Fora" loading="lazy" width="480" height="640">
+                    <span class="gallery-card-caption">Monasterio de San Vicente de Fora</span>
+                </button>
+
+                <button class="gallery-card" data-full="../assets/img/gallery/street-art-lisboa.webp">
+                    <img src="../assets/img/gallery/street-art-lisboa-thumb.webp" alt="Tuk-tuk frente a un mural de arte urbano en Lisboa" loading="lazy" width="640" height="480">
+                    <span class="gallery-card-caption">Parada fotográfica: arte urbano</span>
+                </button>
+
+                <button class="gallery-card" data-full="../assets/img/torre-belem.webp">
+                    <img src="../assets/img/torre-belem.webp" alt="Torre de Belém junto al río Tajo" loading="lazy" width="640" height="480">
+                    <span class="gallery-card-caption">Torre de Belém</span>
+                </button>
+
+                <button class="gallery-card" data-full="../assets/img/se-lisboa.webp">
+                    <img src="../assets/img/se-lisboa.webp" alt="Catedral de Lisboa con el Tranvía 28 pasando" loading="lazy" width="640" height="480">
+                    <span class="gallery-card-caption">Catedral de Lisboa &amp; Tranvía 28</span>
+                </button>
+
+            </div>
+
+            <div class="gallery-cta">
+                <p class="section-subtitle" style="margin-bottom: 1.5rem;">¿Quieres aparecer en nuestra galería? ¡Ven a dar una vuelta con nosotros!</p>
+                <a href="index.html#passeios" class="btn btn-primary btn-large">Ver los Tours y Reservar</a>
             </div>
         </section>
+
     </main>
 
-    <!-- Site Footer -->
+    <!-- ═══════════════════════════════════════════════════════
+         LIGHTBOX
+    ═══════════════════════════════════════════════════════ -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Vista de foto ampliada">
+        <button class="lightbox-btn lightbox-close" id="lightbox-close" aria-label="Cerrar">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <button class="lightbox-btn lightbox-prev" id="lightbox-prev" aria-label="Foto anterior">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="lightbox-btn lightbox-next" id="lightbox-next" aria-label="Foto siguiente">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+        <figure class="lightbox-figure">
+            <img src="" alt="" class="lightbox-img" id="lightbox-img">
+            <figcaption class="lightbox-caption" id="lightbox-caption"></figcaption>
+            <div class="lightbox-counter" id="lightbox-counter"></div>
+        </figure>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════
+         FOOTER
+    ═══════════════════════════════════════════════════════ -->
     <footer class="site-footer">
         <div class="footer-container">
             <div class="footer-column footer-about">
-                <a href="../index.html" class="logo logo-footer"><span class="logo-accent">Lisbon</span>Tuk4U</a>
-                <p class="footer-desc">
-                    Descubra los encantos y secretos de Lisboa a bordo de nuestro icónico tuk-tuk azul decorado con flores, guiado por Susane.
-                </p>
+                <a href="index.html" class="logo logo-footer" aria-label="LisbonTuk4U — Inicio">
+                    <img src="../assets/img/logo-lisbontuk4u.webp" alt="LisbonTuk4U" class="logo-img" width="436" height="281" loading="lazy">
+                </a>
+                <p class="footer-desc">Tours privados en tuk-tuk 100% eléctrico por Lisboa, con la guía local certificada Susane a bordo del icónico tuk-tuk azul florido.</p>
+                <p class="footer-tagline">Discovering Lisbon's History</p>
+                <div class="footer-socials">
+                    <a href="https://wa.me/351966697738" target="_blank" rel="noopener noreferrer" class="social-whatsapp track-whatsapp-click" aria-label="WhatsApp da LisbonTuk4U">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                    </a>
+                    <a href="https://instagram.com/lisbontuk4u" target="_blank" rel="noopener noreferrer" class="social-instagram" aria-label="Instagram da LisbonTuk4U">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg>
+                    </a>
+                    <a href="https://facebook.com/lisbontuk4u" target="_blank" rel="noopener noreferrer" class="social-facebook" aria-label="Facebook da LisbonTuk4U">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                    <a href="mailto:lisbontuk4u@gmail.com" class="social-email track-email-click" aria-label="Enviar email a LisbonTuk4U">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </a>
+                </div>
             </div>
-            
+
             <div class="footer-column">
-                <h3>Enlaces Rápidos</h3>
+                <h3>Tours</h3>
                 <ul class="footer-links">
-                    <li><a href="../index.html">Inicio</a></li>
-                    <li><a href="../tours.html">Paseos</a></li>
-                    <li><a href="../about.html">Sobre Susane</a></li>
-                    <li><a href="../gallery.html">Galería</a></li>
-                    <li><a href="../contact.html">Contactos</a></li>
+                    <li><a href="index.html#passeios">Lisboa à la Carte</a></li>
+                    <li><a href="index.html#passeios">Belém</a></li>
+                    <li><a href="index.html#passeios">Half Day ⭐</a></li>
+                    <li><a href="index.html#passeios">Centro Histórico</a></li>
+                    <li><a href="index.html#passeios">Lisboa Miradouros</a></li>
+                    <li><a href="index.html#passeios">Full Lisboa</a></li>
                 </ul>
             </div>
-            
+
             <div class="footer-column">
-                <h3>Contactos y Redes</h3>
+                <h3>Explorar</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="index.html#reviews">Reseñas</a></li>
+                    <li><a href="index.html#sobre">Sobre Susane</a></li>
+                    <li><a href="gallery.html">Galería</a></li>
+                    <li><a href="contact.html">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contacto</h3>
                 <ul class="footer-contacts">
                     <li>
                         <a href="https://wa.me/351966697738" target="_blank" rel="noopener noreferrer" class="contact-link track-whatsapp-click">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="contact-icon" style="margin-right: 8px; vertical-align: middle;"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="contact-icon" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                             +351 966 697 738
                         </a>
                     </li>
                     <li>
                         <a href="mailto:lisbontuk4u@gmail.com" class="contact-link track-email-click">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="contact-icon" style="margin-right: 8px; vertical-align: middle;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="contact-icon" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                             lisbontuk4u@gmail.com
                         </a>
                     </li>
+                    <li>
+                        <span class="contact-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="contact-icon" aria-hidden="true"><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Hard Rock Café, Lisboa
+                        </span>
+                    </li>
                 </ul>
-                <div class="footer-socials">
-                    <a href="https://instagram.com/lisbontuk4u" target="_blank" rel="noopener noreferrer" aria-label="Instagram da LisbonTuk4U">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-                    </a>
-                    <a href="https://facebook.com/lisbontuk4u" target="_blank" rel="noopener noreferrer" aria-label="Facebook da LisbonTuk4U">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-                    </a>
-                </div>
             </div>
         </div>
 
         <div class="footer-platforms">
-            <span class="platforms-title">Valore y resérvenos en:</span>
+            <span class="platforms-title">También puedes encontrarnos en:</span>
             <div class="platforms-links">
-                <a href="https://search.google.com/local/writereview?q=LisbonTuk4U+Lisboa" target="_blank" rel="noopener noreferrer" class="platform-btn google-btn track-google-click">
-                    <svg class="platform-icon" viewBox="0 0 24 24" style="width: 18px; height: 18px; margin-right: 8px; fill: currentColor; vertical-align: middle;"><path d="M12.24 10.285V14.4h6.887c-.648 2.41-2.519 4.114-5.136 4.114-3.555 0-6.433-2.878-6.433-6.433s2.878-6.433 6.433-6.433c1.648 0 3.134.62 4.27 1.636l3.1-3.1C19.394 2.376 16.05 1 12.24 1 5.926 1 12.24s4.926 11.24 11.24 11.24c6.302 0 11.274-4.428 11.274-11.24 0-.765-.082-1.503-.223-2.215H12.24z"/></svg>
-                    Google Reviews
-                </a>
+                <a href="https://search.google.com/local/reviews?placeid=ChIJeeURJo8zGQ0RWeTL8MF73v4" target="_blank" rel="noopener noreferrer" class="platform-btn google-btn track-google-click">Google Reviews</a>
+                <a href="https://www.tripadvisor.com/Attraction_Review-g189158-d27999846-Reviews-Lisbontuk4u-Lisbon_Lisbon_District_Central_Portugal.html" target="_blank" rel="noopener noreferrer" class="platform-btn ta-btn track-tripadvisor-click">TripAdvisor</a>
                 <a href="https://www.getyourguide.com/lisbon-l42/lisbon-guided-eco-tuk-tuk-sightseeing-tour-t751717/" target="_blank" rel="noopener noreferrer" class="platform-btn gyg-btn track-gyg-click">GetYourGuide</a>
-                <a href="https://www.tripadvisor.com/Search?q=LisbonTuk4U" target="_blank" rel="noopener noreferrer" class="platform-btn ta-btn track-tripadvisor-click">TripAdvisor</a>
-                <a href="https://www.viator.com/searchResults/all?text=LisbonTuk4U" target="_blank" rel="noopener noreferrer" class="platform-btn viator-btn track-viator-click">Viator</a>
             </div>
         </div>
 
         <div class="footer-bottom">
-            <p>© 2026 LisbonTuk4U. Todos los derechos reservados. Guía Susane - Tuk-Tuk Azul Florido.</p>
+            <p>© 2026 LisbonTuk4U. Todos los derechos reservados. Guía Susane - Tuk-tuk azul florido.</p>
         </div>
     </footer>
 
-    <!-- Sticky Mobile CTA Button (Conversion Optimizer - Visible only on mobile viewport) -->
+    <!-- ═══════════════════════════════════════════════════════
+         STICKY MOBILE CTA
+    ═══════════════════════════════════════════════════════ -->
     <div class="sticky-cta-mobile" id="sticky-cta-mobile">
-        <a href="#reserva" class="btn btn-primary btn-block btn-large" id="mobile-sticky-cta-link">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" style="margin-right: 8px; vertical-align: middle;">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                <line x1="16" y1="2" x2="16" y2="6"/>
-                <line x1="8" y1="2" x2="8" y2="6"/>
-                <line x1="3" y1="10" x2="21" y2="10"/>
-            </svg>
-            Reservar Viaje Ahora
+        <a href="index.html#passeios" class="btn btn-primary btn-block btn-large" id="mobile-sticky-cta-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Reservar un tour
         </a>
     </div>
 
-    <!-- JavaScript -->
-    <script src="../js/main.js?v=1.0.2"></script>
+    <script src="../js/main.js?v=3.4.0"></script>
+
 </body>
 </html>

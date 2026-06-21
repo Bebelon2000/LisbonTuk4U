@@ -1,0 +1,499 @@
+/* ==========================================================================
+   Tour Detail Page — CSS (Mobile-First)
+   Reuses :root variables from ../index.css
+   ========================================================================== */
+
+/* ── Breadcrumb ─────────────────────────────────────────── */
+.td-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.85rem 1.25rem;
+    font-size: 0.82rem;
+    color: var(--color-text-light);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.td-breadcrumb a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition-fast);
+}
+.td-breadcrumb a:hover { text-decoration: underline; }
+.td-breadcrumb-sep { color: var(--color-text-light); opacity: 0.5; }
+
+/* ── Hero Section ───────────────────────────────────────── */
+.td-hero {
+    position: relative;
+    width: 100%;
+    height: 50vh;
+    min-height: 280px;
+    max-height: 520px;
+    overflow: hidden;
+}
+.td-hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.4s ease;
+}
+.td-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(7, 30, 55, 0.78) 0%,
+        rgba(7, 30, 55, 0.25) 40%,
+        transparent 70%
+    );
+    pointer-events: none;
+}
+.td-hero-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem 1.25rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.td-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: linear-gradient(135deg, #F6B73C 0%, #e69500 100%);
+    color: #fff;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.75rem;
+}
+.td-hero-title {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 0.4rem;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+.td-hero-subtitle {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.85);
+    font-weight: 400;
+    max-width: 600px;
+}
+
+/* ── Thumb Gallery ──────────────────────────────────────── */
+.td-thumb-gallery {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.td-thumb-gallery::-webkit-scrollbar { display: none; }
+.td-thumb {
+    width: 80px;
+    height: 56px;
+    border-radius: 8px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: var(--transition-fast);
+    flex-shrink: 0;
+    opacity: 0.7;
+}
+.td-thumb:hover { opacity: 1; border-color: var(--color-primary-light); }
+.td-thumb.active {
+    border-color: var(--color-accent);
+    opacity: 1;
+    box-shadow: 0 2px 8px rgba(219, 39, 119, 0.3);
+}
+
+/* ── Main Layout (2-col on desktop) ─────────────────────── */
+.td-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem 1.25rem 6rem; /* 6rem bottom for mobile CTA */
+}
+
+/* ── Quick Details ──────────────────────────────────────── */
+.td-quick-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-bottom: 1.5rem;
+}
+.td-detail-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 0.9rem;
+    border-radius: 10px;
+    background: var(--color-bg-light);
+    border: 1px solid var(--color-border);
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-primary-dark);
+}
+.td-detail-chip svg {
+    color: var(--color-primary);
+    flex-shrink: 0;
+}
+
+/* ── Description ────────────────────────────────────────── */
+.td-description {
+    font-size: 1.05rem;
+    color: var(--color-text-dark);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+/* ── Accordions (native <details>) ──────────────────────── */
+.td-accordions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    margin-bottom: 2rem;
+}
+.td-accordion {
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: box-shadow var(--transition-fast);
+}
+.td-accordion:hover {
+    box-shadow: var(--shadow-sm);
+}
+.td-accordion summary {
+    cursor: pointer;
+    padding: 1rem 1.25rem;
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+    list-style: none;
+    -webkit-user-select: none;
+    user-select: none;
+    transition: background var(--transition-fast);
+}
+.td-accordion summary:hover {
+    background: var(--color-bg-light);
+}
+.td-accordion summary::-webkit-details-marker { display: none; }
+.td-accordion summary::marker { display: none; content: ""; }
+.td-accordion-chevron {
+    margin-left: auto;
+    transition: transform 0.25s ease;
+    flex-shrink: 0;
+    color: var(--color-text-light);
+}
+.td-accordion[open] .td-accordion-chevron {
+    transform: rotate(180deg);
+}
+.td-accordion[open] > summary {
+    color: var(--color-accent);
+}
+.td-accordion-body {
+    padding: 0 1.25rem 1.25rem;
+    font-size: 0.95rem;
+    color: var(--color-text-dark);
+    line-height: 1.6;
+}
+.td-accordion[open] .td-accordion-body {
+    animation: tdAccordionDown 0.28s cubic-bezier(0.33, 1, 0.68, 1);
+}
+@keyframes tdAccordionDown {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Itinerary list */
+.td-itinerary-list {
+    list-style: none;
+    counter-reset: itinerary;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+.td-itinerary-list li {
+    counter-increment: itinerary;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+}
+.td-itinerary-list li:last-child { border-bottom: none; }
+.td-itinerary-list li::before {
+    content: counter(itinerary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: #fff;
+    font-family: var(--font-heading);
+    font-size: 0.72rem;
+    font-weight: 800;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+/* Included / Not included lists */
+.td-included-list,
+.td-not-included-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+.td-included-list li,
+.td-not-included-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding-left: 0.15rem;
+}
+.td-check-icon {
+    color: var(--color-electric);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+.td-cross-icon {
+    color: var(--color-accent);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+/* Popular stops (À la Carte) */
+.td-popular-stops {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    list-style: none;
+}
+.td-popular-stops li {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.92rem;
+}
+.td-popular-stops li::before {
+    content: "📍";
+    font-size: 0.85rem;
+}
+
+/* ── Checkout Sidebar (desktop) ─────────────────────────── */
+.td-checkout-sidebar {
+    display: none; /* hidden on mobile, shown on 768px+ */
+}
+.td-checkout-card {
+    background: var(--color-bg-white);
+    border: 1px solid var(--color-border);
+    border-radius: 20px;
+    padding: 1.75rem;
+    box-shadow: var(--shadow-lg);
+}
+.td-checkout-tour-name {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--color-primary-dark);
+    margin-bottom: 0.35rem;
+}
+.td-checkout-price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+}
+.td-checkout-price {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--color-primary-dark);
+}
+.td-checkout-price-note {
+    font-size: 0.88rem;
+    color: var(--color-text-light);
+}
+.td-checkout-divider {
+    height: 1px;
+    background: var(--color-border);
+    margin: 1.25rem 0;
+}
+.td-checkout-guarantees {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    margin-bottom: 1.5rem;
+}
+.td-checkout-guarantees li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.88rem;
+    color: var(--color-text-dark);
+    font-weight: 500;
+}
+.td-checkout-guarantees li svg { color: var(--color-electric); flex-shrink: 0; }
+.td-checkout-btn {
+    width: 100%;
+    margin-bottom: 0.75rem;
+}
+.td-checkout-cancel-note {
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--color-text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+}
+
+/* ── Mobile Sticky CTA ─────────────────────────────────── */
+.td-mobile-cta {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 4000;
+    padding: 0.75rem 1.25rem;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid var(--color-border);
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+.td-mobile-cta-price {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+.td-mobile-cta-price .price-amount {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--color-primary-dark);
+}
+.td-mobile-cta-price .price-note {
+    font-size: 0.75rem;
+    color: var(--color-text-light);
+}
+.td-mobile-cta .btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+/* ── Related Activities ─────────────────────────────────── */
+.td-related-section {
+    background: var(--color-bg-light);
+    padding: 3rem 1.25rem;
+}
+.td-related-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.td-related-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-primary-dark);
+    margin-bottom: 1.5rem;
+}
+.td-related-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+.td-related-card {
+    background: var(--color-bg-white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--color-border);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+    text-decoration: none;
+    display: block;
+}
+.td-related-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+.td-related-card-img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+}
+.td-related-card-body {
+    padding: 1rem 1.25rem 1.25rem;
+}
+.td-related-card-meta {
+    display: flex;
+    gap: 0.75rem;
+    font-size: 0.78rem;
+    color: var(--color-text-light);
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+}
+.td-related-card-name {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--color-primary-dark);
+    margin-bottom: 0.35rem;
+}
+.td-related-card-price {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--color-accent);
+}
+
+/* ── Desktop Responsive ─────────────────────────────────── */
+@media (min-width: 768px) {
+    .td-hero { height: 55vh; max-height: 560px; }
+    .td-hero-title { font-size: 2.8rem; }
+    .td-hero-content { padding: 2.5rem; }
+    .td-thumb { width: 110px; height: 75px; border-radius: 10px; }
+
+    .td-layout {
+        grid-template-columns: 1fr 380px;
+        padding-bottom: 3rem;
+    }
+    .td-checkout-sidebar {
+        display: block;
+        position: sticky;
+        top: 80px;
+        align-self: start;
+    }
+    .td-mobile-cta { display: none; }
+    .td-related-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (min-width: 1024px) {
+    .td-hero-title { font-size: 3.2rem; }
+    .td-thumb-gallery { padding: 0.75rem 0; max-width: 1200px; }
+}

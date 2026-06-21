@@ -5,3 +5,17 @@ tools/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Segredos / variáveis de ambiente — NUNCA versionar chaves secretas
+.env
+.env.*
+supabase/.env
+supabase/.env.*
+**/.env.local
+
+# Cache local da CLI Supabase (não versionar)
+supabase/.temp/
+supabase/.branches/
+
+# Ferramentas de editor / harness local
+.claude/
