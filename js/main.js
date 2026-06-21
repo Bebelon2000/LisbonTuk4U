@@ -951,4 +951,125 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, { passive: true });
     }
+
+    // ─── 10. Google Reviews (Places API via Supabase) ──────
+    (function initGoogleReviews() {
+        const root = document.getElementById('google-reviews');
+        if (!root) return;
+        const cfg = window.LISBONTUK_PAYMENTS;
+        const grid = document.getElementById('gr-grid');
+        const ratingEl = document.getElementById('gr-rating');
+        const starsEl = document.getElementById('gr-stars');
+        const countEl = document.getElementById('gr-count');
+        const liveEl = document.getElementById('gr-live');
+        const logoTemplate = root.querySelector('.gr-glogo');
+        if (!grid || !cfg || !cfg.supabaseUrl || !cfg.anonKey) return; // sem backend -> fica o fallback estático
+
+        const fmt = (n, d) => Number(n).toLocaleString('pt-PT', { minimumFractionDigits: d, maximumFractionDigits: d });
+        const pct = (r) => Math.max(0, Math.min(100, (r / 5) * 100)) + '%';
+        const AVATAR_BG = ['#1976D2', '#DB2777', '#0D9488', '#7E6BD9', '#EA580C', '#0EA5E9'];
+
+        const starbar = (r) => {
+            const s = document.createElement('span');
+            s.className = 'gr-starbar gr-starbar--sm';
+            s.style.setProperty('--pct', pct(r));
+            s.setAttribute('role', 'img');
+            s.setAttribute('aria-label', fmt(r, 1) + ' de 5 estrelas');
+            return s;
+        };
+
+        // Esqueleto de carregamento (3 cartões pulsantes)
+        grid.hidden = false;
+        grid.innerHTML = '';
+        for (let i = 0; i < 3; i++) {
+            const sk = document.createElement('div');
+            sk.className = 'gr-card gr-card--skeleton';
+            sk.innerHTML = '<div class="gr-sk-head"></div><div class="gr-sk-line"></div><div class="gr-sk-line"></div><div class="gr-sk-line gr-sk-short"></div>';
+            grid.appendChild(sk);
+        }
+
+        const renderCard = (rv, i) => {
+            const card = document.createElement('article');
+            card.className = 'gr-card';
+
+            const head = document.createElement('header');
+            head.className = 'gr-card-head';
+
+            let av;
+            if (rv.photo) {
+                av = document.createElement('img');
+                av.className = 'gr-avatar';
+                av.src = rv.photo; av.alt = ''; av.loading = 'lazy';
+                av.referrerPolicy = 'no-referrer';
+                av.onerror = function () {
+                    const span = document.createElement('span');
+                    span.className = 'gr-avatar gr-avatar--initial';
+                    span.style.background = AVATAR_BG[i % AVATAR_BG.length];
+                    span.textContent = (rv.author || '?').trim().charAt(0).toUpperCase();
+                    av.replaceWith(span);
+                };
+            } else {
+                av = document.createElement('span');
+                av.className = 'gr-avatar gr-avatar--initial';
+                av.style.background = AVATAR_BG[i % AVATAR_BG.length];
+                av.textContent = (rv.author || '?').trim().charAt(0).toUpperCase();
+            }
+            head.appendChild(av);
+
+            const meta = document.createElement('div');
+            meta.className = 'gr-card-meta';
+            const nm = document.createElement('span');
+            nm.className = 'gr-card-name';
+            nm.textContent = rv.author || 'Cliente Google';
+            const tm = document.createElement('span');
+            tm.className = 'gr-card-time';
+            tm.textContent = rv.time || '';
+            meta.appendChild(nm); meta.appendChild(tm);
+            head.appendChild(meta);
+
+            if (logoTemplate) {
+                const g = logoTemplate.cloneNode(true);
+                g.setAttribute('class', 'gr-card-g');
+                g.removeAttribute('width'); g.removeAttribute('height');
+                head.appendChild(g);
+            }
+            card.appendChild(head);
+            card.appendChild(starbar(rv.rating));
+
+            const txt = document.createElement('p');
+            txt.className = 'gr-card-text';
+            txt.textContent = rv.text;
+            card.appendChild(txt);
+            return card;
+        };
+
+        fetch(cfg.supabaseUrl + '/functions/v1/google-reviews', {
+            headers: { 'Authorization': 'Bearer ' + cfg.anonKey, 'apikey': cfg.anonKey }
+        })
+        .then((r) => r.json())
+        .then((data) => {
+            if (!data || data.error) throw new Error((data && data.error) || 'sem dados');
+            if (typeof data.rating === 'number' && ratingEl) {
+                ratingEl.textContent = fmt(data.rating, 1);
+                if (starsEl) {
+                    starsEl.style.setProperty('--pct', pct(data.rating));
+                    starsEl.setAttribute('aria-label', fmt(data.rating, 1) + ' de 5 estrelas');
+                }
+            }
+            if (typeof data.total === 'number' && countEl) {
+                countEl.innerHTML = '<strong>' + fmt(data.total, 0) + '</strong> avaliações no Google';
+            }
+            if (liveEl) liveEl.hidden = false;
+
+            grid.innerHTML = '';
+            const list = Array.isArray(data.reviews) ? data.reviews : [];
+            if (!list.length) { grid.hidden = true; return; }
+            list.forEach((rv, i) => grid.appendChild(renderCard(rv, i)));
+        })
+        .catch(() => {
+            // Sem ligação ainda (ex.: chave Google por configurar) -> mantém o resumo estático
+            grid.innerHTML = '';
+            grid.hidden = true;
+        });
+    })();
 });

@@ -3877,6 +3877,133 @@ body.lightbox-open { overflow: hidden; }
     .reviews-cards { grid-template-columns: repeat(3, 1fr); }
 }
 
+/* ── Google Reviews v4 (Places API · resumo real + cartões reais) ── */
+.gr { max-width: 1100px; margin: 0 auto; }
+
+.gr-summary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.9rem;
+    background: var(--color-bg-white);
+    border: 1px solid var(--color-border);
+    border-radius: 22px;
+    padding: 1.5rem 1.75rem;
+    box-shadow: var(--shadow-sm);
+    max-width: 540px;
+    margin: 0 auto;
+}
+.gr-badge { display: flex; align-items: center; gap: 1rem; }
+.gr-glogo { flex-shrink: 0; }
+.gr-score { display: flex; flex-direction: column; gap: 0.3rem; }
+.gr-score-row { display: flex; align-items: center; gap: 0.65rem; }
+.gr-score-num {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 2.1rem;
+    line-height: 1;
+    color: var(--color-primary-dark);
+}
+.gr-count { font-size: 0.9rem; color: var(--color-text-light); }
+.gr-count strong { color: var(--color-text-dark); font-weight: 700; }
+
+/* Barra de estrelas preenchida por % (suporta nota fracionária) */
+.gr-starbar {
+    position: relative;
+    display: inline-block;
+    font-size: 1.4rem;
+    line-height: 1;
+    letter-spacing: 2px;
+    white-space: nowrap;
+}
+.gr-starbar::before { content: "★★★★★"; color: #dadce0; }
+.gr-starbar::after {
+    content: "★★★★★";
+    color: #FBBC04;
+    position: absolute;
+    inset: 0;
+    width: var(--pct, 100%);
+    overflow: hidden;
+}
+.gr-starbar--sm { font-size: 1.02rem; letter-spacing: 1.5px; }
+
+/* Grelha de cartões reais */
+.gr-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
+    margin-top: 1.75rem;
+}
+.gr-grid[hidden] { display: none; }
+.gr-card {
+    background: var(--color-bg-white);
+    border: 1px solid var(--color-border);
+    border-radius: 18px;
+    padding: 1.35rem;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    transition: var(--transition-normal);
+}
+.gr-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.gr-card-head { display: flex; align-items: center; gap: 0.7rem; }
+.gr-avatar {
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+.gr-avatar--initial {
+    display: flex; align-items: center; justify-content: center;
+    color: #fff;
+    font-family: var(--font-heading);
+    font-weight: 800; font-size: 1.2rem;
+}
+.gr-card-meta { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+.gr-card-name {
+    font-family: var(--font-heading);
+    font-weight: 700; font-size: 0.97rem;
+    color: var(--color-primary-dark);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.gr-card-time { font-size: 0.8rem; color: var(--color-text-light); }
+.gr-card-g { width: 22px; height: 22px; flex-shrink: 0; }
+.gr-card-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-text-dark);
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Esqueleto de carregamento */
+.gr-card--skeleton { pointer-events: none; }
+.gr-card--skeleton .gr-sk-head,
+.gr-card--skeleton .gr-sk-line {
+    border-radius: 8px;
+    background: linear-gradient(90deg, #eef1f5 25%, #e2e7ee 37%, #eef1f5 63%);
+    background-size: 400% 100%;
+    animation: grShimmer 1.4s ease infinite;
+}
+.gr-card--skeleton .gr-sk-head { height: 46px; border-radius: 12px; }
+.gr-card--skeleton .gr-sk-line { height: 12px; margin-top: 0.6rem; }
+.gr-card--skeleton .gr-sk-short { width: 55%; }
+@keyframes grShimmer {
+    0% { background-position: 100% 0; }
+    100% { background-position: 0 0; }
+}
+
+@media (min-width: 560px) {
+    .gr-summary { flex-direction: row; justify-content: center; gap: 1.6rem; }
+}
+@media (min-width: 768px) {
+    .gr-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
 
 /* ==========================================================================
    v3.2 â€” Detalhes do Tour (Saber Mais): roteiro, incluÃ­do, Ã  la carte
