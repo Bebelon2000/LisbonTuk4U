@@ -1,0 +1,22 @@
+# ───────────────────────────────────────────────────────────────
+#  LisbonTuk4U — robots.txt
+#  ESTADO: STAGING (tours.lisbontuk4u.com) — site em construção.
+#
+#  O site está intencionalmente BLOQUEADO aos motores de busca até
+#  ao lançamento no domínio oficial https://lisbontuk4u.com.
+#  Assim evitamos conteúdo duplicado e que o Google indexe uma
+#  versão ainda incompleta.
+# ───────────────────────────────────────────────────────────────
+User-agent: *
+Disallow: /
+
+# ───────────────────────────────────────────────────────────────
+#  ▶ AO LANÇAR em https://lisbontuk4u.com:
+#    apagar as 2 linhas acima (User-agent / Disallow) e descomentar
+#    o bloco seguinte (retirar o "# " de cada linha):
+#
+# User-agent: *
+# Allow: /
+#
+# Sitemap: https://lisbontuk4u.com/sitemap.xml
+# ───────────────────────────────────────────────────────────────
