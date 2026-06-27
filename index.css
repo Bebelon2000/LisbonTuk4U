@@ -5,35 +5,38 @@
 /* Typography & Root Variables */
 :root {
     /* Paleta da marca — extraída do logótipo (rosa #FF69B4 / azul #2196F3) */
-    --color-primary: #1976D2;        /* azul interativo (AA sobre branco) */
-    --color-primary-light: #2196F3;  /* azul do logótipo */
-    --color-primary-dark: #0D47A1;   /* títulos e texto de destaque */
-    --color-accent: #DB2777;         /* rosa para CTAs (AA sobre branco) */
-    --color-accent-hover: #B91C63;
+    --color-primary: #1C6FB0;        /* azul-azulejo (links, eyebrows, ícones) */
+    --color-primary-light: #2E86C1;  /* azul mais claro / hovers */
+    --color-primary-dark: #1B2A3A;   /* tinta naval — títulos, rodapé */
+    --color-accent: #ED4D96;         /* rosa do logótipo — CTAs principais */
+    --color-accent-hover: #D43D83;
     --color-pink: #FF69B4;           /* rosa do logótipo (decorativo) */
     --color-pink-soft: #FDEEF6;      /* fundo rosa suave */
     --color-blue-soft: #E8F2FD;      /* fundo azul suave */
-    --color-gold: #F6B73C;
+    --color-gold: #E8A93B;           /* estrelas de avaliação */
     --color-electric: #12A77B;
+    --color-terracotta: #C9603F;     /* botão primário do hero, acentos de telhado */
+    --color-terracotta-hover: #B5512F;
     --gradient-brand: linear-gradient(120deg, #2196F3 0%, #7E6BD9 55%, #FF69B4 100%);
 
-    --color-text-dark: #11304E;
-    --color-text-light: #4E6377;
+    --color-text-dark: #1B2A3A;
+    --color-text-light: #4A5A68;
     --color-bg-white: #FFFFFF;
-    --color-bg-light: #F6FAFE;
-    --color-hero-bg: #EFF7FE;
-    --color-border: #D5E5F4;
-    --color-bg-overlay: rgba(25, 118, 210, 0.08);
+    --color-bg-light: #EDF3F8;        /* fundo azul-azulejo suave */
+    --color-hero-bg: #EDF3F8;
+    --color-border: #DDE7F0;
+    --color-bg-overlay: rgba(28, 111, 176, 0.08);
 
     /* Fonts */
-    --font-heading: 'Outfit', sans-serif;
-    --font-body: 'Inter', sans-serif;
+    --font-display: 'Instrument Serif', Georgia, serif;   /* títulos editoriais */
+    --font-heading: 'Hanken Grotesk', 'Outfit', sans-serif;
+    --font-body: 'Hanken Grotesk', 'Inter', sans-serif;
 
-    /* Shadow Systems */
-    --shadow-sm: 0 1px 2px rgba(13, 71, 161, 0.08);
-    --shadow-md: 0 10px 28px rgba(13, 71, 161, 0.10);
-    --shadow-lg: 0 22px 55px rgba(13, 71, 161, 0.14);
-    --shadow-glass: 0 8px 32px 0 rgba(13, 71, 161, 0.12);
+    /* Shadow Systems (recoloridas tinta naval) */
+    --shadow-sm: 0 1px 2px rgba(27, 42, 58, 0.08);
+    --shadow-md: 0 10px 28px rgba(27, 42, 58, 0.10);
+    --shadow-lg: 0 22px 55px rgba(27, 42, 58, 0.14);
+    --shadow-glass: 0 8px 32px 0 rgba(27, 42, 58, 0.12);
 
     /* Animation Transitions */
     --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -94,12 +97,13 @@ img {
 }
 
 .section-title {
-    font-size: 1.75rem;
+    font-family: var(--font-display);
+    font-size: 2rem;
     text-align: center;
     color: var(--color-primary-dark);
     margin-bottom: 0.75rem;
-    font-weight: 800;
-    letter-spacing: 0;
+    font-weight: 400;
+    letter-spacing: -0.3px;
     line-height: 1.2;
 }
 
@@ -431,10 +435,7 @@ img {
 .hero-section {
     position: relative;
     padding: 6.5rem 1.25rem 3.5rem;
-    background:
-        radial-gradient(ellipse 60% 50% at 8% 0%, rgba(33, 150, 243, 0.14) 0%, transparent 70%),
-        radial-gradient(ellipse 55% 45% at 95% 90%, rgba(255, 105, 180, 0.13) 0%, transparent 70%),
-        var(--color-hero-bg);
+    background: var(--color-hero-bg);
     overflow: hidden;
 }
 
@@ -448,20 +449,20 @@ img {
     z-index: 1;
 }
 
+/* Motivo de azulejo subtil, desvanecido em baixo */
 .hero-section::before {
-    width: 220px;
-    height: 220px;
-    top: -90px;
-    right: -70px;
-    background: radial-gradient(circle at 30% 30%, rgba(255, 105, 180, 0.18), rgba(255, 105, 180, 0.04));
+    inset: 0;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    z-index: 1;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='46' height='46' viewBox='0 0 46 46'%3E%3Cg fill='none' stroke='%232E86C1' stroke-width='1.2' stroke-opacity='0.18'%3E%3Ccircle cx='23' cy='23' r='8.5'/%3E%3Crect x='14.5' y='14.5' width='17' height='17' transform='rotate(45 23 23)'/%3E%3Cpath d='M0 23h6M40 23h6M23 0v6M23 40v6'/%3E%3C/g%3E%3C/svg%3E");
+    -webkit-mask-image: linear-gradient(180deg, #000, transparent 78%);
+    mask-image: linear-gradient(180deg, #000, transparent 78%);
 }
 
 .hero-section::after {
-    width: 160px;
-    height: 160px;
-    bottom: -60px;
-    left: -50px;
-    background: radial-gradient(circle at 70% 30%, rgba(33, 150, 243, 0.16), rgba(33, 150, 243, 0.03));
+    display: none;
 }
 
 .hero-container {
@@ -497,13 +498,15 @@ img {
 }
 
 .hero-title {
-    font-size: 2.25rem;
+    font-family: var(--font-display);
+    font-size: 2.6rem;
     color: var(--color-primary-dark);
     margin-bottom: 1rem;
-    font-weight: 800;
-    letter-spacing: 0;
-    line-height: 2.625rem;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    line-height: 1.05;
 }
+.hero-title em { font-style: italic; color: var(--color-accent); }
 
 .hero-lead {
     font-size: 1rem;
@@ -622,15 +625,46 @@ img {
 }
 
 .hero-img {
-    border-radius: 22px;
-    box-shadow: 0 26px 60px rgba(13, 71, 161, 0.22);
+    position: relative;
+    z-index: 1;
+    border-radius: 18px;
+    box-shadow: 0 26px 60px rgba(27, 42, 58, 0.22);
     object-fit: cover;
     object-position: center 22%;
     aspect-ratio: 4 / 5;
     width: 100%;
     max-width: 460px;
-    border: 5px solid #fff;
+    border: 6px solid #fff;
 }
+
+/* Bloco azul deslocado por trás da foto (assinatura "Azulejo & Sol") */
+.hero-image-showcase::before {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    inset: -12px;
+    margin: auto;
+    max-width: 484px;
+    border-radius: 24px;
+    background: var(--color-primary);
+    transform: rotate(-2.2deg);
+}
+
+/* Cartão de preço flutuante (canto inferior esquerdo) */
+.hero-floating-price {
+    position: absolute;
+    z-index: 3;
+    bottom: 18px;
+    left: -10px;
+    background: var(--color-accent);
+    color: #fff;
+    border-radius: 14px;
+    padding: 0.65rem 1rem;
+    box-shadow: 0 14px 30px rgba(237, 77, 150, 0.40);
+}
+.hero-fp-from { display: block; font-size: 0.72rem; font-weight: 600; opacity: 0.9; }
+.hero-fp-amount { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; line-height: 1; }
+.hero-fp-amount span { font-size: 0.8rem; font-weight: 600; opacity: 0.9; }
 
 /* Colagem: foto de clientes a sobrepor o hero (estilo polaroid) */
 .hero-collage {
@@ -984,13 +1018,13 @@ img {
     }
 
     .section-title {
-        font-size: 2.25rem;
-        line-height: 2.75rem;
+        font-size: 2.6rem;
+        line-height: 1.12;
     }
 
     .hero-title {
-        font-size: 3.5rem;
-        line-height: 3.875rem;
+        font-size: 4.6rem;
+        line-height: 1.0;
     }
 
     .hero-lead {
@@ -1862,9 +1896,7 @@ select:disabled {
 .promo-banner {
     position: relative;
     z-index: 1100;
-    background: linear-gradient(90deg, #1565C0 0%, #2196F3 35%, #E0479A 70%, #FF69B4 100%);
-    background-size: 200% 100%;
-    animation: promoBannerGradient 8s ease infinite;
+    background: var(--color-primary);
     color: #fff;
     text-align: center;
     padding: 0.6rem 3rem 0.6rem 1rem;
@@ -2080,8 +2112,9 @@ body:not(.promo-dismissed) .hero-section { padding-top: 7.5rem; }
 .tour-meta-item svg { color: var(--color-primary); flex-shrink: 0; }
 
 .tour-card-title {
-    font-size: 1.3rem;
-    font-weight: 800;
+    font-family: var(--font-display);
+    font-size: 1.45rem;
+    font-weight: 400;
     color: var(--color-primary-dark);
     line-height: 1.2;
 }
@@ -3776,7 +3809,7 @@ body.lightbox-open { overflow: hidden; }
 /* â”€â”€ Footer v3 (4 colunas, Ã­cones de marca) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .site-footer {
     position: relative;
-    background: linear-gradient(180deg, #0F2A4A 0%, #0B2240 100%);
+    background: var(--color-primary-dark);
 }
 .site-footer::before {
     content: '';
@@ -4144,4 +4177,26 @@ body.lightbox-open { overflow: hidden; }
     font-weight: 600;
     line-height: 1.4;
     text-align: center;
+}
+
+/* ==========================================================================
+   Azulejo & Sol — adições da Fase 1 (homepage)
+   ========================================================================== */
+.btn-terracotta {
+    background-color: var(--color-terracotta);
+    color: var(--color-bg-white);
+    box-shadow: var(--shadow-md);
+}
+.btn-terracotta:hover, .btn-terracotta:focus {
+    background-color: var(--color-terracotta-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Títulos dos cards do motor de reservas em serif (só estilo, lógica intacta) */
+.ota-tour-title { font-family: var(--font-display); font-weight: 400; }
+
+/* Utilitário do motivo de azulejo (reutilizável na Fase 2 no bloco de reserva) */
+.azulejo-bg-blue {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='46' height='46' viewBox='0 0 46 46'%3E%3Cg fill='none' stroke='%232E86C1' stroke-width='1.2' stroke-opacity='0.18'%3E%3Ccircle cx='23' cy='23' r='8.5'/%3E%3Crect x='14.5' y='14.5' width='17' height='17' transform='rotate(45 23 23)'/%3E%3Cpath d='M0 23h6M40 23h6M23 0v6M23 40v6'/%3E%3C/g%3E%3C/svg%3E");
 }

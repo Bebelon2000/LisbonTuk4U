@@ -19,3 +19,6 @@ supabase/.branches/
 
 # Ferramentas de editor / harness local
 .claude/
+
+# Referências de design (handoff) — não deve ir para produção
+design_handoff_homepage/
