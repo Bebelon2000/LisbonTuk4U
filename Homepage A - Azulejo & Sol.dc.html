@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400..800&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  body{margin:0}
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  @media (max-width:1024px) and (min-width:761px){
+    .grid3{grid-template-columns:repeat(2,1fr)!important}
+    .hero-h1{font-size:58px!important}
+  }
+  @media (max-width:760px){
+    .page{max-width:100%!important}
+    .ann{white-space:normal!important;font-size:11px!important;line-height:1.55!important;padding:8px 16px!important}
+    .nav{padding:14px 18px!important}
+    .nav-links{display:none!important}
+    .nav-pt{display:none!important}
+    .nav-burger{display:inline-flex!important}
+    .hero{padding:30px 20px 40px!important}
+    .hero-grid{grid-template-columns:1fr!important;gap:26px!important}
+    .hero-h1{font-size:40px!important}
+    .hero-btns{flex-wrap:wrap!important}
+    .float-rating{top:10px!important;right:8px!important;padding:9px 12px!important}
+    .float-price{bottom:12px!important;left:8px!important}
+    .trust{grid-template-columns:repeat(2,1fr)!important;gap:18px 22px!important;padding:22px 20px!important}
+    .pad-tours{padding:44px 20px 6px!important}
+    .pad-reviews{padding:44px 20px!important}
+    .tours-head{flex-direction:column!important;align-items:flex-start!important;gap:8px!important}
+    .grid3{grid-template-columns:1fr!important}
+    .book{margin:0 16px 44px!important;grid-template-columns:1fr!important;padding:30px 24px!important;gap:24px!important}
+    .h2-big{font-size:30px!important}
+    .footer{flex-direction:column!important;gap:14px!important;text-align:center!important;padding:30px 20px!important}
+  }
+</style>
+</helmet>
+
+<div style="background:#EDF3F8;min-height:100vh;display:flex;justify-content:center;font-family:'Hanken Grotesk',sans-serif;color:#22150c;">
+  <div data-screen-label="Homepage A" class="page" style="width:100%;max-width:1280px;background:#EDF3F8;overflow:hidden;">
+
+    <!-- announcement -->
+    <div class="ann" style="background:#1C6FB0;color:#eaf4fb;font-size:12.5px;letter-spacing:.08em;padding:9px 0;text-align:center;white-space:nowrap;">
+      <span style="font-weight:700;">★ 5,0 no Google</span>&nbsp;&nbsp;·&nbsp;&nbsp;Centenas de famílias já viveram esta experiência&nbsp;&nbsp;·&nbsp;&nbsp;<span style="color:#ffd9a8;">Tuk-tuk 100% elétrico</span>&nbsp;&nbsp;·&nbsp;&nbsp;Pick-up no hotel
+    </div>
+
+    <!-- nav -->
+    <nav class="nav" style="display:flex;align-items:center;justify-content:space-between;padding:18px 56px;background:#EDF3F8;border-bottom:1px solid #dde7f0;">
+      <img src="assets/logo.png" alt="Lisbon Tuk4U" style="height:52px;width:auto;display:block;">
+      <div class="nav-links" style="display:flex;align-items:center;gap:30px;font-weight:600;font-size:15px;color:#33485c;">
+        <span>Passeios</span><span>Reviews</span><span>Susane</span><span>Galeria</span><span>Contactos</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;">
+        <span class="nav-pt" style="font-weight:700;font-size:14px;color:#33485c;">PT ▾</span>
+        <span style="background:#ED4D96;color:#fff;font-weight:700;font-size:14.5px;padding:11px 22px;border-radius:999px;box-shadow:0 8px 18px rgba(237,77,150,.32);">Reservar</span>
+        <span class="nav-burger" style="display:none;align-items:center;justify-content:center;width:42px;height:42px;border-radius:11px;border:1px solid #c3d4e0;background:#fff;font-size:18px;color:#33485c;">☰</span>
+      </div>
+    </nav>
+
+    <!-- hero -->
+    <div class="hero" style="position:relative;padding:62px 56px 70px;overflow:hidden;">
+      <div style="position:absolute;inset:0;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='46' height='46' viewBox='0 0 46 46'%3E%3Cg fill='none' stroke='%232E86C1' stroke-width='1.2' stroke-opacity='0.18'%3E%3Ccircle cx='23' cy='23' r='8.5'/%3E%3Crect x='14.5' y='14.5' width='17' height='17' transform='rotate(45 23 23)'/%3E%3Cpath d='M0 23h6M40 23h6M23 0v6M23 40v6'/%3E%3C/g%3E%3C/svg%3E&quot;);-webkit-mask-image:linear-gradient(180deg,#000,transparent 78%);mask-image:linear-gradient(180deg,#000,transparent 78%);"></div>
+      <div class="hero-grid" style="position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center;">
+        <div>
+          <div style="display:inline-flex;align-items:center;gap:9px;background:#fff;border:1px solid #d8e6f0;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600;color:#1C6FB0;box-shadow:0 4px 12px rgba(28,42,58,.06);">
+            <span style="width:8px;height:8px;border-radius:50%;background:#2E9E5B;"></span> Guia local certificada · 100% elétrico
+          </div>
+          <h1 class="hero-h1" style="font-family:'Instrument Serif';font-weight:400;font-size:74px;line-height:.98;letter-spacing:-.5px;margin:22px 0 0;color:#1b2a3a;">
+            A Lisboa<br><span style="font-style:italic;color:#ED4D96;">autêntica</span>, ao ritmo<br>de quem cá vive.
+          </h1>
+          <p style="font-size:18px;line-height:1.55;color:#4a5a68;max-width:430px;margin:22px 0 0;">Tours privados por Alfama, Belém e os miradouros secretos — recolha no seu hotel e histórias que não vêm nos guias.</p>
+          <div class="hero-btns" style="display:flex;gap:14px;margin-top:30px;">
+            <span style="background:#C9603F;color:#fff;font-weight:700;font-size:16px;padding:15px 28px;border-radius:999px;box-shadow:0 12px 26px rgba(201,96,63,.34);">Reservar o meu passeio →</span>
+            <span style="background:#fff;border:1.5px solid #c3d4e0;color:#33485c;font-weight:700;font-size:16px;padding:15px 26px;border-radius:999px;">Falar no WhatsApp</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:18px;margin-top:30px;">
+            <div style="display:flex;align-items:center;gap:7px;"><span style="color:#E8A93B;font-size:17px;letter-spacing:1px;">★★★★★</span><span style="font-weight:700;font-size:14px;">5,0 Google</span></div>
+            <span style="width:1px;height:18px;background:#c3d4e0;"></span>
+            <span style="font-weight:600;font-size:14px;color:#4a5a68;">+800 viajantes felizes</span>
+          </div>
+        </div>
+
+        <!-- hero image + frame -->
+        <div class="hero-media" style="position:relative;">
+          <div style="position:absolute;inset:-14px;border-radius:24px;background:#1C6FB0;transform:rotate(-2.2deg);"></div>
+          <div style="position:relative;border-radius:18px;overflow:hidden;border:6px solid #fff;box-shadow:0 26px 60px rgba(28,42,58,.28);background:#dbe6ef url('assets/hero-susane.jpg') center 58% / cover no-repeat;aspect-ratio:4/5;"></div>
+          <div class="float-rating" style="position:absolute;top:-18px;right:-14px;background:#fff;border-radius:14px;padding:12px 16px;box-shadow:0 14px 30px rgba(28,42,58,.2);animation:floaty 5s ease-in-out infinite;">
+            <div style="font-size:12px;color:#E8A93B;font-weight:600;">★★★★★ TripAdvisor</div>
+            <div style="font-size:13px;font-weight:700;color:#1b2a3a;">Guia local certificada</div>
+          </div>
+          <div class="float-price" style="position:absolute;bottom:18px;left:-26px;background:#ED4D96;color:#fff;border-radius:14px;padding:13px 18px;box-shadow:0 14px 30px rgba(237,77,150,.4);">
+            <div style="font-size:12px;opacity:.85;font-weight:600;">desde</div>
+            <div style="font-size:24px;font-weight:800;">€70 <span style="font-size:13px;font-weight:600;opacity:.85;">/ tour privado</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- trust strip -->
+    <div class="trust" style="background:#fff;border-top:1px solid #dde7f0;border-bottom:1px solid #dde7f0;padding:26px 56px;display:grid;grid-template-columns:repeat(4,1fr);gap:28px;">
+      <div><div style="font-weight:800;font-size:16px;color:#1C6FB0;">Guia certificada</div><div style="font-size:13.5px;color:#5a6b7a;margin-top:3px;">A Susane é guia local oficial</div></div>
+      <div><div style="font-weight:800;font-size:16px;color:#1C6FB0;">100% elétrico</div><div style="font-size:13.5px;color:#5a6b7a;margin-top:3px;">Privado, silencioso, sem fumos</div></div>
+      <div><div style="font-weight:800;font-size:16px;color:#1C6FB0;">Pick-up no hotel</div><div style="font-size:13.5px;color:#5a6b7a;margin-top:3px;">Recolha gratuita onde estiver</div></div>
+      <div><div style="font-weight:800;font-size:16px;color:#1C6FB0;">Cancelamento grátis</div><div style="font-size:13.5px;color:#5a6b7a;margin-top:3px;">Até 48h antes do passeio</div></div>
+    </div>
+
+    <!-- tours -->
+    <div class="pad-tours" style="padding:64px 56px 20px;">
+      <div class="tours-head" style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:30px;">
+        <div>
+          <div style="font-family:'Instrument Serif';font-style:italic;font-size:21px;color:#ED4D96;">Escolha o seu roteiro</div>
+          <h2 class="h2-big" style="font-family:'Instrument Serif';font-size:46px;font-weight:400;margin:4px 0 0;color:#1b2a3a;letter-spacing:-.3px;">Passeios privados em tuk-tuk</h2>
+        </div>
+        <span style="font-weight:700;font-size:14.5px;color:#1C6FB0;border-bottom:2px solid #1C6FB0;padding-bottom:2px;">Ver todos →</span>
+      </div>
+      <div class="grid3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+        <div style="background:#fff;border:1px solid #dde7f0;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(28,42,58,.06);">
+          <div style="aspect-ratio:3/2;background:repeating-linear-gradient(135deg,#dbe6ef 0 14px,#e6eef5 14px 28px);position:relative;display:flex;align-items:center;justify-content:center;">
+            <span style="position:absolute;top:12px;left:12px;background:#1C6FB0;color:#fff;font-size:11.5px;font-weight:700;padding:5px 11px;border-radius:999px;">★ Mais reservado</span>
+            <span style="font-family:'Courier New',monospace;font-size:12px;color:#7e93a8;">foto: Alfama</span>
+          </div>
+          <div style="padding:20px;">
+            <h3 style="font-family:'Instrument Serif';font-size:25px;font-weight:400;margin:0;color:#1b2a3a;">Alfama &amp; Fado</h3>
+            <p style="font-size:13.5px;color:#5a6b7a;margin:7px 0 14px;line-height:1.5;">Ruelas, miradouros e a alma do fado. 2h pelo bairro mais antigo.</p>
+            <div style="display:flex;align-items:center;justify-content:space-between;border-top:1px solid #e8eef4;padding-top:14px;">
+              <span style="font-size:13px;color:#5a6b7a;font-weight:600;">⏱ 2h · até 4 pax</span>
+              <span style="font-weight:800;font-size:18px;color:#1b2a3a;">€70</span>
+            </div>
+          </div>
+        </div>
+        <div style="background:#fff;border:1px solid #dde7f0;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(28,42,58,.06);">
+          <div style="aspect-ratio:3/2;background:repeating-linear-gradient(135deg,#dbe6ef 0 14px,#e6eef5 14px 28px);position:relative;display:flex;align-items:center;justify-content:center;">
+            <span style="font-family:'Courier New',monospace;font-size:12px;color:#7e93a8;">foto: Belém</span>
+          </div>
+          <div style="padding:20px;">
+            <h3 style="font-family:'Instrument Serif';font-size:25px;font-weight:400;margin:0;color:#1b2a3a;">Belém Histórico</h3>
+            <p style="font-size:13.5px;color:#5a6b7a;margin:7px 0 14px;line-height:1.5;">Torre, Mosteiro e os pastéis originais. 2h30 de descobertas.</p>
+            <div style="display:flex;align-items:center;justify-content:space-between;border-top:1px solid #e8eef4;padding-top:14px;">
+              <span style="font-size:13px;color:#5a6b7a;font-weight:600;">⏱ 2h30 · até 4 pax</span>
+              <span style="font-weight:800;font-size:18px;color:#1b2a3a;">€85</span>
+            </div>
+          </div>
+        </div>
+        <div style="background:#fff;border:1px solid #dde7f0;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(28,42,58,.06);">
+          <div style="aspect-ratio:3/2;background:repeating-linear-gradient(135deg,#dbe6ef 0 14px,#e6eef5 14px 28px);position:relative;display:flex;align-items:center;justify-content:center;">
+            <span style="font-family:'Courier New',monospace;font-size:12px;color:#7e93a8;">foto: miradouro</span>
+          </div>
+          <div style="padding:20px;">
+            <h3 style="font-family:'Instrument Serif';font-size:25px;font-weight:400;margin:0;color:#1b2a3a;">Lisboa Essencial</h3>
+            <p style="font-size:13.5px;color:#5a6b7a;margin:7px 0 14px;line-height:1.5;">O melhor da cidade num só passeio. 3h, 7 colinas, vistas únicas.</p>
+            <div style="display:flex;align-items:center;justify-content:space-between;border-top:1px solid #e8eef4;padding-top:14px;">
+              <span style="font-size:13px;color:#5a6b7a;font-weight:600;">⏱ 3h · até 4 pax</span>
+              <span style="font-weight:800;font-size:18px;color:#1b2a3a;">€110</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- reviews -->
+    <div class="pad-reviews" style="padding:60px 56px;">
+      <h2 class="h2-big" style="font-family:'Instrument Serif';font-size:40px;font-weight:400;margin:0 0 26px;color:#1b2a3a;text-align:center;">Quem viajou, <span style="font-style:italic;color:#ED4D96;">recomenda</span></h2>
+      <div class="grid3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+        <div style="background:#fff;border:1px solid #dde7f0;border-radius:16px;padding:22px;">
+          <div style="color:#E8A93B;font-size:15px;letter-spacing:1px;">★★★★★</div>
+          <p style="font-size:14.5px;line-height:1.6;color:#2b3947;margin:12px 0 16px;">“A Susane fez a Lisboa ganhar vida. O tuk-tuk elétrico subiu becos onde mais nada passa. Inesquecível!”</p>
+          <div style="display:flex;align-items:center;gap:11px;"><div style="width:38px;height:38px;border-radius:50%;background:#1C6FB0;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;">EM</div><div><div style="font-weight:700;font-size:13.5px;">Emily M.</div><div style="font-size:12px;color:#7a8aa0;">🇺🇸 Estados Unidos</div></div></div>
+        </div>
+        <div style="background:#fff;border:1px solid #dde7f0;border-radius:16px;padding:22px;">
+          <div style="color:#E8A93B;font-size:15px;letter-spacing:1px;">★★★★★</div>
+          <p style="font-size:14.5px;line-height:1.6;color:#2b3947;margin:12px 0 16px;">“Viemos do cruzeiro com pouco tempo e vimos tudo. Recolha no porto, super pontual. Recomendo a 100%.”</p>
+          <div style="display:flex;align-items:center;gap:11px;"><div style="width:38px;height:38px;border-radius:50%;background:#C9603F;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;">LB</div><div><div style="font-weight:700;font-size:13.5px;">Lukas B.</div><div style="font-size:12px;color:#7a8aa0;">🇩🇪 Alemanha</div></div></div>
+        </div>
+        <div style="background:#fff;border:1px solid #dde7f0;border-radius:16px;padding:22px;">
+          <div style="color:#E8A93B;font-size:15px;letter-spacing:1px;">★★★★★</div>
+          <p style="font-size:14.5px;line-height:1.6;color:#2b3947;margin:12px 0 16px;">“Fomos um grupo de amigas e rimo-nos imenso. Parou em todos os miradouros para fotos. Perfeito!”</p>
+          <div style="display:flex;align-items:center;gap:11px;"><div style="width:38px;height:38px;border-radius:50%;background:#ED4D96;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;">SC</div><div><div style="font-weight:700;font-size:13.5px;">Sofia C.</div><div style="font-size:12px;color:#7a8aa0;">🇫🇷 França</div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- booking CTA -->
+    <div class="book" style="margin:0 56px 60px;background:#1C6FB0;border-radius:26px;padding:44px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;position:relative;overflow:hidden;">
+      <div style="position:absolute;inset:0;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='46' height='46' viewBox='0 0 46 46'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1.2' stroke-opacity='0.16'%3E%3Ccircle cx='23' cy='23' r='8.5'/%3E%3Crect x='14.5' y='14.5' width='17' height='17' transform='rotate(45 23 23)'/%3E%3C/g%3E%3C/svg%3E&quot;);"></div>
+      <div style="position:relative;color:#fff;">
+        <h2 class="h2-big" style="font-family:'Instrument Serif';font-size:40px;font-weight:400;margin:0;line-height:1.05;">Reserve em <span style="font-style:italic;color:#ffd9a8;">60 segundos</span></h2>
+        <p style="font-size:15px;opacity:.9;margin:12px 0 0;max-width:340px;">Escolha a data, o número de pessoas e o roteiro. Confirmação imediata, pagamento seguro.</p>
+      </div>
+      <div style="position:relative;background:#fff;border-radius:18px;padding:22px;box-shadow:0 18px 40px rgba(0,0,0,.2);">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div style="border:1px solid #d8e0e8;border-radius:12px;padding:11px 13px;"><div style="font-size:11px;color:#7a8aa0;font-weight:600;text-transform:uppercase;letter-spacing:.06em;">Data</div><div style="font-weight:700;font-size:14.5px;color:#1b2a3a;margin-top:2px;">12 Jul 2026</div></div>
+          <div style="border:1px solid #d8e0e8;border-radius:12px;padding:11px 13px;"><div style="font-size:11px;color:#7a8aa0;font-weight:600;text-transform:uppercase;letter-spacing:.06em;">Pessoas</div><div style="font-weight:700;font-size:14.5px;color:#1b2a3a;margin-top:2px;">2 adultos</div></div>
+          <div style="grid-column:span 2;border:1px solid #d8e0e8;border-radius:12px;padding:11px 13px;"><div style="font-size:11px;color:#7a8aa0;font-weight:600;text-transform:uppercase;letter-spacing:.06em;">Roteiro</div><div style="font-weight:700;font-size:14.5px;color:#1b2a3a;margin-top:2px;">Lisboa Essencial · 3h</div></div>
+        </div>
+        <div style="background:#ED4D96;color:#fff;text-align:center;font-weight:700;font-size:16px;padding:14px;border-radius:12px;margin-top:14px;box-shadow:0 10px 22px rgba(237,77,150,.34);">Ver disponibilidade →</div>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <div class="footer" style="background:#1b2a3a;color:#cdd7e2;padding:38px 56px;display:flex;align-items:center;justify-content:space-between;">
+      <img src="assets/logo.png" alt="Lisbon Tuk4U" style="height:48px;">
+      <div style="font-size:13px;display:flex;gap:26px;"><span>Passeios</span><span>Reviews</span><span>Susane</span><span>Contactos</span></div>
+      <div style="font-size:13px;opacity:.7;">© 2026 Lisbon Tuk4U · Lisboa</div>
+    </div>
+  </div>
+</div>
+
+
+<template id="__bundler_thumbnail" data-bg-color="#1C6FB0">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#1C6FB0"/>
+    <g fill="none" stroke="#ffffff" stroke-width="10" stroke-opacity="0.5">
+      <circle cx="600" cy="330" r="120"/>
+      <rect x="480" y="210" width="240" height="240" transform="rotate(45 600 330)"/>
+    </g>
+    <text x="600" y="600" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="120" fill="#ffffff">Lisbon</text>
+    <text x="600" y="690" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="56" fill="#ffd9a8" letter-spacing="6">TUK 4U</text>
+  </svg>
+</template></x-dc>
+</body>
+</html>
