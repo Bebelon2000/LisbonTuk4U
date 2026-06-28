@@ -638,6 +638,94 @@ img {
     border: 6px solid #fff;
 }
 
+/* ── New Hero Image Layout (Image 3 Design) ── */
+.new-hero-layout {
+    position: relative;
+    z-index: 1;
+    margin: 2rem auto;
+    max-width: 500px;
+}
+
+.new-hero-layout::before {
+    content: '';
+    position: absolute;
+    top: -16px;
+    bottom: -16px;
+    left: -16px;
+    right: -16px;
+    background-color: var(--color-primary);
+    border-radius: 24px;
+    z-index: -1;
+}
+
+.new-hero-layout .hero-img {
+    aspect-ratio: auto;
+    max-height: 550px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 16px;
+    border: 8px solid #fff;
+    box-shadow: none;
+    width: 100%;
+}
+
+.hero-badge-tr {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    background: #fff;
+    padding: 0.6rem 1rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    z-index: 2;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+.hero-badge-tr .stars {
+    color: #FBBF24;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+.hero-badge-tr .text {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-text-dark);
+}
+
+.hero-badge-bl {
+    position: absolute;
+    bottom: -16px;
+    left: -16px;
+    background: #E84D8A;
+    color: #fff;
+    padding: 0.75rem 1.2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(232, 77, 138, 0.3);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.hero-badge-bl .from {
+    font-size: 0.7rem;
+    font-weight: 500;
+    opacity: 0.9;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.hero-badge-bl .price {
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+.hero-badge-bl .price span {
+    font-size: 0.85rem;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
 /* Bloco azul deslocado por trás da foto (assinatura "Azulejo & Sol") */
 .hero-image-showcase::before {
     content: '';
@@ -3503,7 +3591,7 @@ body:not(.promo-dismissed) .hero-section { padding-top: 7.5rem; }
     .hero-container { grid-template-columns: 1.05fr 0.95fr; gap: 3.5rem; align-items: center; }
     .hero-image-mobile { display: none; }
     .hero-image-desktop { display: flex; }
-    .hero-image-desktop .hero-img { max-width: 100%; aspect-ratio: 4 / 5; }
+    .hero-image-desktop.new-hero-layout .hero-img { aspect-ratio: auto; max-height: 550px; }
     .hero-image-desktop .hero-collage { width: 165px; height: 165px; bottom: -26px; left: -32px; }
     .hero-image-desktop .hero-floating-review { top: -22px; right: -26px; padding: 0.7rem 1.05rem; }
     .hero-image-desktop .hero-fr-stars { font-size: 0.95rem; }
