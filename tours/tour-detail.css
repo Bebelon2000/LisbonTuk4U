@@ -74,13 +74,14 @@
     margin-bottom: 0.75rem;
 }
 .td-hero-title {
-    font-family: var(--font-heading);
-    font-size: 2rem;
-    font-weight: 800;
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    font-weight: 400;
+    letter-spacing: -0.5px;
     color: #fff;
-    line-height: 1.15;
+    line-height: 1.08;
     margin-bottom: 0.4rem;
-    text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    text-shadow: 0 2px 14px rgba(0,0,0,0.4);
 }
 .td-hero-subtitle {
     font-size: 1rem;
@@ -115,7 +116,7 @@
 .td-thumb.active {
     border-color: var(--color-accent);
     opacity: 1;
-    box-shadow: 0 2px 8px rgba(219, 39, 119, 0.3);
+    box-shadow: 0 2px 8px rgba(237, 77, 150, 0.3);
 }
 
 /* ── Main Layout (2-col on desktop) ─────────────────────── */
@@ -139,9 +140,9 @@
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    padding: 0.5rem 0.9rem;
-    border-radius: 10px;
-    background: var(--color-bg-light);
+    padding: 0.5rem 0.95rem;
+    border-radius: 999px;
+    background: var(--color-bg-white);
     border: 1px solid var(--color-border);
     font-size: 0.88rem;
     font-weight: 600;
@@ -179,9 +180,9 @@
 .td-accordion summary {
     cursor: pointer;
     padding: 1rem 1.25rem;
-    font-family: var(--font-heading);
-    font-size: 1rem;
-    font-weight: 700;
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 400;
     color: var(--color-primary-dark);
     display: flex;
     justify-content: flex-start;
@@ -313,9 +314,9 @@
     box-shadow: var(--shadow-lg);
 }
 .td-checkout-tour-name {
-    font-family: var(--font-heading);
-    font-size: 1.15rem;
-    font-weight: 800;
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 400;
     color: var(--color-primary-dark);
     margin-bottom: 0.35rem;
 }
@@ -418,9 +419,9 @@
     margin: 0 auto;
 }
 .td-related-title {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    font-weight: 800;
+    font-family: var(--font-display);
+    font-size: 1.85rem;
+    font-weight: 400;
     color: var(--color-primary-dark);
     margin-bottom: 1.5rem;
 }
@@ -460,9 +461,9 @@
     margin-bottom: 0.35rem;
 }
 .td-related-card-name {
-    font-family: var(--font-heading);
-    font-size: 1.1rem;
-    font-weight: 800;
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 400;
     color: var(--color-primary-dark);
     margin-bottom: 0.35rem;
 }
@@ -475,7 +476,7 @@
 /* ── Desktop Responsive ─────────────────────────────────── */
 @media (min-width: 768px) {
     .td-hero { height: 55vh; max-height: 560px; }
-    .td-hero-title { font-size: 2.8rem; }
+    .td-hero-title { font-size: 3.4rem; }
     .td-hero-content { padding: 2.5rem; }
     .td-thumb { width: 110px; height: 75px; border-radius: 10px; }
 
@@ -494,6 +495,6 @@
 }
 
 @media (min-width: 1024px) {
-    .td-hero-title { font-size: 3.2rem; }
+    .td-hero-title { font-size: 4rem; }
     .td-thumb-gallery { padding: 0.75rem 0; max-width: 1200px; }
 }
