@@ -199,6 +199,7 @@ img {
     justify-content: space-between;
     padding: 1rem 1.5rem;
     height: 72px;
+    transition: var(--transition-normal);
 }
 
 .landing-page .site-header {
@@ -2667,25 +2668,24 @@ body:not(.promo-dismissed) .hero-section { padding-top: 7.5rem; }
     border: 1px solid rgba(219, 39, 119, 0.25);
 }
 
-/* ── Smart Header (Hide on scroll-down, show on scroll-up) ── */
+/* ── Smart Header (Sticky on scroll) ── */
 .site-header {
-    transition: transform 0.4s cubic-bezier(0.33, 1, 0.68, 1),
+    transition: background-color 0.4s ease,
                 box-shadow 0.4s ease,
                 backdrop-filter 0.4s ease;
-    will-change: transform;
 }
-.site-header.header-hidden {
-    transform: translateY(-100%);
-    pointer-events: none;
-}
-.site-header.header-visible {
-    transform: translateY(0);
-    pointer-events: auto;
+
+.site-header.scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
     box-shadow: 0 4px 30px rgba(13, 71, 161, 0.08), 0 1px 4px rgba(0,0,0,0.04);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
 }
 
+.site-header.scrolled .header-container {
+    height: 64px;
+    padding: 0.5rem 1.5rem;
+}
 /* ── Language Dropdown (EcoTukTuk style) ───────────────── */
 .lang-dropdown {
     position: relative;
