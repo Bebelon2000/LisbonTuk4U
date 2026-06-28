@@ -3476,11 +3476,12 @@ body:not(.promo-dismissed) .hero-section { padding-top: 7.5rem; }
         grid-template-columns: repeat(3, 1fr);
     }
     .landing-page .desktop-nav { display: flex; }
-    .landing-page .lang-dropdown { display: block; }
-    .landing-page .lang-selector-desktop { display: none; }
+    .landing-page .lang-dropdown { display: none; }
+    .landing-page .lang-selector-desktop { display: flex; }
     .landing-page .hamburger-menu { display: none; }
     .desktop-nav { display: flex; }
-    .lang-dropdown { display: block; }
+    .lang-dropdown { display: none; }
+    .lang-selector-desktop { display: flex; }
     .nav-links {
         display: flex;
         list-style: none;
