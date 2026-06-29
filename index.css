@@ -659,10 +659,10 @@ img {
 }
 
 .new-hero-layout .hero-img {
-    aspect-ratio: auto;
-    max-height: 550px;
+    aspect-ratio: 4 / 5;
+    max-height: 600px;
     object-fit: cover;
-    object-position: center;
+    object-position: center bottom; /* Shows the people in the Tuk Tuk! */
     border-radius: 16px;
     border: 8px solid #fff;
     box-shadow: none;
@@ -3591,7 +3591,7 @@ body:not(.promo-dismissed) .hero-section { padding-top: 7.5rem; }
     .hero-container { grid-template-columns: 1.05fr 0.95fr; gap: 3.5rem; align-items: center; }
     .hero-image-mobile { display: none; }
     .hero-image-desktop { display: flex; }
-    .hero-image-desktop.new-hero-layout .hero-img { aspect-ratio: auto; max-height: 550px; }
+    .hero-image-desktop.new-hero-layout .hero-img { max-height: none; }
     .hero-image-desktop .hero-collage { width: 165px; height: 165px; bottom: -26px; left: -32px; }
     .hero-image-desktop .hero-floating-review { top: -22px; right: -26px; padding: 0.7rem 1.05rem; }
     .hero-image-desktop .hero-fr-stars { font-size: 0.95rem; }
