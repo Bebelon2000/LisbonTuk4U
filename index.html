@@ -34,7 +34,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400..800&family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="index.css?v=4.0.1">
+    <link rel="stylesheet" href="index.css?v=4.0.6">
 
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
@@ -172,6 +172,11 @@
              HERO SECTION
         ═══════════════════════════════════════════════════════ -->
         <section class="hero-section">
+            <!-- Fundo full-bleed so-mobile (opcao 1a); escondido no desktop via CSS -->
+            <img src="assets/img/guia-susane.webp"
+                 alt="Susane, guia local certificada, num tuk-tuk elétrico em Lisboa"
+                 class="hero-mobile-bg" width="1000" height="1500"
+                 loading="eager" fetchpriority="high" aria-hidden="true">
             <div class="hero-container">
                 <div class="hero-content">
                     <div class="hero-badges-row">
@@ -1007,7 +1012,7 @@
 
 
     <script src="js/payments-config.js?v=1.0.1"></script>
-    <script src="js/main.js?v=3.5.0"></script>
+    <script src="js/main.js?v=3.5.1"></script>
 
 </body>
 </html>

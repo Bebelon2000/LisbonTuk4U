@@ -22,3 +22,7 @@ supabase/.branches/
 
 # Referências de design (handoff) — não deve ir para produção
 design_handoff_homepage/
+HANDOFF-*.md
+
+# Snapshots locais para comparação (não fazem parte do site)
+live_index.*

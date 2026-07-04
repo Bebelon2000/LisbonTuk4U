@@ -38,7 +38,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400..800&family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
     
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="../index.css?v=4.0.1">
+    <link rel="stylesheet" href="../index.css?v=4.0.6">
 
     <!-- Schema.org JSON-LD (LocalBusiness & TouristAttraction) -->
     <script type="application/ld+json">
@@ -153,60 +153,57 @@
     <main id="inicio">
         <!-- Hero Section (First Contentful Paint) -->
         <section class="hero-section">
-            <div class="hero-bg-overlay"></div>
+            <!-- Fundo full-bleed so-mobile (opcao 1a); escondido no desktop via CSS -->
+            <img src="../assets/img/guia-susane.webp"
+                 alt="Susane, guide locale certifiée, dans un tuk-tuk électrique à Lisbonne"
+                 class="hero-mobile-bg" width="1000" height="1500"
+                 loading="eager" fetchpriority="high" aria-hidden="true">
             <div class="hero-container">
                 <div class="hero-content">
-                    <span class="hero-badge">Lisbonne Authentique</span>
-                    <h1 class="hero-title">Découvrez Lisbonne avec la Guide Susane</h1>
-                    <p class="hero-lead">
-                        Vivez une expérience inoubliable à bord de notre <strong>tuk-tuk bleu emblématique décoré de fleurs</strong>. Ressentez la brise de la ville en gravissant les collines historiques.
-                    </p>
-                    
-                    <!-- Key Features Info Cards -->
-                    <div class="hero-features">
-                        <div class="feature-card">
-                            <div class="feature-icon" aria-hidden="true">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/><circle cx="12" cy="10" r="3"/></svg>
-                            </div>
-                            <div class="feature-text">
-                                <h3>Point de Rencontre</h3>
-                                <p>Hard Rock Café de Lisbonne</p>
-                            </div>
-                        </div>
-                        <div class="feature-card">
-                            <div class="feature-icon" aria-hidden="true">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-                            </div>
-                            <div class="feature-text">
-                                <h3>Prise en Charge</h3>
-                                <p>Prise en charge gratuite à votre hôtel</p>
-                            </div>
-                        </div>
+                    <div class="hero-badges-row">
+                        <a href="#reserva" class="hero-badge" id="hero-google-badge">
+                            <span class="badge-dot" style="color: #12A77B; margin-right: 4px; font-size: 1.2rem; line-height: 1;">&bull;</span>
+                            Guide locale certifiée &middot; 100% électrique
+                        </a>
                     </div>
+
+                    <h1 class="hero-title">La Lisbonne <em>authentique</em>, au rythme de ceux qui y vivent.</h1>
+                    <p class="hero-lead">
+                        Tours privés dans l'Alfama, Belém et les belvédères secrets — prise en charge à l'hôtel et des histoires qu'on ne trouve pas dans les guides.
+                    </p>
 
                     <div class="hero-actions">
-                        <a href="#reserva" class="btn btn-primary" id="hero-cta-btn">Réserver la Visite</a>
-                        <a href="../tours.html" class="btn btn-secondary" id="hero-secondary-btn">Voir les Visites</a>
+                        <a href="#reserva" class="btn btn-terracotta" id="hero-cta-btn">Réserver ma balade &rarr;</a>
+                        <a href="https://wa.me/351966697738?text=Bonjour%20Susane%2C%20je%20souhaite%20r%C3%A9server%20un%20tour%20priv%C3%A9%20en%20tuk-tuk%20%C3%A0%20Lisbonne."
+                           target="_blank" rel="noopener noreferrer" class="btn btn-secondary track-whatsapp-click" id="hero-secondary-btn" style="border-radius: 99px; background: white; border: 1px solid #DDE7F0; color: var(--color-primary-dark); font-weight: 700;">
+                            Discuter sur WhatsApp
+                        </a>
                     </div>
 
-                    <div class="hero-google-rating" aria-label="Google Reviews">
-                        <div class="rating-stars" aria-hidden="true">
-                            <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                            <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                            <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                            <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                            <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <div class="hero-google-rating">
+                        <div class="rating-stars">
+                            <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                         </div>
-                        <span class="rating-value"><strong>5.0</strong>/5</span>
-                        <span class="rating-text">sur Google Reviews</span>
-                        <a href="https://search.google.com/local/writereview?placeid=ChIJeeURJo8zGQ0RWeTL8MF73v4" target="_blank" rel="noopener noreferrer" class="rating-link track-google-review">Laisser un Avis</a>
+                        <span class="rating-value"><strong>5,0 Google</strong></span>
+                        <span style="color: #cbd5e1; margin: 0 4px;">|</span>
+                        <span class="rating-text">+800 voyageurs ravis</span>
                     </div>
                 </div>
-                
-                <!-- Hero Image Showcase -->
-                <div class="hero-image-showcase">
-                    <div class="tuk-badge-floating">Tuk-Tuk 100% Électrique</div>
-                    <img src="../assets/img/hero-tuk-tuk.webp" alt="Tuk-tuk azul decorado com flores e a guia Susane" class="hero-img" loading="eager">
+
+                <div class="new-hero-layout hero-image-desktop">
+                    <img src="../assets/img/hero-main.jpg" alt="Touristes heureux lors d'un tour en tuk-tuk électrique à Lisbonne" class="hero-img" width="1000" height="1333" loading="eager" fetchpriority="high">
+                    <div class="hero-badge-tr">
+                        <span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                        <span class="text">TripAdvisor<br><span style="font-weight: 500;">Guide locale certifiée</span></span>
+                    </div>
+                    <div class="hero-badge-bl">
+                        <span class="from">dès</span>
+                        <span class="price">&euro;70 <span>/ tour privé</span></span>
+                    </div>
                 </div>
             </div>
         </section>

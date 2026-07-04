@@ -256,31 +256,23 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.add('promo-dismissed');
     }
 
-    // ─── 3. Smart Header (hide on scroll-down, show on scroll-up) ──
+    // ─── 3. Smart Header (sombra + esconder ao descer, mostrar ao subir) ──
     const header = document.getElementById('site-header');
     let lastScrollY = window.scrollY;
-    let headerHidden = false;
-    const SCROLL_THRESHOLD = 80;
 
     window.addEventListener('scroll', () => {
         const currentScrollY = window.scrollY;
-        const delta = currentScrollY - lastScrollY;
 
-        if (currentScrollY < SCROLL_THRESHOLD) {
-            header.classList.remove('header-hidden');
-            header.classList.add('header-visible');
-            headerHidden = false;
-        } else if (delta > 5 && !headerHidden) {
-            header.classList.add('header-hidden');
-            header.classList.remove('header-visible');
-            headerHidden = true;
-        } else if (delta < -5 && headerHidden) {
-            header.classList.remove('header-hidden');
-            header.classList.add('header-visible');
-            headerHidden = false;
+        // Sombra/fundo assim que sai do topo
+        header.classList.toggle('scrolled', currentScrollY > 10);
+
+        // Esconde quando se desce (depois de passar o header) e volta ao subir.
+        // Ignora micro-movimentos (>6px) para não tremer.
+        if (Math.abs(currentScrollY - lastScrollY) > 6) {
+            const goingDown = currentScrollY > lastScrollY;
+            header.classList.toggle('header-hidden', goingDown && currentScrollY > 140);
+            lastScrollY = currentScrollY;
         }
-
-        lastScrollY = currentScrollY;
     }, { passive: true });
 
     // ─── 4. Language Dropdown ───────────────────────────────
