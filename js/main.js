@@ -185,8 +185,154 @@ const TOUR_DATA = {
     },
 };
 
-const MONTH_NAMES_PT = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
-const WEEKDAY_NAMES_PT = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'];
+// ═══════════════════════════════════════════════════════
+//  I18N — textos do overlay de reserva (pt/en/es/it/fr)
+//  A língua é lida do atributo lang do <html>.
+// ═══════════════════════════════════════════════════════
+const I18N = {
+    pt: {
+        months: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+        weekdays: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+        dateFmt: (d, mName, y) => `${d} de ${mName} de ${y}`,
+        chooseDuration: 'Escolha a duração',
+        durationHint: 'De 1 a 5 horas — o preço ajusta automaticamente',
+        chooseDate: 'Escolha a data',
+        chooseTime: 'Escolha a hora',
+        noSlotsToday: 'Para hoje já não há horários online — fale connosco no WhatsApp e encontramos uma solução.',
+        passengers: 'Passageiros',
+        passenger1: 'passageiro', passengerN: 'passageiros',
+        multiTuk: (n, t) => `Para ${n} passageiros serão necessários ${t} tuk-tuks — o preço é calculado automaticamente.`,
+        cont: 'Continuar', checkoutTitle: 'Finalizar Reserva',
+        name: 'Nome', surname: 'Apelido', email: 'Email', phone: 'Telemóvel', country: 'País',
+        namePh: 'Nome', surnamePh: 'Apelido', emailPh: 'email@exemplo.com', phonePh: '+351 9XX XXX XXX',
+        selectCountry: 'Selecionar país', other: 'Outro',
+        countries: { PT: 'Portugal', BR: 'Brasil', US: 'Estados Unidos', GB: 'Reino Unido', FR: 'França', DE: 'Alemanha', ES: 'Espanha', IT: 'Itália', NL: 'Países Baixos' },
+        terms: 'Concordo com os termos da reserva e a política de cancelamento gratuito até 48h antes.',
+        confirm: 'CONFIRMAR RESERVA', processing: 'A processar...',
+        secure: 'Reserva segura · Cancelamento gratuito até 48h antes',
+        subtotal: 'Subtotal', totalDue: 'Total devido',
+        successTitle: 'Pedido enviado com sucesso!',
+        successMsg: 'A Susane entrará em contacto em breve para confirmar a sua reserva.',
+        successWa: 'Confirmar via WhatsApp',
+        payError: 'Não foi possível iniciar o pagamento.',
+        tryAgain: 'Tente novamente ou fale connosco pelo WhatsApp.',
+    },
+    en: {
+        months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+        weekdays: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        dateFmt: (d, mName, y) => `${mName} ${d}, ${y}`,
+        chooseDuration: 'Choose the duration',
+        durationHint: 'From 1 to 5 hours — the price adjusts automatically',
+        chooseDate: 'Choose a date',
+        chooseTime: 'Choose a time',
+        noSlotsToday: 'No more online slots for today — message us on WhatsApp and we\'ll work something out.',
+        passengers: 'Passengers',
+        passenger1: 'passenger', passengerN: 'passengers',
+        multiTuk: (n, t) => `${n} passengers require ${t} tuk-tuks — the price is calculated automatically.`,
+        cont: 'Continue', checkoutTitle: 'Complete Booking',
+        name: 'First name', surname: 'Last name', email: 'Email', phone: 'Mobile phone', country: 'Country',
+        namePh: 'First name', surnamePh: 'Last name', emailPh: 'email@example.com', phonePh: '+1 555 000 0000',
+        selectCountry: 'Select country', other: 'Other',
+        countries: { PT: 'Portugal', BR: 'Brazil', US: 'United States', GB: 'United Kingdom', FR: 'France', DE: 'Germany', ES: 'Spain', IT: 'Italy', NL: 'Netherlands' },
+        terms: 'I agree to the booking terms and the free-cancellation policy (up to 48h before).',
+        confirm: 'CONFIRM BOOKING', processing: 'Processing...',
+        secure: 'Secure booking · Free cancellation up to 48h before',
+        subtotal: 'Subtotal', totalDue: 'Total due',
+        successTitle: 'Request sent successfully!',
+        successMsg: 'Susane will contact you shortly to confirm your booking.',
+        successWa: 'Confirm via WhatsApp',
+        payError: 'We could not start the payment.',
+        tryAgain: 'Please try again or contact us on WhatsApp.',
+    },
+    es: {
+        months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        weekdays: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
+        dateFmt: (d, mName, y) => `${d} de ${mName} de ${y}`,
+        chooseDuration: 'Elige la duración',
+        durationHint: 'De 1 a 5 horas — el precio se ajusta automáticamente',
+        chooseDate: 'Elige la fecha',
+        chooseTime: 'Elige la hora',
+        noSlotsToday: 'Ya no quedan horarios online para hoy — escríbenos por WhatsApp y buscamos una solución.',
+        passengers: 'Pasajeros',
+        passenger1: 'pasajero', passengerN: 'pasajeros',
+        multiTuk: (n, t) => `Para ${n} pasajeros se necesitan ${t} tuk-tuks — el precio se calcula automáticamente.`,
+        cont: 'Continuar', checkoutTitle: 'Finalizar Reserva',
+        name: 'Nombre', surname: 'Apellido', email: 'Email', phone: 'Móvil', country: 'País',
+        namePh: 'Nombre', surnamePh: 'Apellido', emailPh: 'email@ejemplo.com', phonePh: '+34 6XX XXX XXX',
+        selectCountry: 'Seleccionar país', other: 'Otro',
+        countries: { PT: 'Portugal', BR: 'Brasil', US: 'Estados Unidos', GB: 'Reino Unido', FR: 'Francia', DE: 'Alemania', ES: 'España', IT: 'Italia', NL: 'Países Bajos' },
+        terms: 'Acepto las condiciones de la reserva y la política de cancelación gratuita hasta 48h antes.',
+        confirm: 'CONFIRMAR RESERVA', processing: 'Procesando...',
+        secure: 'Reserva segura · Cancelación gratuita hasta 48h antes',
+        subtotal: 'Subtotal', totalDue: 'Total a pagar',
+        successTitle: '¡Solicitud enviada con éxito!',
+        successMsg: 'Susane se pondrá en contacto contigo en breve para confirmar tu reserva.',
+        successWa: 'Confirmar por WhatsApp',
+        payError: 'No se pudo iniciar el pago.',
+        tryAgain: 'Inténtalo de nuevo o escríbenos por WhatsApp.',
+    },
+    it: {
+        months: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'],
+        weekdays: ['Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab', 'Dom'],
+        dateFmt: (d, mName, y) => `${d} ${mName} ${y}`,
+        chooseDuration: 'Scegli la durata',
+        durationHint: 'Da 1 a 5 ore — il prezzo si aggiorna automaticamente',
+        chooseDate: 'Scegli la data',
+        chooseTime: "Scegli l'orario",
+        noSlotsToday: 'Per oggi non ci sono più orari online — scrivici su WhatsApp e troviamo una soluzione.',
+        passengers: 'Passeggeri',
+        passenger1: 'passeggero', passengerN: 'passeggeri',
+        multiTuk: (n, t) => `Per ${n} passeggeri servono ${t} tuk-tuk — il prezzo viene calcolato automaticamente.`,
+        cont: 'Continua', checkoutTitle: 'Completa la Prenotazione',
+        name: 'Nome', surname: 'Cognome', email: 'Email', phone: 'Cellulare', country: 'Paese',
+        namePh: 'Nome', surnamePh: 'Cognome', emailPh: 'email@esempio.com', phonePh: '+39 3XX XXX XXXX',
+        selectCountry: 'Seleziona il paese', other: 'Altro',
+        countries: { PT: 'Portogallo', BR: 'Brasile', US: 'Stati Uniti', GB: 'Regno Unito', FR: 'Francia', DE: 'Germania', ES: 'Spagna', IT: 'Italia', NL: 'Paesi Bassi' },
+        terms: 'Accetto i termini della prenotazione e la politica di cancellazione gratuita fino a 48h prima.',
+        confirm: 'CONFERMA PRENOTAZIONE', processing: 'Elaborazione...',
+        secure: 'Prenotazione sicura · Cancellazione gratuita fino a 48h prima',
+        subtotal: 'Subtotale', totalDue: 'Totale dovuto',
+        successTitle: 'Richiesta inviata con successo!',
+        successMsg: 'Susane ti contatterà a breve per confermare la tua prenotazione.',
+        successWa: 'Conferma via WhatsApp',
+        payError: 'Impossibile avviare il pagamento.',
+        tryAgain: 'Riprova o scrivici su WhatsApp.',
+    },
+    fr: {
+        months: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+        weekdays: ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'],
+        dateFmt: (d, mName, y) => `${d} ${mName} ${y}`,
+        chooseDuration: 'Choisissez la durée',
+        durationHint: 'De 1 à 5 heures — le prix s\'ajuste automatiquement',
+        chooseDate: 'Choisissez la date',
+        chooseTime: "Choisissez l'heure",
+        noSlotsToday: 'Plus de créneaux en ligne pour aujourd\'hui — écrivez-nous sur WhatsApp et nous trouverons une solution.',
+        passengers: 'Passagers',
+        passenger1: 'passager', passengerN: 'passagers',
+        multiTuk: (n, t) => `Pour ${n} passagers, ${t} tuk-tuks sont nécessaires — le prix est calculé automatiquement.`,
+        cont: 'Continuer', checkoutTitle: 'Finaliser la Réservation',
+        name: 'Prénom', surname: 'Nom', email: 'Email', phone: 'Portable', country: 'Pays',
+        namePh: 'Prénom', surnamePh: 'Nom', emailPh: 'email@exemple.com', phonePh: '+33 6 XX XX XX XX',
+        selectCountry: 'Sélectionner le pays', other: 'Autre',
+        countries: { PT: 'Portugal', BR: 'Brésil', US: 'États-Unis', GB: 'Royaume-Uni', FR: 'France', DE: 'Allemagne', ES: 'Espagne', IT: 'Italie', NL: 'Pays-Bas' },
+        terms: 'J\'accepte les conditions de réservation et la politique d\'annulation gratuite jusqu\'à 48h avant.',
+        confirm: 'CONFIRMER LA RÉSERVATION', processing: 'Traitement...',
+        secure: 'Réservation sécurisée · Annulation gratuite jusqu\'à 48h avant',
+        subtotal: 'Sous-total', totalDue: 'Total à payer',
+        successTitle: 'Demande envoyée avec succès !',
+        successMsg: 'Susane vous contactera sous peu pour confirmer votre réservation.',
+        successWa: 'Confirmer via WhatsApp',
+        payError: 'Impossible de démarrer le paiement.',
+        tryAgain: 'Réessayez ou contactez-nous sur WhatsApp.',
+    },
+};
+
+const SITE_LANG = (document.documentElement.getAttribute('lang') || 'pt').slice(0, 2).toLowerCase();
+const T = I18N[SITE_LANG] || I18N.pt;
+
+// Mantidos por compatibilidade com código antigo
+const MONTH_NAMES_PT = T.months;
+const WEEKDAY_NAMES_PT = T.weekdays;
 
 // ═══════════════════════════════════════════════════════
 //  GLOBAL FUNCTIONS (called from HTML onclick)
@@ -344,6 +490,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 m += 30;
                 if (m >= 60) { h++; m -= 60; }
             }
+            // Se a data escolhida for hoje, esconde horários já passados
+            // (com 2h de antecedência mínima para a Susane se organizar).
+            if (state.selectedDate) {
+                const now = new Date();
+                const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+                if (state.selectedDate === todayStr) {
+                    const cutoff = now.getHours() * 60 + now.getMinutes() + 120;
+                    return slots.filter(t => {
+                        const [sh, sm] = t.split(':').map(Number);
+                        return sh * 60 + sm >= cutoff;
+                    });
+                }
+            }
             return slots;
         };
 
@@ -369,8 +528,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="booking-step-header">
                         <span class="booking-step-number">1</span>
                         <div>
-                            <div class="booking-step-label">Escolha a duração</div>
-                            <div class="booking-step-sublabel">De 1 a 5 horas — o preço ajusta automaticamente</div>
+                            <div class="booking-step-label">${T.chooseDuration}</div>
+                            <div class="booking-step-sublabel">${T.durationHint}</div>
                         </div>
                     </div>
                     <div class="booking-duration-pills">
@@ -393,7 +552,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="booking-step-header">
                     <span class="booking-step-number">${1 + stepOffset}</span>
                     <div>
-                        <div class="booking-step-label">Escolha a data</div>
+                        <div class="booking-step-label">${T.chooseDate}</div>
                         ${state.selectedDate ? `<div class="booking-step-sublabel">✓ ${formatDatePT(state.selectedDate)}</div>` : ''}
                     </div>
                 </div>
@@ -410,12 +569,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="booking-step-header">
                     <span class="booking-step-number">${2 + stepOffset}</span>
                     <div>
-                        <div class="booking-step-label">Escolha a hora</div>
+                        <div class="booking-step-label">${T.chooseTime}</div>
                         ${state.selectedTime ? `<div class="booking-step-sublabel">✓ ${state.selectedTime}</div>` : ''}
                     </div>
                 </div>
                 <div class="booking-time-grid" id="booking-time-grid">
-                    ${timeSlotsArr.map(t => `
+                    ${(!timeDisabled && currentDurationHours > 0 && timeSlotsArr.length === 0)
+                        ? `<p class="booking-no-slots">${T.noSlotsToday}</p>`
+                        : timeSlotsArr.map(t => `
                         <button class="booking-time-pill ${state.selectedTime === t ? 'selected' : ''}" data-time="${t}">${t}</button>
                     `).join('')}
                 </div>
@@ -428,23 +589,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="booking-step-header">
                     <span class="booking-step-number">${3 + stepOffset}</span>
                     <div>
-                        <div class="booking-step-label">Passageiros</div>
+                        <div class="booking-step-label">${T.passengers}</div>
                     </div>
                 </div>
                 <div class="booking-pax-stepper">
                     <button class="pax-stepper-btn" id="pax-minus" ${state.passengers <= 1 ? 'disabled' : ''}>−</button>
                     <div class="pax-stepper-display">
                         <div class="pax-stepper-count" id="pax-count">${state.passengers}</div>
-                        <div class="pax-stepper-label">${state.passengers === 1 ? 'passageiro' : 'passageiros'}</div>
+                        <div class="pax-stepper-label">${state.passengers === 1 ? T.passenger1 : T.passengerN}</div>
                     </div>
                     <button class="pax-stepper-btn" id="pax-plus" ${state.passengers >= 10 ? 'disabled' : ''}>+</button>
                 </div>
                 <div class="booking-multi-tuk-alert ${state.passengers < 6 ? 'hidden' : ''}" id="booking-multi-tuk">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-                    <span>Para ${state.passengers} passageiros serão necessários ${tukCount} tuk-tuks — o preço é calculado automaticamente.</span>
+                    <span>${T.multiTuk(state.passengers, tukCount)}</span>
                 </div>
                 <button class="btn btn-primary btn-block btn-large booking-continue-btn" id="booking-continue-btn">
-                    Continuar — €${totalPrice}
+                    ${T.cont} — €${totalPrice}
                 </button>
             </div>`;
 
@@ -455,58 +616,50 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="booking-step-header">
                     <span class="booking-step-number">${4 + stepOffset}</span>
                     <div>
-                        <div class="booking-step-label">Finalizar Reserva</div>
+                        <div class="booking-step-label">${T.checkoutTitle}</div>
                     </div>
                 </div>
                 <div class="booking-checkout-grid">
                     <form class="booking-checkout-form" id="booking-checkout-form" novalidate>
                         <div class="booking-checkout-row">
                             <div>
-                                <label>Nome <span class="required">*</span></label>
-                                <input type="text" id="bk-name" placeholder="Nome" required autocomplete="given-name">
+                                <label>${T.name} <span class="required">*</span></label>
+                                <input type="text" id="bk-name" placeholder="${T.namePh}" required autocomplete="given-name">
                             </div>
                             <div>
-                                <label>Apelido <span class="required">*</span></label>
-                                <input type="text" id="bk-surname" placeholder="Apelido" required autocomplete="family-name">
+                                <label>${T.surname} <span class="required">*</span></label>
+                                <input type="text" id="bk-surname" placeholder="${T.surnamePh}" required autocomplete="family-name">
                             </div>
                         </div>
                         <div>
-                            <label>Email <span class="required">*</span></label>
-                            <input type="email" id="bk-email" placeholder="email@exemplo.com" required autocomplete="email">
+                            <label>${T.email} <span class="required">*</span></label>
+                            <input type="email" id="bk-email" placeholder="${T.emailPh}" required autocomplete="email">
                         </div>
                         <div>
-                            <label>Telemóvel <span class="required">*</span></label>
-                            <input type="tel" id="bk-phone" placeholder="+351 9XX XXX XXX" required autocomplete="tel">
+                            <label>${T.phone} <span class="required">*</span></label>
+                            <input type="tel" id="bk-phone" placeholder="${T.phonePh}" required autocomplete="tel">
                         </div>
                         <div>
-                            <label>País</label>
+                            <label>${T.country}</label>
                             <select id="bk-country">
-                                <option value="">Selecionar país</option>
-                                <option value="PT">Portugal</option>
-                                <option value="BR">Brasil</option>
-                                <option value="US">Estados Unidos</option>
-                                <option value="GB">Reino Unido</option>
-                                <option value="FR">França</option>
-                                <option value="DE">Alemanha</option>
-                                <option value="ES">Espanha</option>
-                                <option value="IT">Itália</option>
-                                <option value="NL">Países Baixos</option>
-                                <option value="OTHER">Outro</option>
+                                <option value="">${T.selectCountry}</option>
+                                ${Object.entries(T.countries).map(([code, label]) => `<option value="${code}">${label}</option>`).join('')}
+                                <option value="OTHER">${T.other}</option>
                             </select>
                         </div>
                         <div class="booking-checkout-terms">
                             <input type="checkbox" id="bk-terms" required>
-                            <span>Concordo com os termos da reserva e a política de cancelamento gratuito até 48h antes.</span>
+                            <span>${T.terms}</span>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block btn-large" id="bk-submit-btn">
-                            <span id="bk-submit-text">CONFIRMAR RESERVA — €${totalPrice}</span>
+                            <span id="bk-submit-text">${T.confirm} — €${totalPrice}</span>
                             <span id="bk-submit-loading" class="stripe-loading hidden">
-                                <span class="stripe-spinner"></span> A processar...
+                                <span class="stripe-spinner"></span> ${T.processing}
                             </span>
                         </button>
                         <p class="stripe-security-note">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                            Reserva segura · Cancelamento gratuito até 48h antes
+                            ${T.secure}
                         </p>
                     </form>
                     <div class="booking-tour-summary">
@@ -527,11 +680,11 @@ document.addEventListener('DOMContentLoaded', () => {
                             </div>` : ''}
                             <div class="booking-summary-detail">
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
-                                ${state.passengers} ${state.passengers === 1 ? 'passageiro' : 'passageiros'} ${tukCount > 1 ? `· ${tukCount} tuk-tuks` : ''}
+                                ${state.passengers} ${state.passengers === 1 ? T.passenger1 : T.passengerN} ${tukCount > 1 ? `· ${tukCount} tuk-tuks` : ''}
                             </div>
                             <div class="booking-summary-divider"></div>
                             <div class="booking-summary-price-row">
-                                <span>Subtotal</span>
+                                <span>${T.subtotal}</span>
                                 <span>€${currentBasePrice}</span>
                             </div>
                             ${tukCount > 1 ? `<div class="booking-summary-price-row">
@@ -539,7 +692,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <span>€${totalPrice}</span>
                             </div>` : ''}
                             <div class="booking-summary-total">
-                                <span>Total devido</span>
+                                <span>${T.totalDue}</span>
                                 <span>€${totalPrice}</span>
                             </div>
                         </div>
@@ -550,11 +703,11 @@ document.addEventListener('DOMContentLoaded', () => {
             // Success state
             html += `<div class="booking-success hidden" id="booking-success">
                 <div class="booking-success-icon">✓</div>
-                <h3>Pedido enviado com sucesso!</h3>
-                <p>A Susane entrará em contacto em breve para confirmar a sua reserva.</p>
+                <h3>${T.successTitle}</h3>
+                <p>${T.successMsg}</p>
                 <div class="booking-success-details" id="booking-success-details"></div>
                 <a href="https://wa.me/351966697738" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="margin-top:1rem;">
-                    Confirmar via WhatsApp
+                    ${T.successWa}
                 </a>
             </div>`;
 
@@ -617,7 +770,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const formatDatePT = (dateStr) => {
             const parts = dateStr.split('-');
-            return `${parts[2]} de ${MONTH_NAMES_PT[parseInt(parts[1], 10) - 1]} de ${parts[0]}`;
+            return T.dateFmt(parseInt(parts[2], 10), T.months[parseInt(parts[1], 10) - 1], parts[0]);
         };
 
         const bindOverlayEvents = () => {
@@ -746,7 +899,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             });
                             const data = await res.json();
                             if (data && data.url) { window.location.href = data.url; return; }
-                            throw new Error((data && data.error) || 'Não foi possível iniciar o pagamento.');
+                            throw new Error((data && data.error) || T.payError);
                         } catch (err) {
                             submitText.classList.remove('hidden');
                             submitLoading.classList.add('hidden');
@@ -758,7 +911,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 errBox.className = 'booking-error-note';
                                 submitBtn.parentNode.insertBefore(errBox, submitBtn.nextSibling);
                             }
-                            errBox.textContent = '⚠️ ' + err.message + ' Tente novamente ou fale connosco pelo WhatsApp.';
+                            errBox.textContent = '⚠️ ' + err.message + ' ' + T.tryAgain;
                             return;
                         }
                     }
@@ -770,11 +923,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         success.classList.remove('hidden');
                         document.getElementById('booking-success-details').innerHTML = `
                             <strong>Tour:</strong> ${tour.name}<br>
-                            <strong>Data:</strong> ${formatDatePT(state.selectedDate)}<br>
-                            <strong>Hora:</strong> ${state.selectedTime}<br>
-                            <strong>Passageiros:</strong> ${state.passengers}<br>
-                            <strong>Valor total:</strong> €${totalPrice}<br>
-                            <strong>Nome:</strong> ${customer.name}
+                            <strong>${T.chooseDate.split(' ').pop()}:</strong> ${formatDatePT(state.selectedDate)} · ${state.selectedTime}<br>
+                            <strong>${T.passengers}:</strong> ${state.passengers}<br>
+                            <strong>Total:</strong> €${totalPrice}<br>
+                            <strong>${T.name}:</strong> ${customer.name}
                         `;
                     }, 1500);
                 });
