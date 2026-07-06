@@ -2053,6 +2053,9 @@ select:disabled {
 /* Offset header for banner */
 body:not(.promo-dismissed) .site-header { top: 40px; }
 body.promo-dismissed .site-header { top: 0; }
+/* O banner é position:relative e desliza com a página: assim que há scroll
+   (.scrolled), o header volta ao topo para não deixar uma faixa de 40px vazia. */
+body:not(.promo-dismissed) .site-header.scrolled { top: 0; }
 body:not(.promo-dismissed) .hero-section { padding-top: 7.5rem; }
 
 /* ── Hero Badges Row ──────────────────────────────────────── */
@@ -2759,12 +2762,15 @@ body:not(.promo-dismissed) .hero-section { padding-top: 7.5rem; }
 /* ── Smart Header (Sticky on scroll) ── */
 .site-header {
     transition: transform 0.35s ease,
+                top 0.35s ease,
                 background-color 0.4s ease,
                 box-shadow 0.4s ease,
                 backdrop-filter 0.4s ease;
 }
 .site-header.header-hidden {
-    transform: translateY(-100%);
+    /* -120% (e não -100%): garante que sai por completo mesmo com o
+       offset de 40px do promo banner e a sombra do header */
+    transform: translateY(-120%);
 }
 
 .site-header.scrolled {
@@ -4490,4 +4496,29 @@ body.lightbox-open { overflow: hidden; }
     flex-wrap: wrap;
     color: var(--color-text-muted, #4A5A6A);
     font-weight: 600;
+}
+
+/* ═══════════════════════════════════════════════════════
+   OTIMIZAÇÃO DE ESPAÇOS — MOBILE (<768px)
+   Secções mais compactas: menos scroll até ao conteúdo.
+═══════════════════════════════════════════════════════ */
+@media (max-width: 767.98px) {
+  .section-container { padding: 2.25rem 1.15rem; }
+  .section-subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.75rem;
+  }
+  .section-title { font-size: 1.85rem; }
+  .usp-band-inner {
+    gap: 1rem 0.75rem;
+    padding: 1.15rem 1.15rem;
+  }
+  .tours-visual-grid { gap: 1.25rem; padding: 0 1.15rem; }
+  .tour-card-body { padding: 1.1rem 1.15rem 1.25rem; }
+  .multi-tuk-note { margin-top: 1rem; }
+  .about-grid { gap: 1.5rem; }
+  .gallery-teaser { gap: 0.65rem; }
+  .faq-list { margin-top: 1.5rem; gap: 0.6rem; }
+  .faq-cta { margin-top: 1.25rem; }
+  .footer-container { gap: 1.75rem; }
 }
