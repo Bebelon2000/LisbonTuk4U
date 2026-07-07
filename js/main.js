@@ -214,6 +214,7 @@ const I18N = {
         successWa: 'Confirmar via WhatsApp',
         payError: 'Não foi possível iniciar o pagamento.',
         tryAgain: 'Tente novamente ou fale connosco pelo WhatsApp.',
+        pickTourTitle: 'Escolha o seu passeio', from: 'Desde', perGroup: 'por grupo', bestSeller: 'Mais vendido',
     },
     en: {
         months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
@@ -241,6 +242,7 @@ const I18N = {
         successWa: 'Confirm via WhatsApp',
         payError: 'We could not start the payment.',
         tryAgain: 'Please try again or contact us on WhatsApp.',
+        pickTourTitle: 'Choose your tour', from: 'From', perGroup: 'per group', bestSeller: 'Best seller',
     },
     es: {
         months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
@@ -268,6 +270,7 @@ const I18N = {
         successWa: 'Confirmar por WhatsApp',
         payError: 'No se pudo iniciar el pago.',
         tryAgain: 'Inténtalo de nuevo o escríbenos por WhatsApp.',
+        pickTourTitle: 'Elige tu tour', from: 'Desde', perGroup: 'por grupo', bestSeller: 'Más vendido',
     },
     it: {
         months: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'],
@@ -295,6 +298,7 @@ const I18N = {
         successWa: 'Conferma via WhatsApp',
         payError: 'Impossibile avviare il pagamento.',
         tryAgain: 'Riprova o scrivici su WhatsApp.',
+        pickTourTitle: 'Scegli il tuo tour', from: 'Da', perGroup: 'a gruppo', bestSeller: 'Più venduto',
     },
     fr: {
         months: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
@@ -322,6 +326,7 @@ const I18N = {
         successWa: 'Confirmer via WhatsApp',
         payError: 'Impossible de démarrer le paiement.',
         tryAgain: 'Réessayez ou contactez-nous sur WhatsApp.',
+        pickTourTitle: 'Choisissez votre balade', from: 'Dès', perGroup: 'par groupe', bestSeller: 'Best-seller',
     },
 };
 
@@ -472,6 +477,77 @@ document.addEventListener('DOMContentLoaded', () => {
                 toursGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         });
+    }
+
+    // ─── 5c. Quick Tour Picker (aberto pelo CTA sticky mobile) ──
+    const QUICK_PICKER_ORDER = ['a-la-carte', 'belem', 'half-day', 'centro-historico', 'miradouros', 'full-lisboa'];
+    const quickPickerOverlay = document.getElementById('quick-picker-overlay');
+    const quickPickerList = document.getElementById('quick-picker-list');
+    const quickPickerClose = document.getElementById('quick-picker-close');
+    const quickPickerTitle = document.getElementById('quick-picker-title');
+    const stickyCtaBtn = document.getElementById('mobile-sticky-cta-link');
+
+    if (quickPickerOverlay && quickPickerList && stickyCtaBtn) {
+        if (quickPickerTitle) quickPickerTitle.textContent = T.pickTourTitle;
+
+        const priceLabel = (tour) => {
+            if (tour.isALaCarte) {
+                const min = tour.durationOptions[0].price;
+                return `${T.from} €${min}`;
+            }
+            return `€${tour.basePrice} ${T.perGroup}`;
+        };
+
+        quickPickerList.innerHTML = QUICK_PICKER_ORDER.map((id) => {
+            const tour = TOUR_DATA[id];
+            if (!tour) return '';
+            const isBestSeller = id === 'half-day';
+            return `
+                <button type="button" class="quick-picker-item" data-tour-id="${id}">
+                    <img class="quick-picker-item-img" src="${tour.img}" alt="" loading="lazy">
+                    <div class="quick-picker-item-body">
+                        <div class="quick-picker-item-name">
+                            ${tour.name}
+                            ${isBestSeller ? `<span class="quick-picker-badge">★ ${T.bestSeller}</span>` : ''}
+                        </div>
+                        <div class="quick-picker-item-meta">${tour.duration}</div>
+                    </div>
+                    <div class="quick-picker-item-price">${priceLabel(tour)}</div>
+                </button>`;
+        }).join('');
+
+        const openQuickPicker = () => {
+            quickPickerOverlay.hidden = false;
+            document.body.classList.add('quick-picker-locked');
+            void quickPickerOverlay.offsetWidth; // força reflow para garantir a transição CSS
+            quickPickerOverlay.classList.add('open');
+        };
+        const closeQuickPicker = () => {
+            quickPickerOverlay.classList.remove('open');
+            document.body.classList.remove('quick-picker-locked');
+            setTimeout(() => { quickPickerOverlay.hidden = true; }, 250);
+        };
+
+        stickyCtaBtn.addEventListener('click', openQuickPicker);
+        if (quickPickerClose) quickPickerClose.addEventListener('click', closeQuickPicker);
+        quickPickerOverlay.addEventListener('click', (e) => {
+            if (e.target === quickPickerOverlay) closeQuickPicker();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && quickPickerOverlay.classList.contains('open')) closeQuickPicker();
+        });
+        quickPickerList.querySelectorAll('.quick-picker-item').forEach((item) => {
+            item.addEventListener('click', () => {
+                const tourId = item.dataset.tourId;
+                closeQuickPicker();
+                openBookingOverlay(tourId);
+            });
+        });
+
+        // Deep-link vindo de outra página (about/contact/gallery): ?openPicker=1
+        if (new URLSearchParams(window.location.search).get('openPicker') === '1') {
+            setTimeout(openQuickPicker, 350);
+        }
     }
 
     // ─── 6. Booking Overlay (EcoTukTours-style) ────────────
