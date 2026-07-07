@@ -83,9 +83,7 @@ const TOUR_DATA = {
             'Miradouro das Portas do Sol',
             'Miradouro da Senhora do Monte',
             'Igreja e Mosteiro de São Vicente de Fora',
-            'Feira da Ladra',
             'Panteão Nacional',
-            'Paragem para ginjinha',
             'Elevador de Santa Justa',
             'Miradouro de São Pedro de Alcântara',
             'Assembleia da República',
@@ -455,6 +453,25 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }, { root: null, threshold: 0.1 });
         observer.observe(heroSection);
+    }
+
+    // ─── 5b. Tours "Ver mais" (mobile: mostra 3 de 6) ──────
+    const toursSeeMoreBtn = document.getElementById('tours-see-more-btn');
+    const toursGrid = document.querySelector('.tours-visual-grid');
+    if (toursSeeMoreBtn && toursGrid) {
+        toursSeeMoreBtn.addEventListener('click', () => {
+            const expanded = toursGrid.classList.toggle('tours-expanded');
+            toursSeeMoreBtn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+            const label = toursSeeMoreBtn.querySelector('span');
+            if (label) {
+                label.textContent = expanded
+                    ? toursSeeMoreBtn.dataset.hideText
+                    : toursSeeMoreBtn.dataset.showText;
+            }
+            if (!expanded) {
+                toursGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
     }
 
     // ─── 6. Booking Overlay (EcoTukTours-style) ────────────
@@ -1132,9 +1149,12 @@ document.addEventListener('DOMContentLoaded', () => {
             grid.appendChild(sk);
         }
 
+        const MAX_REVIEWS = 9; // limite da secção (a Places API só devolve até 5 hoje)
+        const VISIBLE_BY_DEFAULT = 3;
+
         const renderCard = (rv, i) => {
             const card = document.createElement('article');
-            card.className = 'gr-card';
+            card.className = 'gr-card' + (i >= VISIBLE_BY_DEFAULT ? ' gr-card-extra' : '');
 
             const head = document.createElement('header');
             head.className = 'gr-card-head';
@@ -1206,9 +1226,30 @@ document.addEventListener('DOMContentLoaded', () => {
             if (liveEl) liveEl.hidden = false;
 
             grid.innerHTML = '';
-            const list = Array.isArray(data.reviews) ? data.reviews : [];
+            const list = (Array.isArray(data.reviews) ? data.reviews : []).slice(0, MAX_REVIEWS);
             if (!list.length) { grid.hidden = true; return; }
             list.forEach((rv, i) => grid.appendChild(renderCard(rv, i)));
+
+            const seeMoreWrap = document.getElementById('reviews-see-more-wrap');
+            const seeMoreBtn = document.getElementById('reviews-see-more-btn');
+            if (seeMoreWrap && seeMoreBtn) {
+                if (list.length > VISIBLE_BY_DEFAULT) {
+                    seeMoreWrap.hidden = false;
+                    seeMoreBtn.addEventListener('click', () => {
+                        const expanded = grid.classList.toggle('gr-grid-expanded');
+                        seeMoreBtn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+                        const label = seeMoreBtn.querySelector('span');
+                        if (label) {
+                            label.textContent = expanded
+                                ? seeMoreBtn.dataset.hideText
+                                : seeMoreBtn.dataset.showText;
+                        }
+                        if (!expanded) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    });
+                } else {
+                    seeMoreWrap.hidden = true;
+                }
+            }
         })
         .catch(() => {
             // Sem ligação ainda (ex.: chave Google por configurar) -> mantém o resumo estático

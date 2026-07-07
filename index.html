@@ -50,7 +50,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400..800&family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="index.css?v=4.1.1">
+    <link rel="stylesheet" href="index.css?v=4.1.4">
 
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
@@ -289,9 +289,9 @@
             <!-- <picture>: no desktop (>=768px) serve um gif de 1px para não descarregar a foto que o CSS esconde -->
             <picture>
                 <source media="(min-width: 768px)" srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
-                <img src="assets/img/guia-susane.webp"
+                <img src="assets/img/guia-susane-mobile.webp"
                      alt="Susane, guia local certificada, num tuk-tuk elétrico em Lisboa"
-                     class="hero-mobile-bg" width="1000" height="1500"
+                     class="hero-mobile-bg" width="590" height="1422"
                      loading="eager" fetchpriority="high" aria-hidden="true">
             </picture>
             <div class="hero-container">
@@ -507,7 +507,7 @@
                 </article>
 
                 <!-- CARD 4: Centro Histórico -->
-                <article class="tour-visual-card" data-tour-id="centro-historico" id="card-centro-historico">
+                <article class="tour-visual-card tour-card-extra" data-tour-id="centro-historico" id="card-centro-historico">
                     <div class="tour-card-img-wrapper">
                         <img src="assets/img/tour-centro-historico.webp" alt="Centro Histórico — Bairro Alto, Chiado, Alfama e Graça" class="tour-card-img" loading="lazy">
                         <div class="tour-card-img-overlay"></div>
@@ -540,7 +540,7 @@
                 </article>
 
                 <!-- CARD 5: Lisboa Miradouros -->
-                <article class="tour-visual-card" data-tour-id="miradouros" id="card-miradouros">
+                <article class="tour-visual-card tour-card-extra" data-tour-id="miradouros" id="card-miradouros">
                     <div class="tour-card-img-wrapper">
                         <img src="assets/img/tour-miradouros.webp" alt="Lisboa Miradouros — as melhores vistas da cidade" class="tour-card-img" loading="lazy">
                         <div class="tour-card-img-overlay"></div>
@@ -573,7 +573,7 @@
                 </article>
 
                 <!-- CARD 6: Full Lisboa -->
-                <article class="tour-visual-card" data-tour-id="full-lisboa" id="card-full-lisboa">
+                <article class="tour-visual-card tour-card-extra" data-tour-id="full-lisboa" id="card-full-lisboa">
                     <div class="tour-card-img-wrapper">
                         <img src="assets/img/tour-full-lisboa.webp" alt="Full Lisboa — experiência imersiva de 5 horas" class="tour-card-img" loading="lazy">
                         <div class="tour-card-img-overlay"></div>
@@ -606,6 +606,14 @@
                 </article>
 
             </div><!-- /tours-visual-grid -->
+
+            <!-- Ver mais passeios (mobile only) -->
+            <div class="tours-see-more-wrap">
+                <button type="button" class="tours-see-more-btn" id="tours-see-more-btn" data-show-text="Ver mais passeios" data-hide-text="Ver menos" aria-expanded="false">
+                    <span>Ver mais passeios</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+            </div>
 
             <!-- Multi-tuk note -->
             <div class="multi-tuk-note">
@@ -648,6 +656,12 @@
                     </span>
                 </div>
                 <div class="gr-grid" id="gr-grid" aria-live="polite"></div>
+                <div class="reviews-see-more-wrap" id="reviews-see-more-wrap" hidden>
+                    <button type="button" class="reviews-see-more-btn" id="reviews-see-more-btn" data-show-text="Ver mais comentários" data-hide-text="Ver menos" aria-expanded="false">
+                        <span>Ver mais comentários</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                </div>
             </div>
 
             <div class="reviews-actions">
@@ -876,7 +890,7 @@
 
 
     <script src="js/payments-config.js?v=1.0.1"></script>
-    <script src="js/main.js?v=3.6.0"></script>
+    <script src="js/main.js?v=3.8.1"></script>
 
 </body>
 </html>
