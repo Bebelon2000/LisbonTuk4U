@@ -10,6 +10,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
+  <!-- ══════════ BLOG (só PT por agora) ══════════ -->
+  <url>
+    <loc>https://tours.lisbontuk4u.com/blog/</loc>
+    <lastmod>2026-07-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://tours.lisbontuk4u.com/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tours.lisbontuk4u.com/blog/"/>
+  </url>
+  <url>
+    <loc>https://tours.lisbontuk4u.com/blog/melhores-miradouros-lisboa.html</loc>
+    <lastmod>2026-07-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://tours.lisbontuk4u.com/blog/melhores-miradouros-lisboa.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tours.lisbontuk4u.com/blog/melhores-miradouros-lisboa.html"/>
+  </url>
+  <url>
+    <loc>https://tours.lisbontuk4u.com/blog/o-que-ver-em-belem-um-dia.html</loc>
+    <lastmod>2026-07-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://tours.lisbontuk4u.com/blog/o-que-ver-em-belem-um-dia.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tours.lisbontuk4u.com/blog/o-que-ver-em-belem-um-dia.html"/>
+  </url>
+  <url>
+    <loc>https://tours.lisbontuk4u.com/blog/guia-alfama-lisboa.html</loc>
+    <lastmod>2026-07-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://tours.lisbontuk4u.com/blog/guia-alfama-lisboa.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tours.lisbontuk4u.com/blog/guia-alfama-lisboa.html"/>
+  </url>
+  <url>
+    <loc>https://tours.lisbontuk4u.com/blog/melhor-epoca-visitar-lisboa.html</loc>
+    <lastmod>2026-07-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://tours.lisbontuk4u.com/blog/melhor-epoca-visitar-lisboa.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tours.lisbontuk4u.com/blog/melhor-epoca-visitar-lisboa.html"/>
+  </url>
+
   <!-- ══════════ HOMEPAGE (5 idiomas) ══════════ -->
   <url>
     <loc>https://tours.lisbontuk4u.com/</loc>
