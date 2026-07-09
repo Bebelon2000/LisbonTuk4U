@@ -4,6 +4,14 @@
     RewriteEngine On
     RewriteBase /
 
+    # 0. Consolidar dominio canonico (301):
+    #    tours.lisbontuk4u.com (staging antigo) e www.lisbontuk4u.com  ->  lisbontuk4u.com
+    #    Evita conteudo duplicado e concentra a autoridade SEO num so dominio.
+    #    O caminho e preservado (ex.: tours.../tours/belem.html -> .../tours/belem.html).
+    RewriteCond %{HTTP_HOST} ^tours\.lisbontuk4u\.com$ [NC,OR]
+    RewriteCond %{HTTP_HOST} ^www\.lisbontuk4u\.com$ [NC]
+    RewriteRule ^(.*)$ https://lisbontuk4u.com/$1 [R=301,L]
+
     # Redirect trailing slashes for subfolders if needed
     RewriteCond %{REQUEST_FILENAME} -d
     RewriteRule ^(.*[^/])$ /$1/ [R=301,L]
