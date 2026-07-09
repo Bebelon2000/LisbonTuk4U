@@ -58,22 +58,38 @@
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "WebSite",
+      "@id": "https://lisbontuk4u.com/#website",
+      "url": "https://lisbontuk4u.com",
+      "name": "LisbonTuk4U",
+      "alternateName": ["Lisbon Tuk Tuk", "Lisbon Tuk4U", "LisbonTuk4U Tours"],
+      "inLanguage": "pt-PT",
+      "publisher": { "@id": "https://lisbontuk4u.com/#agency" }
+    },
+    {
       "@type": "TravelAgency",
       "@id": "https://lisbontuk4u.com/#agency",
       "name": "LisbonTuk4U",
+      "alternateName": "Lisbon Tuk Tuk",
       "description": "Passeios turísticos privados de tuk-tuk elétrico em Lisboa guiados pela guia local Susane.",
       "url": "https://lisbontuk4u.com",
       "telephone": "+351966697738",
       "email": "lisbontuk4u@gmail.com",
       "address": {
         "@type": "PostalAddress",
+        "streetAddress": "R. Gonçalves Crespo 44",
         "addressLocality": "Lisboa",
+        "postalCode": "1150-186",
         "addressCountry": "PT"
       },
       "geo": {
         "@type": "GeoCoordinates",
         "latitude": "38.71667",
         "longitude": "-9.13333"
+      },
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://lisbontuk4u.com/assets/img/logo-lisbontuk4u.webp"
       },
       "image": "https://lisbontuk4u.com/assets/img/hero-main.webp",
       "priceRange": "€120 - €360",
