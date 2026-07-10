@@ -29,13 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mobileCta && hero) {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                mobileCta.style.transform = entry.isIntersecting
-                    ? 'translateY(100%)'
-                    : 'translateY(0)';
+                mobileCta.classList.toggle('visible', !entry.isIntersecting);
             });
         }, { threshold: 0.1 });
         observer.observe(hero);
-        mobileCta.style.transition = 'transform 0.35s cubic-bezier(0.33, 1, 0.68, 1)';
-        mobileCta.style.transform = 'translateY(100%)';
     }
 });

@@ -215,6 +215,10 @@ const I18N = {
         payError: 'Não foi possível iniciar o pagamento.',
         tryAgain: 'Tente novamente ou fale connosco pelo WhatsApp.',
         pickTourTitle: 'Escolha o seu passeio', from: 'Desde', perGroup: 'por grupo', bestSeller: 'Mais vendido',
+        contactMessageLabel: 'Mensagem (opcional)', contactMessagePh: 'Conte-nos um pouco sobre o passeio que procura...',
+        contactSending: 'A enviar...', contactSuccessTitle: 'Mensagem enviada!',
+        contactSuccessMsg: 'Obrigado! A Susane vai responder brevemente para o seu e-mail.',
+        contactError: 'Não foi possível enviar a mensagem. Tente novamente ou fale connosco pelo WhatsApp.',
     },
     en: {
         months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
@@ -243,6 +247,10 @@ const I18N = {
         payError: 'We could not start the payment.',
         tryAgain: 'Please try again or contact us on WhatsApp.',
         pickTourTitle: 'Choose your tour', from: 'From', perGroup: 'per group', bestSeller: 'Best seller',
+        contactMessageLabel: 'Message (optional)', contactMessagePh: 'Tell us a bit about the tour you\'re looking for...',
+        contactSending: 'Sending...', contactSuccessTitle: 'Message sent!',
+        contactSuccessMsg: 'Thank you! Susane will reply to your email shortly.',
+        contactError: 'We could not send your message. Please try again or contact us on WhatsApp.',
     },
     es: {
         months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
@@ -271,6 +279,10 @@ const I18N = {
         payError: 'No se pudo iniciar el pago.',
         tryAgain: 'Inténtalo de nuevo o escríbenos por WhatsApp.',
         pickTourTitle: 'Elige tu tour', from: 'Desde', perGroup: 'por grupo', bestSeller: 'Más vendido',
+        contactMessageLabel: 'Mensaje (opcional)', contactMessagePh: 'Cuéntanos un poco sobre el tour que buscas...',
+        contactSending: 'Enviando...', contactSuccessTitle: '¡Mensaje enviado!',
+        contactSuccessMsg: '¡Gracias! Susane responderá a tu email en breve.',
+        contactError: 'No se pudo enviar el mensaje. Inténtalo de nuevo o escríbenos por WhatsApp.',
     },
     it: {
         months: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'],
@@ -299,6 +311,10 @@ const I18N = {
         payError: 'Impossibile avviare il pagamento.',
         tryAgain: 'Riprova o scrivici su WhatsApp.',
         pickTourTitle: 'Scegli il tuo tour', from: 'Da', perGroup: 'a gruppo', bestSeller: 'Più venduto',
+        contactMessageLabel: 'Messaggio (facoltativo)', contactMessagePh: 'Raccontaci un po\' del tour che stai cercando...',
+        contactSending: 'Invio in corso...', contactSuccessTitle: 'Messaggio inviato!',
+        contactSuccessMsg: 'Grazie! Susane risponderà alla tua email a breve.',
+        contactError: 'Non è stato possibile inviare il messaggio. Riprova o scrivici su WhatsApp.',
     },
     fr: {
         months: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
@@ -327,6 +343,10 @@ const I18N = {
         payError: 'Impossible de démarrer le paiement.',
         tryAgain: 'Réessayez ou contactez-nous sur WhatsApp.',
         pickTourTitle: 'Choisissez votre balade', from: 'Dès', perGroup: 'par groupe', bestSeller: 'Best-seller',
+        contactMessageLabel: 'Message (facultatif)', contactMessagePh: 'Parlez-nous un peu de la balade que vous recherchez...',
+        contactSending: 'Envoi...', contactSuccessTitle: 'Message envoyé !',
+        contactSuccessMsg: 'Merci ! Susane répondra à votre email sous peu.',
+        contactError: 'Impossible d\'envoyer le message. Réessayez ou contactez-nous sur WhatsApp.',
     },
 };
 
@@ -1331,6 +1351,67 @@ document.addEventListener('DOMContentLoaded', () => {
             // Sem ligação ainda (ex.: chave Google por configurar) -> mantém o resumo estático
             grid.innerHTML = '';
             grid.hidden = true;
+        });
+    })();
+
+    // ─── 11. Contact Form (contact.html) ───────────────────
+    (function initContactForm() {
+        const form = document.getElementById('booking-form');
+        if (!form) return;
+
+        const nameInput = document.getElementById('form-name');
+        const emailInput = document.getElementById('form-email');
+        const messageInput = document.getElementById('form-message');
+        const submitBtn = document.getElementById('form-submit-btn');
+        const submitLabel = submitBtn ? submitBtn.textContent : '';
+
+        let feedback = document.getElementById('form-feedback');
+        if (!feedback) {
+            feedback = document.createElement('p');
+            feedback.id = 'form-feedback';
+            feedback.className = 'contact-form-feedback';
+            feedback.setAttribute('role', 'status');
+            feedback.hidden = true;
+            form.appendChild(feedback);
+        }
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const cfg = window.LISBONTUK_PAYMENTS;
+            if (!cfg || !cfg.supabaseUrl || !cfg.anonKey) return;
+
+            feedback.hidden = true;
+            feedback.className = 'contact-form-feedback';
+            submitBtn.disabled = true;
+            submitBtn.textContent = T.contactSending;
+
+            fetch(cfg.supabaseUrl + '/functions/v1/send-contact-message', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + cfg.anonKey },
+                body: JSON.stringify({
+                    name: nameInput.value,
+                    email: emailInput.value,
+                    message: messageInput ? messageInput.value : '',
+                    lang: SITE_LANG,
+                }),
+            })
+            .then((r) => r.json().then((data) => ({ ok: r.ok, data })))
+            .then(({ ok, data }) => {
+                if (!ok || !data || data.error) throw new Error((data && data.error) || 'send failed');
+                form.reset();
+                feedback.textContent = '✅ ' + T.contactSuccessTitle + ' ' + T.contactSuccessMsg;
+                feedback.classList.add('contact-form-feedback--success');
+                feedback.hidden = false;
+            })
+            .catch(() => {
+                feedback.textContent = '⚠️ ' + T.contactError;
+                feedback.classList.add('contact-form-feedback--error');
+                feedback.hidden = false;
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.textContent = submitLabel;
+            });
         });
     })();
 });

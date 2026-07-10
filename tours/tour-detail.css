@@ -126,7 +126,7 @@
     gap: 2rem;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 1.5rem 1.25rem 6rem; /* 6rem bottom for mobile CTA */
+    padding: 1.5rem 1.25rem 4.5rem; /* clearance para o CTA fixo mobile, sem espaço a mais */
 }
 
 /* ── Quick Details ──────────────────────────────────────── */
@@ -388,6 +388,17 @@
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
+    /* Estado fechado por defeito via CLASSE (não inline style) — um
+       transform aplicado via JS diretamente em position:fixed pode deixar
+       o hit-test do Safari/iOS dessincronizado da posição visual, exigindo
+       um 2º toque para registar o clique. */
+    transform: translateY(100%);
+    transition: transform 0.35s cubic-bezier(0.33, 1, 0.68, 1);
+    pointer-events: none;
+}
+.td-mobile-cta.visible {
+    transform: translateY(0);
+    pointer-events: auto;
 }
 .td-mobile-cta-price {
     display: flex;
@@ -412,7 +423,7 @@
 /* ── Related Activities ─────────────────────────────────── */
 .td-related-section {
     background: var(--color-bg-light);
-    padding: 3rem 1.25rem;
+    padding: 2rem 1.25rem 3rem;
 }
 .td-related-inner {
     max-width: 1200px;

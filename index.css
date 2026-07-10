@@ -1043,7 +1043,8 @@ img {
     color: var(--color-text-dark);
 }
 
-.form-group input {
+.form-group input,
+.form-group textarea {
     min-height: 56px;
     padding: 0.75rem 1rem;
     border: 1.5px solid var(--color-border);
@@ -1053,10 +1054,36 @@ img {
     transition: var(--transition-fast);
 }
 
-.form-group input:focus {
+.form-group textarea {
+    resize: vertical;
+    line-height: 1.5;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
     outline: none;
     border-color: var(--color-primary);
     box-shadow: 0 0 0 3px var(--color-bg-overlay);
+}
+
+.contact-form-feedback {
+    margin-top: 0.5rem;
+    padding: 0.85rem 1rem;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.contact-form-feedback--success {
+    background: rgba(52, 224, 161, 0.12);
+    color: #0d7a58;
+    border: 1px solid rgba(52, 224, 161, 0.35);
+}
+
+.contact-form-feedback--error {
+    background: rgba(237, 77, 150, 0.08);
+    color: #b23a6d;
+    border: 1px solid rgba(237, 77, 150, 0.3);
 }
 
 /* Footer styling */
