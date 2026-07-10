@@ -6,13 +6,13 @@
 //
 // Segredos necessários (supabase secrets set ...):
 //   STRIPE_SECRET_KEY   -> chave secreta Stripe (sk_test_... / sk_live_...)
-//   SITE_URL            -> ex.: https://tours.lisbontuk4u.com (sem / final)
+//   SITE_URL            -> ex.: https://lisbontuk4u.com (sem / final)
 // ──────────────────────────────────────────────────────────────
 import { corsHeaders } from "../_shared/cors.ts";
 import { computeAmountCents } from "../_shared/pricing.ts";
 
 const STRIPE_SECRET = Deno.env.get("STRIPE_SECRET_KEY") ?? "";
-const SITE_URL = (Deno.env.get("SITE_URL") ?? "https://tours.lisbontuk4u.com")
+const SITE_URL = (Deno.env.get("SITE_URL") ?? "https://lisbontuk4u.com")
   .replace(/\/$/, "");
 
 Deno.serve(async (req: Request) => {
