@@ -410,7 +410,13 @@ document.addEventListener('DOMContentLoaded', () => {
             setInterval(() => {
                 promoMessages[currentPromoIdx].classList.remove('active');
                 currentPromoIdx = (currentPromoIdx + 1) % promoMessages.length;
-                promoMessages[currentPromoIdx].classList.add('active');
+                // Só mostra a próxima mensagem DEPOIS da anterior desaparecer
+                // por completo (mesma duração do transition do CSS) — a
+                // versão anterior mostrava as duas ao mesmo tempo a meio da
+                // transição, com o texto sobreposto e ilegível.
+                setTimeout(() => {
+                    promoMessages[currentPromoIdx].classList.add('active');
+                }, 350);
             }, 4000);
         }
         if (promoClose) {

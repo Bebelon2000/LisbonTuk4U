@@ -2053,7 +2053,10 @@ select:disabled {
     left: 0;
     width: 100%;
     opacity: 0;
-    transition: opacity 0.6s ease;
+    /* Sequencial (não crossfade) — ver comentário no JS: sem isto, as
+       duas mensagens ficam ambas parcialmente visíveis ao mesmo tempo
+       e o texto sobrepõe-se, parecendo "partido". */
+    transition: opacity 0.35s ease;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
