@@ -428,8 +428,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // ─── 3. Smart Header (sombra + esconder ao descer, mostrar ao subir) ──
     const header = document.getElementById('site-header');
     let lastScrollY = window.scrollY;
+    let headerTicking = false;
 
-    window.addEventListener('scroll', () => {
+    const updateHeaderOnScroll = () => {
         const currentScrollY = window.scrollY;
 
         // Sombra/fundo assim que sai do topo
@@ -441,6 +442,17 @@ document.addEventListener('DOMContentLoaded', () => {
             const goingDown = currentScrollY > lastScrollY;
             header.classList.toggle('header-hidden', goingDown && currentScrollY > 140);
             lastScrollY = currentScrollY;
+        }
+        headerTicking = false;
+    };
+
+    // rAF-throttled: sem isto, o scroll (que dispara dezenas de eventos por
+    // segundo, sobretudo no mobile) forçava um recalculo de estilo por
+    // evento -> engasgava o scroll em vez de acompanhar suavemente.
+    window.addEventListener('scroll', () => {
+        if (!headerTicking) {
+            window.requestAnimationFrame(updateHeaderOnScroll);
+            headerTicking = true;
         }
     }, { passive: true });
 
