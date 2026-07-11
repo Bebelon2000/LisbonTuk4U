@@ -8,8 +8,10 @@
     --color-primary: #1C6FB0;        /* azul-azulejo (links, eyebrows, ícones) */
     --color-primary-light: #2E86C1;  /* azul mais claro / hovers */
     --color-primary-dark: #1B2A3A;   /* tinta naval — títulos, rodapé */
-    --color-accent: #ED4D96;         /* rosa do logótipo — CTAs principais */
-    --color-accent-hover: #D43D83;
+    /* #ED4D96 original só dava 3,44:1 com texto branco (falha WCAG AA);
+       escurecido para 4,97:1 mantendo o tom rosa da marca. */
+    --color-accent: #C9327B;         /* rosa do logótipo — CTAs principais */
+    --color-accent-hover: #AD2A69;
     --color-pink: #FF69B4;           /* rosa do logótipo (decorativo) */
     --color-pink-soft: #FDEEF6;      /* fundo rosa suave */
     --color-blue-soft: #E8F2FD;      /* fundo azul suave */
@@ -1709,6 +1711,7 @@ select:disabled {
 .contact-link {
     display: inline-flex;
     align-items: center;
+    gap: 0.5rem;
     color: rgba(255, 255, 255, 0.7);
     transition: var(--transition-fast);
 }
@@ -2114,6 +2117,14 @@ body:not(.promo-dismissed) .hero-section { padding-top: 7.5rem; }
 .tours-visual-section .section-subtitle,
 .tours-visual-section .section-eyebrow {
     padding: 0 1.25rem;
+}
+
+/* No desktop, o padding-bottom de 5.5rem desta secção somado ao
+   padding-top de 5.5rem da secção de reviews a seguir criava um vazio
+   de ~150px entre a nota multi-tuk e "Prova social". Reduzido só aqui. */
+@media (min-width: 768px) {
+    .tours-visual-section { padding-bottom: 2.5rem; }
+    .reviews-section { padding-top: 3rem; }
 }
 
 .tours-visual-grid {
@@ -3662,15 +3673,19 @@ body:not(.promo-dismissed) .hero-section { padding-top: 7.5rem; }
 
 /* â”€â”€ BotÃ£o WhatsApp â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .btn-whatsapp {
-    background-color: #25D366;
+    /* #25D366 (verde claro da marca) com texto branco só dava 1,98:1 de
+       contraste (falha WCAG AA) -> usa-se o verde-escuro oficial do
+       cabeçalho da app (#075E54), que mantém a identidade WhatsApp e
+       sobe o contraste para ~7,7:1. */
+    background-color: #075E54;
     color: #fff;
-    box-shadow: 0 8px 22px rgba(37, 211, 102, 0.3);
+    box-shadow: 0 8px 22px rgba(7, 94, 84, 0.3);
 }
 .btn-whatsapp:hover, .btn-whatsapp:focus {
-    background-color: #1EBE5B;
+    background-color: #054840;
     color: #fff;
     transform: translateY(-1px);
-    box-shadow: 0 12px 28px rgba(37, 211, 102, 0.38);
+    box-shadow: 0 12px 28px rgba(7, 94, 84, 0.38);
 }
 
 /* â”€â”€ Faixa de USPs (logo abaixo do hero) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */

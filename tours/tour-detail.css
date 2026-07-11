@@ -357,6 +357,21 @@
     font-weight: 500;
 }
 .td-checkout-guarantees li svg { color: var(--color-electric); flex-shrink: 0; }
+
+/* ── Garantias no mobile (a sidebar acima fica display:none) ──
+   Sem isto, quem está no telemóvel nunca via a lista de confiança
+   (tuk elétrico, pick-up grátis, cancelamento, confirmação imediata). */
+.td-mobile-guarantees {
+    display: block;
+    background: var(--color-bg-light);
+    border-radius: 16px;
+    padding: 1.25rem 1.25rem 0.7rem;
+    margin: 1.5rem 0;
+}
+.td-mobile-guarantees .td-checkout-guarantees { margin-bottom: 0; }
+@media (min-width: 768px) {
+    .td-mobile-guarantees { display: none; } /* já visível na sidebar sticky */
+}
 .td-checkout-btn {
     width: 100%;
     margin-bottom: 0.75rem;

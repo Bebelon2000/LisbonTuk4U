@@ -18,7 +18,7 @@ const TOUR_INCLUDED = [
 const TOUR_DATA = {
     'a-la-carte': {
         name: 'Lisboa à la Carte',
-        img: 'assets/img/tour-a-la-carte.webp',
+        img: '/assets/img/tour-a-la-carte.webp',
         duration: '1h – 5h',
         durationHours: 0, // variable
         basePrice: 0,
@@ -52,7 +52,7 @@ const TOUR_DATA = {
     },
     'belem': {
         name: 'Belém',
-        img: 'assets/img/tour-belem.webp',
+        img: '/assets/img/tour-belem.webp',
         duration: '2 horas',
         durationHours: 2,
         basePrice: 180,
@@ -69,7 +69,7 @@ const TOUR_DATA = {
     },
     'half-day': {
         name: 'Half Day',
-        img: 'assets/img/tour-half-day.webp',
+        img: '/assets/img/tour-half-day.webp',
         duration: '4 horas',
         durationHours: 4,
         basePrice: 300,
@@ -97,7 +97,7 @@ const TOUR_DATA = {
     },
     'centro-historico': {
         name: 'Centro Histórico',
-        img: 'assets/img/tour-centro-historico.webp',
+        img: '/assets/img/tour-centro-historico.webp',
         duration: '2 horas',
         durationHours: 2,
         basePrice: 180,
@@ -121,7 +121,7 @@ const TOUR_DATA = {
     },
     'miradouros': {
         name: 'Lisboa Miradouros',
-        img: 'assets/img/tour-miradouros.webp',
+        img: '/assets/img/tour-miradouros.webp',
         duration: '3 horas',
         durationHours: 3,
         basePrice: 240,
@@ -149,7 +149,7 @@ const TOUR_DATA = {
     },
     'full-lisboa': {
         name: 'Full Lisboa',
-        img: 'assets/img/tour-full-lisboa.webp',
+        img: '/assets/img/tour-full-lisboa.webp',
         duration: '5 horas',
         durationHours: 5,
         basePrice: 360,
@@ -1154,9 +1154,28 @@ document.addEventListener('DOMContentLoaded', () => {
         let currentIdx = 0;
         let lastFocused = null;
 
-        const show = (idx) => {
-            currentIdx = (idx + galleryCards.length) % galleryCards.length;
-            const card = galleryCards[currentIdx];
+        // A galeria usa CSS multi-column (masonry) -> a ordem no DOM enche
+        // cada coluna de cima a baixo antes de passar à seguinte, o que NÃO
+        // corresponde à ordem de leitura visual (linha a linha, esquerda
+        // para a direita). Recalculamos aqui a ordem visual real, para que
+        // o contador e as setas prev/next sigam a mesma ordem que os olhos.
+        let visualOrder = galleryCards.map((_, i) => i);
+        const recomputeVisualOrder = () => {
+            visualOrder = galleryCards
+                .map((card, domIdx) => ({ domIdx, rect: card.getBoundingClientRect() }))
+                .sort((a, b) => (Math.round(a.rect.top) - Math.round(b.rect.top)) || (a.rect.left - b.rect.left))
+                .map((entry) => entry.domIdx);
+        };
+        recomputeVisualOrder();
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(recomputeVisualOrder, 200);
+        });
+
+        const show = (visualIdx) => {
+            currentIdx = (visualIdx + visualOrder.length) % visualOrder.length;
+            const card = galleryCards[visualOrder[currentIdx]];
             const thumb = card.querySelector('img');
             const captionEl = card.querySelector('.gallery-card-caption');
             lbImg.src = card.dataset.full || thumb.src;
@@ -1165,9 +1184,10 @@ document.addEventListener('DOMContentLoaded', () => {
             lbCounter.textContent = `${currentIdx + 1} / ${galleryCards.length}`;
         };
 
-        const openLightbox = (idx) => {
+        const openLightbox = (domIdx) => {
             lastFocused = document.activeElement;
-            show(idx);
+            recomputeVisualOrder();
+            show(visualOrder.indexOf(domIdx));
             lightbox.classList.add('open');
             document.body.classList.add('lightbox-open');
             lbClose.focus();
@@ -1402,11 +1422,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 feedback.textContent = '✅ ' + T.contactSuccessTitle + ' ' + T.contactSuccessMsg;
                 feedback.classList.add('contact-form-feedback--success');
                 feedback.hidden = false;
+                feedback.scrollIntoView({ behavior: 'smooth', block: 'center' });
             })
             .catch(() => {
                 feedback.textContent = '⚠️ ' + T.contactError;
                 feedback.classList.add('contact-form-feedback--error');
                 feedback.hidden = false;
+                feedback.scrollIntoView({ behavior: 'smooth', block: 'center' });
             })
             .finally(() => {
                 submitBtn.disabled = false;
