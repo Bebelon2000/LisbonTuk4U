@@ -197,6 +197,8 @@ const I18N = {
         chooseDate: 'Escolha a data',
         chooseTime: 'Escolha a hora',
         noSlotsToday: 'Para hoje já não há horários online — fale connosco no WhatsApp e encontramos uma solução.',
+        noSlotsDay: 'Este dia já está reservado — fale connosco no WhatsApp e encontramos uma solução.',
+        loadingSlots: 'A verificar disponibilidade…',
         passengers: 'Passageiros',
         passenger1: 'passageiro', passengerN: 'passageiros',
         multiTuk: (n, t) => `Para ${n} passageiros serão necessários ${t} tuk-tuks — o preço é calculado automaticamente.`,
@@ -229,6 +231,8 @@ const I18N = {
         chooseDate: 'Choose a date',
         chooseTime: 'Choose a time',
         noSlotsToday: 'No more online slots for today — message us on WhatsApp and we\'ll work something out.',
+        noSlotsDay: 'This day is already booked — message us on WhatsApp and we\'ll work something out.',
+        loadingSlots: 'Checking availability…',
         passengers: 'Passengers',
         passenger1: 'passenger', passengerN: 'passengers',
         multiTuk: (n, t) => `${n} passengers require ${t} tuk-tuks — the price is calculated automatically.`,
@@ -261,6 +265,8 @@ const I18N = {
         chooseDate: 'Elige la fecha',
         chooseTime: 'Elige la hora',
         noSlotsToday: 'Ya no quedan horarios online para hoy — escríbenos por WhatsApp y buscamos una solución.',
+        noSlotsDay: 'Este día ya está reservado — escríbenos por WhatsApp y buscamos una solución.',
+        loadingSlots: 'Comprobando disponibilidad…',
         passengers: 'Pasajeros',
         passenger1: 'pasajero', passengerN: 'pasajeros',
         multiTuk: (n, t) => `Para ${n} pasajeros se necesitan ${t} tuk-tuks — el precio se calcula automáticamente.`,
@@ -293,6 +299,8 @@ const I18N = {
         chooseDate: 'Scegli la data',
         chooseTime: "Scegli l'orario",
         noSlotsToday: 'Per oggi non ci sono più orari online — scrivici su WhatsApp e troviamo una soluzione.',
+        noSlotsDay: 'Questo giorno è già prenotato — scrivici su WhatsApp e troviamo una soluzione.',
+        loadingSlots: 'Verifica disponibilità…',
         passengers: 'Passeggeri',
         passenger1: 'passeggero', passengerN: 'passeggeri',
         multiTuk: (n, t) => `Per ${n} passeggeri servono ${t} tuk-tuk — il prezzo viene calcolato automaticamente.`,
@@ -325,6 +333,8 @@ const I18N = {
         chooseDate: 'Choisissez la date',
         chooseTime: "Choisissez l'heure",
         noSlotsToday: 'Plus de créneaux en ligne pour aujourd\'hui — écrivez-nous sur WhatsApp et nous trouverons une solution.',
+        noSlotsDay: 'Ce jour est déjà réservé — écrivez-nous sur WhatsApp et nous trouverons une solution.',
+        loadingSlots: 'Vérification des disponibilités…',
         passengers: 'Passagers',
         passenger1: 'passager', passengerN: 'passagers',
         multiTuk: (n, t) => `Pour ${n} passagers, ${t} tuk-tuks sont nécessaires — le prix est calculé automatiquement.`,
@@ -605,11 +615,52 @@ document.addEventListener('DOMContentLoaded', () => {
             passengers: 2,
             calendarMonth: new Date().getMonth(),
             calendarYear: new Date().getFullYear(),
+            busyByDate: {}, // "2026-07-12" -> [{startMin, durationMin}] | 'loading' | 'error'
         };
 
         const calcPrice = (basePrice, pax) => {
             const tuks = Math.ceil(pax / 5);
             return basePrice * tuks;
+        };
+
+        // Minutos que a Susane precisa entre o fim de um tour e o início do
+        // seguinte (deslocação + pausa). Um horário fica indisponível se o
+        // tour candidato se sobrepuser a uma reserva já paga, contando esta
+        // margem. Ajustável aqui num só sítio.
+        const BOOKING_BUFFER_MIN = 90;
+
+        // Vai buscar ao servidor os intervalos já ocupados numa data e
+        // re-renderiza os horários quando chega a resposta (cache por data).
+        const fetchAvailability = (date) => {
+            const cfg = window.LISBONTUK_PAYMENTS;
+            if (!cfg || !cfg.supabaseUrl || !cfg.anonKey) return; // sem backend -> não filtra
+            if (state.busyByDate[date] !== undefined) return;     // já em cache/carregado
+            state.busyByDate[date] = 'loading';
+            fetch(`${cfg.supabaseUrl}/functions/v1/get-availability`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${cfg.anonKey}` },
+                body: JSON.stringify({ date }),
+            })
+                .then((r) => r.json())
+                .then((data) => {
+                    state.busyByDate[date] = Array.isArray(data && data.busy) ? data.busy : [];
+                    if (state.selectedDate === date) renderSteps();
+                })
+                .catch(() => {
+                    // Falha de rede -> não bloqueia a reserva (mostra todos os horários)
+                    state.busyByDate[date] = [];
+                    if (state.selectedDate === date) renderSteps();
+                });
+        };
+
+        // Um horário candidato colide com uma reserva se os intervalos se
+        // sobrepõem contando a margem BOOKING_BUFFER_MIN de cada lado.
+        const slotIsFree = (startMin, durationMin, busyList) => {
+            const ce = startMin + durationMin;
+            return !busyList.some((b) =>
+                startMin < b.startMin + b.durationMin + BOOKING_BUFFER_MIN &&
+                ce + BOOKING_BUFFER_MIN > b.startMin
+            );
         };
 
         const generateTimeSlots = (durationHours) => {
@@ -621,6 +672,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 m += 30;
                 if (m >= 60) { h++; m -= 60; }
             }
+            let available = slots;
+
             // Se a data escolhida for hoje, esconde horários já passados
             // (com 2h de antecedência mínima para a Susane se organizar).
             if (state.selectedDate) {
@@ -628,13 +681,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
                 if (state.selectedDate === todayStr) {
                     const cutoff = now.getHours() * 60 + now.getMinutes() + 120;
-                    return slots.filter(t => {
+                    available = available.filter(t => {
                         const [sh, sm] = t.split(':').map(Number);
                         return sh * 60 + sm >= cutoff;
                     });
                 }
             }
-            return slots;
+
+            // Esconde horários que colidem com reservas já pagas (a Susane não
+            // pode guiar dois tours ao mesmo tempo). Só filtra se a lista de
+            // ocupados já chegou do servidor; enquanto 'loading' mostra tudo.
+            const busy = state.busyByDate && state.busyByDate[state.selectedDate];
+            if (Array.isArray(busy) && busy.length) {
+                const durMin = durationHours * 60;
+                available = available.filter(t => {
+                    const [sh, sm] = t.split(':').map(Number);
+                    return slotIsFree(sh * 60 + sm, durMin, busy);
+                });
+            }
+            return available;
         };
 
         const renderSteps = () => {
@@ -695,6 +760,20 @@ document.addEventListener('DOMContentLoaded', () => {
             // Step 2: Time
             const timeDisabled = !state.selectedDate;
             const timeSlotsArr = currentDurationHours > 0 ? generateTimeSlots(currentDurationHours) : [];
+            const availLoading = state.busyByDate[state.selectedDate] === 'loading';
+            // "Hoje" para distinguir a mensagem de "sem horários" (antecedência vs dia cheio)
+            const nowD = new Date();
+            const isToday = state.selectedDate === `${nowD.getFullYear()}-${String(nowD.getMonth() + 1).padStart(2, '0')}-${String(nowD.getDate()).padStart(2, '0')}`;
+            let timeInner;
+            if (availLoading) {
+                timeInner = `<p class="booking-slots-loading">${T.loadingSlots}</p>`;
+            } else if (!timeDisabled && currentDurationHours > 0 && timeSlotsArr.length === 0) {
+                timeInner = `<p class="booking-no-slots">${isToday ? T.noSlotsToday : T.noSlotsDay}</p>`;
+            } else {
+                timeInner = timeSlotsArr.map(t => `
+                        <button class="booking-time-pill ${state.selectedTime === t ? 'selected' : ''}" data-time="${t}">${t}</button>
+                    `).join('');
+            }
             html += `
             <div class="booking-step ${timeDisabled ? 'disabled' : ''} ${state.selectedTime ? 'completed' : ''}" id="booking-step-time">
                 <div class="booking-step-header">
@@ -705,11 +784,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
                 <div class="booking-time-grid" id="booking-time-grid">
-                    ${(!timeDisabled && currentDurationHours > 0 && timeSlotsArr.length === 0)
-                        ? `<p class="booking-no-slots">${T.noSlotsToday}</p>`
-                        : timeSlotsArr.map(t => `
-                        <button class="booking-time-pill ${state.selectedTime === t ? 'selected' : ''}" data-time="${t}">${t}</button>
-                    `).join('')}
+                    ${timeInner}
                 </div>
             </div>`;
 
@@ -936,6 +1011,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 day.addEventListener('click', () => {
                     state.selectedDate = day.dataset.date;
                     state.selectedTime = null; // Reset time when date changes
+                    fetchAvailability(state.selectedDate); // busca horários ocupados
                     renderSteps();
                     // Smooth scroll to time step
                     setTimeout(() => {
@@ -1026,6 +1102,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     date: state.selectedDate,
                                     time: state.selectedTime,
                                     customer,
+                                    lang: SITE_LANG, // Stripe Checkout + página de confirmação na língua certa
                                 }),
                             });
                             const data = await res.json();
@@ -1077,6 +1154,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 passengers: 2,
                 calendarMonth: new Date().getMonth(),
                 calendarYear: new Date().getFullYear(),
+                busyByDate: {},
             };
 
             overlayTitle.textContent = tour.name;

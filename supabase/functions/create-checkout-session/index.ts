@@ -26,12 +26,16 @@ Deno.serve(async (req: Request) => {
   try {
     if (!STRIPE_SECRET) throw new Error("STRIPE_SECRET_KEY não configurada.");
 
-    const { tourId, durationHours, passengers, date, time, customer } =
+    const { tourId, durationHours, passengers, date, time, customer, lang } =
       await req.json();
 
     if (!tourId || !date || !time || !passengers) {
       throw new Error("Dados da reserva em falta.");
     }
+
+    // Língua do cliente (para o Checkout da Stripe e a página de confirmação).
+    const LANGS = ["pt", "en", "es", "it", "fr"];
+    const locale = LANGS.includes(String(lang)) ? String(lang) : "pt";
 
     const { amountCents, tourName, tuks } = computeAmountCents(
       String(tourId),
@@ -42,10 +46,10 @@ Deno.serve(async (req: Request) => {
     // ── Monta a Checkout Session via REST (sem SDK) ──
     const p = new URLSearchParams();
     p.set("mode", "payment");
-    p.set("locale", "pt");
+    p.set("locale", locale);
     p.set(
       "success_url",
-      `${SITE_URL}/reserva-confirmada.html?session_id={CHECKOUT_SESSION_ID}`,
+      `${SITE_URL}/reserva-confirmada.html?session_id={CHECKOUT_SESSION_ID}&lang=${locale}`,
     );
     p.set("cancel_url", `${SITE_URL}/index.html#passeios`);
     if (customer?.email) p.set("customer_email", String(customer.email));

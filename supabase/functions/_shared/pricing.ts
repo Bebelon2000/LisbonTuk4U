@@ -7,6 +7,7 @@
 interface TourPrice {
   name: string;
   basePrice: number;        // €, por tuk (até 5 pax)
+  durationHours?: number;   // duração fixa (tours não-à-la-carte)
   isALaCarte?: boolean;
   durationOptions?: Record<number, number>; // horas -> € por tuk
 }
@@ -18,12 +19,32 @@ export const TOUR_PRICING: Record<string, TourPrice> = {
     isALaCarte: true,
     durationOptions: { 1: 120, 2: 180, 3: 240, 4: 300, 5: 360 },
   },
-  "belem": { name: "Belém", basePrice: 180 },
-  "half-day": { name: "Half Day", basePrice: 300 },
-  "centro-historico": { name: "Centro Histórico", basePrice: 180 },
-  "miradouros": { name: "Lisboa Miradouros", basePrice: 240 },
-  "full-lisboa": { name: "Full Lisboa", basePrice: 360 },
+  "belem": { name: "Belém", basePrice: 180, durationHours: 2 },
+  "half-day": { name: "Half Day", basePrice: 300, durationHours: 4 },
+  "centro-historico": { name: "Centro Histórico", basePrice: 180, durationHours: 2 },
+  "miradouros": { name: "Lisboa Miradouros", basePrice: 240, durationHours: 3 },
+  "full-lisboa": { name: "Full Lisboa", basePrice: 360, durationHours: 5 },
 };
+
+// Deriva a duração (em horas) de uma reserva já paga, SEM precisar de a
+// gravar na BD: para tours fixos vem da tabela; para o à la carte, o preço
+// por tuk identifica de forma única a duração escolhida.
+export function getTourDurationHours(
+  tourId: string,
+  amountCents: number,
+  tuks: number,
+): number {
+  const t = TOUR_PRICING[tourId];
+  if (!t) return 3; // fallback prudente
+  if (t.isALaCarte) {
+    const perTuk = Math.round(amountCents / Math.max(1, tuks) / 100);
+    for (const [h, price] of Object.entries(t.durationOptions ?? {})) {
+      if (price === perTuk) return Number(h);
+    }
+    return 5; // não reconhecido -> assume o máximo (mais seguro)
+  }
+  return t.durationHours ?? 3;
+}
 
 export interface PriceResult {
   amountCents: number;

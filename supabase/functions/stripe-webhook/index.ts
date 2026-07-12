@@ -138,6 +138,10 @@ Deno.serve(async (req: Request) => {
       console.error("Erro ao gravar booking:", error.message);
       return new Response("Erro a gravar.", { status: 500 });
     }
+
+    // Avisa a Susane por e-mail. Fica DEPOIS do upsert (a reserva já está
+    // segura) e com await para garantir o envio antes de responder ao Stripe.
+    await sendBookingNotification(m, s);
   }
 
   return new Response(JSON.stringify({ received: true }), {
