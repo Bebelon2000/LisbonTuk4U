@@ -664,13 +664,16 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         const generateTimeSlots = (durationHours) => {
+            // Início mais cedo: 08:30. Início mais tarde: 19:00 — mas nunca
+            // deixando um tour acabar depois das 22:00, por isso os tours mais
+            // longos (4h/5h) começam proporcionalmente mais cedo.
+            const FIRST_START = 8 * 60 + 30;  // 08:30
+            const LATEST_START = 19 * 60;     // 19:00
+            const DAY_END = 22 * 60;          // 22:00 (fim máximo de um tour)
+            const lastStart = Math.min(LATEST_START, DAY_END - durationHours * 60);
             const slots = [];
-            let h = 8, m = 30;
-            const maxH = durationHours >= 4 ? 16 : 17;
-            while (h < maxH || (h === maxH && m === 0)) {
-                slots.push(`${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`);
-                m += 30;
-                if (m >= 60) { h++; m -= 60; }
+            for (let t = FIRST_START; t <= lastStart; t += 30) {
+                slots.push(`${String(Math.floor(t / 60)).padStart(2, '0')}:${String(t % 60).padStart(2, '0')}`);
             }
             let available = slots;
 
