@@ -10,35 +10,75 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
-  <!-- ══════════ BLOG (só PT por agora) ══════════ -->
+  <!-- ══════════ BLOG (PT + EN) ══════════ -->
   <url>
     <loc>https://lisbontuk4u.com/blog/</loc>
-    <lastmod>2026-07-07</lastmod>
+    <lastmod>2026-07-12</lastmod>
     <xhtml:link rel="alternate" hreflang="pt" href="https://lisbontuk4u.com/blog/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lisbontuk4u.com/en/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lisbontuk4u.com/blog/"/>
+  </url>
+  <url>
+    <loc>https://lisbontuk4u.com/en/blog/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://lisbontuk4u.com/blog/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lisbontuk4u.com/en/blog/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lisbontuk4u.com/blog/"/>
   </url>
   <url>
     <loc>https://lisbontuk4u.com/blog/melhores-miradouros-lisboa.html</loc>
-    <lastmod>2026-07-07</lastmod>
+    <lastmod>2026-07-12</lastmod>
     <xhtml:link rel="alternate" hreflang="pt" href="https://lisbontuk4u.com/blog/melhores-miradouros-lisboa.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lisbontuk4u.com/en/blog/best-viewpoints-lisbon.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lisbontuk4u.com/blog/melhores-miradouros-lisboa.html"/>
+  </url>
+  <url>
+    <loc>https://lisbontuk4u.com/en/blog/best-viewpoints-lisbon.html</loc>
+    <lastmod>2026-07-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://lisbontuk4u.com/blog/melhores-miradouros-lisboa.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lisbontuk4u.com/en/blog/best-viewpoints-lisbon.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lisbontuk4u.com/blog/melhores-miradouros-lisboa.html"/>
   </url>
   <url>
     <loc>https://lisbontuk4u.com/blog/o-que-ver-em-belem-um-dia.html</loc>
-    <lastmod>2026-07-07</lastmod>
+    <lastmod>2026-07-12</lastmod>
     <xhtml:link rel="alternate" hreflang="pt" href="https://lisbontuk4u.com/blog/o-que-ver-em-belem-um-dia.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lisbontuk4u.com/en/blog/what-to-see-in-belem-lisbon.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lisbontuk4u.com/blog/o-que-ver-em-belem-um-dia.html"/>
+  </url>
+  <url>
+    <loc>https://lisbontuk4u.com/en/blog/what-to-see-in-belem-lisbon.html</loc>
+    <lastmod>2026-07-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://lisbontuk4u.com/blog/o-que-ver-em-belem-um-dia.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lisbontuk4u.com/en/blog/what-to-see-in-belem-lisbon.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lisbontuk4u.com/blog/o-que-ver-em-belem-um-dia.html"/>
   </url>
   <url>
     <loc>https://lisbontuk4u.com/blog/guia-alfama-lisboa.html</loc>
-    <lastmod>2026-07-07</lastmod>
+    <lastmod>2026-07-12</lastmod>
     <xhtml:link rel="alternate" hreflang="pt" href="https://lisbontuk4u.com/blog/guia-alfama-lisboa.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lisbontuk4u.com/en/blog/alfama-lisbon-guide.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lisbontuk4u.com/blog/guia-alfama-lisboa.html"/>
+  </url>
+  <url>
+    <loc>https://lisbontuk4u.com/en/blog/alfama-lisbon-guide.html</loc>
+    <lastmod>2026-07-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://lisbontuk4u.com/blog/guia-alfama-lisboa.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lisbontuk4u.com/en/blog/alfama-lisbon-guide.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lisbontuk4u.com/blog/guia-alfama-lisboa.html"/>
   </url>
   <url>
     <loc>https://lisbontuk4u.com/blog/melhor-epoca-visitar-lisboa.html</loc>
-    <lastmod>2026-07-07</lastmod>
+    <lastmod>2026-07-12</lastmod>
     <xhtml:link rel="alternate" hreflang="pt" href="https://lisbontuk4u.com/blog/melhor-epoca-visitar-lisboa.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lisbontuk4u.com/en/blog/best-time-to-visit-lisbon.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lisbontuk4u.com/blog/melhor-epoca-visitar-lisboa.html"/>
+  </url>
+  <url>
+    <loc>https://lisbontuk4u.com/en/blog/best-time-to-visit-lisbon.html</loc>
+    <lastmod>2026-07-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://lisbontuk4u.com/blog/melhor-epoca-visitar-lisboa.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lisbontuk4u.com/en/blog/best-time-to-visit-lisbon.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lisbontuk4u.com/blog/melhor-epoca-visitar-lisboa.html"/>
   </url>
 
