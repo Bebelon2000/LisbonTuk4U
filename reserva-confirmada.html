@@ -80,6 +80,7 @@
         </div>
     </main>
 
+    <script src="js/payments-config.js?v=1.0.1"></script>
     <script>
       // A língua chega no URL (?lang=xx), definida pelo success_url do Stripe.
       (function () {
@@ -148,6 +149,37 @@
           var home = document.getElementById("c-home");
           if (home) home.setAttribute("href", lang + "/index.html");
         }
+      })();
+
+      // GA4 purchase: regista a conversão (reserva paga) com o valor real.
+      // Busca o resumo NÃO-SENSÍVEL da sessão (só valor/tour) ao servidor.
+      (function () {
+        var params = new URLSearchParams(location.search);
+        var sid = params.get("session_id");
+        var cfg = window.LISBONTUK_PAYMENTS;
+        if (!sid || !cfg || !cfg.supabaseUrl || !cfg.anonKey) return;
+        // Não duplicar a conversão se o cliente recarregar a página.
+        var key = "purchase_tracked_" + sid;
+        if (sessionStorage.getItem(key)) return;
+        fetch(cfg.supabaseUrl + "/functions/v1/get-session-summary", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Authorization": "Bearer " + cfg.anonKey },
+          body: JSON.stringify({ session_id: sid }),
+        })
+          .then(function (r) { return r.json(); })
+          .then(function (d) {
+            if (!d || !d.paid) return;
+            sessionStorage.setItem(key, "1");
+            if (typeof window.gtag === "function") {
+              window.gtag("event", "purchase", {
+                transaction_id: sid,
+                value: d.amount || 0,
+                currency: (d.currency || "eur").toUpperCase(),
+                items: [{ item_id: d.tourId || "", item_name: d.tourName || "" }],
+              });
+            }
+          })
+          .catch(function () { /* silencioso — não afeta o cliente */ });
       })();
     </script>
 </body>

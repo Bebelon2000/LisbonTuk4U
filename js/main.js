@@ -368,16 +368,70 @@ const MONTH_NAMES_PT = T.months;
 const WEEKDAY_NAMES_PT = T.weekdays;
 
 // ═══════════════════════════════════════════════════════
+//  ANALYTICS (GA4) — dispara eventos só se o gtag existir
+// ═══════════════════════════════════════════════════════
+function trackEvent(name, params) {
+    try {
+        if (typeof window.gtag === 'function') {
+            window.gtag('event', name, params || {});
+        }
+    } catch (_) { /* nunca deixar o analytics partir o site */ }
+}
+
+// ═══════════════════════════════════════════════════════
 //  GLOBAL FUNCTIONS (called from HTML onclick)
 // ═══════════════════════════════════════════════════════
 function openBookingOverlay(tourId) {
     if (window._bookingOverlay) window._bookingOverlay.open(tourId);
+    // begin_checkout: o cliente abriu o formulário de reserva.
+    const tour = (typeof TOUR_DATA !== 'undefined') ? TOUR_DATA[tourId] : null;
+    trackEvent('begin_checkout', {
+        currency: 'EUR',
+        items: [{ item_id: tourId, item_name: tour ? tour.name : tourId }],
+    });
 }
 
 // ═══════════════════════════════════════════════════════
 //  DOM READY
 // ═══════════════════════════════════════════════════════
 document.addEventListener('DOMContentLoaded', () => {
+
+    // ─── 0. Analytics (GA4) ────────────────────────────────
+    // view_item: se estamos numa página de detalhe de tour, regista qual.
+    // O tourId é extraído do botão de reserva (evita editar as 30 páginas).
+    if (document.querySelector('.td-hero')) {
+        const bookBtn = document.querySelector('[onclick*="openBookingOverlay"]');
+        const match = bookBtn && /openBookingOverlay\('([^']+)'\)/.exec(bookBtn.getAttribute('onclick') || '');
+        if (match) {
+            const tid = match[1];
+            const tour = (typeof TOUR_DATA !== 'undefined') ? TOUR_DATA[tid] : null;
+            trackEvent('view_item', {
+                currency: 'EUR',
+                items: [{ item_id: tid, item_name: tour ? tour.name : tid }],
+            });
+        }
+    }
+
+    // Cliques de contacto/saída (WhatsApp, email, telefone, OTAs). As classes
+    // track-* já existiam no HTML; aqui ligamo-las a eventos GA4. O WhatsApp e
+    // o email são leads (foi por email que veio a 1ª reserva) — marca-os como
+    // conversão no GA4 se quiseres.
+    document.addEventListener('click', (e) => {
+        const el = e.target.closest('[class*="track-"]');
+        if (!el) return;
+        const c = el.className || '';
+        let method = null;
+        if (c.includes('track-whatsapp')) method = 'whatsapp';
+        else if (c.includes('track-email')) method = 'email';
+        else if (c.includes('track-phone')) method = 'phone';
+        else if (c.includes('track-google')) method = 'google_reviews';
+        else if (c.includes('track-gyg')) method = 'getyourguide';
+        else if (c.includes('track-tripadvisor')) method = 'tripadvisor';
+        else if (c.includes('track-viator')) method = 'viator';
+        if (method) {
+            trackEvent('contact_click', { method, link_url: el.href || '', page_lang: SITE_LANG });
+        }
+    }, { passive: true });
 
     // ─── 1. Mobile Menu Drawer ─────────────────────────────
     const menuToggleBtn = document.getElementById('menu-toggle-btn');
@@ -1059,6 +1113,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         continueBtn.style.display = 'none';
                         checkoutStep.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     }
+                    // add_payment_info: chegou ao passo de dados/pagamento.
+                    const t = state.tourData;
+                    const base = t && t.isALaCarte ? (state.selectedDuration ? state.selectedDuration.price : 0) : (t ? t.basePrice : 0);
+                    trackEvent('add_payment_info', {
+                        currency: 'EUR',
+                        value: calcPrice(base, state.passengers),
+                        items: [{ item_id: state.tourId, item_name: t ? t.name : state.tourId, quantity: state.passengers }],
+                    });
                 });
             }
 
