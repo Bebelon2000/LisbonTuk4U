@@ -17,8 +17,8 @@
     --color-blue-soft: #E8F2FD;      /* fundo azul suave */
     --color-gold: #E8A93B;           /* estrelas de avaliação */
     --color-electric: #12A77B;
-    --color-terracotta: #C9603F;     /* botão primário do hero, acentos de telhado */
-    --color-terracotta-hover: #B5512F;
+    --color-terracotta: #FF6B4A;     /* botão primário do hero, acentos de telhado */
+    --color-terracotta-hover: #E05E41;
     --gradient-brand: linear-gradient(120deg, #2196F3 0%, #7E6BD9 55%, #FF69B4 100%);
 
     --color-text-dark: #1B2A3A;
@@ -691,9 +691,25 @@ img {
     font-size: 0.85rem;
     letter-spacing: 1px;
 }
+.hero-badge-tr .ta-brand {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.hero-badge-tr .ta-brand-icon {
+    width: 20px;
+    height: 11px;
+    flex-shrink: 0;
+}
+.hero-badge-tr .ta-brand-name {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: #00AA6C;
+    letter-spacing: -0.2px;
+}
 .hero-badge-tr .text {
-    font-size: 0.75rem;
-    font-weight: 700;
+    font-size: 0.7rem;
+    font-weight: 500;
     color: var(--color-text-dark);
 }
 
@@ -1784,10 +1800,17 @@ select:disabled {
     font-size: 0.95rem;
     display: inline-flex;
     align-items: center;
+    gap: 0.6rem;
     color: var(--color-bg-white);
     transition: var(--transition-fast);
     background-color: rgba(255, 255, 255, 0.08);
     border: 1.5px solid rgba(255, 255, 255, 0.15);
+}
+
+.platform-btn-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
 }
 
 .google-btn:hover, .google-btn:focus {
@@ -4377,6 +4400,24 @@ body.lightbox-open { overflow: hidden; }
     padding: 0;
     overflow: hidden;
   }
+  /* A regra "body:not(.promo-dismissed) .hero-section { padding-top: 7.5rem }"
+     (mais acima) tem especificidade maior que o padding:0 aqui em cima e
+     ganhava mesmo com o banner visível, empurrando o CTA para fora do ecrã.
+     Precisa de igual/maior especificidade para anular isso no mobile. */
+  body:not(.promo-dismissed) .hero-section:has(.hero-mobile-bg) {
+    padding-top: 0;
+  }
+  /* O banner promocional (40px) fica ANTES do hero no fluxo normal do
+     documento, empurrando-o para baixo — mas o hero continua com 100svh
+     de altura, ficando sempre 40px maior do que o espaço realmente livre
+     no ecrã. Sem isto, o conteúdo (alinhado ao fundo) fica sempre cortado
+     por baixo, por mais que se reduzam as margens internas. */
+  body:not(.promo-dismissed) .hero-section:has(.hero-mobile-bg) {
+    min-height: calc(100svh - 40px);
+  }
+  body:not(.promo-dismissed) .hero-section:has(.hero-mobile-bg) .hero-container {
+    min-height: calc(100svh - 40px);
+  }
   .hero-section:has(.hero-mobile-bg) .hero-mobile-bg {
     display: block;
     position: absolute;
@@ -4418,22 +4459,22 @@ body.lightbox-open { overflow: hidden; }
     flex-direction: column;
     justify-content: flex-end;
   }
-  .hero-section:has(.hero-mobile-bg) .hero-content { padding: 1.25rem 1.15rem 1.75rem; }
+  .hero-section:has(.hero-mobile-bg) .hero-content { padding: .85rem 1.15rem .5rem; }
   .hero-section:has(.hero-mobile-bg) .hero-image-mobile { display: none !important; }
 
   .hero-section:has(.hero-mobile-bg) .hero-title {
     color: #fff;
     font-family: var(--font-display);
     font-weight: 400;
-    font-size: 2.5rem;
+    font-size: 2rem;
     line-height: 1.02;
-    margin: 0 0 .6rem;
+    margin: 0 0 .3rem;
     text-shadow: 0 2px 18px rgba(0,0,0,.35);
   }
   .hero-section:has(.hero-mobile-bg) .hero-title em { font-style: italic; color: #FF8FC2; }
-  .hero-section:has(.hero-mobile-bg) .hero-lead { color: #D7DEE6; font-size: .95rem; line-height: 1.4; margin: 0 0 1rem; }
+  .hero-section:has(.hero-mobile-bg) .hero-lead { color: #D7DEE6; font-size: .85rem; line-height: 1.3; margin: 0 0 .45rem; }
 
-  .hero-section:has(.hero-mobile-bg) .hero-badges-row { position: static; margin: 0 0 0.85rem; z-index: 2; }
+  .hero-section:has(.hero-mobile-bg) .hero-badges-row { position: static; margin: 0 0 0.35rem; z-index: 2; }
   .hero-section:has(.hero-mobile-bg) .hero-badge {
     background: rgba(255,255,255,.16);
     -webkit-backdrop-filter: blur(8px);
@@ -4442,12 +4483,12 @@ body.lightbox-open { overflow: hidden; }
     color: #fff;
   }
 
-  .hero-section:has(.hero-mobile-bg) .hero-actions { flex-direction: column; gap: .7rem; margin: 0 0 .9rem; }
+  .hero-section:has(.hero-mobile-bg) .hero-actions { flex-direction: column; gap: .4rem; margin: 0 0 .35rem; }
   .hero-section:has(.hero-mobile-bg) #hero-cta-btn {
     width: 100%;
     justify-content: center;
-    height: 56px;
-    font-size: 1.05rem;
+    height: 50px;
+    font-size: 1rem;
     box-shadow: 0 10px 24px -8px rgba(201,96,63,.8);
   }
   .hero-section:has(.hero-mobile-bg) #hero-secondary-btn {
@@ -4459,10 +4500,10 @@ body.lightbox-open { overflow: hidden; }
     width: 100%;
     justify-content: center;
     min-height: 0;
-    padding: .3rem 0;
+    padding: .2rem 0;
   }
 
-  .hero-section:has(.hero-mobile-bg) .hero-google-rating { color: #fff; justify-content: center; flex-wrap: wrap; }
+  .hero-section:has(.hero-mobile-bg) .hero-google-rating { color: #fff; justify-content: center; flex-wrap: wrap; margin-top: 0; font-size: .78rem; gap: .3rem; }
   .hero-section:has(.hero-mobile-bg) .hero-google-rating .rating-value { color: #fff; }
   .hero-section:has(.hero-mobile-bg) .hero-google-rating .rating-text { color: #C7D0DA; }
   .hero-section:has(.hero-mobile-bg) .hero-google-rating .star-icon { fill: var(--color-gold); }
