@@ -63,6 +63,10 @@ Deno.serve(async (req: Request) => {
       throw new Error(p?.error?.message ?? `Google Places HTTP ${resp.status}`);
     }
 
+    // A API New não tem parâmetro de ordenação (isso só existe na API
+    // Legacy). Mas cada review vem com publishTime (timestamp real) --
+    // ordenamos por aí para mostrar sempre as mais recentes primeiro,
+    // de entre as ~5 que o Google decide devolver.
     const reviews = (Array.isArray(p.reviews) ? p.reviews : [])
       .map((r: Record<string, any>) => ({
         author: r.authorAttribution?.displayName ?? "Cliente Google",
@@ -71,9 +75,14 @@ Deno.serve(async (req: Request) => {
         rating: typeof r.rating === "number" ? r.rating : 5,
         text: (r.text?.text ?? r.originalText?.text ?? "").trim(),
         time: r.relativePublishTimeDescription ?? "",
+        publishTime: r.publishTime ?? "",
       }))
       .filter((r: { text: string; rating: number }) => r.text && r.rating >= 4)
-      .slice(0, 6);
+      .sort((a: { publishTime: string }, b: { publishTime: string }) =>
+        b.publishTime.localeCompare(a.publishTime)
+      )
+      .slice(0, 6)
+      .map(({ publishTime, ...rest }: { publishTime: string } & Record<string, unknown>) => rest);
 
     const body: ReviewsBody = {
       rating: typeof p.rating === "number" ? p.rating : null,
