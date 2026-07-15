@@ -111,7 +111,7 @@ Conta Google Ads
 
 ## 5. ⚠️ Pré-requisitos ANTES de gastar 1€ (checklist)
 
-- [ ] **1. Tag de conversão do PRÓPRIO Google Ads** na página `reserva-confirmada.html` (não depender só do GA4). É a fonte de verdade do Ads: dispara `purchase` com o valor real da reserva. *(eu implemento assim que houver o ID `AW-XXXXXXX` — depende de criar a ação de conversão na conta)*
+- [x] **1. Tag de conversão do PRÓPRIO Google Ads** na página `reserva-confirmada.html`. ✅ FEITO (commit 509ace3). Ação "Reserva Paga", ID `AW-16702421192`, etiqueta `6K4cCKyWi9EcEMjxqpw-`. Dispara com valor real + `transaction_id` (dedup).
 - [x] **2. Consent Mode v2 + banner de consentimento.** ✅ FEITO (commit `8a2404d`, julho/2026). Consent default (negado) nas 62 páginas antes do gtag config, restauro via localStorage, banner multilíngue PT/EN/ES/IT/FR (Aceitar/Recusar), verificado no browser e ao vivo.
 - [ ] **3. Ligar Google Ads ↔ GA4 ↔ Google Business Profile** (importar públicos, extensão de localização).
 - [x] **4. Landing pages por língua confirmadas** ✅ (5 línguas, calendário de disponibilidade, reviews no HTML, checkout multilíngue).
