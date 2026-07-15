@@ -22,8 +22,23 @@ Continuamos no **Google Ads** da LisbonTuk4U. A ação de conversão "Reserva Pa
 
 ---
 
+## ⚠️ Estado atual (julho/2026) — bloqueio de identidade
+O Google exige **"Confirme a sua identidade"** para guardar alterações — só o dono da conta pode completar (é a verificação de anunciante do Google, normal para contas novas de anúncios). Até lá, nada persiste. Depois de o Bernardo verificar a identidade + adicionar o cartão virtual (€150):
+1. Retomar a Campanha A (rascunho já criado com o grupo EN): renomear grupo para "EN Genérico", **corrigir orçamento para €5/dia**, adicionar o grupo PT.
+2. Criar a Campanha B completa (FR/ES/IT, €5/dia).
+3. **Pausar a campanha antiga** `Campanha_LisbonTuk4U_04/05/25` (está "Ativada" embora sem gastar por falta de pagamento).
+4. Deixar ambas as novas EM PAUSA até revisão final.
+
+## ⭐ Substituição do símbolo ★ (rejeitado pelo Google nos anúncios)
+Usar estes títulos em vez dos que tinham "5,0★":
+- EN: `Rated 5.0 on Google`
+- PT: `Avaliação 5,0 no Google`
+- FR: `Note 5,0 sur Google`
+- ES: `Valoración 5,0 en Google`
+- IT: `Valutazione 5,0 su Google`
+
 ## CAMPANHA A — `LisbonTuk4U — Core EN+PT`
-- **Orçamento: €2,50/dia** · Idiomas: Inglês + Português.
+- **Orçamento: €5,00/dia** · Idiomas: Inglês + Português.
 
 **Grupo 1 — "EN Genérico"** · URL final `https://lisbontuk4u.com/en/`
 ```
@@ -47,7 +62,7 @@ Descrições: `Explore Alfama, Belém e os melhores miradouros com a guia local 
 ---
 
 ## CAMPANHA B — `LisbonTuk4U — Nichos Língua`
-- **Orçamento: €2,50/dia** · Idiomas: Francês + Espanhol + Italiano.
+- **Orçamento: €5,00/dia** · Idiomas: Francês + Espanhol + Italiano.
 - A aposta: poucos tours em Lisboa oferecem guia nestas línguas — o anúncio diz isso explicitamente.
 
 **Grupo 1 — "FR"** · URL final `https://lisbontuk4u.com/fr/`

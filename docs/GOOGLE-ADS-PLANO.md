@@ -148,9 +148,11 @@ Encontrados **dois erros fatais em simultâneo** — por isso "nunca deu certo":
 
 | Fase | Orçamento/dia | ~Custo/semana | Objetivo |
 |---|---|---|---|
-| **Semana 1** | **€5/dia** | ~€35 | Ver o que acontece: que termos entram, CPC real, cliques relevantes |
-| **Semana 2+** | **€10/dia** (se a semana 1 for saudável) | ~€70 | Dobrar o sinal; começar a ver contactos/reservas |
+| **Semana 1–2** | **€10/dia** (€5 Core + €5 Nichos) | ~€70 | Acelerar a aquisição de dados: termos reais, CPC, CTR por nicho, micro-conversões |
+| **Semana 3+** | realocar os €10 conforme os dados | — | O braço vencedor recebe a maior fatia; cortar os perdedores |
 | Depois | subir só com dados | — | Escalar apenas se houver reservas/contactos e CPA razoável |
+
+> Decisão do Bernardo (julho/2026): começar já a €10/dia para acelerar a recolha de dados. Com o teto de €150 no cartão virtual, isto dá ~2 semanas de teste contínuo — suficiente para a 1ª ronda de decisões por nicho.
 
 > ⚠️ **Realismo do €5/dia:** dá ~3–5 cliques/dia (CPC ~€1–1,50) → ~25–35 cliques/semana. É um sinal **lento** — pode levar 1–2 semanas até à 1ª reserva. Serve para *não queimar dinheiro* e afinar antes de acelerar. Por isso a campanha tem de ser **muito focada** (poucas palavras, geo "pessoas em Lisboa") — espalhar a €5/dia não gera dados úteis.
 
