@@ -396,6 +396,60 @@ function openBookingOverlay(tourId) {
 // ═══════════════════════════════════════════════════════
 document.addEventListener('DOMContentLoaded', () => {
 
+    // ─── -1. Banner de consentimento (RGPD + Consent Mode v2) ──
+    // Obrigatório na UE para medir conversões de anúncios corretamente.
+    // O estado por defeito (negado) é definido no <head> de cada página;
+    // aqui pedimos a escolha ao visitante e atualizamos o gtag.
+    (function initConsentBanner() {
+        let stored;
+        try { stored = localStorage.getItem('ltuk_consent'); } catch (e) { stored = null; }
+        if (stored === 'granted' || stored === 'denied') return; // já escolheu
+
+        const lang = (document.documentElement.lang || 'pt').slice(0, 2);
+        const T = {
+            pt: { txt: 'Usamos cookies para medir e melhorar a sua experiência e os nossos anúncios. Pode aceitar ou recusar.', ok: 'Aceitar', no: 'Recusar' },
+            en: { txt: 'We use cookies to measure and improve your experience and our ads. You can accept or decline.', ok: 'Accept', no: 'Decline' },
+            es: { txt: 'Usamos cookies para medir y mejorar su experiencia y nuestros anuncios. Puede aceptar o rechazar.', ok: 'Aceptar', no: 'Rechazar' },
+            it: { txt: 'Usiamo i cookie per misurare e migliorare la tua esperienza e i nostri annunci. Puoi accettare o rifiutare.', ok: 'Accetta', no: 'Rifiuta' },
+            fr: { txt: 'Nous utilisons des cookies pour mesurer et améliorer votre expérience et nos publicités. Vous pouvez accepter ou refuser.', ok: 'Accepter', no: 'Refuser' },
+        };
+        const t = T[lang] || T.pt;
+
+        const bar = document.createElement('div');
+        bar.className = 'consent-bar';
+        bar.setAttribute('role', 'dialog');
+        bar.setAttribute('aria-label', 'Cookies');
+        bar.innerHTML =
+            '<p class="consent-bar-text"></p>' +
+            '<div class="consent-bar-actions">' +
+            '<button type="button" class="consent-btn consent-btn--no"></button>' +
+            '<button type="button" class="consent-btn consent-btn--ok"></button>' +
+            '</div>';
+        bar.querySelector('.consent-bar-text').textContent = t.txt;
+        const btnNo = bar.querySelector('.consent-btn--no');
+        const btnOk = bar.querySelector('.consent-btn--ok');
+        btnNo.textContent = t.no;
+        btnOk.textContent = t.ok;
+
+        const decide = (granted) => {
+            try { localStorage.setItem('ltuk_consent', granted ? 'granted' : 'denied'); } catch (e) {}
+            if (typeof window.gtag === 'function') {
+                const v = granted ? 'granted' : 'denied';
+                window.gtag('consent', 'update', {
+                    ad_storage: v, ad_user_data: v, ad_personalization: v, analytics_storage: v,
+                });
+            }
+            bar.classList.remove('is-visible');
+            setTimeout(() => bar.remove(), 300);
+        };
+        btnOk.addEventListener('click', () => decide(true));
+        btnNo.addEventListener('click', () => decide(false));
+
+        document.body.appendChild(bar);
+        void bar.offsetWidth; // força reflow para a transição de entrada tocar
+        bar.classList.add('is-visible');
+    })();
+
     // ─── 0. Analytics (GA4) ────────────────────────────────
     // view_item: se estamos numa página de detalhe de tour, regista qual.
     // O tourId é extraído do botão de reserva (evita editar as 30 páginas).

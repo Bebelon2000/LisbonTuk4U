@@ -4913,6 +4913,73 @@ body.quick-picker-locked { overflow: hidden; }
 }
 
 /* ═══════════════════════════════════════════════════════
+   BANNER DE CONSENTIMENTO (RGPD / Consent Mode v2)
+═══════════════════════════════════════════════════════ */
+.consent-bar {
+    position: fixed;
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 9999;
+    max-width: 640px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 1rem 1.25rem;
+    flex-wrap: wrap;
+    padding: 1rem 1.25rem;
+    background: var(--color-bg-white, #fff);
+    border: 1px solid var(--color-border, #DDE7F0);
+    border-radius: 16px;
+    box-shadow: var(--shadow-lg, 0 22px 55px rgba(27, 42, 58, 0.14));
+    transform: translateY(140%);
+    opacity: 0;
+    transition: transform 0.32s ease, opacity 0.32s ease;
+}
+.consent-bar.is-visible { transform: translateY(0); opacity: 1; }
+.consent-bar-text {
+    flex: 1 1 260px;
+    margin: 0;
+    font-size: 0.85rem;
+    line-height: 1.45;
+    color: var(--color-text-dark, #1B2A3A);
+}
+.consent-bar-actions {
+    display: flex;
+    gap: 0.6rem;
+    flex: 0 0 auto;
+    margin-left: auto;
+}
+.consent-btn {
+    font-family: var(--font-heading, sans-serif);
+    font-weight: 700;
+    font-size: 0.88rem;
+    padding: 0.6rem 1.25rem;
+    border-radius: 99px;
+    cursor: pointer;
+    min-height: 42px;
+    border: 1.5px solid transparent;
+    transition: var(--transition-fast, all 0.15s ease);
+}
+.consent-btn--no {
+    background: transparent;
+    border-color: var(--color-border, #DDE7F0);
+    color: var(--color-text-light, #4A5A68);
+}
+.consent-btn--no:hover { border-color: var(--color-primary, #1C6FB0); color: var(--color-primary, #1C6FB0); }
+.consent-btn--ok {
+    background: var(--color-accent, #C9327B);
+    color: #fff;
+}
+.consent-btn--ok:hover { background: var(--color-accent-hover, #AD2A69); }
+
+@media (max-width: 480px) {
+    .consent-bar { left: 0.5rem; right: 0.5rem; bottom: 0.5rem; padding: 0.9rem 1rem; }
+    .consent-bar-actions { width: 100%; }
+    .consent-btn { flex: 1; }
+}
+
+/* ═══════════════════════════════════════════════════════
    DISPONIBILIDADE — calendário horizontal (home)
 ═══════════════════════════════════════════════════════ */
 .avail-cal {
