@@ -72,26 +72,42 @@
 
 ---
 
-## 4. Estrutura de campanhas recomendada
+## 4. Estrutura de campanhas — MÊS 1 = descoberta de nichos
+
+> **Desenho experimental (decidido com o Bernardo, julho/2026):** o objetivo do 1º mês não é volume, é **encontrar os nichos-alvo**. A Susane guia em PT/EN/ES/IT/FR e há poucos tours em francês em Lisboa → hipótese: nichos de língua têm CPC menor e conversão maior.
+> **Porquê 2 campanhas e não 6:** o orçamento gasta-se ao nível da campanha; numa só, o inglês (volume alto) comia tudo e os nichos nunca recebiam impressões. Duas campanhas = exploração forçada. Mais que isso = braços subamostrados sem sinal (com ~30 cliques/semana, 6 campanhas dariam ~5 cliques cada = ruído puro).
 
 ```
-Conta Google Ads
+Conta Google Ads — MÊS 1 (teste, €5/dia total)
 │
-├── Campanha 1 — MARCA (Pesquisa)                 ~€1–2/dia
-│     └── "lisbontuk4u" e variações · todas as línguas
+├── Campanha A — CORE (Pesquisa)                  €2,5/dia
+│     ├── Grupo EN: "tuk tuk tour lisbon" etc.    → /en/
+│     └── Grupo PT: "passeio de tuk tuk…" etc.    → /
+│     Hipótese: o volume alto converte? CPC real?
 │
-├── Campanha 2 — EN Tours (Pesquisa)              ~€6–8/dia
-│     ├── Grupo: tuk tuk tour lisbon (genérico)
-│     ├── Grupo: private/best (qualificadores)
-│     └── Grupo: bairros (alfama, belem, sunset)
-│     → Landing: lisbontuk4u.com/en/ (ou página do tour certo)
-│
-├── Campanha 3 — PT Tours (Pesquisa)              ~€3–4/dia
-│     └── passeio de tuk tuk em lisboa etc.
-│     → Landing: lisbontuk4u.com/
-│
-└── (fase 2, depois de dados) FR/ES/IT             ligar quando EN+PT provarem retorno
+└── Campanha B — NICHOS LÍNGUA (Pesquisa)         €2,5/dia
+      ├── Grupo FR: "tuk tuk lisbonne", "…en français" → /fr/  · anúncio "Guide francophone"
+      ├── Grupo ES: "paseo en tuk tuk lisboa"          → /es/  · anúncio "Guía en español"
+      └── Grupo IT: "tuk tuk lisbona"                  → /it/  · anúncio "Guida in italiano"
+      Hipótese: menos concorrência = CPC ↓ e conversão ↑ (FR em especial)
+
+(Marca "lisbontuk4u" — adicionar como 3ª campanha a ~€0,5–1/dia OU deixar
+ para quando houver volume de pesquisa de marca; hoje é residual.)
 ```
+
+### Medição com amostras pequenas (mês 1 = análise direcional, não testes a 95%)
+O funil dá sinal por ordem de volume — decidir pelo nível mais alto que já tem dados:
+1. **Impressões/grupo** → tamanho real de cada nicho ("volume baixo" no FR também é resultado).
+2. **CTR** (benchmark 3–5%) → comparável com ~200–300 impressões por braço.
+3. **Relatório de termos de pesquisa** → o dado mais rico do mês 1; rever semanalmente.
+4. **Micro-conversões** (begin_checkout, clique WhatsApp, add_payment_info) → ~10× mais frequentes que compras; já estão todas instrumentadas no GA4.
+5. **Compras + valor** → significado só no fim do mês.
+
+**Regras de decisão pré-definidas:**
+- CTR < 2% após ~300 impressões → reescrever anúncio ou cortar grupo.
+- Palavra com ~25 cliques, 0 begin_checkout e 0 WhatsApp → pausar.
+- Ao subir para €10/dia (semana 2+), o aumento vai TODO para o braço vencedor.
+- Overlap PT/ES: "tuk tuk lisboa" (PT, frase) pode apanhar queries espanholas — validar a atribuição por língua no relatório de termos, não pelos grupos.
 
 **Segmentação geográfica (a decisão mais importante a seguir às palavras):**
 - **"Presença: pessoas EM Lisboa"** — apanha os 61–70% que reservam <7 dias antes, já no destino. Prioridade máxima.
