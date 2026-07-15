@@ -29,6 +29,7 @@
       } catch (e) {}
       gtag('js', new Date());
       gtag('config', 'G-K877GXK16K');
+      gtag('config', 'AW-16702421192'); // Google Ads — medição de conversão de reserva paga
     </script>
 
     <link rel="icon" type="image/png" href="favicon.png">
@@ -195,11 +196,21 @@
             if (!d || !d.paid) return;
             sessionStorage.setItem(key, "1");
             if (typeof window.gtag === "function") {
+              var cur = (d.currency || "eur").toUpperCase();
+              // GA4: purchase com valor real
               window.gtag("event", "purchase", {
                 transaction_id: sid,
                 value: d.amount || 0,
-                currency: (d.currency || "eur").toUpperCase(),
+                currency: cur,
                 items: [{ item_id: d.tourId || "", item_name: d.tourName || "" }],
+              });
+              // Google Ads: conversão "Reserva Paga" com o mesmo valor e
+              // transaction_id (dedup nativo do Ads, além do guard sessionStorage).
+              window.gtag("event", "conversion", {
+                send_to: "AW-16702421192/6K4cCKyWi9EcEMjxqpw-",
+                value: d.amount || 0,
+                currency: cur,
+                transaction_id: sid,
               });
             }
           })
