@@ -1582,6 +1582,99 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     })();
 
+    // ─── 10b. Availability Calendar (home) ──────────────────
+    (function initAvailabilityCalendar() {
+        const cal = document.getElementById('avail-cal');
+        if (!cal) return;
+        const legend = document.getElementById('avail-legend');
+        const cfg = window.LISBONTUK_PAYMENTS;
+        if (!cfg || !cfg.supabaseUrl || !cfg.anonKey) { cal.hidden = true; return; }
+
+        const pageLang = (document.documentElement.lang || 'pt').slice(0, 2);
+        const DOW = {
+            pt: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'],
+            en: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            es: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
+            it: ['Dom', 'Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab'],
+            fr: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+        };
+        const MON = {
+            pt: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+            en: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            es: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+            it: ['Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu', 'Lug', 'Ago', 'Set', 'Ott', 'Nov', 'Dic'],
+            fr: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'],
+        };
+        const STATUS_LABEL = {
+            pt: { disponivel: 'Disponível', poucas_vagas: 'Poucas vagas', lotado: 'Lotado' },
+            en: { disponivel: 'Available', poucas_vagas: 'Few spots', lotado: 'Fully booked' },
+            es: { disponivel: 'Disponible', poucas_vagas: 'Pocas plazas', lotado: 'Completo' },
+            it: { disponivel: 'Disponibile', poucas_vagas: 'Pochi posti', lotado: 'Al completo' },
+            fr: { disponivel: 'Disponible', poucas_vagas: 'Peu de places', lotado: 'Complet' },
+        };
+        const FALLBACK_TEXT = {
+            pt: 'Não foi possível carregar o calendário agora — mas pode sempre consultar a disponibilidade real no formulário de reserva.',
+            en: 'Could not load the calendar right now — but you can always check real availability in the booking form.',
+            es: 'No se pudo cargar el calendario ahora — pero siempre puede consultar la disponibilidad real en el formulario de reserva.',
+            it: 'Al momento non è stato possibile caricare il calendario — ma puoi sempre controllare la disponibilità reale nel modulo di prenotazione.',
+            fr: "Impossible de charger le calendrier pour le moment — mais vous pouvez toujours consulter la disponibilité réelle dans le formulaire de réservation.",
+        };
+        const STATUS_CLASS = { disponivel: 'ok', poucas_vagas: 'low', lotado: 'full' };
+
+        const DAYS = 14;
+        const today = new Date();
+        const dateKey = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+        const days = Array.from({ length: DAYS }, (_, i) => {
+            const d = new Date(today.getFullYear(), today.getMonth(), today.getDate() + i);
+            return { date: d, key: dateKey(d) };
+        });
+
+        const openBookingFlow = (dateKeyClicked, status) => {
+            trackEvent('availability_day_click', { date: dateKeyClicked, status });
+            const stickyBtn = document.getElementById('mobile-sticky-cta-link');
+            if (stickyBtn) stickyBtn.click();
+        };
+
+        fetch(`${cfg.supabaseUrl}/functions/v1/get-availability-range`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${cfg.anonKey}` },
+            body: JSON.stringify({ from: days[0].key, days: DAYS }),
+        })
+            .then((r) => r.json())
+            .then((data) => {
+                if (!data || data.error) throw new Error((data && data.error) || 'sem dados');
+                cal.innerHTML = '';
+                days.forEach(({ date, key }) => {
+                    const info = data[key];
+                    const status = (info && info.status) || 'disponivel';
+                    const cls = STATUS_CLASS[status] || 'ok';
+                    const label = (STATUS_LABEL[pageLang] || STATUS_LABEL.pt)[status] || '';
+                    const dow = (DOW[pageLang] || DOW.pt)[date.getDay()];
+                    const mon = (MON[pageLang] || MON.pt)[date.getMonth()];
+
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = `avail-day avail-day--${cls}`;
+                    btn.dataset.date = key;
+                    if (status === 'lotado') btn.disabled = true;
+                    btn.innerHTML = `
+                        <span class="avail-day-dow">${dow}</span>
+                        <span class="avail-day-num">${date.getDate()}</span>
+                        <span class="avail-day-mon">${mon}</span>
+                        <span class="avail-day-status"><span class="avail-dot avail-dot--${cls}"></span>${label}</span>
+                    `;
+                    if (status !== 'lotado') {
+                        btn.addEventListener('click', () => openBookingFlow(key, status));
+                    }
+                    cal.appendChild(btn);
+                });
+                if (legend) legend.hidden = false;
+            })
+            .catch(() => {
+                cal.innerHTML = `<p class="avail-cal-fallback">${FALLBACK_TEXT[pageLang] || FALLBACK_TEXT.pt}</p>`;
+            });
+    })();
+
     // ─── 11. Contact Form (contact.html) ───────────────────
     (function initContactForm() {
         const form = document.getElementById('booking-form');

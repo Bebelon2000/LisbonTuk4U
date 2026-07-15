@@ -4911,3 +4911,115 @@ body.quick-picker-locked { overflow: hidden; }
     color: var(--color-text-light, #4A5A68);
     line-height: 1.5;
 }
+
+/* ═══════════════════════════════════════════════════════
+   DISPONIBILIDADE — calendário horizontal (home)
+═══════════════════════════════════════════════════════ */
+.avail-cal {
+    display: flex;
+    gap: 0.75rem;
+    overflow-x: auto;
+    padding: 0.25rem 0.25rem 1rem;
+    margin: 0 auto;
+    max-width: 100%;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+}
+.avail-day {
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+    width: 92px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.9rem 0.5rem 0.75rem;
+    border-radius: 14px;
+    border: 1.5px solid var(--color-border);
+    background: var(--color-bg-white);
+    cursor: pointer;
+    font-family: var(--font-heading);
+    transition: var(--transition-fast, all 0.15s ease);
+}
+.avail-day:hover:not(.avail-day--skeleton) {
+    border-color: var(--color-primary-light);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-2px);
+}
+.avail-day-dow {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-text-light);
+    letter-spacing: 0.02em;
+}
+.avail-day-num {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--color-primary-dark);
+    line-height: 1;
+}
+.avail-day-mon {
+    font-size: 0.72rem;
+    color: var(--color-text-light);
+    text-transform: uppercase;
+}
+.avail-day-status {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.68rem;
+    font-weight: 700;
+    margin-top: 0.15rem;
+    text-align: center;
+    line-height: 1.15;
+}
+.avail-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex: 0 0 auto;
+    display: inline-block;
+}
+.avail-dot--ok { background: var(--color-electric); }
+.avail-dot--low { background: var(--color-gold); }
+.avail-dot--full { background: var(--color-terracotta); }
+.avail-day--ok .avail-day-status { color: var(--color-electric); }
+.avail-day--low .avail-day-status { color: #B8860B; }
+.avail-day--full { opacity: 0.6; cursor: default; }
+.avail-day--full .avail-day-status { color: var(--color-terracotta); }
+.avail-day--full:hover { transform: none; box-shadow: none; border-color: var(--color-border); }
+
+.avail-day--skeleton {
+    background: linear-gradient(90deg, #EEF3F8 25%, #E4ECF4 37%, #EEF3F8 63%);
+    background-size: 400% 100%;
+    animation: avail-shimmer 1.4s ease infinite;
+    height: 108px;
+    border-color: transparent;
+    cursor: default;
+}
+@keyframes avail-shimmer {
+    0% { background-position: 100% 50%; }
+    100% { background-position: 0 50%; }
+}
+
+.avail-legend {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin-top: 0.5rem;
+}
+.avail-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+}
+.avail-cal-fallback {
+    text-align: center;
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+}
+.avail-cal-fallback .btn { margin-top: 1rem; }
