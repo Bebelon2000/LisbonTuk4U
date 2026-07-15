@@ -1403,7 +1403,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const logoTemplate = root.querySelector('.gr-glogo');
         if (!grid || !cfg || !cfg.supabaseUrl || !cfg.anonKey) return; // sem backend -> fica o fallback estático
 
-        const fmt = (n, d) => Number(n).toLocaleString('pt-PT', { minimumFractionDigits: d, maximumFractionDigits: d });
+        // O HTML já vem com ~5 reviews reais "cozinhadas" (baked) no próprio
+        // código-fonte -- para SEO (o Google indexa o texto sem precisar de
+        // correr JS) e para o visitante ver conteúdo real logo de imediato,
+        // sem esperar pelo fetch. O JS por baixo só atualiza por cima quando
+        // (e se) conseguir dados mais frescos -- nunca apaga o que já lá está.
+        const hasStaticReviews = grid.children.length > 0;
+
+        const pageLang = (document.documentElement.lang || 'pt').slice(0, 2);
+        const NUM_LOCALE = { pt: 'pt-PT', en: 'en-GB', es: 'es-ES', it: 'it-IT', fr: 'fr-FR' };
+        const COUNT_LABEL = { pt: 'avaliações no Google', en: 'reviews on Google', es: 'reseñas en Google', it: 'recensioni su Google', fr: 'avis sur Google' };
+        const STARS_LABEL = { pt: ' de 5 estrelas', en: ' out of 5 stars', es: ' de 5 estrellas', it: ' stelle su 5', fr: ' étoiles sur 5' };
+        const fmt = (n, d) => Number(n).toLocaleString(NUM_LOCALE[pageLang] || 'pt-PT', { minimumFractionDigits: d, maximumFractionDigits: d });
         const pct = (r) => Math.max(0, Math.min(100, (r / 5) * 100)) + '%';
         const AVATAR_BG = ['#1976D2', '#DB2777', '#0D9488', '#7E6BD9', '#EA580C', '#0EA5E9'];
 
@@ -1412,22 +1423,45 @@ document.addEventListener('DOMContentLoaded', () => {
             s.className = 'gr-starbar gr-starbar--sm';
             s.style.setProperty('--pct', pct(r));
             s.setAttribute('role', 'img');
-            s.setAttribute('aria-label', fmt(r, 1) + ' de 5 estrelas');
+            s.setAttribute('aria-label', fmt(r, 1) + (STARS_LABEL[pageLang] || STARS_LABEL.pt));
             return s;
         };
 
-        // Esqueleto de carregamento (3 cartões pulsantes)
-        grid.hidden = false;
-        grid.innerHTML = '';
-        for (let i = 0; i < 3; i++) {
-            const sk = document.createElement('div');
-            sk.className = 'gr-card gr-card--skeleton';
-            sk.innerHTML = '<div class="gr-sk-head"></div><div class="gr-sk-line"></div><div class="gr-sk-line"></div><div class="gr-sk-line gr-sk-short"></div>';
-            grid.appendChild(sk);
+        // Esqueleto de carregamento (3 cartões pulsantes) -- só quando ainda
+        // não há reviews estáticas no HTML; caso contrário ficam visíveis
+        // enquanto o fetch corre em segundo plano (sem flash de loading).
+        if (!hasStaticReviews) {
+            grid.hidden = false;
+            grid.innerHTML = '';
+            for (let i = 0; i < 3; i++) {
+                const sk = document.createElement('div');
+                sk.className = 'gr-card gr-card--skeleton';
+                sk.innerHTML = '<div class="gr-sk-head"></div><div class="gr-sk-line"></div><div class="gr-sk-line"></div><div class="gr-sk-line gr-sk-short"></div>';
+                grid.appendChild(sk);
+            }
         }
 
         const MAX_REVIEWS = 9; // limite da secção (a Places API só devolve até 5 hoje)
         const VISIBLE_BY_DEFAULT = 3;
+
+        // O botão "ver mais" já existe no HTML (visível quando há >3 reviews
+        // estáticas); liga-se uma vez, independente do resultado do fetch.
+        const seeMoreWrap = document.getElementById('reviews-see-more-wrap');
+        const seeMoreBtn = document.getElementById('reviews-see-more-btn');
+        if (seeMoreWrap && seeMoreBtn && !seeMoreBtn.dataset.wired) {
+            seeMoreBtn.dataset.wired = '1';
+            seeMoreBtn.addEventListener('click', () => {
+                const expanded = grid.classList.toggle('gr-grid-expanded');
+                seeMoreBtn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+                const label = seeMoreBtn.querySelector('span');
+                if (label) {
+                    label.textContent = expanded
+                        ? seeMoreBtn.dataset.hideText
+                        : seeMoreBtn.dataset.showText;
+                }
+                if (!expanded) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        }
 
         // Mantém o aggregateRating do schema.org (JSON-LD) sincronizado com a
         // nota/contagem reais do Google, para as estrelas na pesquisa nunca
@@ -1512,49 +1546,39 @@ document.addEventListener('DOMContentLoaded', () => {
         .then((r) => r.json())
         .then((data) => {
             if (!data || data.error) throw new Error((data && data.error) || 'sem dados');
+            const list = (Array.isArray(data.reviews) ? data.reviews : []).slice(0, MAX_REVIEWS);
+            // Resposta sem reviews (ex.: falha pontual da API do Google) ->
+            // preferimos manter as reviews estáticas do HTML a mostrar vazio.
+            if (!list.length) {
+                if (!hasStaticReviews) grid.hidden = true;
+                return;
+            }
+
             if (typeof data.rating === 'number' && ratingEl) {
                 ratingEl.textContent = fmt(data.rating, 1);
                 if (starsEl) {
                     starsEl.style.setProperty('--pct', pct(data.rating));
-                    starsEl.setAttribute('aria-label', fmt(data.rating, 1) + ' de 5 estrelas');
+                    starsEl.setAttribute('aria-label', fmt(data.rating, 1) + (STARS_LABEL[pageLang] || STARS_LABEL.pt));
                 }
             }
             if (typeof data.total === 'number' && countEl) {
-                countEl.innerHTML = '<strong>' + fmt(data.total, 0) + '</strong> avaliações no Google';
+                countEl.innerHTML = '<strong>' + fmt(data.total, 0) + '</strong> ' + (COUNT_LABEL[pageLang] || COUNT_LABEL.pt);
             }
             if (liveEl) liveEl.hidden = false;
             syncAggregateRatingSchema(data.rating, data.total);
 
             grid.innerHTML = '';
-            const list = (Array.isArray(data.reviews) ? data.reviews : []).slice(0, MAX_REVIEWS);
-            if (!list.length) { grid.hidden = true; return; }
             list.forEach((rv, i) => grid.appendChild(renderCard(rv, i)));
 
-            const seeMoreWrap = document.getElementById('reviews-see-more-wrap');
-            const seeMoreBtn = document.getElementById('reviews-see-more-btn');
-            if (seeMoreWrap && seeMoreBtn) {
-                if (list.length > VISIBLE_BY_DEFAULT) {
-                    seeMoreWrap.hidden = false;
-                    seeMoreBtn.addEventListener('click', () => {
-                        const expanded = grid.classList.toggle('gr-grid-expanded');
-                        seeMoreBtn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-                        const label = seeMoreBtn.querySelector('span');
-                        if (label) {
-                            label.textContent = expanded
-                                ? seeMoreBtn.dataset.hideText
-                                : seeMoreBtn.dataset.showText;
-                        }
-                        if (!expanded) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    });
-                } else {
-                    seeMoreWrap.hidden = true;
-                }
-            }
+            if (seeMoreWrap) seeMoreWrap.hidden = list.length <= VISIBLE_BY_DEFAULT;
         })
         .catch(() => {
-            // Sem ligação ainda (ex.: chave Google por configurar) -> mantém o resumo estático
-            grid.innerHTML = '';
-            grid.hidden = true;
+            // Falha no fetch (ex.: chave Google por configurar) -> mantém as
+            // reviews estáticas do HTML; só esconde a secção se nem isso houver.
+            if (!hasStaticReviews) {
+                grid.innerHTML = '';
+                grid.hidden = true;
+            }
         });
     })();
 
