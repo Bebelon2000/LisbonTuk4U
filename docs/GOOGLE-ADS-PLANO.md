@@ -128,11 +128,17 @@ Encontrados **dois erros fatais em simultâneo** — por isso "nunca deu certo":
 
 ## 6. Orçamento e expectativas realistas
 
-| Fase | Duração | Orçamento | Objetivo |
+**Plano do Bernardo (julho/2026):** cartão virtual com **€150** de teto total, arranque muito cauteloso com **revisões semanais** e escalada gradual do orçamento diário.
+
+| Fase | Orçamento/dia | ~Custo/semana | Objetivo |
 |---|---|---|---|
-| **Teste** | Semanas 1–4 | **€10–12/dia (~€300–360/mês)** | Provar que chegam reservas; recolher dados de pesquisa reais |
-| Ajuste | Semanas 5–8 | €12–20/dia | Cortar o que não converte, reforçar o que converte, ativar bidding por conversões |
-| Escala | Mês 3+ | conforme retorno | Só subir se CPA < €50 comprovado |
+| **Semana 1** | **€5/dia** | ~€35 | Ver o que acontece: que termos entram, CPC real, cliques relevantes |
+| **Semana 2+** | **€10/dia** (se a semana 1 for saudável) | ~€70 | Dobrar o sinal; começar a ver contactos/reservas |
+| Depois | subir só com dados | — | Escalar apenas se houver reservas/contactos e CPA razoável |
+
+> ⚠️ **Realismo do €5/dia:** dá ~3–5 cliques/dia (CPC ~€1–1,50) → ~25–35 cliques/semana. É um sinal **lento** — pode levar 1–2 semanas até à 1ª reserva. Serve para *não queimar dinheiro* e afinar antes de acelerar. Por isso a campanha tem de ser **muito focada** (poucas palavras, geo "pessoas em Lisboa") — espalhar a €5/dia não gera dados úteis.
+
+**Ordem acordada:** montar a campanha (em pausa) + criar ação de conversão → instalar tag no site → adicionar o cartão virtual €150 → ativar a €5/dia → rever semanalmente.
 
 **Conta simples do sucesso no teste:** €330 gastos → ~300 cliques → 2–4 reservas (€360–€1.200 de receita) + contactos WhatsApp. Se acontecer, o canal está validado. Se vier 0 reservas E 0 contactos, paramos e o diagnóstico é quase sempre: palavras erradas, geo errada, ou conversões não medidas.
 
