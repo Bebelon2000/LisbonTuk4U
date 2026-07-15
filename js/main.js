@@ -1429,6 +1429,28 @@ document.addEventListener('DOMContentLoaded', () => {
         const MAX_REVIEWS = 9; // limite da secção (a Places API só devolve até 5 hoje)
         const VISIBLE_BY_DEFAULT = 3;
 
+        // Mantém o aggregateRating do schema.org (JSON-LD) sincronizado com a
+        // nota/contagem reais do Google, para as estrelas na pesquisa nunca
+        // ficarem desatualizadas sem precisar de editar o HTML à mão.
+        const syncAggregateRatingSchema = (rating, total) => {
+            if (typeof rating !== 'number' && typeof total !== 'number') return;
+            document.querySelectorAll('script[type="application/ld+json"]').forEach((script) => {
+                let data;
+                try { data = JSON.parse(script.textContent); } catch (e) { return; }
+                const graph = Array.isArray(data['@graph']) ? data['@graph'] : null;
+                const agency = graph && graph.find((node) => node['@type'] === 'TravelAgency');
+                if (!agency) return;
+                agency.aggregateRating = {
+                    '@type': 'AggregateRating',
+                    ratingValue: typeof rating === 'number' ? rating.toFixed(1) : agency.aggregateRating?.ratingValue,
+                    reviewCount: typeof total === 'number' ? String(total) : agency.aggregateRating?.reviewCount,
+                    bestRating: '5',
+                    worstRating: '1',
+                };
+                script.textContent = JSON.stringify(data);
+            });
+        };
+
         const renderCard = (rv, i) => {
             const card = document.createElement('article');
             card.className = 'gr-card' + (i >= VISIBLE_BY_DEFAULT ? ' gr-card-extra' : '');
@@ -1501,6 +1523,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 countEl.innerHTML = '<strong>' + fmt(data.total, 0) + '</strong> avaliações no Google';
             }
             if (liveEl) liveEl.hidden = false;
+            syncAggregateRatingSchema(data.rating, data.total);
 
             grid.innerHTML = '';
             const list = (Array.isArray(data.reviews) ? data.reviews : []).slice(0, MAX_REVIEWS);
