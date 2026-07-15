@@ -15,6 +15,14 @@
     # Redirect trailing slashes for subfolders if needed
     RewriteCond %{REQUEST_FILENAME} -d
     RewriteRule ^(.*[^/])$ /$1/ [R=301,L]
+
+    # 0.5 URLs limpos: /about -> serve about.html sem mudar o URL na barra
+    #     de enderecos (rewrite interno, nao e redirect). Corrige links
+    #     antigos/indexados no Google sem extensao (.html) que davam 404.
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}\.html -f
+    RewriteRule ^(.*)$ $1.html [L]
 </IfModule>
 
 # 1. Prevent LiteSpeed Caching (LSCache) for dynamic endpoints
