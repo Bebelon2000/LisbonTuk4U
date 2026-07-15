@@ -111,12 +111,18 @@ Conta Google Ads
 
 ## 5. ⚠️ Pré-requisitos ANTES de gastar 1€ (checklist)
 
-- [ ] **1. Tag de conversão do PRÓPRIO Google Ads** na página `reserva-confirmada.html` (não depender só do GA4). É a fonte de verdade do Ads: dispara `purchase` com o valor real da reserva. *(eu implemento — 30 min)*
-- [ ] **2. Consent Mode v2 + banner de consentimento.** Obrigatório na UE desde março/2024 para anúncios personalizados e medição correta. O site hoje **não tem banner de cookies** — para Ads na Europa isto tem de ser resolvido primeiro. É provável que uma tentativa anterior tenha sofrido com isto (conversões não registadas → Google otimiza às cegas → dinheiro desperdiçado). *(eu implemento — banner leve, sem estragar o design)*
+- [ ] **1. Tag de conversão do PRÓPRIO Google Ads** na página `reserva-confirmada.html` (não depender só do GA4). É a fonte de verdade do Ads: dispara `purchase` com o valor real da reserva. *(eu implemento assim que houver o ID `AW-XXXXXXX` — depende de criar a ação de conversão na conta)*
+- [x] **2. Consent Mode v2 + banner de consentimento.** ✅ FEITO (commit `8a2404d`, julho/2026). Consent default (negado) nas 62 páginas antes do gtag config, restauro via localStorage, banner multilíngue PT/EN/ES/IT/FR (Aceitar/Recusar), verificado no browser e ao vivo.
 - [ ] **3. Ligar Google Ads ↔ GA4 ↔ Google Business Profile** (importar públicos, extensão de localização).
-- [ ] **4. Landing pages por língua confirmadas** (já temos ✅ — 5 línguas, calendário de disponibilidade, reviews no HTML, checkout multilíngue).
+- [x] **4. Landing pages por língua confirmadas** ✅ (5 línguas, calendário de disponibilidade, reviews no HTML, checkout multilíngue).
 - [ ] **5. Lista de palavras negativas carregada no dia 1** (secção 3).
 - [ ] **6. Definir o teto: CPA alvo €40** — se após ~150 cliques não houver nenhuma reserva nem contacto WhatsApp, pausar e diagnosticar (não insistir).
+
+### 🔎 Diagnóstico da campanha ANTIGA (`Campanha_LisbonTuk4U_04/05/25`)
+Encontrados **dois erros fatais em simultâneo** — por isso "nunca deu certo":
+1. **"Não é possível fazer a cobrança no seu método de pagamento"** → anúncios ficaram *elegíveis* mas **nunca chegaram a ser servidos**. Zero impressões reais prováveis.
+2. **URL de destino `lisbontuk4u.com/lisbontuk4u` → HTTP 404** (página não existe). Mesmo que servisse, cada clique caía numa página de erro = zero conversões.
+**Ação:** corrigir método de pagamento + apontar anúncios para `lisbontuk4u.com/` (ou `/en/`, `/tours/...`). Decidir se recuperamos esta campanha ou começamos limpa (recomendo limpa, dado o histórico e a estrutura errada).
 
 ---
 
