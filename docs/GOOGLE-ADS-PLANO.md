@@ -156,7 +156,19 @@ Encontrados **dois erros fatais em simultâneo** — por isso "nunca deu certo":
 
 > ⚠️ **Realismo do €5/dia:** dá ~3–5 cliques/dia (CPC ~€1–1,50) → ~25–35 cliques/semana. É um sinal **lento** — pode levar 1–2 semanas até à 1ª reserva. Serve para *não queimar dinheiro* e afinar antes de acelerar. Por isso a campanha tem de ser **muito focada** (poucas palavras, geo "pessoas em Lisboa") — espalhar a €5/dia não gera dados úteis.
 
-**Ordem acordada:** montar a campanha (em pausa) + criar ação de conversão → instalar tag no site → adicionar o cartão virtual €150 → ativar a €5/dia → rever semanalmente.
+**Ordem acordada:** montar a campanha (em pausa) + criar ação de conversão → instalar tag no site → adicionar o cartão virtual €150 → ativar a €10/dia → rever semanalmente.
+
+### 🎯 Checklist "jogada de mestre" (antes de ativar — maximiza dados por euro)
+- [ ] **Desativar recomendações automáticas** (nível conta: Recomendações → Auto-aplicar → tudo OFF). O Google auto-adiciona palavras amplas e sobe orçamentos silenciosamente — mata um teste controlado.
+- [ ] **Confirmar marcação automática (auto-tagging) ON** (Definições da conta) — é o que liga cliques do Ads ao GA4/Clarity via gclid; sem isto a análise por campanha morre.
+- [ ] **Associar Google Ads ↔ GA4** (Ferramentas → Contas associadas) — vê begin_checkout/WhatsApp por campanha no GA4.
+- [ ] **Extensões/recursos**: sitelinks (Belém, Half Day, Galeria, Contacto), chamada (+351 966 697 738), localização (Business Profile). Custo zero, CTR +10–15% ≈ mais dados por euro.
+- [ ] **Horário**: semana 1 SEM restrição de horário — deixar correr 24h e usar os dados por hora para decidir dayparting na semana 2 (não cortar antes de medir).
+- [ ] **Rever termos de pesquisa a cada 2–3 dias** na semana 1 e adicionar negativas agressivamente (é onde um teste pequeno se protege).
+- [ ] ⚠️ **Verificação de anunciante até 29/07/2026** (o "Ignorar" é temporário — sem completar, os anúncios param nessa data).
+
+### €5/dia por campanha é "pouco"?
+Depende do objetivo: para **escalar**, sim, é pouco (o próprio Google vai mostrar "limitado pelo orçamento" — ignorar, é normal e até desejável num teste). Para **descoberta direcional** (CTR, termos de pesquisa, micro-conversões), é suficiente em 1–2 semanas de julho (época alta). O que €5/dia NÃO sustenta é smart bidding por conversões (precisa de ~15–30 conversões/mês) — por isso usamos Maximizar cliques com teto de CPC, de propósito. O upgrade de orçamento vem DEPOIS dos dados, direcionado ao braço vencedor — não antes.
 
 **Conta simples do sucesso no teste:** €330 gastos → ~300 cliques → 2–4 reservas (€360–€1.200 de receita) + contactos WhatsApp. Se acontecer, o canal está validado. Se vier 0 reservas E 0 contactos, paramos e o diagnóstico é quase sempre: palavras erradas, geo errada, ou conversões não medidas.
 
