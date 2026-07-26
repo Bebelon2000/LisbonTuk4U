@@ -4989,6 +4989,20 @@ body.quick-picker-locked { overflow: hidden; }
     font-weight: 700;
     color: #B8860B; /* âmbar — escassez honesta, sem alarme vermelho */
 }
+/* Reafirmação no passo da data — combate a hesitação no momento de escolher
+   o dia (Clarity mostrou abandono aqui). Cancelamento grátis = anti-comprometimento. */
+.booking-date-reassure {
+    margin: 0 0 0.85rem;
+    padding: 0.6rem 0.85rem;
+    background: rgba(18, 167, 123, 0.08);
+    border: 1px solid rgba(18, 167, 123, 0.22);
+    border-radius: 10px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #0B7A59;
+    text-align: center;
+    line-height: 1.4;
+}
 .booking-wa-nudge {
     margin-top: 1rem;
     padding-top: 1rem;

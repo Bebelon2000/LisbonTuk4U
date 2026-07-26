@@ -210,6 +210,7 @@ const I18N = {
         terms: 'Concordo com os termos da reserva e a política de cancelamento gratuito até 48h antes.',
         confirm: 'CONFIRMAR RESERVA', processing: 'A processar...',
         secure: 'Reserva segura · Cancelamento gratuito até 48h antes',
+        dateReassure: '✓ Cancelamento grátis até 48h antes · avaliação 5,0 ★ no Google',
         slotsLeft: (n) => `⏳ Últimos ${n} horários disponíveis para este dia`,
         orWa: 'Prefere reservar por WhatsApp? Respondemos em minutos.',
         waCta: 'Reservar por WhatsApp',
@@ -248,6 +249,7 @@ const I18N = {
         terms: 'I agree to the booking terms and the free-cancellation policy (up to 48h before).',
         confirm: 'CONFIRM BOOKING', processing: 'Processing...',
         secure: 'Secure booking · Free cancellation up to 48h before',
+        dateReassure: '✓ Free cancellation up to 48h before · rated 5.0 ★ on Google',
         slotsLeft: (n) => `⏳ Last ${n} time slots available for this day`,
         orWa: 'Prefer to book via WhatsApp? We reply in minutes.',
         waCta: 'Book via WhatsApp',
@@ -286,6 +288,7 @@ const I18N = {
         terms: 'Acepto las condiciones de la reserva y la política de cancelación gratuita hasta 48h antes.',
         confirm: 'CONFIRMAR RESERVA', processing: 'Procesando...',
         secure: 'Reserva segura · Cancelación gratuita hasta 48h antes',
+        dateReassure: '✓ Cancelación gratis hasta 48h antes · valoración 5,0 ★ en Google',
         slotsLeft: (n) => `⏳ Últimos ${n} horarios disponibles para este día`,
         orWa: '¿Prefieres reservar por WhatsApp? Respondemos en minutos.',
         waCta: 'Reservar por WhatsApp',
@@ -324,6 +327,7 @@ const I18N = {
         terms: 'Accetto i termini della prenotazione e la politica di cancellazione gratuita fino a 48h prima.',
         confirm: 'CONFERMA PRENOTAZIONE', processing: 'Elaborazione...',
         secure: 'Prenotazione sicura · Cancellazione gratuita fino a 48h prima',
+        dateReassure: '✓ Cancellazione gratis fino a 48h prima · valutazione 5,0 ★ su Google',
         slotsLeft: (n) => `⏳ Ultimi ${n} orari disponibili per questo giorno`,
         orWa: 'Preferisci prenotare su WhatsApp? Rispondiamo in pochi minuti.',
         waCta: 'Prenota su WhatsApp',
@@ -362,6 +366,7 @@ const I18N = {
         terms: 'J\'accepte les conditions de réservation et la politique d\'annulation gratuite jusqu\'à 48h avant.',
         confirm: 'CONFIRMER LA RÉSERVATION', processing: 'Traitement...',
         secure: 'Réservation sécurisée · Annulation gratuite jusqu\'à 48h avant',
+        dateReassure: '✓ Annulation gratuite jusqu\'à 48h avant · note 5,0 ★ sur Google',
         slotsLeft: (n) => `⏳ Derniers ${n} créneaux disponibles pour ce jour`,
         orWa: 'Vous préférez réserver via WhatsApp ? Nous répondons en quelques minutes.',
         waCta: 'Réserver via WhatsApp',
@@ -893,6 +898,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         ${state.selectedDate ? `<div class="booking-step-sublabel">✓ ${formatDatePT(state.selectedDate)}</div>` : ''}
                     </div>
                 </div>
+                ${!state.selectedDate ? `<p class="booking-date-reassure">${T.dateReassure}</p>` : ''}
                 <div class="booking-calendar" id="booking-calendar">
                     ${renderCalendar()}
                 </div>
