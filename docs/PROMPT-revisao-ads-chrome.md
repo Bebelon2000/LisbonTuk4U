@@ -1,30 +1,35 @@
-# Prompt para o Claude in Chrome — revisão periódica (termos de pesquisa + Clarity)
+# Prompt para o Claude in Chrome — REVISÃO SEMANA 1 (30/07/2026)
 
-> Extração de dados **só de leitura** para eu analisar. Reutilizar a cada 2–4 dias na fase de teste.
-> **Não apliques recomendações, não mudes lances/orçamentos, não toques em nada.** Só extrair e reportar.
+> Campanhas ativas desde **23/07/2026 14:00** → exatamente 1 semana.
+> Extração **só de leitura**. **Não apliques recomendações, não mudes lances/orçamentos/estados.** Só extrair e reportar.
 
 ---
 
-Estou na conta **Google Ads da LisbonTuk4U (CID 118-141-3593)** e no **Microsoft Clarity** (projeto `xlf535y02x`), com sessão iniciada. Preciso que me extraias dados para análise. **NÃO apliques nenhuma recomendação nem alteres nada** — é só leitura e relatório.
+Estou na conta **Google Ads da LisbonTuk4U (CID 118-141-3593)** e no **Microsoft Clarity** (projeto `xlf535y02x`), com sessão iniciada. Preciso de um relatório da **primeira semana completa** (23/07 a 30/07/2026). **NÃO apliques nada nem alteres definições** — é só leitura.
 
-## Parte 1 — Termos de pesquisa (Google Ads)
-Período: **desde 23/07/2026 até hoje**.
+## ⚠️ Parte 0 — VERIFICAÇÃO URGENTE (faz isto PRIMEIRO)
+Havia um prazo de **verificação de anunciante a 29/07/2026** (ontem). Preciso de saber se os anúncios pararam:
+1. As campanhas `LisbonTuk4U — Core EN+PT` e `LisbonTuk4U — Nichos Língua` estão **Ativadas** ou foram pausadas/limitadas?
+2. Há algum **banner/aviso vermelho** no topo da conta (verificação de identidade, pagamento, política)?
+3. Vai a **Anúncios** e diz-me se algum está **"Reprovado"** ou "Elegível (limitado)".
+4. Qual o **estado da verificação de anunciante** (Definições → Verificação/Identidade)? Verificado, pendente, ou em falta?
 
-1. Vai a **Campanhas → (abre cada campanha) → menu lateral "Termos de pesquisa"**. Faz para as DUAS campanhas: `LisbonTuk4U — Core EN+PT` e `LisbonTuk4U — Nichos Língua`.
-2. Para **cada termo de pesquisa** que apareceu, dá-me numa tabela: **termo · campanha · grupo (EN/PT/FR/ES/IT) · impressões · cliques · CTR · CPC médio · custo · conversões**.
-3. Dá-me também os **totais por grupo de anúncios** (EN, PT, FR, ES, IT separados): impressões, cliques, CTR, custo, conversões — para eu ver que nicho está a respirar.
-4. Marca quais os termos que te parecem **irrelevantes/lixo** (ex.: pessoas a procurar comprar/alugar tuk-tuk, empregos, outra cidade) — candidatos a palavra negativa.
+## Parte 1 — Desempenho da semana (Google Ads), período 23/07–30/07
+1. **Por campanha** e **por grupo de anúncios** (EN, PT, FR, ES, IT separados): impressões, cliques, CTR, CPC médio, custo, **conversões** e valor de conversão.
+2. **Custo total gasto** desde o início (importante: o cartão tem teto de €150 — diz-me quanto já foi gasto e quanto resta).
+3. **Termos de pesquisa NOVOS** desde 27/07 (a última revisão foi até 26/07): termo · grupo · impressões · cliques · custo · conversões. Marca os que parecem lixo.
+4. Confirma se as **negativas** adicionadas (40 por campanha) estão a funcionar — apareceu algum termo que já devia estar bloqueado?
 
-## Parte 2 — Microsoft Clarity (comportamento real)
-1. Vai a **clarity.microsoft.com** → projeto da LisbonTuk4U → **Recordings** (gravações).
-2. Diz-me quantas sessões há no período e, se der para filtrar, quantas vieram de **tráfego pago/referral** vs direto.
-3. **Vê 5 gravações** (de preferência de visitantes recentes, idealmente vindos de anúncios/mobile). Para cada uma reporta: **dispositivo (telemóvel/PC) · país/língua se aparecer · páginas que visitou · chegou a abrir a reserva? · onde parou/saiu · houve rage-clicks ou dead-clicks (cliques frustrados) · profundidade de scroll**.
-4. No painel **Dashboard** do Clarity, dá-me também: % de scroll médio na homepage, e se há algum **"dead click"** ou **"rage click"** recorrente assinalado (o Clarity destaca-os).
+## Parte 2 — Microsoft Clarity: o funil melhorou?
+Contexto: a 26/07 adicionámos ao site uma **reafirmação no passo da data** ("cancelamento grátis até 48h · 5,0 ★"), porque as gravações mostravam pessoas a abandonar exatamente aí. Quero saber se resultou.
+1. **Compara os dois períodos**: 23–26/07 (antes) vs 27–30/07 (depois). Para cada um: nº de sessões, e o evento **"Verificar disponibilidade"** (quantos abriram a reserva).
+2. No período **27–30/07**, vê **5 gravações** de tráfego pago. Por cada: dispositivo · língua/país · abriu a reserva? · **passou do passo da data?** · onde saiu · rage/dead-clicks.
+3. Dashboard: profundidade de scroll média e rage/dead-clicks recorrentes no período 27–30/07.
 
 ## Reporta-me
-- Tabela de termos de pesquisa (as duas campanhas) + totais por grupo.
-- Lista de termos candidatos a negativa.
-- Resumo das 5 gravações Clarity (onde as pessoas hesitam/saem).
-- Qualquer rage/dead-click recorrente.
+- **Parte 0 primeiro** (estado das campanhas + verificação — é o mais urgente).
+- Tabela de desempenho por grupo + custo total/restante.
+- Termos novos + candidatos a negativa.
+- Comparação Clarity antes/depois + resumo das 5 gravações.
 
 Lembra-te: **não apliques nada, não mudes definições** — só me trazes os dados.
