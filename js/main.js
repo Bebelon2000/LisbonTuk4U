@@ -509,6 +509,14 @@ document.addEventListener('DOMContentLoaded', () => {
         else if (c.includes('track-viator')) method = 'viator';
         if (method) {
             trackEvent('contact_click', { method, link_url: el.href || '', page_lang: SITE_LANG });
+            // Conversão do Google Ads "Contacto WhatsApp/Email": só para os
+            // contactos diretos (WhatsApp/email/telefone) — são estes que geram
+            // reserva. Cliques para OTAs NÃO contam (levam o cliente para fora,
+            // e lá pagamos comissão). Sem isto o Ads via 0 conversões e
+            // otimizava às cegas, apesar de os contactos existirem.
+            if (method === 'whatsapp' || method === 'email' || method === 'phone') {
+                trackEvent('conversion', { send_to: 'AW-16702421192/MhuXCIiuoNocEMjxqpw-' });
+            }
         }
     }, { passive: true });
 
