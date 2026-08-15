@@ -201,3 +201,42 @@ Depende do objetivo: para **escalar**, sim, é pouco (o próprio Google vai most
 - Não existe conector direto (MCP) para Google Ads — a gestão é pela interface web; o Claude pode operar lá via Claude in Chrome contigo autenticado.
 - **Google Things to Do** (anúncios de atividades com foto+preço na pesquisa) exige um parceiro de conectividade (FareHarbor, Rezdy, etc.) — fica para o futuro; hoje o nosso checkout é próprio (Stripe) e isso é uma vantagem de custo.
 - Fontes principais: WordStream/LocaliQ benchmarks 2025, Arival (Things to Do), FareHarbor 2025 travel trends, TicketingHub/Basecamp guias de Ads para operadores turísticos, dados internos LisbonTuk4U (98 reviews, 2 reservas diretas).
+
+---
+
+## 📊 REVISÃO 15/08/2026 — a inversão da hipótese (leitura com dados de conversão)
+
+**Primeiras conversões reais: 2 RESERVAS PAGAS, €480 de receita** (semana 8–14/ago).
+
+| Métrica | Valor |
+|---|---|
+| Investimento | €119,00 |
+| Receita atribuída | **€480** |
+| **ROAS** | **4,03×** (€4 de receita por cada €1 gasto) |
+| Custo por reserva | €59,50 |
+| Ticket médio | €240 |
+
+### Desempenho por grupo (8–14/ago)
+| Grupo | Impr. | Cliques | CTR | Custo | Conv. | Taxa conv. | **Custo/conv.** |
+|---|---|---|---|---|---|---|---|
+| **EN Genérico** | 586 | 32 | 5,46% | €14,17 | **1,00** | **3,13%** | **€14,17** 🥇 |
+| **PT** | 726 | 38 | 5,23% | €15,82 | 0,50 | 1,32% | €31,64 🥈 |
+| FR | 702 | 79 | 11,25% | €41,75 | 0,50 | 0,63% | €83,49 |
+| ES | 438 | 57 | 13,01% | €31,77 | 0 | 0% | — |
+| IT | 191 | 27 | 14,14% | €15,49 | 0 | 0% | — |
+
+**Campanha:** Core (EN+PT) €19,99/conv · Nichos (FR/ES/IT) €178,02/conv → **Core é ~9× mais eficiente**.
+
+### ⚠️ A lição: o CTR era uma métrica de vaidade
+A realocação de 01/08 (Nichos €7 / Core €3) baseou-se no CTR, a única métrica disponível na altura. Com dados de conversão, a conclusão **inverte-se**: os nichos atraem muitos cliques baratos que **não reservam**; o EN/PT atrai menos cliques mas que **convertem**. O Core estava a ser esfomeado com €3/dia enquanto o Nichos gastava €7 sem converter.
+
+**Ação (15/08): invertido para Core €7 / Nichos €3** (total mantido em €10/dia).
+
+### Rigor estatístico — o que NÃO se pode concluir ainda
+- Só há **2 conversões**. Teste qui-quadrado Core vs Nichos: χ² ≈ 1,93, **p ≈ 0,16** → **não significativo** a 95%.
+- Por isso **não se pausam ES e IT**: 0 conversões em 57 e 27 cliques é perfeitamente compatível com uma taxa de 1–2% (P(0 em 57) ≈ 32% se a taxa real fosse 2%). Cortar agora seria decidir com ruído.
+- A decisão de realocar **não espera significância** — segue lógica de *multi-armed bandit*: deslocar orçamento para o braço melhor mantendo exploração no outro. Reversível a qualquer momento.
+
+### A vigiar
+- **Sobre-entrega de orçamento:** gastou €119 em 7 dias com €10/dia nominal (~€17/dia). O Google permite até 2× o diário desde que o mês respeite 30,4 × diário — mas convém confirmar o total mensal.
+- **Método de pagamento alternativo** continua por adicionar (banner ativo). É o que impede novas paragens por cartão virtual recusado.
