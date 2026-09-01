@@ -13,6 +13,8 @@
 | 2026-07-30 | 23–30/jul | 1.905 | 156 | 8,2% | €89,12 | 0 | — | — | — | Core €5 · Nichos €5 |
 | 2026-08-01 | (sem dados novos) | — | — | — | — | 0 | — | — | — | **Core €3 · Nichos €7** ⚠️ |
 | **2026-08-15** | **8–14/ago** | **2.643** | **233** | **8,82%** | **€119,00** | **2,00** | **€480** | **4,03×** | **€59,50** | **Core €7 · Nichos €3** ✅ |
+| 2026-09-01 | 15–31/ago | 3.593 | 259 | 7,21% | €143,02 | **0** | €0 | **0×** | — | Core €7 · Nichos €3 (inalterado) |
+| **2026-09-01** | **AGOSTO (1–31)** | **6.542** | **509** | **7,78%** | **€272,27** | **2,00** | **€480** | **1,76×** | **€136,14** | Core €7 · Nichos €3 |
 
 > ⚠️ 01/08: realocação feita **com base em CTR** (única métrica disponível). Revelou-se errada — ver 15/08.
 > ✅ 15/08: realocação **invertida** com base em custo por conversão.
@@ -68,4 +70,13 @@
 | 2026-07-26 | Reafirmação no passo da data ("cancelamento grátis · 5,0★") | Clarity: abandono no passo da data | Conclusão 0% → 6,5% (direcional) |
 | 2026-08-01 | Orçamento Core €3 / Nichos €7 | **CTR** (métrica errada) | ❌ Revertido a 15/08 |
 | 2026-08-01 | Criar conversão "Contacto WhatsApp/Email" | 4 contactos invisíveis ao Ads | Ainda sem dados (anúncios parados 31/07–07/08) |
-| **2026-08-15** | **Orçamento Core €7 / Nichos €3** | **Custo/conversão + landing pages** | A avaliar na próxima revisão |
+| **2026-08-15** | **Orçamento Core €7 / Nichos €3** | **Custo/conversão + landing pages** | ❌ **Falhou** — €143 e 0 conversões em 17 dias (ver 01/09) |
+| 2026-09-01 | **Nenhuma alteração de orçamento** (deliberado) | Contactos por medir → informação incompleta | Pendente: confirmar contactos com a Susane |
+
+## Alertas em aberto
+
+| Desde | Problema | Impacto |
+|---|---|---|
+| 2026-08-01 | Objetivo **"Contacto" em 0 de 3 campanhas** (estado "Requer atenção"). Código do site está correto — é configuração no Ads. | **Contactos WhatsApp/email não contam como conversão.** Todo o CPA calculado está subestimado. |
+| 2026-07-30 | **Método de pagamento alternativo** por adicionar | Paragens recorrentes dos anúncios (vale visível 21–24/ago) |
+| — | Reviews no HTML: 98 · realidade: 106 | Prova social desatualizada |
