@@ -19,6 +19,7 @@ export const TOUR_PRICING: Record<string, TourPrice> = {
     isALaCarte: true,
     durationOptions: { 1: 120, 2: 180, 3: 240, 4: 300, 5: 360 },
   },
+  "lisboa-autentica": { name: "Lisboa Autêntica", basePrice: 150, durationHours: 1.5 },
   "belem": { name: "Belém", basePrice: 180, durationHours: 2 },
   "half-day": { name: "Half Day", basePrice: 300, durationHours: 4 },
   "centro-historico": { name: "Centro Histórico", basePrice: 180, durationHours: 2 },

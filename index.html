@@ -67,7 +67,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400..800&family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="index.css?v=4.3.2">
+    <link rel="stylesheet" href="index.css?v=4.4.0">
 
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
@@ -185,30 +185,36 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "Lisboa Autêntica",
+          "url": "https://lisbontuk4u.com/tours/lisboa-autentica.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "Belém",
           "url": "https://lisbontuk4u.com/tours/belem.html"
         },
         {
           "@type": "ListItem",
-          "position": 3,
+          "position": 4,
           "name": "Half Day",
           "url": "https://lisbontuk4u.com/tours/half-day.html"
         },
         {
           "@type": "ListItem",
-          "position": 4,
+          "position": 5,
           "name": "Centro Histórico",
           "url": "https://lisbontuk4u.com/tours/centro-historico.html"
         },
         {
           "@type": "ListItem",
-          "position": 5,
+          "position": 6,
           "name": "Lisboa Miradouros",
           "url": "https://lisbontuk4u.com/tours/miradouros.html"
         },
         {
           "@type": "ListItem",
-          "position": 6,
+          "position": 7,
           "name": "Full Lisboa",
           "url": "https://lisbontuk4u.com/tours/full-lisboa.html"
         }
@@ -519,7 +525,41 @@
                     </div>
                 </article>
 
-                <!-- CARD 2: Belém -->
+                <!-- CARD 2: Lisboa Autentica (NOVO) -->
+                <article class="tour-visual-card" data-tour-id="lisboa-autentica" id="card-lisboa-autentica">
+                    <div class="tour-card-img-wrapper">
+                        <div class="new-badge" aria-label="Passeio novo">NOVO</div>
+                        <img src="assets/img/tour-lisboa-autentica.webp" alt="Lisboa Autêntica — Lapa, Madragoa, Estrela e Campo de Ourique de tuk-tuk" class="tour-card-img" loading="lazy">
+                        <div class="tour-card-img-overlay"></div>
+                        <div class="tour-card-price-badge"><strong>€150</strong> por grupo</div>
+                    </div>
+                    <div class="tour-card-body">
+                        <div class="tour-card-meta">
+                            <span class="tour-meta-item">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                1h30
+                            </span>
+                            <span class="tour-meta-item">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                                Até 5 pessoas
+                            </span>
+                        </div>
+                        <h3 class="tour-card-title">Lisboa Autêntica</h3>
+                        <p class="tour-card-desc">A Lisboa fora dos roteiros: Lapa, Madragoa, Estrela e Campo de Ourique, entre casas coloridas e fachadas de azulejo.</p>
+                        <div class="tour-card-footer">
+                            <div class="tour-card-actions tour-card-actions-dual">
+                                <button class="btn btn-primary btn-sm" onclick="openBookingOverlay('lisboa-autentica')" id="book-lisboa-autentica">Reservar agora</button>
+                                <a class="btn btn-sm btn-saber-mais" href="tours/lisboa-autentica.html" id="details-lisboa-autentica">Saber Mais</a>
+                            </div>
+                        </div>
+                        <div class="tour-guarantee-line">
+                            <span>✓ Cancela grátis até 48h</span>
+                            <span>✓ Preço total · sem taxas</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- CARD 3: Belém -->
                 <article class="tour-visual-card" data-tour-id="belem" id="card-belem">
                     <div class="tour-card-img-wrapper">
                         <img src="assets/img/tour-belem.webp" alt="Tour Belém — Torre de Belém e Mosteiro dos Jerónimos" class="tour-card-img" loading="lazy">
@@ -552,7 +592,7 @@
                     </div>
                 </article>
 
-                <!-- CARD 3: Half Day — BEST SELLER -->
+                <!-- CARD 4: Half Day — BEST SELLER -->
                 <article class="tour-visual-card tour-best-seller" data-tour-id="half-day" id="card-half-day">
                     <div class="tour-card-img-wrapper">
                         <div class="best-seller-badge" aria-label="Passeio mais vendido">
@@ -589,7 +629,7 @@
                     </div>
                 </article>
 
-                <!-- CARD 4: Centro Histórico -->
+                <!-- CARD 5: Centro Histórico -->
                 <article class="tour-visual-card tour-card-extra" data-tour-id="centro-historico" id="card-centro-historico">
                     <div class="tour-card-img-wrapper">
                         <img src="assets/img/tour-centro-historico.webp" alt="Centro Histórico — Bairro Alto, Chiado, Alfama e Graça" class="tour-card-img" loading="lazy">
@@ -622,7 +662,7 @@
                     </div>
                 </article>
 
-                <!-- CARD 5: Lisboa Miradouros -->
+                <!-- CARD 6: Lisboa Miradouros -->
                 <article class="tour-visual-card tour-card-extra" data-tour-id="miradouros" id="card-miradouros">
                     <div class="tour-card-img-wrapper">
                         <img src="assets/img/tour-miradouros.webp" alt="Lisboa Miradouros — as melhores vistas da cidade" class="tour-card-img" loading="lazy">
@@ -655,7 +695,7 @@
                     </div>
                 </article>
 
-                <!-- CARD 6: Full Lisboa -->
+                <!-- CARD 7: Full Lisboa -->
                 <article class="tour-visual-card tour-card-extra" data-tour-id="full-lisboa" id="card-full-lisboa">
                     <div class="tour-card-img-wrapper">
                         <img src="assets/img/tour-full-lisboa.webp" alt="Full Lisboa — experiência imersiva de 5 horas" class="tour-card-img" loading="lazy">
@@ -971,6 +1011,7 @@
                 <h3>Passeios</h3>
                 <ul class="footer-links">
                     <li><a href="#passeios">Lisboa à la Carte</a></li>
+                    <li><a href="#passeios">Lisboa Autêntica</a></li>
                     <li><a href="#passeios">Belém</a></li>
                     <li><a href="#passeios">Half Day ⭐</a></li>
                     <li><a href="#passeios">Centro Histórico</a></li>
@@ -1101,7 +1142,7 @@
 
 
     <script src="js/payments-config.js?v=1.0.1"></script>
-    <script src="js/main.js?v=3.9.12"></script>
+    <script src="js/main.js?v=3.10.0"></script>
 
 </body>
 </html>

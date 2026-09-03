@@ -41,12 +41,37 @@ const TOUR_DATA = {
         popularStops: [
             'Alfama e os seus miradouros',
             'Castelo de São Jorge',
+            'Lapa, Estrela e Campo de Ourique',
             'Graça e Senhora do Monte',
             'Bairro Alto e Chiado',
             'Belém e os Jerónimos',
             'Parque Eduardo VII',
             'LX Factory',
             'Ginjinha ou pastéis de nata',
+        ],
+        included: TOUR_INCLUDED,
+    },
+    'lisboa-autentica': {
+        name: 'Lisboa Autêntica',
+        img: '/assets/img/tour-lisboa-autentica.webp',
+        duration: '1h30',
+        durationHours: 1.5,
+        basePrice: 150,
+        isALaCarte: false,
+        maxPax: 5,
+        description: 'A Lisboa que fica fora dos roteiros. Em hora e meia atravessamos a Lapa, a Madragoa, a Estrela e Campo de Ourique — bairros onde a cidade ainda vive devagar, entre casas coloridas, fachadas forradas a azulejo e as janelas e portas lisboetas que quase ninguém fotografa porque quase ninguém lá passa.',
+        itinerary: [
+            'Rua das Janelas Verdes',
+            'Rua das Trinas',
+            'Rua Guarda-Mor',
+            'Museu Nacional de Arte Antiga',
+            'Mural de Felipe Pantone',
+            'Tapada das Necessidades',
+            'Rua da Lapa e Igreja da Lapa',
+            'Basílica e Jardim da Estrela',
+            'Muro Azul das Amoreiras',
+            'Campo de Ourique',
+            'Mercado de Campo de Ourique',
         ],
         included: TOUR_INCLUDED,
     },
@@ -669,7 +694,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ─── 5c. Quick Tour Picker (aberto pelo CTA sticky mobile) ──
-    const QUICK_PICKER_ORDER = ['a-la-carte', 'belem', 'half-day', 'centro-historico', 'miradouros', 'full-lisboa'];
+    const QUICK_PICKER_ORDER = ['a-la-carte', 'lisboa-autentica', 'belem', 'half-day', 'centro-historico', 'miradouros', 'full-lisboa'];
     const quickPickerOverlay = document.getElementById('quick-picker-overlay');
     const quickPickerList = document.getElementById('quick-picker-list');
     const quickPickerClose = document.getElementById('quick-picker-close');

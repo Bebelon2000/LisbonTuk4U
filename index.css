@@ -2246,6 +2246,48 @@ body:not(.promo-dismissed) .hero-section { padding-top: 7.5rem; }
     50%       { box-shadow: 0 4px 22px rgba(246,183,60,0.7); }
 }
 
+/* Com 7 passeios a última linha da grelha fica com um card sozinho, encostado
+   à esquerda. Centra-o — a regra só dispara quando o último card é o primeiro
+   da sua linha, por isso desliga-se sozinha se voltarmos a um número par. */
+@media (min-width: 768px) and (max-width: 1023.98px) {
+    .tours-visual-grid > .tour-visual-card:last-child:nth-child(2n + 1) {
+        grid-column: 1 / -1;
+        width: calc(50% - 0.875rem);
+        justify-self: center;
+    }
+}
+@media (min-width: 1024px) {
+    .tours-visual-grid > .tour-visual-card:last-child:nth-child(3n + 1) {
+        grid-column: 2;
+    }
+}
+
+/* A foto do Lisboa Autêntica é vertical: com o corte centrado o card só
+   mostrava a calçada. Sobe o enquadramento para apanhar as casas, as varandas
+   e o capô de azulejo — que é o que o passeio promete. */
+#card-lisboa-autentica .tour-card-img { object-position: 50% 32%; }
+
+/* Badge "NOVO" — mesma anatomia do best-seller, no rosa da marca.
+   Sem pulsar: dois badges a piscar ao mesmo tempo na grelha cansa a vista. */
+.new-badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 3;
+    background: linear-gradient(135deg, #E0559A 0%, #C9327B 100%);
+    color: #fff;
+    padding: 0.4rem 0.85rem;
+    border-radius: 999px;
+    font-family: var(--font-heading);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    box-shadow: 0 4px 12px rgba(201, 50, 123, 0.4);
+}
+
 .tour-card-body {
     padding: 1.25rem 1.5rem 1.5rem;
     display: flex;
@@ -4618,7 +4660,7 @@ body.lightbox-open { overflow: hidden; }
 }
 
 /* ═══════════════════════════════════════════════════════
-   TOURS — "Ver mais" no mobile (mostra só 3 de 6 cards)
+   TOURS — "Ver mais" no mobile (mostra só 4 de 7 cards)
 ═══════════════════════════════════════════════════════ */
 .tours-see-more-wrap {
     display: none; /* só mobile */
