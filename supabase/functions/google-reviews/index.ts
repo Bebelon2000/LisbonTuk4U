@@ -8,6 +8,10 @@
 //   GOOGLE_MAPS_API_KEY -> chave da Places API (New)
 //   GOOGLE_PLACE_ID     -> opcional; por defeito o Place ID da LisbonTuk4U
 //
+// A chave TEM de ser sem restrições ou restrita por IP. Uma chave
+// restrita por referrer HTTP não serve: chamadas server-side não
+// enviam referrer e o Google responde PERMISSION_DENIED.
+//
 // Cache em memória (6h) para não gastar quota e responder rápido.
 // Em caso de erro do Google, devolve a última cache (mesmo expirada).
 // ──────────────────────────────────────────────────────────────
@@ -36,6 +40,14 @@ interface ReviewsBody {
   updatedAt: string;
 }
 
+// Erro do Google com o campo `status` preservado (PERMISSION_DENIED,
+// SERVICE_DISABLED, ...), que é o que distingue as causas possíveis.
+class GoogleError extends Error {
+  constructor(message: string, readonly status: string | null) {
+    super(message);
+  }
+}
+
 let cache: { at: number; body: ReviewsBody } | null = null;
 
 Deno.serve(async (req: Request) => {
@@ -60,7 +72,23 @@ Deno.serve(async (req: Request) => {
     });
     const p = await resp.json();
     if (!resp.ok) {
-      throw new Error(p?.error?.message ?? `Google Places HTTP ${resp.status}`);
+      // O `message` sozinho ("The caller does not have permission") não
+      // chega para saber o que corrigir. O `status` e os `details` dizem
+      // se é a chave restrita, a API desligada ou a faturação -- por isso
+      // ficam nos logs do Supabase.
+      console.error(
+        "google-reviews: Places API falhou",
+        JSON.stringify({
+          httpStatus: resp.status,
+          status: p?.error?.status ?? null,
+          message: p?.error?.message ?? null,
+          details: p?.error?.details ?? null,
+        }),
+      );
+      throw new GoogleError(
+        p?.error?.message ?? `Google Places HTTP ${resp.status}`,
+        p?.error?.status ?? null,
+      );
     }
 
     // A API New não tem parâmetro de ordenação (isso só existe na API
@@ -99,7 +127,10 @@ Deno.serve(async (req: Request) => {
     // Falha do Google -> serve a última cache se existir
     if (cache) return json(cache.body, 200, "stale");
     return json(
-      { error: e instanceof Error ? e.message : String(e) },
+      {
+        error: e instanceof Error ? e.message : String(e),
+        googleStatus: e instanceof GoogleError ? e.status : null,
+      },
       502,
       "error",
     );
@@ -113,8 +144,12 @@ function json(body: unknown, status: number, cacheState: string): Response {
       ...cors,
       "Content-Type": "application/json",
       "X-Cache": cacheState,
-      // Permite cache no browser/CDN por 1h (reduz chamadas)
-      "Cache-Control": "public, max-age=3600",
+      // Só as respostas boas é que podem ser cacheadas (1h no browser/CDN).
+      // Cachear um erro faria com que, depois de corrigida a causa, o site
+      // continuasse a ver a falha durante uma hora.
+      "Cache-Control": status === 200
+        ? "public, max-age=3600"
+        : "no-store",
     },
   });
 }
