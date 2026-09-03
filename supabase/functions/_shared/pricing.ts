@@ -3,6 +3,11 @@
 // NUNCA confiar no valor enviado pelo browser — o preço é sempre
 // recalculado aqui antes de criar o pagamento.
 // Tem de espelhar os preços de js/main.js (TOUR_DATA).
+//
+// ⚠️ Mexer aqui NÃO chega: este ficheiro vive nas Edge Functions, não no site.
+// Depois de editar é preciso redeployar, senão o site mostra o tour novo mas o
+// checkout rejeita-o com "Tour inválido.":
+//   npx supabase functions deploy create-checkout-session get-availability get-availability-range
 // ──────────────────────────────────────────────────────────────
 interface TourPrice {
   name: string;
