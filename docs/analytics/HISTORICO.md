@@ -79,5 +79,27 @@
 |---|---|---|
 | 2026-08-01 | Objetivo **"Contacto" em 0 de 3 campanhas** (estado "Requer atenção"). Código do site está correto — é configuração no Ads. | **Contactos WhatsApp/email não contam como conversão.** Todo o CPA calculado está subestimado. |
 | 2026-07-30 | **Método de pagamento alternativo** por adicionar | Paragens recorrentes dos anúncios (vale visível 21–24/ago) |
-| 2026-09-03 | **Google Cloud sem conta de faturação paga** — a única conta (`019515-641745-B9D4BF`) é de *teste gratuito* e termina a 20/09/2026. Diagnosticado na consola: as 4 chaves de API estão sem restrição de aplicação e a Places API (New) está ativada, mas qualquer página do Maps Platform redireciona para `billing/create?flow=maps`. | **Avaliações do Google mortas** (Edge Function devolve 502 "The caller does not have permission"). O site aguenta com as reviews gravadas no HTML, mas ficam congeladas. Só o Bernardo pode resolver (exige dados de pagamento). |
+| 2026-09-03 | **Avaliações do Google mortas** — Places API (New) devolve `HTTP 403 PERMISSION_DENIED`. Ver caixa de diagnóstico abaixo. | O site aguenta com as reviews gravadas no HTML, mas ficam congeladas. Resolução exige dados de pagamento → só o Bernardo. |
 | ~~—~~ | ~~Reviews no HTML: 98 · realidade: 106~~ | ✅ Resolvido 03/09: atualizado para **120** nas 5 línguas (texto visível + `reviewCount` do JSON-LD) |
+
+### Diagnóstico das avaliações do Google (03/09/2026)
+
+Investigado na consola do Google Cloud (projeto `project-fb692604-b668-478d-b47`) e com uma Edge Function temporária que devolvia o erro cru do Google (já apagada).
+
+**Factos observados:**
+
+| # | Observação | Conclusão |
+|---|---|---|
+| 1 | As 4 chaves de API têm **"Restrições do aplicativo = Nenhum"** | Não é restrição por referrer |
+| 2 | **Places API (New) e Places API estão ativadas** | Não é API desativada |
+| 3 | Dashboard: Places API (New) com **48 pedidos, 100% erros** | Os pedidos chegam ao Google |
+| 4 | Erro cru: `403 {"status":"PERMISSION_DENIED","message":"The caller does not have permission"}` | Genérico — **não menciona faturação** |
+| 5 | A mesma chave na API legada: `REQUEST_DENIED — "This API key is not authorized to use this service or API"` | A chave está restrita a Places API (New), logo **está autorizada** para a chamada que a função faz. A falha é numa verificação posterior à da chave. |
+| 6 | Faturação: **zero contas com estado "Ativa"**. Só existe `019515-641745-B9D4BF`, de *teste gratuito*, €258 por gastar, termina **20/09/2026**. Organização `lisbontuk4u-org` sem contas. | — |
+| 7 | Qualquer página do Maps Platform redireciona para `billing/create?flow=maps` | O Google exige onboarding de faturação para Maps neste projeto |
+
+**Conclusão (inferência, não facto lido na resposta da API):** o 403 é o Maps Platform a recusar um projeto sem conta de faturação ativa. Os pontos 1–5 eliminam as outras causas plausíveis; 6 e 7 apontam à faturação. A API New não diz "billing" na mensagem, por isso a prova é circunstancial — mas é convergente.
+
+**Correção:** converter a conta de teste em conta paga ("Fazer upgrade"). Custo esperado **€0** — a Places API tem 10.000 chamadas grátis/mês e a função tem cache de 6h (~120 chamadas/mês, 1% do limite). Exige dados de pagamento → ação do Bernardo. ⚠️ Dado o histórico com cartões virtuais do Activo Bank no Google Ads, é provável que um cartão virtual seja recusado.
+
+**Se depois do upgrade continuar a falhar:** a hipótese seguinte é a chave do segredo `GOOGLE_MAPS_API_KEY` não ser nenhuma das 4 do projeto (p. ex. de um projeto apagado). Nesse caso, substituir o segredo por uma das chaves válidas.
