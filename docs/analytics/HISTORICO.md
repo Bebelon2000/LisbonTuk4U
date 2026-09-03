@@ -79,4 +79,5 @@
 |---|---|---|
 | 2026-08-01 | Objetivo **"Contacto" em 0 de 3 campanhas** (estado "Requer atenção"). Código do site está correto — é configuração no Ads. | **Contactos WhatsApp/email não contam como conversão.** Todo o CPA calculado está subestimado. |
 | 2026-07-30 | **Método de pagamento alternativo** por adicionar | Paragens recorrentes dos anúncios (vale visível 21–24/ago) |
-| — | Reviews no HTML: 98 · realidade: 106 | Prova social desatualizada |
+| 2026-09-03 | **Google Cloud sem conta de faturação paga** — a única conta (`019515-641745-B9D4BF`) é de *teste gratuito* e termina a 20/09/2026. Diagnosticado na consola: as 4 chaves de API estão sem restrição de aplicação e a Places API (New) está ativada, mas qualquer página do Maps Platform redireciona para `billing/create?flow=maps`. | **Avaliações do Google mortas** (Edge Function devolve 502 "The caller does not have permission"). O site aguenta com as reviews gravadas no HTML, mas ficam congeladas. Só o Bernardo pode resolver (exige dados de pagamento). |
+| ~~—~~ | ~~Reviews no HTML: 98 · realidade: 106~~ | ✅ Resolvido 03/09: atualizado para **120** nas 5 línguas (texto visível + `reviewCount` do JSON-LD) |
