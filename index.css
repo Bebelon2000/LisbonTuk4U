@@ -63,7 +63,12 @@ body {
     color: var(--color-text-dark);
     background: var(--color-bg-white);
     line-height: 1.6;
+    /* `clip` (Safari 16+/Chrome 90+) corta o overflow horizontal SEM criar um
+       contentor de scroll — com `hidden`, o Safari iOS passa a fazer scroll no
+       body e os elementos position:fixed tremem/atrasam-se. Fica o `hidden`
+       como fallback para browsers antigos. */
     overflow-x: hidden;
+    overflow-x: clip;
     padding-bottom: 88px;
 }
 
@@ -2899,7 +2904,6 @@ body.has-promo .hero-section { padding-top: 7.5rem; }
                 background-color 0.3s ease,
                 box-shadow 0.3s ease;
     will-change: transform;
-    backface-visibility: hidden;
 }
 .site-header.header-hidden {
     /* -200%: sai por completo mesmo com o offset do banner e a sombra. */
@@ -4657,6 +4661,10 @@ body.lightbox-open { overflow: hidden; }
      fixed obriga a recompor o desfoque a cada frame de scroll. */
   .site-header,
   .site-header.scrolled { background-color: #fff; backdrop-filter: none; -webkit-backdrop-filter: none; }
+  /* Altura constante: a animação 72→64px do .header-container a cada mudança
+     de estado era mais uma coisa a mexer no topo do ecrã durante o scroll. */
+  .header-container,
+  .site-header.scrolled .header-container { height: 64px; padding: 0.5rem 1.25rem; transition: none; }
   .sticky-cta-mobile { background: #fff; backdrop-filter: none; -webkit-backdrop-filter: none; }
 
   .section-container { padding: 2.25rem 1.15rem; }

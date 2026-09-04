@@ -590,9 +590,14 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.add('has-promo');
         // O header desce a altura real do banner (a mensagem pode ocupar duas
         // linhas em ecrãs estreitos).
+        const setPromoVar = (v) => {
+            document.documentElement.style.setProperty('--promo-h', v);
+            const hdr = document.getElementById('site-header');
+            if (hdr) hdr.style.setProperty('--promo-h', v); // Safari: var() direta, não herdada
+        };
         const setPromoHeight = () => {
             if (promoBanner.classList.contains('is-collapsed')) return;
-            document.documentElement.style.setProperty('--promo-h', promoBanner.offsetHeight + 'px');
+            setPromoVar(promoBanner.offsetHeight + 'px');
         };
         setPromoHeight();
         window.addEventListener('resize', setPromoHeight, { passive: true });
@@ -603,7 +608,7 @@ document.addEventListener('DOMContentLoaded', () => {
         collapsePromo = () => {
             if (promoBanner.classList.contains('is-collapsed')) return;
             promoBanner.classList.add('is-collapsed');
-            document.documentElement.style.setProperty('--promo-h', '0px');
+            setPromoVar('0px');
             // Sem persistir: o banner volta a aparecer no próximo carregamento
             // (é aí que tem valor) e recolhe outra vez ao primeiro scroll. Só o
             // X é que o dispensa para o resto da sessão.
@@ -641,9 +646,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // de 45px seguidos a subir. Com o limiar antigo de 6px, o ressalto do
     // scroll do iOS e a barra de endereços do Safari a encolher chegavam para
     // inverter a direção e o menu piscava várias vezes numa só passagem.
-    const HIDE_AFTER = 90;
+    const HIDE_AFTER = 120;
     const SHOW_AFTER = 45;
-    const HIDE_BELOW = 220;
+    const HIDE_BELOW = 480; // só depois do primeiro ecrã; no hero o menu fica quieto
     let travel = 0;
     let headerHidden = false;
 
@@ -654,9 +659,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const delta = currentScrollY - lastScrollY;
         lastScrollY = currentScrollY;
 
-        // Sombra/fundo assim que sai do topo
-        header.classList.toggle('scrolled', currentScrollY > 8);
-        if (currentScrollY > 24) collapsePromo();
+        // Fundo branco + banner recolhido no mesmo instante (24px); só volta ao
+        // estado transparente mesmo em cima (<4px) — o ressalto elástico do iOS
+        // no topo oscila alguns pixéis e não deve fazer o header piscar.
+        if (currentScrollY > 24) {
+            header.classList.add('scrolled');
+            collapsePromo();
+        } else if (currentScrollY < 4) {
+            header.classList.remove('scrolled');
+        }
 
         // Mudança de sentido -> recomeça a contagem
         if ((delta > 0 && travel < 0) || (delta < 0 && travel > 0)) travel = 0;
@@ -669,7 +680,7 @@ document.addEventListener('DOMContentLoaded', () => {
             headerHidden = true;
             header.classList.add('header-hidden');
             travel = 0;
-        } else if (headerHidden && (travel < -SHOW_AFTER || currentScrollY < HIDE_BELOW / 2)) {
+        } else if (headerHidden && (travel < -SHOW_AFTER || currentScrollY < 120)) {
             headerHidden = false;
             header.classList.remove('header-hidden');
             travel = 0;

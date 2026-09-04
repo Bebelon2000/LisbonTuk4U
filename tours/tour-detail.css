@@ -12,7 +12,7 @@
     font-size: 0.82rem;
     color: var(--color-text-light);
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 72px auto 0; /* 72px = header fixo; antes ficava debaixo dele */
 }
 .td-breadcrumb a {
     color: var(--color-primary);
