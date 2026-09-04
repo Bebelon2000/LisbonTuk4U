@@ -36,21 +36,29 @@ interface ReviewsBody {
   updatedAt: string;
 }
 
-let cache: { at: number; body: ReviewsBody } | null = null;
+// Cache por língua: o texto das reviews vem traduzido pelo Google para a
+// língua pedida (languageCode), por isso EN/ES/IT/FR não podem partilhar a
+// cache do PT (auditoria mobile 09/2026: reviews em PT nas versões traduzidas).
+const LANGS = new Set(["pt", "en", "es", "it", "fr"]);
+const cache = new Map<string, { at: number; body: ReviewsBody }>();
 
 Deno.serve(async (req: Request) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: cors });
 
+  const langParam = (new URL(req.url).searchParams.get("lang") ?? "pt").slice(0, 2).toLowerCase();
+  const lang = LANGS.has(langParam) ? langParam : "pt";
+
   // Cache quente -> resposta imediata
-  if (cache && Date.now() - cache.at < TTL_MS) {
-    return json(cache.body, 200, "hit");
+  const hot = cache.get(lang);
+  if (hot && Date.now() - hot.at < TTL_MS) {
+    return json(hot.body, 200, "hit");
   }
 
   try {
     if (!API_KEY) throw new Error("GOOGLE_MAPS_API_KEY não configurada.");
 
     const url = `https://places.googleapis.com/v1/places/${PLACE_ID}` +
-      `?languageCode=pt&regionCode=PT`;
+      `?languageCode=${lang}&regionCode=PT`;
     const resp = await fetch(url, {
       headers: {
         "X-Goog-Api-Key": API_KEY,
@@ -93,11 +101,12 @@ Deno.serve(async (req: Request) => {
       updatedAt: new Date().toISOString(),
     };
 
-    cache = { at: Date.now(), body };
+    cache.set(lang, { at: Date.now(), body });
     return json(body, 200, "miss");
   } catch (e) {
     // Falha do Google -> serve a última cache se existir
-    if (cache) return json(cache.body, 200, "stale");
+    const stale = cache.get(lang);
+    if (stale) return json(stale.body, 200, "stale");
     return json(
       { error: e instanceof Error ? e.message : String(e) },
       502,

@@ -17,8 +17,8 @@
     --color-blue-soft: #E8F2FD;      /* fundo azul suave */
     --color-gold: #E8A93B;           /* estrelas de avaliação */
     --color-electric: #12A77B;
-    --color-terracotta: #FF6B4A;     /* botão primário do hero, acentos de telhado */
-    --color-terracotta-hover: #E05E41;
+    --color-terracotta: #C8401F;     /* botão primário do hero, acentos de telhado */
+    --color-terracotta-hover: #A83518;
     --gradient-brand: linear-gradient(120deg, #2196F3 0%, #7E6BD9 55%, #FF69B4 100%);
 
     --color-text-dark: #1B2A3A;
@@ -1719,6 +1719,13 @@ select:disabled {
 .footer-links a {
     color: rgba(255, 255, 255, 0.7);
     transition: var(--transition-fast);
+    display: inline-block;
+    padding: 0.4rem 0; /* alvo de toque ~36px em vez de 19px */
+}
+.footer-contacts .contact-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
 }
 
 .footer-links a:hover {
@@ -1849,7 +1856,7 @@ select:disabled {
     padding-top: 2rem;
     text-align: center;
     font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.6); /* 6,2:1 — a 40% dava 3,6:1 */
 }
 
 @media (min-width: 768px) {
@@ -2069,7 +2076,7 @@ select:disabled {
 
 .promo-messages {
     position: relative;
-    height: 1.4em;
+    min-height: 1.4em;
 }
 
 .promo-msg {
@@ -2082,11 +2089,12 @@ select:disabled {
        duas mensagens ficam ambas parcialmente visíveis ao mesmo tempo
        e o texto sobrepõe-se, parecendo "partido". */
     transition: opacity 0.35s ease;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: normal;
+    line-height: 1.3;
 }
-.promo-msg.active { opacity: 1; }
+.promo-msg:not(.active) { display: none; }
+.promo-msg.active { position: static; opacity: 1; }
+@media (max-width: 480px) { .promo-banner { font-size: 0.8rem; padding: 0.5rem 3rem 0.5rem 0.85rem; } }
 
 .promo-close {
     position: absolute;
@@ -2096,9 +2104,9 @@ select:disabled {
     background: rgba(255,255,255,0.2);
     border: none;
     color: #fff;
-    width: 28px;
-    height: 28px;
-    border-radius: 6px;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -2109,7 +2117,7 @@ select:disabled {
 .promo-close:hover { background: rgba(255,255,255,0.35); }
 
 /* Offset header for banner */
-body:not(.promo-dismissed) .site-header { top: 40px; }
+body:not(.promo-dismissed) .site-header { top: var(--promo-h, 40px); }
 body.promo-dismissed .site-header { top: 0; }
 /* O banner é position:relative e desliza com a página: assim que há scroll
    (.scrolled), o header volta ao topo para não deixar uma faixa de 40px vazia. */
@@ -2361,8 +2369,8 @@ body:not(.promo-dismissed) .hero-section { padding-top: 7.5rem; }
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem 1rem;
-    font-size: 0.78rem;
-    color: var(--color-electric);
+    font-size: 0.8rem;
+    color: #0B7A59; /* 5,3:1 sobre branco (o --color-electric dava 3,1:1) */
     font-weight: 600;
 }
 
@@ -4457,10 +4465,10 @@ body.lightbox-open { overflow: hidden; }
      no ecrã. Sem isto, o conteúdo (alinhado ao fundo) fica sempre cortado
      por baixo, por mais que se reduzam as margens internas. */
   body:not(.promo-dismissed) .hero-section:has(.hero-mobile-bg) {
-    min-height: calc(100svh - 40px);
+    min-height: calc(100svh - var(--promo-h, 40px));
   }
   body:not(.promo-dismissed) .hero-section:has(.hero-mobile-bg) .hero-container {
-    min-height: calc(100svh - 40px);
+    min-height: calc(100svh - var(--promo-h, 40px));
   }
   .hero-section:has(.hero-mobile-bg) .hero-mobile-bg {
     display: block;
@@ -4503,7 +4511,10 @@ body.lightbox-open { overflow: hidden; }
     flex-direction: column;
     justify-content: flex-end;
   }
-  .hero-section:has(.hero-mobile-bg) .hero-content { padding: .85rem 1.15rem .5rem; }
+  .hero-section:has(.hero-mobile-bg) .hero-content { padding: .85rem 1.15rem .4rem; transition: padding-bottom .3s ease; }
+  /* Barra de cookies visível: sobe o conteúdo do hero para o CTA e o WhatsApp
+     ficarem acima da barra (auditoria mobile 09/2026). */
+  body.consent-open .hero-section:has(.hero-mobile-bg) .hero-content { padding-bottom: 112px; }
   .hero-section:has(.hero-mobile-bg) .hero-image-mobile { display: none !important; }
 
   .hero-section:has(.hero-mobile-bg) .hero-title {
@@ -4516,7 +4527,7 @@ body.lightbox-open { overflow: hidden; }
     text-shadow: 0 2px 18px rgba(0,0,0,.35);
   }
   .hero-section:has(.hero-mobile-bg) .hero-title em { font-style: italic; color: #FF8FC2; }
-  .hero-section:has(.hero-mobile-bg) .hero-lead { color: #D7DEE6; font-size: .85rem; line-height: 1.3; margin: 0 0 .45rem; }
+  .hero-section:has(.hero-mobile-bg) .hero-lead { color: #D7DEE6; font-size: .85rem; line-height: 1.3; margin: 0 0 .35rem; }
 
   .hero-section:has(.hero-mobile-bg) .hero-badges-row { position: static; margin: 0 0 0.35rem; z-index: 2; }
   .hero-section:has(.hero-mobile-bg) .hero-badge {
@@ -4527,7 +4538,7 @@ body.lightbox-open { overflow: hidden; }
     color: #fff;
   }
 
-  .hero-section:has(.hero-mobile-bg) .hero-actions { flex-direction: column; gap: .4rem; margin: 0 0 .35rem; }
+  .hero-section:has(.hero-mobile-bg) .hero-actions { flex-direction: column; gap: .35rem; margin: 0 0 .3rem; }
   .hero-section:has(.hero-mobile-bg) #hero-cta-btn {
     width: 100%;
     justify-content: center;
@@ -4536,15 +4547,16 @@ body.lightbox-open { overflow: hidden; }
     box-shadow: 0 10px 24px -8px rgba(201,96,63,.8);
   }
   .hero-section:has(.hero-mobile-bg) #hero-secondary-btn {
-    background: transparent !important;
-    border: none !important;
+    background: rgba(255,255,255,.08) !important;
+    border: 1.5px solid rgba(255,255,255,.55) !important;
     color: #fff !important;
-    text-decoration: underline;
-    text-underline-offset: 3px;
+    text-decoration: none;
     width: 100%;
     justify-content: center;
-    min-height: 0;
-    padding: .2rem 0;
+    min-height: 44px;
+    padding: .4rem 1rem;
+    border-radius: 99px;
+    font-size: .95rem;
   }
 
   .hero-section:has(.hero-mobile-bg) .hero-google-rating { color: #fff; justify-content: center; flex-wrap: wrap; margin-top: 0; font-size: .78rem; gap: .3rem; }
@@ -4969,10 +4981,10 @@ body.quick-picker-locked { overflow: hidden; }
     align-items: center;
     gap: 1rem 1.25rem;
     flex-wrap: wrap;
-    padding: 1rem 1.25rem;
+    padding: 0.75rem 1rem;
     background: var(--color-bg-white, #fff);
     border: 1px solid var(--color-border, #DDE7F0);
-    border-radius: 16px;
+    border-radius: 14px;
     box-shadow: var(--shadow-lg, 0 22px 55px rgba(27, 42, 58, 0.14));
     transform: translateY(140%);
     opacity: 0;
@@ -4982,8 +4994,8 @@ body.quick-picker-locked { overflow: hidden; }
 .consent-bar-text {
     flex: 1 1 260px;
     margin: 0;
-    font-size: 0.85rem;
-    line-height: 1.45;
+    font-size: 0.82rem;
+    line-height: 1.4;
     color: var(--color-text-dark, #1B2A3A);
 }
 .consent-bar-actions {
@@ -4995,11 +5007,11 @@ body.quick-picker-locked { overflow: hidden; }
 .consent-btn {
     font-family: var(--font-heading, sans-serif);
     font-weight: 700;
-    font-size: 0.88rem;
-    padding: 0.6rem 1.25rem;
+    font-size: 0.85rem;
+    padding: 0.45rem 1rem;
     border-radius: 99px;
     cursor: pointer;
-    min-height: 42px;
+    min-height: 40px;
     border: 1.5px solid transparent;
     transition: var(--transition-fast, all 0.15s ease);
 }
@@ -5016,8 +5028,8 @@ body.quick-picker-locked { overflow: hidden; }
 .consent-btn--ok:hover { background: var(--color-accent-hover, #AD2A69); }
 
 @media (max-width: 480px) {
-    .consent-bar { left: 0.5rem; right: 0.5rem; bottom: 0.5rem; padding: 0.9rem 1rem; }
-    .consent-bar-actions { width: 100%; }
+    .consent-bar { left: 0.5rem; right: 0.5rem; bottom: 0.5rem; padding: 0.65rem 0.85rem; gap: 0.5rem 0.75rem; }
+    .consent-bar-actions { width: 100%; gap: 0.5rem; }
     .consent-btn { flex: 1; }
 }
 
@@ -5116,7 +5128,7 @@ body.quick-picker-locked { overflow: hidden; }
     transform: translateY(-2px);
 }
 .avail-day-dow {
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
     color: var(--color-text-light);
@@ -5129,7 +5141,7 @@ body.quick-picker-locked { overflow: hidden; }
     line-height: 1;
 }
 .avail-day-mon {
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     color: var(--color-text-light);
     text-transform: uppercase;
 }
@@ -5137,7 +5149,7 @@ body.quick-picker-locked { overflow: hidden; }
     display: flex;
     align-items: center;
     gap: 0.3rem;
-    font-size: 0.68rem;
+    font-size: 0.75rem;
     font-weight: 700;
     margin-top: 0.15rem;
     text-align: center;
@@ -5192,3 +5204,39 @@ body.quick-picker-locked { overflow: hidden; }
     font-size: 0.95rem;
 }
 .avail-cal-fallback .btn { margin-top: 1rem; }
+
+/* ═══════════════════════════════════════════════════════
+   PREÇO POR PESSOA — leitura "€90 a dois · €36 a cinco" ao lado
+   do preço por grupo (auditoria mobile 09/2026: ancoragem de preço)
+═══════════════════════════════════════════════════════ */
+.tour-card-pp {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--color-text-light);
+    margin-top: 0.1rem;
+    line-height: 1.3;
+}
+.quick-picker-item-pp {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-text-light);
+    text-align: right;
+    line-height: 1.3;
+}
+.booking-pp-note {
+    margin: 0.6rem 0 0;
+    text-align: center;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-text-light);
+}
+
+/* Reviews estáticas traduzidas nas versões EN/ES/IT/FR */
+.gr-card-translated {
+    font-size: 0.75rem;
+    font-style: italic;
+    color: var(--color-text-light);
+    margin-top: -0.25rem;
+}

@@ -246,7 +246,7 @@ const I18N = {
         successWa: 'Confirmar via WhatsApp',
         payError: 'Não foi possível iniciar o pagamento.',
         tryAgain: 'Tente novamente ou fale connosco pelo WhatsApp.',
-        pickTourTitle: 'Escolha o seu passeio', from: 'Desde', perGroup: 'por grupo', bestSeller: 'Mais vendido',
+        ppLine: (a, b) => `€${a} a dois · €${b} a cinco`, ppTwo: (a) => `€${a} a dois`, ppNote: (p) => `= €${p} por pessoa`, pickTourTitle: 'Escolha o seu passeio', from: 'Desde', perGroup: 'por grupo', bestSeller: 'Mais vendido',
         contactMessageLabel: 'Mensagem (opcional)', contactMessagePh: 'Conte-nos um pouco sobre o passeio que procura...',
         contactSending: 'A enviar...', contactSuccessTitle: 'Mensagem enviada!',
         contactSuccessMsg: 'Obrigado! A Susane vai responder brevemente para o seu e-mail.',
@@ -285,7 +285,7 @@ const I18N = {
         successWa: 'Confirm via WhatsApp',
         payError: 'We could not start the payment.',
         tryAgain: 'Please try again or contact us on WhatsApp.',
-        pickTourTitle: 'Choose your tour', from: 'From', perGroup: 'per group', bestSeller: 'Best seller',
+        ppLine: (a, b) => `€${a} for two · €${b} for five`, ppTwo: (a) => `€${a} for two`, ppNote: (p) => `= €${p} per person`, pickTourTitle: 'Choose your tour', from: 'From', perGroup: 'per group', bestSeller: 'Best seller',
         contactMessageLabel: 'Message (optional)', contactMessagePh: 'Tell us a bit about the tour you\'re looking for...',
         contactSending: 'Sending...', contactSuccessTitle: 'Message sent!',
         contactSuccessMsg: 'Thank you! Susane will reply to your email shortly.',
@@ -324,7 +324,7 @@ const I18N = {
         successWa: 'Confirmar por WhatsApp',
         payError: 'No se pudo iniciar el pago.',
         tryAgain: 'Inténtalo de nuevo o escríbenos por WhatsApp.',
-        pickTourTitle: 'Elige tu tour', from: 'Desde', perGroup: 'por grupo', bestSeller: 'Más vendido',
+        ppLine: (a, b) => `€${a} entre dos · €${b} entre cinco`, ppTwo: (a) => `€${a} entre dos`, ppNote: (p) => `= €${p} por persona`, pickTourTitle: 'Elige tu tour', from: 'Desde', perGroup: 'por grupo', bestSeller: 'Más vendido',
         contactMessageLabel: 'Mensaje (opcional)', contactMessagePh: 'Cuéntanos un poco sobre el tour que buscas...',
         contactSending: 'Enviando...', contactSuccessTitle: '¡Mensaje enviado!',
         contactSuccessMsg: '¡Gracias! Susane responderá a tu email en breve.',
@@ -363,7 +363,7 @@ const I18N = {
         successWa: 'Conferma via WhatsApp',
         payError: 'Impossibile avviare il pagamento.',
         tryAgain: 'Riprova o scrivici su WhatsApp.',
-        pickTourTitle: 'Scegli il tuo tour', from: 'Da', perGroup: 'a gruppo', bestSeller: 'Più venduto',
+        ppLine: (a, b) => `€${a} in due · €${b} in cinque`, ppTwo: (a) => `€${a} in due`, ppNote: (p) => `= €${p} a persona`, pickTourTitle: 'Scegli il tuo tour', from: 'Da', perGroup: 'a gruppo', bestSeller: 'Più venduto',
         contactMessageLabel: 'Messaggio (facoltativo)', contactMessagePh: 'Raccontaci un po\' del tour che stai cercando...',
         contactSending: 'Invio in corso...', contactSuccessTitle: 'Messaggio inviato!',
         contactSuccessMsg: 'Grazie! Susane risponderà alla tua email a breve.',
@@ -402,7 +402,7 @@ const I18N = {
         successWa: 'Confirmer via WhatsApp',
         payError: 'Impossible de démarrer le paiement.',
         tryAgain: 'Réessayez ou contactez-nous sur WhatsApp.',
-        pickTourTitle: 'Choisissez votre balade', from: 'Dès', perGroup: 'par groupe', bestSeller: 'Best-seller',
+        ppLine: (a, b) => `€${a} à deux · €${b} à cinq`, ppTwo: (a) => `€${a} à deux`, ppNote: (p) => `= €${p} par personne`, pickTourTitle: 'Choisissez votre balade', from: 'Dès', perGroup: 'par groupe', bestSeller: 'Best-seller',
         contactMessageLabel: 'Message (facultatif)', contactMessagePh: 'Parlez-nous un peu de la balade que vous recherchez...',
         contactSending: 'Envoi...', contactSuccessTitle: 'Message envoyé !',
         contactSuccessMsg: 'Merci ! Susane répondra à votre email sous peu.',
@@ -457,11 +457,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const lang = (document.documentElement.lang || 'pt').slice(0, 2);
         const T = {
-            pt: { txt: 'Usamos cookies para medir e melhorar a sua experiência e os nossos anúncios. Pode aceitar ou recusar.', ok: 'Aceitar', no: 'Recusar' },
-            en: { txt: 'We use cookies to measure and improve your experience and our ads. You can accept or decline.', ok: 'Accept', no: 'Decline' },
-            es: { txt: 'Usamos cookies para medir y mejorar su experiencia y nuestros anuncios. Puede aceptar o rechazar.', ok: 'Aceptar', no: 'Rechazar' },
-            it: { txt: 'Usiamo i cookie per misurare e migliorare la tua esperienza e i nostri annunci. Puoi accettare o rifiutare.', ok: 'Accetta', no: 'Rifiuta' },
-            fr: { txt: 'Nous utilisons des cookies pour mesurer et améliorer votre expérience et nos publicités. Vous pouvez accepter ou refuser.', ok: 'Accepter', no: 'Refuser' },
+            pt: { txt: 'Usamos cookies para medir visitas e anúncios. Pode aceitar ou recusar.', ok: 'Aceitar', no: 'Recusar' },
+            en: { txt: 'We use cookies to measure visits and ads. You can accept or decline.', ok: 'Accept', no: 'Decline' },
+            es: { txt: 'Usamos cookies para medir visitas y anuncios. Puede aceptar o rechazar.', ok: 'Aceptar', no: 'Rechazar' },
+            it: { txt: 'Usiamo i cookie per misurare visite e annunci. Puoi accettare o rifiutare.', ok: 'Accetta', no: 'Rifiuta' },
+            fr: { txt: 'Nous utilisons des cookies pour mesurer visites et publicités. Vous pouvez accepter ou refuser.', ok: 'Accepter', no: 'Refuser' },
         };
         const t = T[lang] || T.pt;
 
@@ -490,12 +490,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
             bar.classList.remove('is-visible');
+            document.body.classList.remove('consent-open');
             setTimeout(() => bar.remove(), 300);
         };
         btnOk.addEventListener('click', () => decide(true));
         btnNo.addEventListener('click', () => decide(false));
 
         document.body.appendChild(bar);
+        // Enquanto a barra existe, o hero mobile sobe para o CTA não ficar tapado
+        document.body.classList.add('consent-open');
         void bar.offsetWidth; // força reflow para a transição de entrada tocar
         bar.classList.add('is-visible');
     })();
@@ -582,6 +585,13 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentPromoIdx = 0;
 
     if (promoBanner && !sessionStorage.getItem('promoDismissed')) {
+        // O header (fixed) e o hero (100svh) assumiam 40px de banner; com a
+        // mensagem a poder quebrar linha, passam a ler a altura real.
+        const setPromoHeight = () => {
+            document.documentElement.style.setProperty('--promo-h', promoBanner.offsetHeight + 'px');
+        };
+        setPromoHeight();
+        window.addEventListener('resize', setPromoHeight, { passive: true });
         if (promoMessages.length > 1) {
             setInterval(() => {
                 promoMessages[currentPromoIdx].classList.remove('active');
@@ -693,6 +703,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ─── 5b2. Preço por pessoa nos cards (a partir de TOUR_DATA) ──
+    document.querySelectorAll('.tour-visual-card[data-tour-id]').forEach((card) => {
+        const tour = TOUR_DATA[card.dataset.tourId];
+        const badge = card.querySelector('.tour-card-price-badge');
+        if (!tour || !badge || typeof T.ppLine !== 'function') return;
+        const base = tour.isALaCarte ? tour.durationOptions[0].price : tour.basePrice;
+        const pp = document.createElement('span');
+        pp.className = 'tour-card-pp';
+        pp.textContent = T.ppLine(Math.round(base / 2), Math.round(base / 5));
+        badge.appendChild(pp);
+    });
+
     // ─── 5c. Quick Tour Picker (aberto pelo CTA sticky mobile) ──
     const QUICK_PICKER_ORDER = ['a-la-carte', 'lisboa-autentica', 'belem', 'half-day', 'centro-historico', 'miradouros', 'full-lisboa'];
     const quickPickerOverlay = document.getElementById('quick-picker-overlay');
@@ -726,7 +748,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                         <div class="quick-picker-item-meta">${tour.duration}</div>
                     </div>
-                    <div class="quick-picker-item-price">${priceLabel(tour)}</div>
+                    <div class="quick-picker-item-price">${priceLabel(tour)}<span class="quick-picker-item-pp">${T.ppTwo(Math.round((tour.isALaCarte ? tour.durationOptions[0].price : tour.basePrice) / 2))}</span></div>
                 </button>`;
         }).join('');
 
@@ -743,6 +765,17 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         stickyCtaBtn.addEventListener('click', openQuickPicker);
+        // CTA do hero: abre o quick picker em vez de fazer scroll até aos cards
+        // (auditoria mobile 09/2026: 1 toque até à escolha do tour). O href
+        // #passeios fica como fallback sem JS.
+        const heroCtaBtn = document.getElementById('hero-cta-btn');
+        if (heroCtaBtn) {
+            heroCtaBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                trackEvent('hero_cta_click', { cta: 'quick_picker' });
+                openQuickPicker();
+            });
+        }
         if (quickPickerClose) quickPickerClose.addEventListener('click', closeQuickPicker);
         quickPickerOverlay.addEventListener('click', (e) => {
             if (e.target === quickPickerOverlay) closeQuickPicker();
@@ -989,6 +1022,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <button class="pax-stepper-btn" id="pax-plus" ${state.passengers >= 10 ? 'disabled' : ''}>+</button>
                 </div>
+                ${state.passengers >= 2 && typeof T.ppNote === 'function' ? `<p class="booking-pp-note">${T.ppNote(Math.round(totalPrice / state.passengers))}</p>` : ''}
                 <div class="booking-multi-tuk-alert ${state.passengers < 6 ? 'hidden' : ''}" id="booking-multi-tuk">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                     <span>${T.multiTuk(state.passengers, tukCount)}</span>
@@ -1673,7 +1707,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return card;
         };
 
-        fetch(cfg.supabaseUrl + '/functions/v1/google-reviews', {
+        fetch(cfg.supabaseUrl + '/functions/v1/google-reviews?lang=' + encodeURIComponent(pageLang), {
             headers: { 'Authorization': 'Bearer ' + cfg.anonKey, 'apikey': cfg.anonKey }
         })
         .then((r) => r.json())
