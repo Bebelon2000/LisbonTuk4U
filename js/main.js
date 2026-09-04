@@ -584,14 +584,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const promoMessages = document.querySelectorAll('.promo-msg');
     let currentPromoIdx = 0;
 
+    let collapsePromo = () => {};
+
     if (promoBanner && !sessionStorage.getItem('promoDismissed')) {
-        // O header (fixed) e o hero (100svh) assumiam 40px de banner; com a
-        // mensagem a poder quebrar linha, passam a ler a altura real.
+        document.body.classList.add('has-promo');
+        // O header desce a altura real do banner (a mensagem pode ocupar duas
+        // linhas em ecrãs estreitos).
         const setPromoHeight = () => {
+            if (promoBanner.classList.contains('is-collapsed')) return;
             document.documentElement.style.setProperty('--promo-h', promoBanner.offsetHeight + 'px');
         };
         setPromoHeight();
         window.addEventListener('resize', setPromoHeight, { passive: true });
+
+        // Ao primeiro scroll o banner recolhe e o header assenta no topo — uma
+        // transição só, em vez de o header andar para cima e para baixo sempre
+        // que o scroll cruza o limiar.
+        collapsePromo = () => {
+            if (promoBanner.classList.contains('is-collapsed')) return;
+            promoBanner.classList.add('is-collapsed');
+            document.documentElement.style.setProperty('--promo-h', '0px');
+            // Sem persistir: o banner volta a aparecer no próximo carregamento
+            // (é aí que tem valor) e recolhe outra vez ao primeiro scroll. Só o
+            // X é que o dispensa para o resto da sessão.
+        };
         if (promoMessages.length > 1) {
             setInterval(() => {
                 promoMessages[currentPromoIdx].classList.remove('active');
@@ -619,23 +635,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ─── 3. Smart Header (sombra + esconder ao descer, mostrar ao subir) ──
     const header = document.getElementById('site-header');
-    let lastScrollY = window.scrollY;
+    let lastScrollY = Math.max(0, window.scrollY);
     let headerTicking = false;
+    // Histerese: só esconde depois de 90px seguidos a descer e só volta depois
+    // de 45px seguidos a subir. Com o limiar antigo de 6px, o ressalto do
+    // scroll do iOS e a barra de endereços do Safari a encolher chegavam para
+    // inverter a direção e o menu piscava várias vezes numa só passagem.
+    const HIDE_AFTER = 90;
+    const SHOW_AFTER = 45;
+    const HIDE_BELOW = 220;
+    let travel = 0;
+    let headerHidden = false;
 
     const updateHeaderOnScroll = () => {
-        const currentScrollY = window.scrollY;
+        headerTicking = false;
+        if (!header) return;
+        const currentScrollY = Math.max(0, window.scrollY);
+        const delta = currentScrollY - lastScrollY;
+        lastScrollY = currentScrollY;
 
         // Sombra/fundo assim que sai do topo
-        header.classList.toggle('scrolled', currentScrollY > 10);
+        header.classList.toggle('scrolled', currentScrollY > 8);
+        if (currentScrollY > 24) collapsePromo();
 
-        // Esconde quando se desce (depois de passar o header) e volta ao subir.
-        // Ignora micro-movimentos (>6px) para não tremer.
-        if (Math.abs(currentScrollY - lastScrollY) > 6) {
-            const goingDown = currentScrollY > lastScrollY;
-            header.classList.toggle('header-hidden', goingDown && currentScrollY > 140);
-            lastScrollY = currentScrollY;
+        // Mudança de sentido -> recomeça a contagem
+        if ((delta > 0 && travel < 0) || (delta < 0 && travel > 0)) travel = 0;
+        travel += delta;
+
+        // Com o menu aberto o header nunca desaparece.
+        if (navDrawer && navDrawer.classList.contains('open')) return;
+
+        if (!headerHidden && travel > HIDE_AFTER && currentScrollY > HIDE_BELOW) {
+            headerHidden = true;
+            header.classList.add('header-hidden');
+            travel = 0;
+        } else if (headerHidden && (travel < -SHOW_AFTER || currentScrollY < HIDE_BELOW / 2)) {
+            headerHidden = false;
+            header.classList.remove('header-hidden');
+            travel = 0;
         }
-        headerTicking = false;
     };
 
     // rAF-throttled: sem isto, o scroll (que dispara dezenas de eventos por

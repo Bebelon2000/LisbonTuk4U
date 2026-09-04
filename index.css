@@ -2045,8 +2045,19 @@ select:disabled {
 
 /* ── Promo Banner ──────────────────────────────────────────── */
 .promo-banner {
-    position: relative;
+    /* Fixo, não em fluxo: com o banner a deslizar com a página e o header
+       `position: fixed` ancorado a `top: 40px`, os dois separavam-se logo aos
+       primeiros pixéis de scroll (aos 60px havia 60px de conteúdo a passar
+       entre eles) e o header só recuperava com uma animação de `top` de 0,35s.
+       Era esse o salto do menu ao fazer scroll. */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     z-index: 1100;
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+    will-change: transform;
     background: var(--color-primary);
     color: #fff;
     text-align: center;
@@ -2061,6 +2072,9 @@ select:disabled {
     overflow: hidden;
 }
 .promo-banner.hidden { display: none; }
+/* Recolhe ao primeiro scroll e não volta durante a sessão: o header desce ao
+   topo uma única vez, em vez de subir e descer sempre que se cruza os 10px. */
+.promo-banner.is-collapsed { transform: translateY(-100%); }
 
 @keyframes promoBannerGradient {
     0%   { background-position: 0% 50%; }
@@ -2116,13 +2130,12 @@ select:disabled {
 }
 .promo-close:hover { background: rgba(255,255,255,0.35); }
 
-/* Offset header for banner */
-body:not(.promo-dismissed) .site-header { top: var(--promo-h, 40px); }
-body.promo-dismissed .site-header { top: 0; }
-/* O banner é position:relative e desliza com a página: assim que há scroll
-   (.scrolled), o header volta ao topo para não deixar uma faixa de 40px vazia. */
-body:not(.promo-dismissed) .site-header.scrolled { top: 0; }
-body:not(.promo-dismissed) .hero-section { padding-top: 7.5rem; }
+/* Offset do header para o banner — por transform (composto na GPU), nunca por
+   `top`. `has-promo` é posto pelo JS só nas páginas que têm banner; antes o
+   seletor `:not(.promo-dismissed)` também acertava em about/contact, que não
+   têm banner nenhum, e deixava lá o header a 40px do topo do ecrã. */
+body.has-promo .site-header { --hdr-y: var(--promo-h, 40px); }
+body.has-promo .hero-section { padding-top: 7.5rem; }
 
 /* ── Hero Badges Row ──────────────────────────────────────── */
 .hero-badges-row {
@@ -2877,23 +2890,25 @@ body:not(.promo-dismissed) .hero-section { padding-top: 7.5rem; }
 
 /* ── Smart Header (Sticky on scroll) ── */
 .site-header {
-    transition: transform 0.35s ease,
-                top 0.35s ease,
-                background-color 0.4s ease,
-                box-shadow 0.4s ease,
-                backdrop-filter 0.4s ease;
+    /* Só o transform é animado. Animar `top` punha o header a deslizar
+       enquanto a página também se movia, e animar `backdrop-filter` obrigava
+       o compositor do iOS a redesenhar o blur a cada frame — daí os frames
+       rasgados (conteúdo duplicado) durante o scroll. */
+    transform: translateY(var(--hdr-y, 0px));
+    transition: transform 0.3s ease,
+                background-color 0.3s ease,
+                box-shadow 0.3s ease;
+    will-change: transform;
+    backface-visibility: hidden;
 }
 .site-header.header-hidden {
-    /* -120% (e não -100%): garante que sai por completo mesmo com o
-       offset de 40px do promo banner e a sombra do header */
-    transform: translateY(-120%);
+    /* -200%: sai por completo mesmo com o offset do banner e a sombra. */
+    transform: translateY(-200%);
 }
 
 .site-header.scrolled {
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(255, 255, 255, 0.97);
     box-shadow: 0 4px 30px rgba(13, 71, 161, 0.08), 0 1px 4px rgba(0,0,0,0.04);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
 }
 
 .site-header.scrolled .header-container {
@@ -4452,23 +4467,10 @@ body.lightbox-open { overflow: hidden; }
     padding: 0;
     overflow: hidden;
   }
-  /* A regra "body:not(.promo-dismissed) .hero-section { padding-top: 7.5rem }"
-     (mais acima) tem especificidade maior que o padding:0 aqui em cima e
-     ganhava mesmo com o banner visível, empurrando o CTA para fora do ecrã.
-     Precisa de igual/maior especificidade para anular isso no mobile. */
-  body:not(.promo-dismissed) .hero-section:has(.hero-mobile-bg) {
+  /* O padding-top de 7.5rem que o banner acrescenta no desktop não se aplica
+     ao hero full-bleed do telemóvel (o conteúdo está alinhado ao fundo). */
+  body.has-promo .hero-section:has(.hero-mobile-bg) {
     padding-top: 0;
-  }
-  /* O banner promocional (40px) fica ANTES do hero no fluxo normal do
-     documento, empurrando-o para baixo — mas o hero continua com 100svh
-     de altura, ficando sempre 40px maior do que o espaço realmente livre
-     no ecrã. Sem isto, o conteúdo (alinhado ao fundo) fica sempre cortado
-     por baixo, por mais que se reduzam as margens internas. */
-  body:not(.promo-dismissed) .hero-section:has(.hero-mobile-bg) {
-    min-height: calc(100svh - var(--promo-h, 40px));
-  }
-  body:not(.promo-dismissed) .hero-section:has(.hero-mobile-bg) .hero-container {
-    min-height: calc(100svh - var(--promo-h, 40px));
   }
   .hero-section:has(.hero-mobile-bg) .hero-mobile-bg {
     display: block;
@@ -4651,6 +4653,12 @@ body.lightbox-open { overflow: hidden; }
    Secções mais compactas: menos scroll até ao conteúdo.
 ═══════════════════════════════════════════════════════ */
 @media (max-width: 767.98px) {
+  /* Sem blur no header/CTA fixos: no Safari iOS o backdrop-filter num elemento
+     fixed obriga a recompor o desfoque a cada frame de scroll. */
+  .site-header,
+  .site-header.scrolled { background-color: #fff; backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .sticky-cta-mobile { background: #fff; backdrop-filter: none; -webkit-backdrop-filter: none; }
+
   .section-container { padding: 2.25rem 1.15rem; }
   .section-subtitle {
     font-size: 1rem;
