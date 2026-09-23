@@ -524,3 +524,63 @@
     .td-hero-title { font-size: 4rem; }
     .td-thumb-gallery { padding: 0.75rem 0; max-width: 1200px; }
 }
+
+/* ── Resumo + FAQ do tour (GEO — gerado por tools/geo_enrich.py) ── */
+.td-geo-summary {
+    background: var(--color-blue-soft, var(--color-bg-light));
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 0.65rem;
+}
+.td-geo-title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--color-primary-dark);
+    margin: 0 0 0.5rem;
+}
+.td-geo-text {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--color-text-dark);
+    margin: 0 0 1rem;
+}
+.td-geo-facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 0.5rem 1rem;
+    margin: 0;
+}
+.td-geo-facts div { min-width: 0; }
+.td-geo-facts dt {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--color-text-light);
+}
+.td-geo-facts dd {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text-dark);
+}
+.td-faq { margin-bottom: 2rem; }
+.td-faq-item {
+    border-top: 1px solid var(--color-border);
+    padding: 0.75rem 0;
+}
+.td-faq-item:first-child { border-top: 0; padding-top: 0; }
+.td-faq .td-faq-item summary {
+    display: block;
+    padding: 0;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-text-dark);
+}
+.td-faq .td-faq-item summary:hover { background: none; color: var(--color-primary-dark); }
+.td-faq .td-faq-item summary::-webkit-details-marker { display: none; }
+.td-faq .td-faq-item summary::after { content: " +"; color: var(--color-primary); }
+.td-faq .td-faq-item[open] summary::after { content: " −"; }
+.td-faq-item p { margin: 0.5rem 0 0; }

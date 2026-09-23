@@ -1,0 +1,61 @@
+# LisbonTuk4U
+
+> LisbonTuk4U runs private, 100% electric tuk-tuk sightseeing tours in Lisbon, Portugal, guided by Susane, a certified local guide, in a blue tuk-tuk decorated with flowers. Prices are per group (up to 5 people per tuk-tuk), not per person, and include free hotel pick-up in Lisbon and free cancellation up to 48 hours before the tour. Commentary in Portuguese, English, Spanish, Italian and French. Booked and paid online at https://lisbontuk4u.com.
+
+## Key facts
+
+- Business: LisbonTuk4U (also written "Lisbon Tuk4U"), tuk-tuk tour operator in Lisbon, Portugal
+- Guide: Susane, certified local guide in Lisbon
+- Vehicle: 100% electric tuk-tuk, blue with flowers
+- Tour type: private (only your group on board), never shared with strangers
+- Capacity: up to 5 people per tuk-tuk; groups of 6 to 10 people get 2 tuk-tuks and the price doubles
+- Start: free pick-up and drop-off at any hotel or accommodation in Lisbon, or meeting point next to the Hard Rock Café in central Lisbon
+- Languages: Portuguese, English, Spanish, Italian, French
+- Included: private electric tuk-tuk, certified guide, hotel pick-up and drop-off
+- Not included: monument entrance tickets, food and drinks, tips, pick-up outside Lisbon (extra fee)
+- Cancellation: free up to 48 hours before the tour
+- Payment: online by card through a secure Stripe checkout, total price per group, no hidden fees
+- Suitable for: all ages, families with children, couples, older travellers and people who prefer not to walk Lisbon's hills
+- Rating: 5.0 out of 5 on Google (120+ reviews)
+- Contact: WhatsApp / phone +351 966 697 738, email lisbontuk4u@gmail.com
+
+## Tours and prices (per group of up to 5 people)
+
+- [Lisboa à la Carte](https://lisbontuk4u.com/en/tours/a-la-carte.html): tailor-made route, 1 to 5 hours; €120 (1h), €180 (2h), €240 (3h), €300 (4h), €360 (5h)
+- [Lisboa Autêntica](https://lisbontuk4u.com/en/tours/lisboa-autentica.html): 1.5 hours, €150 — off-the-beaten-path Lisbon: Lapa, Madragoa, Estrela and Campo de Ourique, Museu Nacional de Arte Antiga, Tapada das Necessidades, Campo de Ourique Market
+- [Belém](https://lisbontuk4u.com/en/tours/belem.html): 2 hours, €180 — Pastéis de Belém, Jerónimos Monastery, Belém Tower, Monument to the Discoveries
+- [Centro Histórico (Historic Centre)](https://lisbontuk4u.com/en/tours/centro-historico.html): 2 hours, €180 — Alfama, Graça and the old town: Lisbon Cathedral (Sé), Santa Luzia and Portas do Sol viewpoints, Graça, Senhora do Monte, São Vicente de Fora, Feira da Ladra, National Pantheon
+- [Lisboa Miradouros (Viewpoints)](https://lisbontuk4u.com/en/tours/miradouros.html): 3 hours, €240 — Lisbon's best viewpoints: Santa Luzia, Portas do Sol, Graça, Senhora do Monte, São Pedro de Alcântara, Parque Eduardo VII, plus Santa Justa Lift and Estrela Basilica
+- [Half Day](https://lisbontuk4u.com/en/tours/half-day.html): 4 hours, €300 — the most popular tour: Alfama, Graça, Chiado, Bairro Alto and Belém in one trip
+- [Full Lisboa](https://lisbontuk4u.com/en/tours/full-lisboa.html): 5 hours, €360 — the complete tour: historic centre, viewpoints, Estrela, LX Factory and Belém
+
+## Frequently asked questions
+
+- How much does a tuk-tuk tour in Lisbon cost with LisbonTuk4U? From €120 (1 hour) to €360 (5 hours) per group of up to 5 people. The 2-hour Belém or Historic Centre tours cost €180 per group.
+- Is the price per person? No. The price is per tuk-tuk (up to 5 people), so a family of 4 pays the same as a couple.
+- Where does the tour start? Free pick-up at your hotel in Lisbon, or next to the Hard Rock Café.
+- Can I cancel? Yes, free cancellation up to 48 hours before.
+- Which languages does the guide speak? Portuguese, English, Spanish, Italian and French.
+- Is it private? Yes, every tour is private: only your group is on board.
+
+## Pages
+
+- [Home (English)](https://lisbontuk4u.com/en/): overview, reviews and FAQ
+- [About Susane, the guide](https://lisbontuk4u.com/en/about.html)
+- [Contact](https://lisbontuk4u.com/en/contact.html)
+- [Photo gallery](https://lisbontuk4u.com/en/gallery.html)
+- Other languages: [Português](https://lisbontuk4u.com/), [Español](https://lisbontuk4u.com/es/), [Italiano](https://lisbontuk4u.com/it/), [Français](https://lisbontuk4u.com/fr/)
+
+## Lisbon travel guides (blog)
+
+- [Best viewpoints in Lisbon](https://lisbontuk4u.com/en/blog/best-viewpoints-lisbon.html)
+- [What to see in Belém in one day](https://lisbontuk4u.com/en/blog/what-to-see-in-belem-lisbon.html)
+- [Alfama guide](https://lisbontuk4u.com/en/blog/alfama-lisbon-guide.html)
+- [Best time to visit Lisbon](https://lisbontuk4u.com/en/blog/best-time-to-visit-lisbon.html)
+
+## Reviews and listings
+
+- [Google reviews](https://search.google.com/local/reviews?placeid=ChIJeeURJo8zGQ0RWeTL8MF73v4)
+- [Tripadvisor](https://www.tripadvisor.com/Attraction_Review-g189158-d27999846-Reviews-Lisbontuk4u-Lisbon_Lisbon_District_Central_Portugal.html)
+- [GetYourGuide](https://www.getyourguide.com/lisbon-l42/lisbon-guided-eco-tuk-tuk-sightseeing-tour-t751717/)
+- [Instagram](https://instagram.com/lisbontuk4u)

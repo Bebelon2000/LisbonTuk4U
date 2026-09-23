@@ -64,27 +64,133 @@
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400..800&family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="../index.css?v=4.7.0">
-    <link rel="stylesheet" href="tour-detail.css?v=1.6.0">
+    <link rel="stylesheet" href="tour-detail.css?v=1.7.0">
 
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "TouristTrip",
-  "name": "Belém — LisbonTuk4U",
-  "description": "Viaje até à gloriosa Era dos Descobrimentos. Explore monumentos icónicos à beira-rio, como a Torre de Belém e o Mosteiro dos Jerónimos, e descubra onde a história de Portugal se encontrou com o mundo.",
-  "touristType": "Sightseeing",
-  "provider": {
-    "@type": "TravelAgency",
-    "name": "LisbonTuk4U",
-    "url": "https://lisbontuk4u.com"
-  },
-  "offers": {
-    "@type": "Offer",
-    "price": "180",
-    "priceCurrency": "EUR",
-    "availability": "https://schema.org/InStock",
-    "url": "https://lisbontuk4u.com/tours/belem.html"
-  }
+  "@graph": [
+    {
+      "@type": "TouristTrip",
+      "@id": "https://lisbontuk4u.com/tours/belem.html#trip",
+      "name": "Belém — LisbonTuk4U",
+      "description": "Viaje até à gloriosa Era dos Descobrimentos. Explore monumentos icónicos à beira-rio, como a Torre de Belém e o Mosteiro dos Jerónimos, e descubra onde a história de Portugal se encontrou com o mundo.",
+      "url": "https://lisbontuk4u.com/tours/belem.html",
+      "image": "https://lisbontuk4u.com/assets/img/tour-belem.webp",
+      "inLanguage": "pt-PT",
+      "touristType": [
+        "Sightseeing",
+        "Cultural tourism",
+        "Families",
+        "Couples"
+      ],
+      "provider": {
+        "@type": "TravelAgency",
+        "@id": "https://lisbontuk4u.com/#agency",
+        "name": "LisbonTuk4U",
+        "url": "https://lisbontuk4u.com",
+        "telephone": "+351966697738"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "180",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock",
+        "url": "https://lisbontuk4u.com/tours/belem.html",
+        "eligibleQuantity": {
+          "@type": "QuantitativeValue",
+          "minValue": 1,
+          "maxValue": 5,
+          "unitText": "people"
+        },
+        "description": "€180 por grupo (até 5 pessoas) · 2 horas"
+      },
+      "itinerary": {
+        "@type": "ItemList",
+        "numberOfItems": 4,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Pastéis de Belém"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Mosteiro dos Jerónimos"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Torre de Belém"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Padrão dos Descobrimentos"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://lisbontuk4u.com/tours/belem.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Quanto custa o tour Belém?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Custa €180 por grupo, não por pessoa. Cada tuk-tuk leva até 5 pessoas. Para grupos de 6 a 10 pessoas são reservados 2 tuk-tuks e o preço duplica (€360). O pagamento é feito online com cartão (Stripe), sem taxas escondidas."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quanto tempo dura e o que se visita?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dura 2 horas. As paragens são: Pastéis de Belém, Mosteiro dos Jerónimos, Torre de Belém e Padrão dos Descobrimentos."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Onde começa o passeio?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A recolha no seu hotel ou alojamento em Lisboa é gratuita e a entrega no fim também. Se preferir, o ponto de encontro é junto ao Hard Rock Café, no centro de Lisboa."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "É adequado para crianças e pessoas com pouca mobilidade?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. O tour é adequado para todas as idades: o tuk-tuk sobe as colinas de Lisboa por si, por isso anda-se muito pouco a pé. Como é privado, o ritmo e as paragens adaptam-se ao grupo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Posso cancelar ou mudar a data?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. O cancelamento é gratuito até 48 horas antes do passeio. Para mudar a data, fale com a Susane pelo WhatsApp (+351 966 697 738)."
+          }
+        }
+      ]
+    }
+  ]
 }
     </script>
     <script type="application/ld+json">
@@ -242,6 +348,23 @@
                     <div class="td-accordion-body"><ul class="td-not-included-list"><li><svg class="td-cross-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Bilhetes de entrada em monumentos</li><li><svg class="td-cross-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Refeições e bebidas</li><li><svg class="td-cross-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Gorjetas (opcionais)</li><li><svg class="td-cross-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Recolha fora de Lisboa (taxa extra)</li></ul></div>
                 </details>
             </div>
+        <!-- GEO:start (gerado por tools/geo_enrich.py — nao editar a mao) -->
+            <section class="td-geo-summary" aria-labelledby="td-geo-summary-title">
+                <h2 id="td-geo-summary-title" class="td-geo-title">Em resumo</h2>
+                <p class="td-geo-text"><strong>Belém</strong> é um passeio <strong>privado</strong> de tuk-tuk 100% elétrico em Lisboa, organizado pela LisbonTuk4U e guiado pela Susane, guia local certificada. Dura <strong>2 horas</strong> e custa <strong>€180 por grupo</strong> (até 5 pessoas por tuk-tuk — o preço não é por pessoa). O roteiro tem 4 paragens, incluindo Pastéis de Belém, Mosteiro dos Jerónimos e Torre de Belém. Inclui pick-up gratuito no hotel em Lisboa (ou encontro junto ao Hard Rock Café), comentários em português, inglês, espanhol, italiano e francês, e cancelamento gratuito até 48 horas antes.</p>
+                <dl class="td-geo-facts"><div><dt>Duração</dt><dd>2 horas</dd></div><div><dt>Preço</dt><dd>€180 por grupo (até 5 pessoas)</dd></div><div><dt>Tipo</dt><dd>Privado, só o seu grupo</dd></div><div><dt>Veículo</dt><dd>Tuk-tuk 100% elétrico</dd></div><div><dt>Línguas</dt><dd>PT · EN · ES · IT · FR</dd></div><div><dt>Início</dt><dd>Pick-up no hotel ou Hard Rock Café</dd></div><div><dt>Cancelamento</dt><dd>Grátis até 48h antes</dd></div></dl>
+            </section>
+            <details class="td-accordion td-faq" open>
+                <summary>Perguntas frequentes <svg class="td-accordion-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></summary>
+                <div class="td-accordion-body">
+                    <details class="td-faq-item"><summary>Quanto custa o tour Belém?</summary><p>Custa €180 por grupo, não por pessoa. Cada tuk-tuk leva até 5 pessoas. Para grupos de 6 a 10 pessoas são reservados 2 tuk-tuks e o preço duplica (€360). O pagamento é feito online com cartão (Stripe), sem taxas escondidas.</p></details>
+                    <details class="td-faq-item"><summary>Quanto tempo dura e o que se visita?</summary><p>Dura 2 horas. As paragens são: Pastéis de Belém, Mosteiro dos Jerónimos, Torre de Belém e Padrão dos Descobrimentos.</p></details>
+                    <details class="td-faq-item"><summary>Onde começa o passeio?</summary><p>A recolha no seu hotel ou alojamento em Lisboa é gratuita e a entrega no fim também. Se preferir, o ponto de encontro é junto ao Hard Rock Café, no centro de Lisboa.</p></details>
+                    <details class="td-faq-item"><summary>É adequado para crianças e pessoas com pouca mobilidade?</summary><p>Sim. O tour é adequado para todas as idades: o tuk-tuk sobe as colinas de Lisboa por si, por isso anda-se muito pouco a pé. Como é privado, o ritmo e as paragens adaptam-se ao grupo.</p></details>
+                    <details class="td-faq-item"><summary>Posso cancelar ou mudar a data?</summary><p>Sim. O cancelamento é gratuito até 48 horas antes do passeio. Para mudar a data, fale com a Susane pelo WhatsApp (+351 966 697 738).</p></details>
+                </div>
+            </details>
+            <!-- GEO:end -->
         </div>
 
         <aside class="td-checkout-sidebar">

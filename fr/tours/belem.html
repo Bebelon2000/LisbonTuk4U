@@ -64,27 +64,133 @@
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400..800&family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="../../index.css?v=4.7.0">
-    <link rel="stylesheet" href="../../tours/tour-detail.css?v=1.6.0">
+    <link rel="stylesheet" href="../../tours/tour-detail.css?v=1.7.0">
 
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "TouristTrip",
-  "name": "Belém — LisbonTuk4U",
-  "description": "Voyagez jusqu'à la glorieuse Ère des Découvertes. Explorez des monuments emblématiques au bord du fleuve, comme la Tour de Belém et le Monastère des Hiéronymites, et découvrez où l'histoire du Portugal a rencontré le monde.",
-  "touristType": "Sightseeing",
-  "provider": {
-    "@type": "TravelAgency",
-    "name": "LisbonTuk4U",
-    "url": "https://lisbontuk4u.com"
-  },
-  "offers": {
-    "@type": "Offer",
-    "price": "180",
-    "priceCurrency": "EUR",
-    "availability": "https://schema.org/InStock",
-    "url": "https://lisbontuk4u.com/fr/tours/belem.html"
-  }
+  "@graph": [
+    {
+      "@type": "TouristTrip",
+      "@id": "https://lisbontuk4u.com/fr/tours/belem.html#trip",
+      "name": "Belém — LisbonTuk4U",
+      "description": "Voyagez jusqu'à la glorieuse Ère des Découvertes. Explorez des monuments emblématiques au bord du fleuve, comme la Tour de Belém et le Monastère des Hiéronymites, et découvrez où l'histoire du Portugal a rencontré le monde.",
+      "url": "https://lisbontuk4u.com/fr/tours/belem.html",
+      "image": "https://lisbontuk4u.com/assets/img/tour-belem.webp",
+      "inLanguage": "fr",
+      "touristType": [
+        "Sightseeing",
+        "Cultural tourism",
+        "Families",
+        "Couples"
+      ],
+      "provider": {
+        "@type": "TravelAgency",
+        "@id": "https://lisbontuk4u.com/#agency",
+        "name": "LisbonTuk4U",
+        "url": "https://lisbontuk4u.com",
+        "telephone": "+351966697738"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "180",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock",
+        "url": "https://lisbontuk4u.com/fr/tours/belem.html",
+        "eligibleQuantity": {
+          "@type": "QuantitativeValue",
+          "minValue": 1,
+          "maxValue": 5,
+          "unitText": "people"
+        },
+        "description": "180 € par groupe (jusqu'à 5 personnes) · 2 heures"
+      },
+      "itinerary": {
+        "@type": "ItemList",
+        "numberOfItems": 4,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Pastéis de Belém"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Monastère des Hiéronymites"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Tour de Belém"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Monument aux Découvertes"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://lisbontuk4u.com/fr/tours/belem.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Combien coûte la balade Belém ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Elle coûte 180 € par groupe, pas par personne. Chaque tuk-tuk accueille jusqu'à 5 personnes. Pour les groupes de 6 à 10 personnes, 2 tuk-tuks sont réservés et le prix double (360 €). Le paiement se fait en ligne par carte (Stripe), sans frais cachés."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Combien de temps dure-t-elle et que visite-t-on ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Elle dure 2 heures. Les arrêts sont : Pastéis de Belém, Monastère des Hiéronymites, Tour de Belém et Monument aux Découvertes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Où commence la balade ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La prise en charge et le retour à votre hôtel ou logement à Lisbonne sont gratuits. Si vous préférez, le point de rendez-vous est près du Hard Rock Café, au centre de Lisbonne."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Est-ce adapté aux enfants et aux personnes à mobilité réduite ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui. La balade convient à tous les âges : le tuk-tuk gravit les collines de Lisbonne pour vous, on marche donc très peu. Comme elle est privée, le rythme et les arrêts s'adaptent au groupe."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Puis-je annuler ou changer de date ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui. L'annulation est gratuite jusqu'à 48 heures avant la balade. Pour changer de date, écrivez à Susane sur WhatsApp (+351 966 697 738)."
+          }
+        }
+      ]
+    }
+  ]
 }
     </script>
     <script type="application/ld+json">
@@ -242,6 +348,23 @@
                     <div class="td-accordion-body"><ul class="td-not-included-list"><li><svg class="td-cross-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Billets d'entrée des monuments</li><li><svg class="td-cross-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Repas et boissons</li><li><svg class="td-cross-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Pourboires (facultatifs)</li><li><svg class="td-cross-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Prise en charge hors de Lisbonne (frais supplémentaires)</li></ul></div>
                 </details>
             </div>
+        <!-- GEO:start (gerado por tools/geo_enrich.py — nao editar a mao) -->
+            <section class="td-geo-summary" aria-labelledby="td-geo-summary-title">
+                <h2 id="td-geo-summary-title" class="td-geo-title">En bref</h2>
+                <p class="td-geo-text"><strong>Belém</strong> est une balade <strong>privée</strong> en tuk-tuk 100 % électrique dans Lisbonne, organisée par LisbonTuk4U et guidée par Susane, guide locale certifiée. Elle dure <strong>2 heures</strong> et coûte <strong>180 € par groupe</strong> (jusqu'à 5 personnes par tuk-tuk — le prix n'est pas par personne). L'itinéraire compte 4 arrêts, dont Pastéis de Belém, Monastère des Hiéronymites et Tour de Belém. Prise en charge gratuite à l'hôtel à Lisbonne (ou rendez-vous près du Hard Rock Café), commentaires en français, portugais, anglais, espagnol et italien, et annulation gratuite jusqu'à 48 heures avant.</p>
+                <dl class="td-geo-facts"><div><dt>Durée</dt><dd>2 heures</dd></div><div><dt>Prix</dt><dd>180 € par groupe (jusqu'à 5 personnes)</dd></div><div><dt>Type</dt><dd>Privée, votre groupe uniquement</dd></div><div><dt>Véhicule</dt><dd>Tuk-tuk 100 % électrique</dd></div><div><dt>Langues</dt><dd>FR · PT · EN · ES · IT</dd></div><div><dt>Départ</dt><dd>Prise en charge à l'hôtel ou Hard Rock Café</dd></div><div><dt>Annulation</dt><dd>Gratuite jusqu'à 48h avant</dd></div></dl>
+            </section>
+            <details class="td-accordion td-faq" open>
+                <summary>Questions fréquentes <svg class="td-accordion-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></summary>
+                <div class="td-accordion-body">
+                    <details class="td-faq-item"><summary>Combien coûte la balade Belém ?</summary><p>Elle coûte 180 € par groupe, pas par personne. Chaque tuk-tuk accueille jusqu'à 5 personnes. Pour les groupes de 6 à 10 personnes, 2 tuk-tuks sont réservés et le prix double (360 €). Le paiement se fait en ligne par carte (Stripe), sans frais cachés.</p></details>
+                    <details class="td-faq-item"><summary>Combien de temps dure-t-elle et que visite-t-on ?</summary><p>Elle dure 2 heures. Les arrêts sont : Pastéis de Belém, Monastère des Hiéronymites, Tour de Belém et Monument aux Découvertes.</p></details>
+                    <details class="td-faq-item"><summary>Où commence la balade ?</summary><p>La prise en charge et le retour à votre hôtel ou logement à Lisbonne sont gratuits. Si vous préférez, le point de rendez-vous est près du Hard Rock Café, au centre de Lisbonne.</p></details>
+                    <details class="td-faq-item"><summary>Est-ce adapté aux enfants et aux personnes à mobilité réduite ?</summary><p>Oui. La balade convient à tous les âges : le tuk-tuk gravit les collines de Lisbonne pour vous, on marche donc très peu. Comme elle est privée, le rythme et les arrêts s'adaptent au groupe.</p></details>
+                    <details class="td-faq-item"><summary>Puis-je annuler ou changer de date ?</summary><p>Oui. L'annulation est gratuite jusqu'à 48 heures avant la balade. Pour changer de date, écrivez à Susane sur WhatsApp (+351 966 697 738).</p></details>
+                </div>
+            </details>
+            <!-- GEO:end -->
         </div>
 
         <aside class="td-checkout-sidebar">

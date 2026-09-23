@@ -1,8 +1,34 @@
 # ───────────────────────────────────────────────────────────────
 #  LisbonTuk4U — robots.txt
 #  ESTADO: PRODUÇÃO (lisbontuk4u.com) — site lançado.
+#
+#  GEO: os motores de resposta por IA (ChatGPT, Claude, Perplexity,
+#  Google AI Overviews/Gemini, Copilot, Apple) estão explicitamente
+#  autorizados — queremos ser citados quando alguém pergunta por
+#  tours de tuk-tuk em Lisboa. Resumo para LLMs: /llms.txt
 # ───────────────────────────────────────────────────────────────
 User-agent: *
 Allow: /
+Disallow: /reserva-confirmada.html
+
+# Motores de pesquisa e de resposta por IA
+User-agent: Googlebot
+User-agent: Google-Extended
+User-agent: Bingbot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: GPTBot
+User-agent: ClaudeBot
+User-agent: Claude-User
+User-agent: Claude-SearchBot
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Applebot
+User-agent: Applebot-Extended
+User-agent: DuckAssistBot
+User-agent: meta-externalagent
+User-agent: MistralAI-User
+Allow: /
+Disallow: /reserva-confirmada.html
 
 Sitemap: https://lisbontuk4u.com/sitemap.xml

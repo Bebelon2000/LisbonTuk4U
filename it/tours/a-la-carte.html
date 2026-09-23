@@ -64,27 +64,127 @@
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400..800&family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="../../index.css?v=4.7.0">
-    <link rel="stylesheet" href="../../tours/tour-detail.css?v=1.6.0">
+    <link rel="stylesheet" href="../../tours/tour-detail.css?v=1.7.0">
 
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "TouristTrip",
-  "name": "Lisbona à la Carte — LisbonTuk4U",
-  "description": "Il tour è tuo. Dicci cosa vuoi vedere e quanto tempo hai a disposizione. La guida Susane disegnerà un itinerario flessibile, perfetto per chi vuole dettare il proprio ritmo ed esplorare Lisbona senza fretta.",
-  "touristType": "Sightseeing",
-  "provider": {
-    "@type": "TravelAgency",
-    "name": "LisbonTuk4U",
-    "url": "https://lisbontuk4u.com"
-  },
-  "offers": {
-    "@type": "Offer",
-    "price": "120",
-    "priceCurrency": "EUR",
-    "availability": "https://schema.org/InStock",
-    "url": "https://lisbontuk4u.com/it/tours/a-la-carte.html"
-  }
+  "@graph": [
+    {
+      "@type": "TouristTrip",
+      "@id": "https://lisbontuk4u.com/it/tours/a-la-carte.html#trip",
+      "name": "Lisbona à la Carte — LisbonTuk4U",
+      "description": "Il tour è tuo. Dicci cosa vuoi vedere e quanto tempo hai a disposizione. La guida Susane disegnerà un itinerario flessibile, perfetto per chi vuole dettare il proprio ritmo ed esplorare Lisbona senza fretta.",
+      "url": "https://lisbontuk4u.com/it/tours/a-la-carte.html",
+      "image": "https://lisbontuk4u.com/assets/img/tour-a-la-carte.webp",
+      "inLanguage": "it",
+      "touristType": [
+        "Sightseeing",
+        "Cultural tourism",
+        "Families",
+        "Couples"
+      ],
+      "provider": {
+        "@type": "TravelAgency",
+        "@id": "https://lisbontuk4u.com/#agency",
+        "name": "LisbonTuk4U",
+        "url": "https://lisbontuk4u.com",
+        "telephone": "+351966697738"
+      },
+      "offers": {
+        "@type": "AggregateOffer",
+        "lowPrice": "120",
+        "highPrice": "360",
+        "offerCount": "5",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock",
+        "url": "https://lisbontuk4u.com/it/tours/a-la-carte.html",
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "1 ora",
+            "price": "120",
+            "priceCurrency": "EUR",
+            "url": "https://lisbontuk4u.com/it/tours/a-la-carte.html"
+          },
+          {
+            "@type": "Offer",
+            "name": "2 ore",
+            "price": "180",
+            "priceCurrency": "EUR",
+            "url": "https://lisbontuk4u.com/it/tours/a-la-carte.html"
+          },
+          {
+            "@type": "Offer",
+            "name": "3 ore",
+            "price": "240",
+            "priceCurrency": "EUR",
+            "url": "https://lisbontuk4u.com/it/tours/a-la-carte.html"
+          },
+          {
+            "@type": "Offer",
+            "name": "4 ore",
+            "price": "300",
+            "priceCurrency": "EUR",
+            "url": "https://lisbontuk4u.com/it/tours/a-la-carte.html"
+          },
+          {
+            "@type": "Offer",
+            "name": "5 ore",
+            "price": "360",
+            "priceCurrency": "EUR",
+            "url": "https://lisbontuk4u.com/it/tours/a-la-carte.html"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://lisbontuk4u.com/it/tours/a-la-carte.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Quanto costa il tour Lisbona à la Carte?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Costa da 120 € (1 ora) a 360 € (5 ore) a gruppo, non a persona. Ogni tuk-tuk porta fino a 5 persone. Per gruppi da 6 a 10 persone si prenotano 2 tuk-tuk e il prezzo raddoppia. Il pagamento è online con carta (Stripe), senza costi nascosti."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quanto dura e cosa si visita?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Puoi scegliere tra 1 e 5 ore. Susane progetta il percorso con te prima del tour — ad esempio Alfama, belvedere, Belém o quartieri meno turistici."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Dove inizia il tour?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Il ritiro e il ritorno al tuo hotel o alloggio a Lisbona sono gratuiti. Se preferisci, il punto d'incontro è vicino all'Hard Rock Café, nel centro di Lisbona."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "È adatto a bambini e persone con mobilità ridotta?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sì. Il tour è adatto a tutte le età: il tuk-tuk sale le colline di Lisbona al posto tuo, quindi si cammina pochissimo. Essendo privato, ritmo e tappe si adattano al gruppo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Posso cancellare o cambiare data?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sì. La cancellazione è gratuita fino a 48 ore prima del tour. Per cambiare data, scrivi a Susane su WhatsApp (+351 966 697 738)."
+          }
+        }
+      ]
+    }
+  ]
 }
     </script>
     <script type="application/ld+json">
@@ -242,6 +342,23 @@
                     <div class="td-accordion-body"><ul class="td-not-included-list"><li><svg class="td-cross-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Biglietti d'ingresso ai monumenti</li><li><svg class="td-cross-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Pasti e bevande</li><li><svg class="td-cross-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Mance (facoltative)</li><li><svg class="td-cross-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Pick-up fuori Lisbona (costo extra)</li></ul></div>
                 </details>
             </div>
+        <!-- GEO:start (gerado por tools/geo_enrich.py — nao editar a mao) -->
+            <section class="td-geo-summary" aria-labelledby="td-geo-summary-title">
+                <h2 id="td-geo-summary-title" class="td-geo-title">In breve</h2>
+                <p class="td-geo-text"><strong>Lisbona à la Carte</strong> è un tour <strong>privato</strong> in tuk-tuk 100% elettrico a Lisbona, organizzato da LisbonTuk4U e guidato da Susane, guida locale certificata. Dura <strong>da 1 a 5 ore, a scelta</strong> e costa <strong>da 120 € (1 ora) a 360 € (5 ore) a gruppo</strong> (fino a 5 persone per tuk-tuk — il prezzo non è a persona). Il percorso è su misura: scegli tu i quartieri, i belvedere e i monumenti da vedere. Include il ritiro gratuito in hotel a Lisbona (o incontro vicino all'Hard Rock Café), spiegazioni in italiano, portoghese, inglese, spagnolo e francese, e cancellazione gratuita fino a 48 ore prima.</p>
+                <dl class="td-geo-facts"><div><dt>Durata</dt><dd>da 1 a 5 ore, a scelta</dd></div><div><dt>Prezzo</dt><dd>da 120 € (1 ora) a 360 € (5 ore) a gruppo (fino a 5 persone)</dd></div><div><dt>Tipo</dt><dd>Privato, solo il tuo gruppo</dd></div><div><dt>Veicolo</dt><dd>Tuk-tuk 100% elettrico</dd></div><div><dt>Lingue</dt><dd>IT · PT · EN · ES · FR</dd></div><div><dt>Partenza</dt><dd>Ritiro in hotel o Hard Rock Café</dd></div><div><dt>Cancellazione</dt><dd>Gratuita fino a 48h prima</dd></div></dl>
+            </section>
+            <details class="td-accordion td-faq" open>
+                <summary>Domande frequenti <svg class="td-accordion-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></summary>
+                <div class="td-accordion-body">
+                    <details class="td-faq-item"><summary>Quanto costa il tour Lisbona à la Carte?</summary><p>Costa da 120 € (1 ora) a 360 € (5 ore) a gruppo, non a persona. Ogni tuk-tuk porta fino a 5 persone. Per gruppi da 6 a 10 persone si prenotano 2 tuk-tuk e il prezzo raddoppia. Il pagamento è online con carta (Stripe), senza costi nascosti.</p></details>
+                    <details class="td-faq-item"><summary>Quanto dura e cosa si visita?</summary><p>Puoi scegliere tra 1 e 5 ore. Susane progetta il percorso con te prima del tour — ad esempio Alfama, belvedere, Belém o quartieri meno turistici.</p></details>
+                    <details class="td-faq-item"><summary>Dove inizia il tour?</summary><p>Il ritiro e il ritorno al tuo hotel o alloggio a Lisbona sono gratuiti. Se preferisci, il punto d'incontro è vicino all'Hard Rock Café, nel centro di Lisbona.</p></details>
+                    <details class="td-faq-item"><summary>È adatto a bambini e persone con mobilità ridotta?</summary><p>Sì. Il tour è adatto a tutte le età: il tuk-tuk sale le colline di Lisbona al posto tuo, quindi si cammina pochissimo. Essendo privato, ritmo e tappe si adattano al gruppo.</p></details>
+                    <details class="td-faq-item"><summary>Posso cancellare o cambiare data?</summary><p>Sì. La cancellazione è gratuita fino a 48 ore prima del tour. Per cambiare data, scrivi a Susane su WhatsApp (+351 966 697 738).</p></details>
+                </div>
+            </details>
+            <!-- GEO:end -->
         </div>
 
         <aside class="td-checkout-sidebar">

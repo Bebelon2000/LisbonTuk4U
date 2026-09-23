@@ -64,27 +64,133 @@
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400..800&family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="../../index.css?v=4.7.0">
-    <link rel="stylesheet" href="../../tours/tour-detail.css?v=1.6.0">
+    <link rel="stylesheet" href="../../tours/tour-detail.css?v=1.7.0">
 
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "TouristTrip",
-  "name": "Belém — LisbonTuk4U",
-  "description": "Travel back to the glorious Age of Discoveries. Explore iconic riverside monuments like Belém Tower and Jerónimos Monastery, and discover where Portugal's history met the world.",
-  "touristType": "Sightseeing",
-  "provider": {
-    "@type": "TravelAgency",
-    "name": "LisbonTuk4U",
-    "url": "https://lisbontuk4u.com"
-  },
-  "offers": {
-    "@type": "Offer",
-    "price": "180",
-    "priceCurrency": "EUR",
-    "availability": "https://schema.org/InStock",
-    "url": "https://lisbontuk4u.com/en/tours/belem.html"
-  }
+  "@graph": [
+    {
+      "@type": "TouristTrip",
+      "@id": "https://lisbontuk4u.com/en/tours/belem.html#trip",
+      "name": "Belém — LisbonTuk4U",
+      "description": "Travel back to the glorious Age of Discoveries. Explore iconic riverside monuments like Belém Tower and Jerónimos Monastery, and discover where Portugal's history met the world.",
+      "url": "https://lisbontuk4u.com/en/tours/belem.html",
+      "image": "https://lisbontuk4u.com/assets/img/tour-belem.webp",
+      "inLanguage": "en",
+      "touristType": [
+        "Sightseeing",
+        "Cultural tourism",
+        "Families",
+        "Couples"
+      ],
+      "provider": {
+        "@type": "TravelAgency",
+        "@id": "https://lisbontuk4u.com/#agency",
+        "name": "LisbonTuk4U",
+        "url": "https://lisbontuk4u.com",
+        "telephone": "+351966697738"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "180",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock",
+        "url": "https://lisbontuk4u.com/en/tours/belem.html",
+        "eligibleQuantity": {
+          "@type": "QuantitativeValue",
+          "minValue": 1,
+          "maxValue": 5,
+          "unitText": "people"
+        },
+        "description": "€180 per group (up to 5 people) · 2 hours"
+      },
+      "itinerary": {
+        "@type": "ItemList",
+        "numberOfItems": 4,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Pastéis de Belém"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Jerónimos Monastery"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Belém Tower"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Monument to the Discoveries"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://lisbontuk4u.com/en/tours/belem.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much does the Belém tour cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It costs €180 per group, not per person. Each tuk-tuk takes up to 5 people. Groups of 6 to 10 get 2 tuk-tuks and the price doubles (€360). Payment is online by card (Stripe), with no hidden fees."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long is it and what will we see?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It lasts 2 hours. The stops are: Pastéis de Belém, Jerónimos Monastery, Belém Tower and Monument to the Discoveries."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where does the tour start?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pick-up and drop-off at your hotel or accommodation in Lisbon are free. If you prefer, the meeting point is next to the Hard Rock Café in central Lisbon."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is it suitable for children and people with limited mobility?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The tour suits all ages: the tuk-tuk climbs Lisbon's hills for you, so there is very little walking. Because it is private, the pace and stops adapt to your group."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I cancel or change the date?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Cancellation is free up to 48 hours before the tour. To change the date, message Susane on WhatsApp (+351 966 697 738)."
+          }
+        }
+      ]
+    }
+  ]
 }
     </script>
     <script type="application/ld+json">
@@ -242,6 +348,23 @@
                     <div class="td-accordion-body"><ul class="td-not-included-list"><li><svg class="td-cross-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Monument entrance tickets</li><li><svg class="td-cross-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Meals and drinks</li><li><svg class="td-cross-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Tips (optional)</li><li><svg class="td-cross-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Pick-up outside Lisbon (extra fee)</li></ul></div>
                 </details>
             </div>
+        <!-- GEO:start (gerado por tools/geo_enrich.py — nao editar a mao) -->
+            <section class="td-geo-summary" aria-labelledby="td-geo-summary-title">
+                <h2 id="td-geo-summary-title" class="td-geo-title">At a glance</h2>
+                <p class="td-geo-text"><strong>Belém</strong> is a <strong>private</strong> 100% electric tuk-tuk tour of Lisbon run by LisbonTuk4U and guided by Susane, a certified local guide. It lasts <strong>2 hours</strong> and costs <strong>€180 per group</strong> (up to 5 people per tuk-tuk — the price is not per person). The route has 4 stops, including Pastéis de Belém, Jerónimos Monastery and Belém Tower. It includes free hotel pick-up in Lisbon (or meet at the Hard Rock Café), commentary in English, Portuguese, Spanish, Italian and French, and free cancellation up to 48 hours before.</p>
+                <dl class="td-geo-facts"><div><dt>Duration</dt><dd>2 hours</dd></div><div><dt>Price</dt><dd>€180 per group (up to 5 people)</dd></div><div><dt>Type</dt><dd>Private, your group only</dd></div><div><dt>Vehicle</dt><dd>100% electric tuk-tuk</dd></div><div><dt>Languages</dt><dd>EN · PT · ES · IT · FR</dd></div><div><dt>Start</dt><dd>Hotel pick-up or Hard Rock Café</dd></div><div><dt>Cancellation</dt><dd>Free up to 48h before</dd></div></dl>
+            </section>
+            <details class="td-accordion td-faq" open>
+                <summary>Frequently asked questions <svg class="td-accordion-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></summary>
+                <div class="td-accordion-body">
+                    <details class="td-faq-item"><summary>How much does the Belém tour cost?</summary><p>It costs €180 per group, not per person. Each tuk-tuk takes up to 5 people. Groups of 6 to 10 get 2 tuk-tuks and the price doubles (€360). Payment is online by card (Stripe), with no hidden fees.</p></details>
+                    <details class="td-faq-item"><summary>How long is it and what will we see?</summary><p>It lasts 2 hours. The stops are: Pastéis de Belém, Jerónimos Monastery, Belém Tower and Monument to the Discoveries.</p></details>
+                    <details class="td-faq-item"><summary>Where does the tour start?</summary><p>Pick-up and drop-off at your hotel or accommodation in Lisbon are free. If you prefer, the meeting point is next to the Hard Rock Café in central Lisbon.</p></details>
+                    <details class="td-faq-item"><summary>Is it suitable for children and people with limited mobility?</summary><p>Yes. The tour suits all ages: the tuk-tuk climbs Lisbon's hills for you, so there is very little walking. Because it is private, the pace and stops adapt to your group.</p></details>
+                    <details class="td-faq-item"><summary>Can I cancel or change the date?</summary><p>Yes. Cancellation is free up to 48 hours before the tour. To change the date, message Susane on WhatsApp (+351 966 697 738).</p></details>
+                </div>
+            </details>
+            <!-- GEO:end -->
         </div>
 
         <aside class="td-checkout-sidebar">

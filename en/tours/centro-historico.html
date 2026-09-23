@@ -64,27 +64,189 @@
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400..800&family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="../../index.css?v=4.7.0">
-    <link rel="stylesheet" href="../../tours/tour-detail.css?v=1.6.0">
+    <link rel="stylesheet" href="../../tours/tour-detail.css?v=1.7.0">
 
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "TouristTrip",
-  "name": "Historic Centre — LisbonTuk4U",
-  "description": "A genuine journey back in time. Wander the maze of Alfama's alleys, feel the tradition of Graça and breathe in the bohemian culture of Bairro Alto and Chiado on this immersive trip.",
-  "touristType": "Sightseeing",
-  "provider": {
-    "@type": "TravelAgency",
-    "name": "LisbonTuk4U",
-    "url": "https://lisbontuk4u.com"
-  },
-  "offers": {
-    "@type": "Offer",
-    "price": "180",
-    "priceCurrency": "EUR",
-    "availability": "https://schema.org/InStock",
-    "url": "https://lisbontuk4u.com/en/tours/centro-historico.html"
-  }
+  "@graph": [
+    {
+      "@type": "TouristTrip",
+      "@id": "https://lisbontuk4u.com/en/tours/centro-historico.html#trip",
+      "name": "Historic Centre — LisbonTuk4U",
+      "description": "A genuine journey back in time. Wander the maze of Alfama's alleys, feel the tradition of Graça and breathe in the bohemian culture of Bairro Alto and Chiado on this immersive trip.",
+      "url": "https://lisbontuk4u.com/en/tours/centro-historico.html",
+      "image": "https://lisbontuk4u.com/assets/img/tour-centro-historico.webp",
+      "inLanguage": "en",
+      "touristType": [
+        "Sightseeing",
+        "Cultural tourism",
+        "Families",
+        "Couples"
+      ],
+      "provider": {
+        "@type": "TravelAgency",
+        "@id": "https://lisbontuk4u.com/#agency",
+        "name": "LisbonTuk4U",
+        "url": "https://lisbontuk4u.com",
+        "telephone": "+351966697738"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "180",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock",
+        "url": "https://lisbontuk4u.com/en/tours/centro-historico.html",
+        "eligibleQuantity": {
+          "@type": "QuantitativeValue",
+          "minValue": 1,
+          "maxValue": 5,
+          "unitText": "people"
+        },
+        "description": "€180 per group (up to 5 people) · 2 hours"
+      },
+      "itinerary": {
+        "@type": "ItemList",
+        "numberOfItems": 11,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "St. Anthony's Church"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Sé Cathedral"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Santa Luzia Viewpoint"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Portas do Sol Viewpoint"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Graça Church & Convent"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 6,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Graça Viewpoint"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 7,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Senhora do Monte Viewpoint"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 8,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "São Vicente de Fora Church & Monastery"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 9,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Feira da Ladra Flea Market"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 10,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "National Pantheon"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 11,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Eduardo VII Park Viewpoint"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://lisbontuk4u.com/en/tours/centro-historico.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much does the Historic Centre tour cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It costs €180 per group, not per person. Each tuk-tuk takes up to 5 people. Groups of 6 to 10 get 2 tuk-tuks and the price doubles (€360). Payment is online by card (Stripe), with no hidden fees."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long is it and what will we see?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It lasts 2 hours. The stops are: St. Anthony's Church, Sé Cathedral, Santa Luzia Viewpoint, Portas do Sol Viewpoint, Graça Church & Convent, Graça Viewpoint, Senhora do Monte Viewpoint, São Vicente de Fora Church & Monastery, Feira da Ladra Flea Market, National Pantheon and Eduardo VII Park Viewpoint."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where does the tour start?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pick-up and drop-off at your hotel or accommodation in Lisbon are free. If you prefer, the meeting point is next to the Hard Rock Café in central Lisbon."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is it suitable for children and people with limited mobility?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The tour suits all ages: the tuk-tuk climbs Lisbon's hills for you, so there is very little walking. Because it is private, the pace and stops adapt to your group."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I cancel or change the date?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Cancellation is free up to 48 hours before the tour. To change the date, message Susane on WhatsApp (+351 966 697 738)."
+          }
+        }
+      ]
+    }
+  ]
 }
     </script>
     <script type="application/ld+json">
@@ -242,6 +404,23 @@
                     <div class="td-accordion-body"><ul class="td-not-included-list"><li><svg class="td-cross-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Monument entrance tickets</li><li><svg class="td-cross-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Meals and drinks</li><li><svg class="td-cross-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Tips (optional)</li><li><svg class="td-cross-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Pick-up outside Lisbon (extra fee)</li></ul></div>
                 </details>
             </div>
+        <!-- GEO:start (gerado por tools/geo_enrich.py — nao editar a mao) -->
+            <section class="td-geo-summary" aria-labelledby="td-geo-summary-title">
+                <h2 id="td-geo-summary-title" class="td-geo-title">At a glance</h2>
+                <p class="td-geo-text"><strong>Historic Centre</strong> is a <strong>private</strong> 100% electric tuk-tuk tour of Lisbon run by LisbonTuk4U and guided by Susane, a certified local guide. It lasts <strong>2 hours</strong> and costs <strong>€180 per group</strong> (up to 5 people per tuk-tuk — the price is not per person). The route has 11 stops, including St. Anthony's Church, Sé Cathedral and Santa Luzia Viewpoint. It includes free hotel pick-up in Lisbon (or meet at the Hard Rock Café), commentary in English, Portuguese, Spanish, Italian and French, and free cancellation up to 48 hours before.</p>
+                <dl class="td-geo-facts"><div><dt>Duration</dt><dd>2 hours</dd></div><div><dt>Price</dt><dd>€180 per group (up to 5 people)</dd></div><div><dt>Type</dt><dd>Private, your group only</dd></div><div><dt>Vehicle</dt><dd>100% electric tuk-tuk</dd></div><div><dt>Languages</dt><dd>EN · PT · ES · IT · FR</dd></div><div><dt>Start</dt><dd>Hotel pick-up or Hard Rock Café</dd></div><div><dt>Cancellation</dt><dd>Free up to 48h before</dd></div></dl>
+            </section>
+            <details class="td-accordion td-faq" open>
+                <summary>Frequently asked questions <svg class="td-accordion-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></summary>
+                <div class="td-accordion-body">
+                    <details class="td-faq-item"><summary>How much does the Historic Centre tour cost?</summary><p>It costs €180 per group, not per person. Each tuk-tuk takes up to 5 people. Groups of 6 to 10 get 2 tuk-tuks and the price doubles (€360). Payment is online by card (Stripe), with no hidden fees.</p></details>
+                    <details class="td-faq-item"><summary>How long is it and what will we see?</summary><p>It lasts 2 hours. The stops are: St. Anthony's Church, Sé Cathedral, Santa Luzia Viewpoint, Portas do Sol Viewpoint, Graça Church & Convent, Graça Viewpoint, Senhora do Monte Viewpoint, São Vicente de Fora Church & Monastery, Feira da Ladra Flea Market, National Pantheon and Eduardo VII Park Viewpoint.</p></details>
+                    <details class="td-faq-item"><summary>Where does the tour start?</summary><p>Pick-up and drop-off at your hotel or accommodation in Lisbon are free. If you prefer, the meeting point is next to the Hard Rock Café in central Lisbon.</p></details>
+                    <details class="td-faq-item"><summary>Is it suitable for children and people with limited mobility?</summary><p>Yes. The tour suits all ages: the tuk-tuk climbs Lisbon's hills for you, so there is very little walking. Because it is private, the pace and stops adapt to your group.</p></details>
+                    <details class="td-faq-item"><summary>Can I cancel or change the date?</summary><p>Yes. Cancellation is free up to 48 hours before the tour. To change the date, message Susane on WhatsApp (+351 966 697 738).</p></details>
+                </div>
+            </details>
+            <!-- GEO:end -->
         </div>
 
         <aside class="td-checkout-sidebar">

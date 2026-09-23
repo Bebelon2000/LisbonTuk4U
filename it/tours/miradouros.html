@@ -64,27 +64,221 @@
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400..800&family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="../../index.css?v=4.7.0">
-    <link rel="stylesheet" href="../../tours/tour-detail.css?v=1.6.0">
+    <link rel="stylesheet" href="../../tours/tour-detail.css?v=1.7.0">
 
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "TouristTrip",
-  "name": "Belvedere di Lisbona — LisbonTuk4U",
-  "description": "La città vista dall'alto. Lasciati incantare dai panorami più suggestivi di Lisbona nei nostri belvedere segreti e iconici, attraversando i quartieri più emblematici in un itinerario di pura contemplazione.",
-  "touristType": "Sightseeing",
-  "provider": {
-    "@type": "TravelAgency",
-    "name": "LisbonTuk4U",
-    "url": "https://lisbontuk4u.com"
-  },
-  "offers": {
-    "@type": "Offer",
-    "price": "240",
-    "priceCurrency": "EUR",
-    "availability": "https://schema.org/InStock",
-    "url": "https://lisbontuk4u.com/it/tours/miradouros.html"
-  }
+  "@graph": [
+    {
+      "@type": "TouristTrip",
+      "@id": "https://lisbontuk4u.com/it/tours/miradouros.html#trip",
+      "name": "Belvedere di Lisbona — LisbonTuk4U",
+      "description": "La città vista dall'alto. Lasciati incantare dai panorami più suggestivi di Lisbona nei nostri belvedere segreti e iconici, attraversando i quartieri più emblematici in un itinerario di pura contemplazione.",
+      "url": "https://lisbontuk4u.com/it/tours/miradouros.html",
+      "image": "https://lisbontuk4u.com/assets/img/tour-miradouros.webp",
+      "inLanguage": "it",
+      "touristType": [
+        "Sightseeing",
+        "Cultural tourism",
+        "Families",
+        "Couples"
+      ],
+      "provider": {
+        "@type": "TravelAgency",
+        "@id": "https://lisbontuk4u.com/#agency",
+        "name": "LisbonTuk4U",
+        "url": "https://lisbontuk4u.com",
+        "telephone": "+351966697738"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "240",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock",
+        "url": "https://lisbontuk4u.com/it/tours/miradouros.html",
+        "eligibleQuantity": {
+          "@type": "QuantitativeValue",
+          "minValue": 1,
+          "maxValue": 5,
+          "unitText": "people"
+        },
+        "description": "240 € a gruppo (fino a 5 persone) · 3 ore"
+      },
+      "itinerary": {
+        "@type": "ItemList",
+        "numberOfItems": 15,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Chiesa di Sant'Antonio"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Cattedrale della Sé"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Belvedere di Santa Luzia"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Belvedere di Portas do Sol"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Chiesa e Convento da Graça"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 6,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Belvedere da Graça"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 7,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Belvedere di Senhora do Monte"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 8,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Chiesa e Monastero di São Vicente de Fora"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 9,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Mercatino Feira da Ladra"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 10,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Pantheon Nazionale"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 11,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Ascensore di Santa Justa"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 12,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Belvedere di São Pedro de Alcântara"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 13,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Assemblea della Repubblica"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 14,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Basilica da Estrela"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 15,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Belvedere del Parco Eduardo VII"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://lisbontuk4u.com/it/tours/miradouros.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Quanto costa il tour Belvedere di Lisbona?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Costa 240 € a gruppo, non a persona. Ogni tuk-tuk porta fino a 5 persone. Per gruppi da 6 a 10 persone si prenotano 2 tuk-tuk e il prezzo raddoppia (480 €). Il pagamento è online con carta (Stripe), senza costi nascosti."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quanto dura e cosa si visita?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dura 3 ore. Le tappe sono: Chiesa di Sant'Antonio, Cattedrale della Sé, Belvedere di Santa Luzia, Belvedere di Portas do Sol, Chiesa e Convento da Graça, Belvedere da Graça, Belvedere di Senhora do Monte, Chiesa e Monastero di São Vicente de Fora, Mercatino Feira da Ladra, Pantheon Nazionale, Ascensore di Santa Justa, Belvedere di São Pedro de Alcântara, Assemblea della Repubblica, Basilica da Estrela e Belvedere del Parco Eduardo VII."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Dove inizia il tour?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Il ritiro e il ritorno al tuo hotel o alloggio a Lisbona sono gratuiti. Se preferisci, il punto d'incontro è vicino all'Hard Rock Café, nel centro di Lisbona."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "È adatto a bambini e persone con mobilità ridotta?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sì. Il tour è adatto a tutte le età: il tuk-tuk sale le colline di Lisbona al posto tuo, quindi si cammina pochissimo. Essendo privato, ritmo e tappe si adattano al gruppo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Posso cancellare o cambiare data?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sì. La cancellazione è gratuita fino a 48 ore prima del tour. Per cambiare data, scrivi a Susane su WhatsApp (+351 966 697 738)."
+          }
+        }
+      ]
+    }
+  ]
 }
     </script>
     <script type="application/ld+json">
@@ -242,6 +436,23 @@
                     <div class="td-accordion-body"><ul class="td-not-included-list"><li><svg class="td-cross-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Biglietti d'ingresso ai monumenti</li><li><svg class="td-cross-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Pasti e bevande</li><li><svg class="td-cross-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Mance (facoltative)</li><li><svg class="td-cross-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Pick-up fuori Lisbona (costo extra)</li></ul></div>
                 </details>
             </div>
+        <!-- GEO:start (gerado por tools/geo_enrich.py — nao editar a mao) -->
+            <section class="td-geo-summary" aria-labelledby="td-geo-summary-title">
+                <h2 id="td-geo-summary-title" class="td-geo-title">In breve</h2>
+                <p class="td-geo-text"><strong>Belvedere di Lisbona</strong> è un tour <strong>privato</strong> in tuk-tuk 100% elettrico a Lisbona, organizzato da LisbonTuk4U e guidato da Susane, guida locale certificata. Dura <strong>3 ore</strong> e costa <strong>240 € a gruppo</strong> (fino a 5 persone per tuk-tuk — il prezzo non è a persona). Il percorso ha 15 tappe, tra cui Chiesa di Sant'Antonio, Cattedrale della Sé e Belvedere di Santa Luzia. Include il ritiro gratuito in hotel a Lisbona (o incontro vicino all'Hard Rock Café), spiegazioni in italiano, portoghese, inglese, spagnolo e francese, e cancellazione gratuita fino a 48 ore prima.</p>
+                <dl class="td-geo-facts"><div><dt>Durata</dt><dd>3 ore</dd></div><div><dt>Prezzo</dt><dd>240 € a gruppo (fino a 5 persone)</dd></div><div><dt>Tipo</dt><dd>Privato, solo il tuo gruppo</dd></div><div><dt>Veicolo</dt><dd>Tuk-tuk 100% elettrico</dd></div><div><dt>Lingue</dt><dd>IT · PT · EN · ES · FR</dd></div><div><dt>Partenza</dt><dd>Ritiro in hotel o Hard Rock Café</dd></div><div><dt>Cancellazione</dt><dd>Gratuita fino a 48h prima</dd></div></dl>
+            </section>
+            <details class="td-accordion td-faq" open>
+                <summary>Domande frequenti <svg class="td-accordion-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></summary>
+                <div class="td-accordion-body">
+                    <details class="td-faq-item"><summary>Quanto costa il tour Belvedere di Lisbona?</summary><p>Costa 240 € a gruppo, non a persona. Ogni tuk-tuk porta fino a 5 persone. Per gruppi da 6 a 10 persone si prenotano 2 tuk-tuk e il prezzo raddoppia (480 €). Il pagamento è online con carta (Stripe), senza costi nascosti.</p></details>
+                    <details class="td-faq-item"><summary>Quanto dura e cosa si visita?</summary><p>Dura 3 ore. Le tappe sono: Chiesa di Sant'Antonio, Cattedrale della Sé, Belvedere di Santa Luzia, Belvedere di Portas do Sol, Chiesa e Convento da Graça, Belvedere da Graça, Belvedere di Senhora do Monte, Chiesa e Monastero di São Vicente de Fora, Mercatino Feira da Ladra, Pantheon Nazionale, Ascensore di Santa Justa, Belvedere di São Pedro de Alcântara, Assemblea della Repubblica, Basilica da Estrela e Belvedere del Parco Eduardo VII.</p></details>
+                    <details class="td-faq-item"><summary>Dove inizia il tour?</summary><p>Il ritiro e il ritorno al tuo hotel o alloggio a Lisbona sono gratuiti. Se preferisci, il punto d'incontro è vicino all'Hard Rock Café, nel centro di Lisbona.</p></details>
+                    <details class="td-faq-item"><summary>È adatto a bambini e persone con mobilità ridotta?</summary><p>Sì. Il tour è adatto a tutte le età: il tuk-tuk sale le colline di Lisbona al posto tuo, quindi si cammina pochissimo. Essendo privato, ritmo e tappe si adattano al gruppo.</p></details>
+                    <details class="td-faq-item"><summary>Posso cancellare o cambiare data?</summary><p>Sì. La cancellazione è gratuita fino a 48 ore prima del tour. Per cambiare data, scrivi a Susane su WhatsApp (+351 966 697 738).</p></details>
+                </div>
+            </details>
+            <!-- GEO:end -->
         </div>
 
         <aside class="td-checkout-sidebar">

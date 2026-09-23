@@ -64,27 +64,189 @@
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400..800&family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="../../index.css?v=4.7.0">
-    <link rel="stylesheet" href="../../tours/tour-detail.css?v=1.6.0">
+    <link rel="stylesheet" href="../../tours/tour-detail.css?v=1.7.0">
 
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "TouristTrip",
-  "name": "Lisboa Auténtica — LisbonTuk4U",
-  "description": "La Lisboa que queda fuera de las rutas. En hora y media atravesamos Lapa, Madragoa, Estrela y Campo de Ourique — barrios donde la ciudad todavía vive despacio, entre casas de colores, fachadas cubiertas de azulejos y las ventanas y puertas lisboetas que casi nadie fotografía porque casi nadie pasa por allí.",
-  "touristType": "Sightseeing",
-  "provider": {
-    "@type": "TravelAgency",
-    "name": "LisbonTuk4U",
-    "url": "https://lisbontuk4u.com"
-  },
-  "offers": {
-    "@type": "Offer",
-    "price": "150",
-    "priceCurrency": "EUR",
-    "availability": "https://schema.org/InStock",
-    "url": "https://lisbontuk4u.com/es/tours/lisboa-autentica.html"
-  }
+  "@graph": [
+    {
+      "@type": "TouristTrip",
+      "@id": "https://lisbontuk4u.com/es/tours/lisboa-autentica.html#trip",
+      "name": "Lisboa Auténtica — LisbonTuk4U",
+      "description": "La Lisboa que queda fuera de las rutas. En hora y media atravesamos Lapa, Madragoa, Estrela y Campo de Ourique — barrios donde la ciudad todavía vive despacio, entre casas de colores, fachadas cubiertas de azulejos y las ventanas y puertas lisboetas que casi nadie fotografía porque casi nadie pasa por allí.",
+      "url": "https://lisbontuk4u.com/es/tours/lisboa-autentica.html",
+      "image": "https://lisbontuk4u.com/assets/img/tour-lisboa-autentica.webp",
+      "inLanguage": "es",
+      "touristType": [
+        "Sightseeing",
+        "Cultural tourism",
+        "Families",
+        "Couples"
+      ],
+      "provider": {
+        "@type": "TravelAgency",
+        "@id": "https://lisbontuk4u.com/#agency",
+        "name": "LisbonTuk4U",
+        "url": "https://lisbontuk4u.com",
+        "telephone": "+351966697738"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "150",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock",
+        "url": "https://lisbontuk4u.com/es/tours/lisboa-autentica.html",
+        "eligibleQuantity": {
+          "@type": "QuantitativeValue",
+          "minValue": 1,
+          "maxValue": 5,
+          "unitText": "people"
+        },
+        "description": "150 € por grupo (hasta 5 personas) · 1h30"
+      },
+      "itinerary": {
+        "@type": "ItemList",
+        "numberOfItems": 11,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Rua das Janelas Verdes"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Rua das Trinas"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Rua Guarda-Mor"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Museo Nacional de Arte Antiguo"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Mural de Felipe Pantone"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 6,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Tapada das Necessidades"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 7,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Rua da Lapa e Iglesia de la Lapa"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 8,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Basílica y Jardín de la Estrela"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 9,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Muro Azul de las Amoreiras"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 10,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Campo de Ourique"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 11,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Mercado de Campo de Ourique"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://lisbontuk4u.com/es/tours/lisboa-autentica.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Cuánto cuesta el tour Lisboa Auténtica?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cuesta 150 € por grupo, no por persona. Cada tuk-tuk lleva hasta 5 personas. Para grupos de 6 a 10 personas se reservan 2 tuk-tuks y el precio se duplica (300 €). El pago es online con tarjeta (Stripe), sin tasas ocultas."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto dura y qué se visita?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dura 1h30. Las paradas son: Rua das Janelas Verdes, Rua das Trinas, Rua Guarda-Mor, Museo Nacional de Arte Antiguo, Mural de Felipe Pantone, Tapada das Necessidades, Rua da Lapa e Iglesia de la Lapa, Basílica y Jardín de la Estrela, Muro Azul de las Amoreiras, Campo de Ourique y Mercado de Campo de Ourique."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Dónde empieza el tour?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La recogida y la vuelta a tu hotel o alojamiento en Lisboa son gratuitas. Si lo prefieres, el punto de encuentro está junto al Hard Rock Café, en el centro de Lisboa."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Es adecuado para niños y personas con movilidad reducida?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. El tour es apto para todas las edades: el tuk-tuk sube las colinas de Lisboa por ti, así que se camina muy poco. Al ser privado, el ritmo y las paradas se adaptan al grupo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Puedo cancelar o cambiar la fecha?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. La cancelación es gratuita hasta 48 horas antes del tour. Para cambiar la fecha, escribe a Susane por WhatsApp (+351 966 697 738)."
+          }
+        }
+      ]
+    }
+  ]
 }
     </script>
     <script type="application/ld+json">
@@ -242,6 +404,23 @@
                     <div class="td-accordion-body"><ul class="td-not-included-list"><li><svg class="td-cross-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Entradas a monumentos</li><li><svg class="td-cross-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Comidas y bebidas</li><li><svg class="td-cross-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Propinas (opcionales)</li><li><svg class="td-cross-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Recogida fuera de Lisboa (tarifa extra)</li></ul></div>
                 </details>
             </div>
+        <!-- GEO:start (gerado por tools/geo_enrich.py — nao editar a mao) -->
+            <section class="td-geo-summary" aria-labelledby="td-geo-summary-title">
+                <h2 id="td-geo-summary-title" class="td-geo-title">En resumen</h2>
+                <p class="td-geo-text"><strong>Lisboa Auténtica</strong> es un tour <strong>privado</strong> en tuk-tuk 100% eléctrico por Lisboa, organizado por LisbonTuk4U y guiado por Susane, guía local certificada. Dura <strong>1h30</strong> y cuesta <strong>150 € por grupo</strong> (hasta 5 personas por tuk-tuk — el precio no es por persona). La ruta tiene 11 paradas, entre ellas Rua das Janelas Verdes, Rua das Trinas y Rua Guarda-Mor. Incluye recogida gratuita en el hotel en Lisboa (o encuentro junto al Hard Rock Café), explicaciones en español, portugués, inglés, italiano y francés, y cancelación gratuita hasta 48 horas antes.</p>
+                <dl class="td-geo-facts"><div><dt>Duración</dt><dd>1h30</dd></div><div><dt>Precio</dt><dd>150 € por grupo (hasta 5 personas)</dd></div><div><dt>Tipo</dt><dd>Privado, solo tu grupo</dd></div><div><dt>Vehículo</dt><dd>Tuk-tuk 100% eléctrico</dd></div><div><dt>Idiomas</dt><dd>ES · PT · EN · IT · FR</dd></div><div><dt>Inicio</dt><dd>Recogida en el hotel o Hard Rock Café</dd></div><div><dt>Cancelación</dt><dd>Gratis hasta 48h antes</dd></div></dl>
+            </section>
+            <details class="td-accordion td-faq" open>
+                <summary>Preguntas frecuentes <svg class="td-accordion-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></summary>
+                <div class="td-accordion-body">
+                    <details class="td-faq-item"><summary>¿Cuánto cuesta el tour Lisboa Auténtica?</summary><p>Cuesta 150 € por grupo, no por persona. Cada tuk-tuk lleva hasta 5 personas. Para grupos de 6 a 10 personas se reservan 2 tuk-tuks y el precio se duplica (300 €). El pago es online con tarjeta (Stripe), sin tasas ocultas.</p></details>
+                    <details class="td-faq-item"><summary>¿Cuánto dura y qué se visita?</summary><p>Dura 1h30. Las paradas son: Rua das Janelas Verdes, Rua das Trinas, Rua Guarda-Mor, Museo Nacional de Arte Antiguo, Mural de Felipe Pantone, Tapada das Necessidades, Rua da Lapa e Iglesia de la Lapa, Basílica y Jardín de la Estrela, Muro Azul de las Amoreiras, Campo de Ourique y Mercado de Campo de Ourique.</p></details>
+                    <details class="td-faq-item"><summary>¿Dónde empieza el tour?</summary><p>La recogida y la vuelta a tu hotel o alojamiento en Lisboa son gratuitas. Si lo prefieres, el punto de encuentro está junto al Hard Rock Café, en el centro de Lisboa.</p></details>
+                    <details class="td-faq-item"><summary>¿Es adecuado para niños y personas con movilidad reducida?</summary><p>Sí. El tour es apto para todas las edades: el tuk-tuk sube las colinas de Lisboa por ti, así que se camina muy poco. Al ser privado, el ritmo y las paradas se adaptan al grupo.</p></details>
+                    <details class="td-faq-item"><summary>¿Puedo cancelar o cambiar la fecha?</summary><p>Sí. La cancelación es gratuita hasta 48 horas antes del tour. Para cambiar la fecha, escribe a Susane por WhatsApp (+351 966 697 738).</p></details>
+                </div>
+            </details>
+            <!-- GEO:end -->
         </div>
 
         <aside class="td-checkout-sidebar">
