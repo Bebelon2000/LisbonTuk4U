@@ -584,3 +584,60 @@
 .td-faq .td-faq-item summary::after { content: " +"; color: var(--color-primary); }
 .td-faq .td-faq-item[open] summary::after { content: " −"; }
 .td-faq-item p { margin: 0.5rem 0 0; }
+
+/* ── Pagina do terminal de cruzeiros (tools/build_cruise_page.py) ── */
+.td-port .td-content { max-width: 820px; }
+.td-port-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 0 0 2.5rem; }
+.td-port-actions .btn { flex: 1 1 240px; text-align: center; justify-content: center; }
+.td-port-h2 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.7rem;
+    color: var(--color-primary-dark);
+    margin: 0 0 1rem;
+}
+.td-port-why {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+}
+.td-port-why-item h3 { font-size: 1rem; margin: 0 0 0.3rem; color: var(--color-text-dark); }
+.td-port-why-item p { margin: 0; font-size: 0.95rem; line-height: 1.6; color: var(--color-text-light); }
+.td-port-steps {
+    counter-reset: step;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2.5rem;
+    display: grid;
+    gap: 0.75rem;
+}
+.td-port-steps li {
+    counter-increment: step;
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    gap: 0.75rem;
+    align-items: start;
+    line-height: 1.55;
+}
+.td-port-steps li::before {
+    content: counter(step);
+    width: 2rem; height: 2rem;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: #fff;
+    font-weight: 700;
+    display: grid;
+    place-items: center;
+}
+.td-port-group-title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-primary);
+    margin: 1.25rem 0 0.75rem;
+}
+.td-port .td-related-grid { margin-bottom: 1rem; }
+.td-port .td-related-card-price small { font-size: 0.75rem; font-weight: 500; color: var(--color-text-light); }
+.td-port .td-faq { margin-top: 2rem; }
+.td-port .td-hero-img, .td-hero-img[src*="tour-cruise-port"] { object-position: center 18%; }
