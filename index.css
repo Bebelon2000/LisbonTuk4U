@@ -3568,6 +3568,11 @@ body.has-promo .hero-section { padding-top: 7.5rem; }
     outline: none;
     min-height: 48px;
 }
+.booking-pickup { display: grid; gap: 0.5rem; }
+.booking-pickup label { margin-bottom: 0; }
+.booking-optional { font-weight: 400; color: var(--color-text-light); font-size: 0.85em; }
+.booking-pickup-hint { margin: 0; font-size: 0.8rem; color: var(--color-text-light); }
+.booking-checkout-form input[hidden] { display: none; }
 .booking-checkout-form input:focus,
 .booking-checkout-form select:focus {
     border-color: var(--color-primary);

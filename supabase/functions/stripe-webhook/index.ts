@@ -24,6 +24,12 @@ const supabase = createClient(
   Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "",
 );
 
+// Escapa texto escrito pelo cliente antes de o pôr no HTML do e-mail.
+const esc = (v?: string) =>
+  String(v ?? "").replace(/[&<>"']/g, (c) =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!
+  );
+
 // Envia um e-mail à Susane a avisar de uma nova reserva paga.
 // Falhas aqui não devem derrubar o webhook (a reserva já foi gravada).
 async function sendBookingNotification(
@@ -42,9 +48,10 @@ async function sendBookingNotification(
     <p><strong>Passageiros:</strong> ${m.passengers ?? "-"} (${m.tuks ?? "1"} tuk-tuk(s))</p>
     <p><strong>Valor pago:</strong> ${amount} ${(s.currency ?? "eur").toUpperCase()}</p>
     <hr>
-    <p><strong>Cliente:</strong> ${m.customerName ?? "-"}</p>
-    <p><strong>Telefone:</strong> ${m.customerPhone ?? "-"}</p>
+    <p><strong>Cliente:</strong> ${esc(m.customerName) || "-"}</p>
+    <p><strong>Telefone:</strong> ${esc(m.customerPhone) || "-"}</p>
     <p><strong>País:</strong> ${m.customerCountry ?? "-"}</p>
+    <p><strong>Recolha:</strong> ${esc(m.pickup) || "— (combinar por WhatsApp)"}</p>
     <p><strong>E-mail:</strong> ${email}</p>
   `;
   try {
@@ -131,6 +138,7 @@ Deno.serve(async (req: Request) => {
       customer_email: s.customer_details?.email ?? s.customer_email ?? null,
       customer_phone: m.customerPhone ?? null,
       customer_country: m.customerCountry ?? null,
+      pickup_location: m.pickup || null,
       payment_status: "paid",
     }, { onConflict: "stripe_session_id" });
 

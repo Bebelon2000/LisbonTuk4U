@@ -231,6 +231,7 @@ const I18N = {
         name: 'Nome', surname: 'Apelido', email: 'Email', phone: 'Telemóvel', country: 'País',
         namePh: 'Nome', surnamePh: 'Apelido', emailPh: 'email@exemplo.com', phonePh: '+351 9XX XXX XXX',
         selectCountry: 'Selecionar país', other: 'Outro',
+        pickup: 'Onde o vamos buscar?', optional: 'opcional', pickupOpts: { hotel: 'Hotel ou alojamento em Lisboa', cruise: 'Terminal de cruzeiros', hardrock: 'Hard Rock Café (Av. da Liberdade)', later: 'Combinar depois por WhatsApp' }, pickupDetailPh: 'Nome do hotel ou morada', pickupHint: 'Recolha grátis. A Susane confirma o ponto exato por WhatsApp.',
         countries: { PT: 'Portugal', BR: 'Brasil', US: 'Estados Unidos', GB: 'Reino Unido', FR: 'França', DE: 'Alemanha', ES: 'Espanha', IT: 'Itália', NL: 'Países Baixos' },
         terms: 'Concordo com os termos da reserva e a política de cancelamento gratuito até 48h antes.',
         confirm: 'CONFIRMAR RESERVA', processing: 'A processar...',
@@ -270,6 +271,7 @@ const I18N = {
         name: 'First name', surname: 'Last name', email: 'Email', phone: 'Mobile phone', country: 'Country',
         namePh: 'First name', surnamePh: 'Last name', emailPh: 'email@example.com', phonePh: '+1 555 000 0000',
         selectCountry: 'Select country', other: 'Other',
+        pickup: 'Where should we pick you up?', optional: 'optional', pickupOpts: { hotel: 'Hotel or accommodation in Lisbon', cruise: 'Cruise terminal', hardrock: 'Hard Rock Café (Av. da Liberdade)', later: 'Arrange later on WhatsApp' }, pickupDetailPh: 'Hotel name or address', pickupHint: 'Free pickup. Susane confirms the exact spot on WhatsApp.',
         countries: { PT: 'Portugal', BR: 'Brazil', US: 'United States', GB: 'United Kingdom', FR: 'France', DE: 'Germany', ES: 'Spain', IT: 'Italy', NL: 'Netherlands' },
         terms: 'I agree to the booking terms and the free-cancellation policy (up to 48h before).',
         confirm: 'CONFIRM BOOKING', processing: 'Processing...',
@@ -309,6 +311,7 @@ const I18N = {
         name: 'Nombre', surname: 'Apellido', email: 'Email', phone: 'Móvil', country: 'País',
         namePh: 'Nombre', surnamePh: 'Apellido', emailPh: 'email@ejemplo.com', phonePh: '+34 6XX XXX XXX',
         selectCountry: 'Seleccionar país', other: 'Otro',
+        pickup: '¿Dónde te recogemos?', optional: 'opcional', pickupOpts: { hotel: 'Hotel o alojamiento en Lisboa', cruise: 'Terminal de cruceros', hardrock: 'Hard Rock Café (Av. da Liberdade)', later: 'Acordar después por WhatsApp' }, pickupDetailPh: 'Nombre del hotel o dirección', pickupHint: 'Recogida gratuita. Susane confirma el punto exacto por WhatsApp.',
         countries: { PT: 'Portugal', BR: 'Brasil', US: 'Estados Unidos', GB: 'Reino Unido', FR: 'Francia', DE: 'Alemania', ES: 'España', IT: 'Italia', NL: 'Países Bajos' },
         terms: 'Acepto las condiciones de la reserva y la política de cancelación gratuita hasta 48h antes.',
         confirm: 'CONFIRMAR RESERVA', processing: 'Procesando...',
@@ -348,6 +351,7 @@ const I18N = {
         name: 'Nome', surname: 'Cognome', email: 'Email', phone: 'Cellulare', country: 'Paese',
         namePh: 'Nome', surnamePh: 'Cognome', emailPh: 'email@esempio.com', phonePh: '+39 3XX XXX XXXX',
         selectCountry: 'Seleziona il paese', other: 'Altro',
+        pickup: 'Dove ti veniamo a prendere?', optional: 'facoltativo', pickupOpts: { hotel: 'Hotel o alloggio a Lisbona', cruise: 'Terminal crociere', hardrock: 'Hard Rock Café (Av. da Liberdade)', later: 'Da concordare su WhatsApp' }, pickupDetailPh: 'Nome dell’hotel o indirizzo', pickupHint: 'Ritiro gratuito. Susane conferma il punto esatto su WhatsApp.',
         countries: { PT: 'Portogallo', BR: 'Brasile', US: 'Stati Uniti', GB: 'Regno Unito', FR: 'Francia', DE: 'Germania', ES: 'Spagna', IT: 'Italia', NL: 'Paesi Bassi' },
         terms: 'Accetto i termini della prenotazione e la politica di cancellazione gratuita fino a 48h prima.',
         confirm: 'CONFERMA PRENOTAZIONE', processing: 'Elaborazione...',
@@ -387,6 +391,7 @@ const I18N = {
         name: 'Prénom', surname: 'Nom', email: 'Email', phone: 'Portable', country: 'Pays',
         namePh: 'Prénom', surnamePh: 'Nom', emailPh: 'email@exemple.com', phonePh: '+33 6 XX XX XX XX',
         selectCountry: 'Sélectionner le pays', other: 'Autre',
+        pickup: 'Où venons-nous vous chercher ?', optional: 'facultatif', pickupOpts: { hotel: 'Hôtel ou logement à Lisbonne', cruise: 'Terminal de croisière', hardrock: 'Hard Rock Café (Av. da Liberdade)', later: 'À convenir sur WhatsApp' }, pickupDetailPh: 'Nom de l’hôtel ou adresse', pickupHint: 'Prise en charge gratuite. Susane confirme le point exact sur WhatsApp.',
         countries: { PT: 'Portugal', BR: 'Brésil', US: 'États-Unis', GB: 'Royaume-Uni', FR: 'France', DE: 'Allemagne', ES: 'Espagne', IT: 'Italie', NL: 'Pays-Bas' },
         terms: 'J\'accepte les conditions de réservation et la politique d\'annulation gratuite jusqu\'à 48h avant.',
         confirm: 'CONFIRMER LA RÉSERVATION', processing: 'Traitement...',
@@ -1083,6 +1088,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Step 4: Checkout
             const checkoutHidden = !state.selectedTime;
+            // Quem vem da página do terminal de cruzeiros já tem a recolha pré-escolhida
+            const defaultPickup = /cruise-port/.test(location.pathname) ? 'cruise' : 'hotel';
             html += `
             <div class="booking-step ${checkoutHidden ? 'disabled' : ''}" id="booking-step-checkout" style="display:none;">
                 <div class="booking-step-header">
@@ -1110,6 +1117,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div>
                             <label>${T.phone} <span class="required">*</span></label>
                             <input type="tel" id="bk-phone" placeholder="${T.phonePh}" required autocomplete="tel">
+                        </div>
+                        <div class="booking-pickup">
+                            <label for="bk-pickup">${T.pickup} <span class="booking-optional">(${T.optional})</span></label>
+                            <select id="bk-pickup">
+                                ${Object.entries(T.pickupOpts).map(([k, label]) => `<option value="${k}"${k === defaultPickup ? ' selected' : ''}>${label}</option>`).join('')}
+                            </select>
+                            <input type="text" id="bk-pickup-detail" placeholder="${T.pickupDetailPh}" maxlength="200" autocomplete="off"${defaultPickup === 'hotel' ? '' : ' hidden'}>
+                            <p class="booking-pickup-hint">${T.pickupHint}</p>
                         </div>
                         <div>
                             <label>${T.country}</label>
@@ -1342,6 +1357,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Form submit
             const form = overlayBody.querySelector('#booking-checkout-form');
+            // Local de recolha: o campo de texto só aparece para "hotel"
+            const pickupSel = overlayBody.querySelector('#bk-pickup');
+            const pickupDetail = overlayBody.querySelector('#bk-pickup-detail');
+            if (pickupSel && pickupDetail) {
+                pickupSel.addEventListener('change', () => { pickupDetail.hidden = pickupSel.value !== 'hotel'; });
+            }
+            // Texto legível para a Susane, ex.: "Hotel ou alojamento em Lisboa: Tivoli Avenida"
+            const pickupText = () => {
+                if (!pickupSel) return '';
+                const label = T.pickupOpts[pickupSel.value] || '';
+                const detail = pickupSel.value === 'hotel' && pickupDetail ? pickupDetail.value.trim() : '';
+                return (detail ? `${label}: ${detail}` : label).slice(0, 250);
+            };
             if (form) {
                 form.addEventListener('submit', async (e) => {
                     e.preventDefault();
@@ -1363,6 +1391,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         email: document.getElementById('bk-email').value,
                         phone: document.getElementById('bk-phone').value,
                         country: document.getElementById('bk-country').value,
+                        pickup: pickupText(),
                     };
 
                     const cfg = window.LISBONTUK_PAYMENTS;

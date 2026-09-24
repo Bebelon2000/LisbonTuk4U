@@ -77,6 +77,8 @@ Deno.serve(async (req: Request) => {
       customerName: `${customer?.name ?? ""} ${customer?.surname ?? ""}`.trim(),
       customerPhone: String(customer?.phone ?? ""),
       customerCountry: String(customer?.country ?? ""),
+      // Local de recolha (opcional). A Stripe limita cada valor de metadata a 500 caracteres.
+      pickup: String(customer?.pickup ?? "").slice(0, 250),
     };
     for (const [k, v] of Object.entries(meta)) p.set(`metadata[${k}]`, v);
     // Cancelamento gratuito até 48h -> reembolsável; guardamos o método para o caso
