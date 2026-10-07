@@ -9,7 +9,7 @@
 // Itens incluídos em todos os tours guiados (privados)
 const TOUR_INCLUDED = [
     'Pick-up e entrega no hotel',
-    'Guia local certificada',
+    'Guia certificada',
     'Tuk-tuk 100% elétrico e privativo',
     'Comentários em PT · EN · ES · IT · FR',
     'Cancelamento grátis até 48h antes',

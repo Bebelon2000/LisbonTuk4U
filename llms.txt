@@ -1,11 +1,11 @@
 # LisbonTuk4U
 
-> LisbonTuk4U runs private, 100% electric tuk-tuk sightseeing tours in Lisbon, Portugal, guided by Susane, a certified local guide, in a blue tuk-tuk decorated with flowers. Prices are per group (up to 5 people per tuk-tuk), not per person, and include free hotel pick-up in Lisbon and free cancellation up to 48 hours before the tour. Commentary in Portuguese, English, Spanish, Italian and French. Booked and paid online at https://lisbontuk4u.com.
+> LisbonTuk4U runs private, 100% electric tuk-tuk sightseeing tours in Lisbon, Portugal, guided by Susane, a certified guide, in a blue tuk-tuk decorated with flowers. Prices are per group (up to 5 people per tuk-tuk), not per person, and include free hotel pick-up in Lisbon and free cancellation up to 48 hours before the tour. Commentary in Portuguese, English, Spanish, Italian and French. Booked and paid online at https://lisbontuk4u.com.
 
 ## Key facts
 
 - Business: LisbonTuk4U (also written "Lisbon Tuk4U"), tuk-tuk tour operator in Lisbon, Portugal
-- Guide: Susane, certified local guide in Lisbon
+- Guide: Susane, certified guide in Lisbon
 - Vehicle: 100% electric tuk-tuk, blue with flowers
 - Tour type: private (only your group on board), never shared with strangers
 - Capacity: up to 5 people per tuk-tuk; groups of 6 to 10 people get 2 tuk-tuks and the price doubles
