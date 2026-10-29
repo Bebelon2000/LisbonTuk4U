@@ -103,3 +103,5 @@ Investigado na consola do Google Cloud (projeto `project-fb692604-b668-478d-b47`
 **Correção:** converter a conta de teste em conta paga ("Fazer upgrade"). Custo esperado **€0** — a Places API tem 10.000 chamadas grátis/mês e a função tem cache de 6h (~120 chamadas/mês, 1% do limite). Exige dados de pagamento → ação do Bernardo. ⚠️ Dado o histórico com cartões virtuais do Activo Bank no Google Ads, é provável que um cartão virtual seja recusado.
 
 **Se depois do upgrade continuar a falhar:** a hipótese seguinte é a chave do segredo `GOOGLE_MAPS_API_KEY` não ser nenhuma das 4 do projeto (p. ex. de um projeto apagado). Nesse caso, substituir o segredo por uma das chaves válidas.
+
+| 2026-10-29 | Estudo da campanha: 30 dias = €293 / 4 conv / CPA €73 / ROAS 2,76×; Nichos CPA €44 vs Core €102; "Contacto" ainda 0 de 3 campanhas; pagamento resolvido | Ver `2026-10-29.md` |
